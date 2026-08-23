@@ -53,7 +53,7 @@ export default function ServicesPage() {
             <div>
               <div className="eyebrow">Not sure where to start?</div>
               <h2 style={{ marginBottom: 6 }}>Let&apos;s find the right session for you.</h2>
-              <p>Need an urgent WhatsApp response? A separate ₹299 urgent-contact fee applies after payment.</p>
+              <p>Need guidance urgently? Add an emergency consultation for a separate ₹299 fee after payment.</p>
             </div>
             <a href="/booking?urgent=whatsapp" className="btn btn-gold">Request WhatsApp contact · ₹299</a>
           </div>

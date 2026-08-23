@@ -5,7 +5,7 @@ export default function WhatsAppFloat() {
       href="/booking?urgent=whatsapp"
       target="_blank"
       rel="noreferrer"
-      aria-label="Request urgent WhatsApp contact"
+      aria-label="Request emergency consultation"
     >
       <svg className="wa-icon" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
         <circle cx="16" cy="16" r="15" fill="white" />

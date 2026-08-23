@@ -28,7 +28,6 @@ export default function Navbar() {
           </svg>
           <span className="logo-text">
             <b>THE SOUL MIRROR</b>
-            <span>By Janvi</span>
           </span>
         </Link>
 

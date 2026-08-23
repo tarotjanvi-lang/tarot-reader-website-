@@ -12,7 +12,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <div className="eyebrow">Tarot Reader &middot; Energy Alchemist &middot; Spiritual Guide</div>
+            <div className="eyebrow hero-eyebrow">Tarot Reader &middot; Energy Alchemist &middot; Spiritual Guide</div>
             <h1 className="hero-title">
               See your truth.<br />
               <span className="accent">Heal deeply.</span><br />
@@ -167,13 +167,11 @@ export default function HomePage() {
         <Reveal className="container">
           <div className="story-panel">
             <div className="art-side">
-              <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
-                <circle cx="60" cy="60" r="30" fill="var(--gold-soft)" opacity="0.9" />
-                <g stroke="var(--gold)" strokeWidth="1" opacity="0.7">
-                  <circle cx="140" cy="140" r="8" /><circle cx="150" cy="150" r="12" /><circle cx="130" cy="155" r="6" />
-                </g>
-                <path d="M60 150c-20 5-25 25 10 32 35-7 30-27 10-32-8 6-12 6-20 0Z" fill="var(--gold-soft)" opacity="0.85" />
-              </svg>
+              <img
+                className="shiva-image"
+                src="/images/home-shiva-transparent.png"
+                alt="Lord Shiva statue against a warm evening sky"
+              />
             </div>
             <div className="text-side">
               <div className="eyebrow">Words from beautiful souls</div>
@@ -196,7 +194,7 @@ export default function HomePage() {
 
       {/* ================= CTA BANNER ================= */}
       <section className="section-tight">
-        <Reveal className="container">
+        <Reveal className="container cta-reveal">
           <div className="cta-banner">
             <div>
               <div className="eyebrow">Your journey awaits</div>
