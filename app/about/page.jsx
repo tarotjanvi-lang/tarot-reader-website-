@@ -12,7 +12,6 @@ export default function AboutPage() {
     <>
       <section className="about-intro">
         <div className="container">
-          <div className="breadcrumb"><Link href="/">Home</Link> / About</div>
           <div className="about-intro-grid">
             <Reveal className="about-intro-copy">
               <div className="eyebrow">A calling, not just a profession</div>

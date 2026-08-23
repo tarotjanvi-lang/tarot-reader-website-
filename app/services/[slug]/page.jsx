@@ -32,10 +32,6 @@ export default function ServiceDetailPage({ params }) {
   return (
     <section className="section-tight service-detail-page">
       <div className="container">
-        <div className="breadcrumb">
-          <Link href="/">Home</Link> / <Link href="/services">Services</Link> / {service.category} / {service.name}
-        </div>
-
         <div className="service-detail-grid">
           <div className="service-detail-content">
             <header className="service-hero-detail">

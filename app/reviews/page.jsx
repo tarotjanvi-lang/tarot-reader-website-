@@ -12,7 +12,6 @@ export default function ReviewsPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="breadcrumb"><Link href="/">Home</Link> / Reviews</div>
           <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
           <h1>500+ souls, 1,000+ stories</h1>
           <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>

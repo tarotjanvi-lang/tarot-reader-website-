@@ -1,5 +1,6 @@
 "use client";
 
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { services } from "@/lib/services-data";
@@ -15,6 +16,7 @@ export default function BookingFlow() {
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState(initialService);
   const [urgentWhatsApp, setUrgentWhatsApp] = useState(false);
+  const [emailStatus, setEmailStatus] = useState("");
   const [details, setDetails] = useState({ name: "", email: "", countryCode: "+91", phone: "", notes: "" });
 
   function goTo(n) {
@@ -29,12 +31,48 @@ export default function BookingFlow() {
     goTo(3);
   }
 
-  function handleAdvancePayment(e) {
+  async function handleAdvancePayment(e) {
     e.preventDefault();
     // NOTE: this is a front-end demo only. A real integration needs a
     // server-side Razorpay Order creation call + webhook signature
     // verification before accepting payment. See project README.
-    goTo(4);
+    setEmailStatus("Sending your booking details...");
+    try {
+      const total = (selectedService?.price || 0) + (urgentWhatsApp ? URGENT_WHATSAPP_FEE : 0);
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      if (!publicKey) {
+        throw new Error("EmailJS Public Key is missing");
+      }
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_gmddfjf",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_x4aevv4",
+        {
+          to_email: "tarotjanvi@gmail.com",
+          email: "tarotjanvi@gmail.com",
+          name: details.name,
+          title: `New session appointment request - ${selectedService?.name}`,
+          message: `Session: ${selectedService?.name}\nDuration: ${selectedService?.duration}\nSession fee: ${selectedService?.priceLabel}\nEmergency consultation: ${urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No"}\nTotal payment: ₹${total.toLocaleString("en-IN")}\nPayment status: Payment completed (demo checkout)\nCustomer phone: ${details.countryCode} ${details.phone}\nCustomer notes: ${details.notes || "No additional notes provided"}`,
+          reply_to: details.email,
+          customer_name: details.name,
+          customer_email: details.email,
+          customer_phone: `${details.countryCode} ${details.phone}`,
+          session_name: selectedService?.name,
+          session_duration: selectedService?.duration,
+          session_fee: selectedService?.priceLabel,
+          emergency_consultation: urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No",
+          total_payment: `₹${total.toLocaleString("en-IN")}`,
+          customer_notes: details.notes || "No additional notes provided",
+          payment_status: "Payment completed (demo checkout)",
+        },
+        { publicKey }
+      );
+      setEmailStatus("");
+      goTo(4);
+    } catch (error) {
+      console.error("EmailJS booking notification failed", error);
+      const errorCode = error?.status || error?.text || error?.message;
+      setEmailStatus(`We could not send the booking details${errorCode ? ` (${errorCode})` : ""}. Check your EmailJS service and template settings.`);
+    }
   }
 
   return (
@@ -99,7 +137,7 @@ export default function BookingFlow() {
             <form onSubmit={handleDetails} style={{ maxWidth: 680, margin: "26px auto 0" }}>
               <div className="grid-2">
                 <div className="form-field"><label>Full Name</label><input type="text" required placeholder="Your name" value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} /></div>
-                <div className="form-field"><label>Phone / WhatsApp</label><div className="phone-input"><select aria-label="Country code" value={details.countryCode} onChange={(e) => setDetails({ ...details, countryCode: e.target.value })}><option value="+91">India (+91)</option><option value="+1">United States / Canada (+1)</option><option value="+44">United Kingdom (+44)</option><option value="+61">Australia (+61)</option><option value="+971">United Arab Emirates (+971)</option><option value="+65">Singapore (+65)</option><option value="+49">Germany (+49)</option><option value="+33">France (+33)</option><option value="+81">Japan (+81)</option><option value="+27">South Africa (+27)</option></select><input type="tel" required placeholder="Phone number" value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value })} /></div></div>
+                <div className="form-field"><label>Phone / WhatsApp</label><div className="phone-input"><select aria-label="Country code" value={details.countryCode} onChange={(e) => setDetails({ ...details, countryCode: e.target.value })}><option value="+91">India (+91)</option><option value="+1">United States / Canada (+1)</option><option value="+44">United Kingdom (+44)</option><option value="+61">Australia (+61)</option><option value="+971">United Arab Emirates (+971)</option><option value="+65">Singapore (+65)</option><option value="+49">Germany (+49)</option><option value="+33">France (+33)</option><option value="+81">Japan (+81)</option><option value="+27">South Africa (+27)</option></select><input type="tel" required inputMode="numeric" maxLength={10} pattern="[0-9]{10}" title="Enter a 10-digit phone number" placeholder="10-digit phone number" value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })} /></div></div>
               </div>
               <div className="form-field"><label>Email</label><input type="email" required placeholder="you@email.com" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} /></div>
               <div className="form-field"><label>What would you like to be guided on?</label><textarea placeholder="Share a little context so Janvi can prepare..." value={details.notes} onChange={(e) => setDetails({ ...details, notes: e.target.value })} /></div>
@@ -118,7 +156,8 @@ export default function BookingFlow() {
                 <span className="urgent-contact-check" aria-hidden="true">{urgentWhatsApp ? "✓" : "+"}</span>
                 <span><strong>{urgentWhatsApp ? "Emergency consultation added" : "Need emergency guidance?"}</strong><small>{urgentWhatsApp ? `₹${URGENT_WHATSAPP_FEE} added to your payment` : `Add ₹${URGENT_WHATSAPP_FEE} for an urgent WhatsApp consultation with Janvi`}</small></span>
               </button>
-              <form onSubmit={handleAdvancePayment}><button type="submit" className="btn btn-gold" style={{ marginTop: 22, width: "100%", justifyContent: "center" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /></svg>Pay Full Amount Securely</button></form>
+              <form onSubmit={handleAdvancePayment}><button type="submit" className="btn btn-gold" disabled={Boolean(emailStatus)} style={{ marginTop: 22, width: "100%", justifyContent: "center" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /></svg>{emailStatus ? "Processing..." : "Pay Full Amount Securely"}</button></form>
+              {emailStatus && <p style={{ color: "var(--gold)", fontSize: 12, marginTop: 10 }}>{emailStatus}</p>}
               <p style={{ fontSize: 12, marginTop: 10 }}>Cards, UPI, netbanking and wallets accepted. Payment is shown here as a demo until a Razorpay order is connected.</p>
             </div>
           </div>

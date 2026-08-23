@@ -13,7 +13,6 @@ export default function ServicesPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="breadcrumb"><Link href="/">Home</Link> / Services</div>
           <div className="eyebrow" style={{ justifyContent: "center" }}>My Services</div>
           <h1>Sacred services for your<br />soul&apos;s transformation</h1>
           <p>Every offering is approached with compassion, confidentiality and genuine intuitive intention — choose the path that speaks to where you are right now.</p>
@@ -55,7 +54,7 @@ export default function ServicesPage() {
               <h2 style={{ marginBottom: 6 }}>Let&apos;s find the right session for you.</h2>
               <p>Need guidance urgently? Add an emergency consultation for a separate ₹299 fee after payment.</p>
             </div>
-            <a href="/booking?urgent=whatsapp" className="btn btn-gold">Request WhatsApp contact · ₹299</a>
+            <a href="/booking?urgent=whatsapp" className="btn btn-gold">Emergency Contact · Pay ₹299 Extra</a>
           </div>
         </Reveal>
       </section>

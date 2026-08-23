@@ -12,7 +12,6 @@ export default function BookingPage() {
     <>
       <section className="page-hero" style={{ paddingBottom: 0 }}>
         <div className="container">
-          <div className="breadcrumb"><Link href="/">Home</Link> / Book a Session</div>
           <div className="eyebrow" style={{ justifyContent: "center" }}>Your Journey Begins Here</div>
           <h1>Book your session</h1>
           <p>Choose your session and share your details. Janvi will personally contact you to confirm the date and time.</p>

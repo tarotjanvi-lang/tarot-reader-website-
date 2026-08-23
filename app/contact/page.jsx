@@ -11,7 +11,6 @@ export default function ContactPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="breadcrumb"><Link href="/">Home</Link> / Contact</div>
           <div className="eyebrow" style={{ justifyContent: "center" }}>Let&apos;s Connect</div>
           <h1>Have a question<br />before you book?</h1>
           <p>Reach out — I&apos;m happy to help you find the right session, wherever in the world you are.</p>
@@ -56,7 +55,7 @@ export default function ContactPage() {
                     <strong style={{ fontFamily: "'Playfair Display'" }}>Emergency consultation</strong>
                     <p style={{ fontSize: 14, marginTop: 4 }}>₹299 emergency consultation fee applies after payment.</p>
                     <a href="/booking?urgent=whatsapp" className="btn-link">
-                      Request WhatsApp contact
+                      Emergency Contact
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                     </a>
                   </div>

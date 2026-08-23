@@ -20,7 +20,7 @@ export default function ContactForm() {
         <div className="form-field"><label htmlFor="email">Email</label><input id="email" type="email" required placeholder="you@email.com" /></div>
       </div>
       <div className="grid-2">
-        <div className="form-field"><label htmlFor="phone">Phone / WhatsApp</label><input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" /></div>
+        <div className="form-field"><label htmlFor="phone">Phone / WhatsApp</label><input id="phone" type="tel" inputMode="numeric" maxLength={10} pattern="[0-9]{10}" title="Enter a 10-digit phone number" placeholder="10-digit phone number" onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 10); }} /></div>
         <div className="form-field">
           <label htmlFor="topic">I&apos;m interested in</label>
           <select id="topic">

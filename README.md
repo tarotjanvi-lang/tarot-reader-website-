@@ -17,6 +17,45 @@ npm run dev
 
 Then open **http://localhost:3000**.
 
+## EmailJS booking notifications
+
+The booking flow sends the submitted customer and session details to
+`tarotjanvi@gmail.com` after the current demo payment step. Copy `.env.example`
+to `.env.local` and replace `your_emailjs_public_key` with the Public Key from
+EmailJS. The Service ID and Template ID are already configured.
+
+In EmailJS, configure the template recipient as `{{to_email}}` and use this
+template content:
+
+**Subject**
+
+```text
+New session appointment request - {{session_name}}
+```
+
+**Message / HTML**
+
+```html
+<h2>New Session Appointment Request</h2>
+<p><strong>Customer name:</strong> {{customer_name}}</p>
+<p><strong>Customer email:</strong> {{customer_email}}</p>
+<p><strong>Phone / WhatsApp:</strong> {{customer_phone}}</p>
+<hr>
+<p><strong>Session:</strong> {{session_name}}</p>
+<p><strong>Duration:</strong> {{session_duration}}</p>
+<p><strong>Session fee:</strong> {{session_fee}}</p>
+<p><strong>Emergency consultation:</strong> {{emergency_consultation}}</p>
+<p><strong>Total payment:</strong> {{total_payment}}</p>
+<p><strong>Payment status:</strong> {{payment_status}}</p>
+<hr>
+<p><strong>Customer notes:</strong></p>
+<p>{{customer_notes}}</p>
+```
+
+The current Razorpay button is still a demo checkout. Connect a real payment
+gateway and verify its server-side webhook before treating the email status as
+proof of a completed payment.
+
 To build the production version:
 ```bash
 npm run build
