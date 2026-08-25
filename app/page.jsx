@@ -138,7 +138,7 @@ export default function HomePage() {
             <div className="art-side">
               <Image
                 className="shiva-image"
-                src="/images/home-shiva-transparent.png"
+                src="/images/home_shiva_transparent.png"
                 alt="A warm spiritual still life with tarot cards, candle, flowers and crystals"
                 width={1536}
                 height={1024}
