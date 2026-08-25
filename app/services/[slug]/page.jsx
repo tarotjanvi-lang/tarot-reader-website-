@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Faq from "@/components/Faq";
-import { services, testimonials } from "@/lib/services-data";
+import { services } from "@/lib/services-data";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -20,14 +20,10 @@ export default function ServiceDetailPage({ params }) {
   const service = services.find((s) => s.slug === params.slug);
   if (!service) notFound();
 
-  const relatedTestimonials = testimonials.filter((t) => t.tag.toLowerCase() === service.name.toLowerCase()).slice(0, 2);
-  const fallbackTestimonials = testimonials.slice(0, 2);
-  const shownTestimonials = relatedTestimonials.length ? relatedTestimonials : fallbackTestimonials;
   const isTarot = service.type === "tarot";
   const isCustom = service.type === "custom";
   const isHealing = service.type === "healing";
   const isSpellwork = service.type === "spellwork";
-  const relatedServices = services.filter((item) => item.slug !== service.slug && item.category === service.category).slice(0, 3);
 
   return (
     <section className="section-tight service-detail-page">
@@ -39,7 +35,7 @@ export default function ServiceDetailPage({ params }) {
               <h1>{service.name}</h1>
               <p className="service-lede">{service.description || service.tagline}</p>
               <div className="service-hero-meta"><span>{service.priceLabel}</span><span>{service.duration}</span>{service.questionCount && <span>{service.questionCount}</span>}</div>
-              <div className="service-hero-actions"><Link href={`/booking?service=${service.slug}`} className="btn btn-primary">Book This {isHealing ? "Healing" : "Session"}</Link><a href={`/booking?service=${service.slug}&urgent=whatsapp`} className="btn btn-outline">Ask a Question</a></div>
+              <div className="service-hero-actions"><Link href={`/booking?service=${service.slug}`} className="btn btn-primary">Book This {isHealing ? "Healing" : "Session"}</Link></div>
             </header>
 
             <section className="detail-section"><div className="eyebrow">The offering</div><h2>{isHealing ? "About This Healing" : isCustom ? "Create Your Own SoulMirror Journey" : "About This Service"}</h2><p>{service.tagline} {isCustom ? "Different modalities can be combined around your intention, duration and scope of work." : "The session is held with compassion, confidentiality and genuine intuitive intention."}</p></section>
@@ -54,11 +50,6 @@ export default function ServiceDetailPage({ params }) {
 
             <section className="detail-section disclaimer-section"><div className="eyebrow">Please note</div><h2>Important Information</h2><p>{service.disclaimer}</p></section>
 
-            <section className="detail-section detail-cta"><div><div className="eyebrow">Ready to begin?</div><h2>Take the next step with intention.</h2></div><div className="service-hero-actions"><Link href={`/booking?service=${service.slug}`} className="btn btn-primary">{isCustom || isSpellwork ? "Discuss Your Journey" : `Book This ${isHealing ? "Healing" : "Session"}`}</Link><a href={`/booking?service=${service.slug}&urgent=whatsapp`} className="btn btn-outline">Ask a Question</a></div></section>
-
-            {relatedServices.length > 0 && <section className="detail-section related-section"><div className="eyebrow">Continue exploring</div><h2>Related Services</h2><div className="included-grid">{relatedServices.map((item) => <Link href={`/services/${item.slug}`} className="included-card related-card" key={item.slug}><strong>{item.name}</strong><span>{item.priceLabel}</span></Link>)}</div></section>}
-
-            <section className="detail-section testimonial-section"><div className="eyebrow">From the mirror</div><h2>What clients say</h2><div className="grid-2">{shownTestimonials.map((t) => <div key={t.name} className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-quote">&ldquo;{t.quote}&rdquo;</p><div className="testi-person"><div className="testi-avatar">{t.name[0]}</div><div><div className="testi-name">{t.name}</div><div className="testi-tag">{t.tag}</div></div></div></div>)}</div></section>
           </div>
 
           <aside className="price-box">
@@ -73,9 +64,6 @@ export default function ServiceDetailPage({ params }) {
             <Link href={`/booking?service=${service.slug}`} className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: 22 }}>
               Book This {isHealing ? "Healing" : "Session"}
             </Link>
-            <a href={`/booking?service=${service.slug}&urgent=whatsapp`} className="btn btn-outline" style={{ width: "100%", justifyContent: "center", marginTop: 10 }}>
-              Ask a Question
-            </a>
           </aside>
         </div>
       </div>

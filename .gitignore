@@ -1,7 +1,12 @@
 node_modules/
 .next/
 .next-local/
+.next-dev/
 out/
 .DS_Store
 *.log
 .env.local
+.env
+tsconfig.tsbuildinfo
+
+/lib/generated/prisma

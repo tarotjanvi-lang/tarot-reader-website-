@@ -1,23 +1,44 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
 import { services } from "@/lib/services-data";
+import ServiceVisual from "@/components/ServiceVisual";
 
 const STEP_LABELS = ["Session", "Your Details", "Payment", "Confirmation"];
 const URGENT_WHATSAPP_FEE = 299;
 
 export default function BookingFlow() {
   const searchParams = useSearchParams();
+  const { data: session, status: sessionStatus } = useSession();
   const preselectedSlug = searchParams.get("service");
   const initialService = services.find((s) => s.slug === preselectedSlug) || services[0];
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(preselectedSlug && services.some((s) => s.slug === preselectedSlug) ? 2 : 1);
   const [selectedService, setSelectedService] = useState(initialService);
   const [urgentWhatsApp, setUrgentWhatsApp] = useState(false);
   const [emailStatus, setEmailStatus] = useState("");
-  const [details, setDetails] = useState({ name: "", email: "", countryCode: "+91", phone: "", notes: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [details, setDetails] = useState({
+    name: "",
+    email: "",
+    countryCode: "+91",
+    phone: "",
+    notes: "",
+  });
+
+  // Pre-fill user details if logged in
+  useEffect(() => {
+    if (session?.user) {
+      setDetails((prev) => ({
+        ...prev,
+        name: session.user?.name || "",
+        email: session.user?.email || "",
+      }));
+    }
+  }, [session]);
 
   function goTo(n) {
     setStep(Math.min(Math.max(n, 1), 4));
@@ -31,18 +52,102 @@ export default function BookingFlow() {
     goTo(3);
   }
 
+  if (sessionStatus === "loading") {
+    return <section className="section"><div className="container"><p style={{ textAlign: "center" }}>Checking your account...</p></div></section>;
+  }
+
+  if (!session) {
+    const callbackUrl = typeof window === "undefined" ? "/booking" : `${window.location.pathname}${window.location.search}`;
+    return (
+      <section className="section">
+        <div className="container" style={{ maxWidth: 560, textAlign: "center" }}>
+          <div className="service-card">
+            <div className="eyebrow" style={{ justifyContent: "center" }}>Account Required</div>
+            <h1>Sign in to book your appointment</h1>
+            <p>Create an account or sign in first so your appointment and consultation history stay connected to you.</p>
+            <button type="button" className="btn btn-primary" onClick={() => signIn(undefined, { callbackUrl })}>Sign In or Create Account</button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   async function handleAdvancePayment(e) {
     e.preventDefault();
-    // NOTE: this is a front-end demo only. A real integration needs a
-    // server-side Razorpay Order creation call + webhook signature
-    // verification before accepting payment. See project README.
-    setEmailStatus("Sending your booking details...");
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setEmailStatus("Opening secure payment...");
+
     try {
       const total = (selectedService?.price || 0) + (urgentWhatsApp ? URGENT_WHATSAPP_FEE : 0);
+
+      const orderResponse = await fetch("/api/payments/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          serviceSlug: selectedService?.slug,
+          emergencyConsultation: urgentWhatsApp,
+        }),
+      });
+      const orderData = await orderResponse.json();
+      if (!orderResponse.ok) throw new Error(orderData.error || "Unable to create payment order");
+
+      if (!window.Razorpay) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.onload = resolve;
+          script.onerror = () => reject(new Error("Unable to load Razorpay checkout"));
+          document.body.appendChild(script);
+        });
+      }
+
+      await new Promise((resolve, reject) => {
+        const checkout = new window.Razorpay({
+          key: orderData.keyId,
+          amount: orderData.amount,
+          currency: "INR",
+          name: "The Soul Mirror",
+          description: `${orderData.serviceName} with Janvi`,
+          order_id: orderData.order.id,
+          prefill: { name: details.name, email: details.email, contact: details.phone },
+          theme: { color: "#b18a27" },
+          handler: async (payment) => {
+            try {
+              const verifyResponse = await fetch("/api/payments/verify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  razorpayOrderId: payment.razorpay_order_id,
+                  razorpayPaymentId: payment.razorpay_payment_id,
+                  razorpaySignature: payment.razorpay_signature,
+                  serviceSlug: selectedService?.slug,
+                  emergencyConsultation: urgentWhatsApp,
+                  customerName: details.name,
+                  customerEmail: details.email,
+                  customerPhone: `${details.countryCode} ${details.phone}`,
+                  notes: details.notes,
+                }),
+              });
+              const verifyData = await verifyResponse.json();
+              if (!verifyResponse.ok) throw new Error(verifyData.error || "Payment verification failed");
+              resolve(verifyData);
+            } catch (error) {
+              reject(error);
+            }
+          },
+          modal: { ondismiss: () => reject(new Error("Payment was cancelled")) },
+        });
+        checkout.on("payment.failed", (failure) => reject(new Error(failure.error?.description || "Payment failed")));
+        checkout.open();
+      });
+
+      // Send email notification
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
       if (!publicKey) {
         throw new Error("EmailJS Public Key is missing");
       }
+
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_gmddfjf",
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_x4aevv4",
@@ -51,7 +156,7 @@ export default function BookingFlow() {
           email: "tarotjanvi@gmail.com",
           name: details.name,
           title: `New session appointment request - ${selectedService?.name}`,
-          message: `Session: ${selectedService?.name}\nDuration: ${selectedService?.duration}\nSession fee: ${selectedService?.priceLabel}\nEmergency consultation: ${urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No"}\nTotal payment: ₹${total.toLocaleString("en-IN")}\nPayment status: Payment completed (demo checkout)\nCustomer phone: ${details.countryCode} ${details.phone}\nCustomer notes: ${details.notes || "No additional notes provided"}`,
+          message: `Session: ${selectedService?.name}\nDuration: ${selectedService?.duration}\nSession fee: ${selectedService?.priceLabel}\nEmergency consultation: ${urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No"}\nTotal payment: ₹${total.toLocaleString("en-IN")}\nPayment status: Paid and verified by Razorpay\nCustomer phone: ${details.countryCode} ${details.phone}\nCustomer notes: ${details.notes || "No additional notes provided"}`,
           reply_to: details.email,
           customer_name: details.name,
           customer_email: details.email,
@@ -62,16 +167,19 @@ export default function BookingFlow() {
           emergency_consultation: urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No",
           total_payment: `₹${total.toLocaleString("en-IN")}`,
           customer_notes: details.notes || "No additional notes provided",
-          payment_status: "Payment completed (demo checkout)",
+          payment_status: "Paid and verified by Razorpay",
         },
         { publicKey }
       );
+
       setEmailStatus("");
       goTo(4);
     } catch (error) {
-      console.error("EmailJS booking notification failed", error);
+      console.error("Booking failed:", error);
       const errorCode = error?.status || error?.text || error?.message;
-      setEmailStatus(`We could not send the booking details${errorCode ? ` (${errorCode})` : ""}. Check your EmailJS service and template settings.`);
+      setEmailStatus(`Booking failed${errorCode ? ` (${errorCode})` : ""}. Please try again.`);
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -111,6 +219,7 @@ export default function BookingFlow() {
                   onKeyDown={(e) => { if (e.key === "Enter") setSelectedService(s); }}
                   style={{ cursor: "pointer", borderColor: selectedService?.slug === s.slug ? "var(--gold)" : undefined }}
                 >
+                  <ServiceVisual service={s} />
                   <h3>{s.name}</h3>
                   <p>{s.tagline}</p>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--ink-soft)" }}>
@@ -134,6 +243,11 @@ export default function BookingFlow() {
           <div className="booking-step active">
             <h2 style={{ textAlign: "center", fontSize: 24 }}>Tell Janvi a little about you</h2>
             <p style={{ textAlign: "center" }}>Share your details and Janvi will personally contact you to agree on a suitable date and time.</p>
+            <div className="selected-session-summary">
+              <strong>{selectedService?.name}</strong>
+              <span>{selectedService?.duration}</span>
+              <span>{selectedService?.priceLabel}</span>
+            </div>
             <form onSubmit={handleDetails} style={{ maxWidth: 680, margin: "26px auto 0" }}>
               <div className="grid-2">
                 <div className="form-field"><label>Full Name</label><input type="text" required placeholder="Your name" value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} /></div>

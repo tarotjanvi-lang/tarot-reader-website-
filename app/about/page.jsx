@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
 
@@ -18,9 +19,10 @@ export default function AboutPage() {
               <h1>Meet the woman behind the mirror.</h1>
               <p className="about-lede">A grounded guide for the moments when life asks you to look a little deeper.</p>
               <Link href="/booking" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">&rarr;</span></Link>
+              <div className="about-signature"><span>THE SOUL MIRROR</span><small>A space for honest reflection</small></div>
             </Reveal>
             <Reveal className="about-portrait-wrap">
-              <img className="about-portrait" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Portrait of a woman in warm natural light" />
+              <Image className="about-portrait" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Portrait of a woman in warm natural light" width={1000} height={926} sizes="(max-width: 860px) 100vw, 560px" priority />
               <div className="about-portrait-note"><span>Janvi</span><small>Tarot reader · healer · guide</small></div>
               <div className="about-sun" aria-hidden="true">✦</div>
             </Reveal>
@@ -42,7 +44,7 @@ export default function AboutPage() {
       <section className="section about-story-section">
         <div className="container">
           <Reveal className="about-story-grid">
-            <div className="about-story-image"><img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=85" alt="Hands holding a small crystal in sunlight" /></div>
+            <div className="about-story-image"><Image src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=85" alt="Hands holding a small crystal in sunlight" width={1000} height={1120} loading="lazy" sizes="(max-width: 860px) 100vw, 560px" /></div>
             <div className="about-story-copy">
               <div className="eyebrow">The story behind SoulMirror</div>
               <h2>I never went looking for this path. It found me.</h2>
@@ -67,6 +69,20 @@ export default function AboutPage() {
             <Reveal className="about-value"><ServiceIcon type="moon" /><h3>Intuitive</h3><p>Every session unfolds around your energy, not a rigid formula.</p></Reveal>
             <Reveal className="about-value"><ServiceIcon type="lotus" /><h3>Grounded</h3><p>Spiritual insight meets practical reflection and honest conversation.</p></Reveal>
             <Reveal className="about-value"><ServiceIcon type="crystal" /><h3>Confidential</h3><p>A private, compassionate space to say what you really mean.</p></Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-practice">
+        <div className="container">
+          <div className="about-practice-intro">
+            <div className="eyebrow">The Soul Mirror approach</div>
+            <h2>Insight that feels like a conversation, not a performance.</h2>
+          </div>
+          <div className="about-practice-list">
+            <div><span>01</span><strong>Arrive as you are</strong><p>No polished story required. We begin with what is real for you today.</p></div>
+            <div><span>02</span><strong>Find the thread</strong><p>We make space for patterns, feelings and the quiet truth beneath the question.</p></div>
+            <div><span>03</span><strong>Leave with clarity</strong><p>Every session closes with something grounded you can carry into ordinary life.</p></div>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import ServiceIcon from "@/components/ServiceIcon";
+import ServiceVisual from "@/components/ServiceVisual";
 import { services } from "@/lib/services-data";
 
 export default function HomePage() {
@@ -31,76 +32,40 @@ export default function HomePage() {
             </div>
             <div className="hero-badges">
               <div className="hero-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 2 4 7v5c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V7l-8-5Z" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M12 21c-4.8-1.8-6.6-5.1-6.6-8.4 2.8.2 5.1 1.5 6.6 4.3 1.5-2.8 3.8-4.1 6.6-4.3 0 3.3-1.8 6.6-6.6 8.4Z" /><path d="M12 16.9c-.2-4.7-1.9-7.4-4.7-9.7M12 16.9c.2-4.7 1.9-7.4 4.7-9.7M12 3v18" /></svg>
                 Guided by Shiva
               </div>
               <div className="hero-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M19.1 4.9l-2.8 2.8M7.7 16.3l-2.8 2.8" /></svg>
                 Energy Alchemy
               </div>
               <div className="hero-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="9" /><path d="M12 3a9 9 0 0 0 0 18 5 5 0 0 1 0-18Z" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="3" /></svg>
                 Soul Transformation
               </div>
               <div className="hero-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18M3 12h18" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M12 3v18M12 5 8 9M12 5l4 4M7 12h10M9 12l-2 5M15 12l2 5M7 17h4M13 17h4" /></svg>
                 Divine Guidance
               </div>
+            </div>
+          </div>
+
+          <div className="hero-art">
+            <div className="hero-image-wrap">
+              <Image
+                className="hero-image"
+                src="/images/home_page_shiva.png"
+                alt="Lord Shiva meditating among Himalayan mountains"
+                width={1536}
+                height={1024}
+                priority
+                sizes="(max-width: 980px) 100vw, 58vw"
+              />
             </div>
             <blockquote className="hero-quote italic-quote">
               &ldquo;The answers you seek are already within you. I&apos;m here to help you see them.&rdquo;
               <cite>— Janvi</cite>
             </blockquote>
-          </div>
-
-          <div className="hero-art">
-            <div className="gate-wrap">
-              <div className="gate-glow"></div>
-              <svg viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--teal-soft)" />
-                    <stop offset="100%" stopColor="var(--teal)" />
-                  </linearGradient>
-                </defs>
-                <path d="M60 480 V220 A180 180 0 0 1 420 220 V480" fill="none" stroke="var(--gold)" strokeWidth="3" />
-                <path d="M80 480 V225 A160 160 0 0 1 400 225 V480" fill="url(#skyGrad)" stroke="var(--gold)" strokeWidth="1" />
-                <g fill="var(--gold-soft)" opacity="0.85">
-                  <circle cx="140" cy="260" r="1.6" /><circle cx="330" cy="250" r="1.6" />
-                  <circle cx="240" cy="230" r="1.4" /><circle cx="190" cy="300" r="1.2" />
-                  <circle cx="300" cy="320" r="1.6" /><circle cx="160" cy="340" r="1.3" />
-                  <circle cx="340" cy="360" r="1.3" />
-                </g>
-                <circle cx="240" cy="270" r="34" fill="var(--gold-soft)" opacity="0.95" />
-                <circle cx="252" cy="260" r="30" fill="url(#skyGrad)" />
-                <g stroke="var(--gold)" strokeWidth="1" fill="none" opacity="0.8">
-                  <circle cx="240" cy="400" r="46" /><circle cx="240" cy="366" r="46" /><circle cx="240" cy="434" r="46" />
-                  <circle cx="210" cy="383" r="46" /><circle cx="270" cy="383" r="46" />
-                  <circle cx="210" cy="417" r="46" /><circle cx="270" cy="417" r="46" />
-                </g>
-                <circle cx="240" cy="400" r="8" fill="var(--gold-soft)" />
-                <g>
-                  <rect x="150" y="410" width="70" height="100" rx="6" fill="var(--card)" stroke="var(--gold)" strokeWidth="1.4" transform="rotate(-14 185 460)" />
-                  <rect x="185" y="405" width="70" height="100" rx="6" fill="var(--card)" stroke="var(--gold)" strokeWidth="1.4" transform="rotate(-5 220 455)" />
-                  <rect x="220" y="400" width="70" height="100" rx="6" fill="var(--card)" stroke="var(--gold)" strokeWidth="1.4" transform="rotate(5 255 450)" />
-                  <rect x="255" y="405" width="70" height="100" rx="6" fill="var(--card)" stroke="var(--gold)" strokeWidth="1.4" transform="rotate(14 290 455)" />
-                  <g stroke="var(--gold)" strokeWidth="1" fill="none" opacity="0.9">
-                    <circle cx="220" cy="450" r="9" transform="rotate(-5 220 455)" />
-                    <path d="M250 445 l6 -12 6 12Z" transform="rotate(5 255 450)" />
-                  </g>
-                </g>
-                <g fill="var(--card)" stroke="var(--gold)" strokeWidth="1.3">
-                  <polygon points="90,510 105,440 120,510 112,520 98,520" />
-                  <polygon points="360,510 378,430 396,510 386,522 370,522" />
-                  <polygon points="330,512 342,460 354,512 348,522 336,522" />
-                </g>
-                <g fill="var(--card)" stroke="var(--gold)" strokeWidth="1.2">
-                  <path d="M240 480 C210 470 195 500 240 512 C285 500 270 470 240 480Z" />
-                  <path d="M240 480 C220 460 200 478 218 500 C226 508 236 500 240 480Z" />
-                  <path d="M240 480 C260 460 280 478 262 500 C254 508 244 500 240 480Z" />
-                </g>
-              </svg>
-            </div>
           </div>
         </div>
       </section>
@@ -124,6 +89,10 @@ export default function HomePage() {
             <div className="stat-item">
               <div className="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z" /></svg></div>
               <div><div className="stat-num">100%</div><div className="stat-label">Confidential &amp; Safe</div></div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3c-2.4 2.5-3.6 5.5-3.6 9S9.6 18.5 12 21" /></svg></div>
+              <div><div className="stat-num">Worldwide</div><div className="stat-label">Online Guidance</div></div>
             </div>
           </div>
         </Reveal>
@@ -149,7 +118,7 @@ export default function HomePage() {
           <div className="services-grid">
             {featured.map((s) => (
               <Reveal as="div" key={s.slug} className="service-card">
-                <ServiceIcon type={s.icon} />
+                <ServiceVisual service={s} className="service-card-image homepage-service-image" />
                 <h3>{s.name}</h3>
                 <p>{s.tagline}</p>
                 <Link href={`/services/${s.slug}`} className="btn-link">
@@ -167,10 +136,14 @@ export default function HomePage() {
         <Reveal className="container">
           <div className="story-panel">
             <div className="art-side">
-              <img
+              <Image
                 className="shiva-image"
                 src="/images/home-shiva-transparent.png"
-                alt="Lord Shiva statue against a warm evening sky"
+                alt="A warm spiritual still life with tarot cards, candle, flowers and crystals"
+                width={1536}
+                height={1024}
+                priority
+                sizes="(max-width: 860px) 100vw, 50vw"
               />
             </div>
             <div className="text-side">

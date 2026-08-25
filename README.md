@@ -17,6 +17,62 @@ npm run dev
 
 Then open **http://localhost:3000**.
 
+## Login and admin setup
+
+Authentication uses NextAuth and MongoDB Atlas via Prisma. Before using login,
+copy `.env.example` to `.env.local` and set `DATABASE_URL`, `AUTH_SECRET`,
+`ADMIN_EMAIL`, and a strong `ADMIN_PASSWORD`. Never commit `.env.local`.
+
+After MongoDB Atlas is available and `DATABASE_URL` is set, run:
+
+```bash
+npx prisma generate
+npm run db:push
+npm run db:seed
+```
+
+Users register at `/register` and sign in at `/login`. They can only see their
+own `/dashboard` appointments. The owner signs in with the seeded admin account
+and uses `/admin`; the server checks the `ADMIN` role before rendering the
+dashboard, users, appointments, or analytics pages.
+
+The project uses MongoDB Atlas. Create a database user, allow your development
+IP address in Atlas Network Access, and set the Atlas connection string in
+`DATABASE_URL`. MongoDB must be reachable before `db:push` and `db:seed`.
+
+## Razorpay payments
+
+The booking flow uses Razorpay Standard Checkout. The server creates the order,
+checks the payment signature, confirms the order amount and owner, and only then
+creates the appointment in MongoDB Atlas.
+
+1. Create a Razorpay account and complete KYC if required for live payments.
+2. In Razorpay Dashboard, open **Account & Settings > API Keys** and generate
+  Test Mode keys for development. Use Live Mode keys only in production.
+3. Add these values to `.env.local` (never expose the secret key or commit it):
+
+```env
+RAZORPAY_KEY_ID="rzp_test_your_key_id"
+RAZORPAY_KEY_SECRET="your_razorpay_key_secret"
+```
+
+4. Restart the development server after changing environment variables:
+
+```bash
+npm run dev
+```
+
+5. Sign in, choose a service, complete the form, and click the payment button.
+Razorpay Test Mode accepts test payment details from its documentation; do not
+use real cards while using `rzp_test_` keys.
+6. Confirm the result in Razorpay Dashboard under **Transactions > Payments**
+and in MongoDB Atlas under `soulmirror.Appointment`.
+
+For production, replace both keys with `rzp_live_` credentials, configure a
+Razorpay webhook for payment events, and verify webhook signatures before using
+them for reconciliation. The success callback is already server-verified, but
+webhooks are recommended for handling delayed or interrupted payment states.
+
 ## EmailJS booking notifications
 
 The booking flow sends the submitted customer and session details to
@@ -55,6 +111,32 @@ New session appointment request - {{session_name}}
 The current Razorpay button is still a demo checkout. Connect a real payment
 gateway and verify its server-side webhook before treating the email status as
 proof of a completed payment.
+
+## Contact Us EmailJS template
+
+The Contact Us form uses Service ID `service_rpo0iml` and Template ID
+`template_43o3y7b`, sending messages to `tarotjanvi@gmail.com`. Configure the
+EmailJS template recipient as `tarotjanvi@gmail.com`, the Reply To field as
+`{{reply_to}}`, and the From Name field as `{{name}}`.
+
+**Subject**
+
+```text
+Contact enquiry - {{title}}
+```
+
+**Message / HTML**
+
+```html
+<h2>New Contact Us Enquiry</h2>
+<p><strong>Name:</strong> {{name}}</p>
+<p><strong>Email:</strong> {{email}}</p>
+<p><strong>Phone / WhatsApp:</strong> {{phone}}</p>
+<p><strong>Interested in:</strong> {{title}}</p>
+<hr>
+<p><strong>Message:</strong></p>
+<p>{{message}}</p>
+```
 
 To build the production version:
 ```bash

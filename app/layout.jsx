@@ -3,6 +3,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: {
@@ -32,6 +33,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap"
@@ -40,12 +43,14 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
       </head>
       <body>
-        <ThemeProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <WhatsAppFloat />
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <WhatsAppFloat />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

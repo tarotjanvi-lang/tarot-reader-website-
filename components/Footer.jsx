@@ -11,8 +11,7 @@ export default function Footer() {
               <path d="M30 24a8 8 0 1 1-6-7.75A6 6 0 0 0 30 24Z" fill="var(--gold-soft)" />
             </svg>
             <div>
-              <b>THE SOUL MIRROR</b><br />
-              <span style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--gold-soft)" }}>BY JANVI</span>
+              <b>THE SOUL MIRROR</b>
             </div>
           </div>
           <p>Intuitive tarot reader, energy alchemist and spiritual guide helping you reflect your truth and transform your life.</p>

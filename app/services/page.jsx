@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import ServiceIcon from "@/components/ServiceIcon";
+import ServiceVisual from "@/components/ServiceVisual";
 import { services } from "@/lib/services-data";
 
 export const metadata = {
@@ -21,24 +21,24 @@ export default function ServicesPage() {
 
       <section className="section">
         <div className="container">
-          <div className="grid-3">
+          <div className="grid-3 services-catalogue-grid">
             {services.map((s) => (
               <Reveal as="div" key={s.slug} className="service-card">
-                <ServiceIcon type={s.icon} />
+                <ServiceVisual service={s} />
                 <h3>{s.name}</h3>
                 <p>{s.tagline}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
-                  <span style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
+                  <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
                     {s.price ? `From ${s.priceLabel}` : s.priceLabel}
                   </span>
-                  <span style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{s.duration}</span>
+                  <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{s.duration}</span>
                 </div>
                 <Link
                   href={s.price ? `/services/${s.slug}` : "/contact"}
                   className="btn btn-outline btn-sm"
                   style={{ marginTop: 16, width: "100%", justifyContent: "center" }}
                 >
-                  {s.price ? "View Details" : "Enquire"}
+                  {s.price ? "Book This Session" : "Enquire"}
                 </Link>
               </Reveal>
             ))}
