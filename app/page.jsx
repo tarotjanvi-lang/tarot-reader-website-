@@ -142,7 +142,7 @@ export default function HomePage() {
                 alt="A warm spiritual still life with tarot cards, candle, flowers and crystals"
                 width={1536}
                 height={1024}
-                priority
+                loading="lazy"
                 sizes="(max-width: 860px) 100vw, 50vw"
               />
             </div>
@@ -168,7 +168,7 @@ export default function HomePage() {
       {/* ================= CTA BANNER ================= */}
       <section className="section-tight">
         <Reveal className="container cta-reveal">
-          <div className="cta-banner">
+          <div className="cta-banner home-cta-banner">
             <div>
               <div className="eyebrow">Your journey awaits</div>
               <h2 style={{ marginBottom: 6 }}>Ready to transform your life?</h2>

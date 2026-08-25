@@ -222,7 +222,7 @@ ul{ list-style:none; margin:0; padding:0; }
 .hero-image-wrap{ width:calc(100% + 72px); margin-right:-72px; }
 .hero-image{ width:100%; height:auto; object-fit:contain; mix-blend-mode:normal; }
 .hero-quote{
-  position:absolute; top:22%; right:0; width:210px; margin:0; padding:0 18px 0 0; border-right:1px solid var(--gold);
+  position:absolute; top:22%; right:-18px; width:230px; margin:0; padding:0 0 0 18px; border-left:1px solid var(--gold);
   font-size:17px; line-height:1.35; text-align:left; z-index:2;
 }
 .hero-quote cite{ display:inline; margin-left:8px; font-style:normal; font-family:'Jost'; font-size:13px; color:var(--gold); white-space:nowrap; }
@@ -243,7 +243,7 @@ ul{ list-style:none; margin:0; padding:0; }
   .hero-ctas .btn{ flex:1; justify-content:center; padding-left:16px; padding-right:16px; }
   .hero-badges{ gap:10px; margin-top:24px; }
   .hero-badge{ font-size:11px; }
-  .hero-quote{ position:static; width:auto; max-width:300px; margin:-20px 18px 18px auto; padding:0 12px 0 0; font-size:16px; }
+  .hero-quote{ position:static; width:auto; max-width:300px; margin:-20px 18px 18px auto; padding:0 0 0 12px; border-left:1px solid var(--gold); border-right:0; font-size:16px; }
 }
 
 /* Illustration */
@@ -352,6 +352,25 @@ ul{ list-style:none; margin:0; padding:0; }
 .cta-banner p{ opacity:.8; }
 .cta-banner .eyebrow{ color:var(--gold-soft); }
 .cta-banner .eyebrow::before{ background:var(--gold-soft); }
+.home-cta-banner{
+  background:var(--teal);
+  border:0;
+  color:#F5EFDD;
+}
+.home-cta-banner h2, .home-cta-banner p{ color:#F5EFDD; }
+.home-cta-banner p{ opacity:.8; }
+.home-cta-banner .eyebrow{ color:var(--gold-soft); }
+.home-cta-banner .eyebrow::before{ background:var(--gold-soft); }
+.home-cta-banner .btn-gold{ background:var(--gold); color:#241A05; }
+.reviews-cta-banner{
+  background:var(--teal);
+  border:0;
+  color:#F5EFDD;
+}
+.reviews-cta-banner h2, .reviews-cta-banner p{ color:#F5EFDD; }
+.reviews-cta-banner p{ opacity:.8; }
+.reviews-cta-banner .eyebrow{ color:var(--gold-soft); }
+.reviews-cta-banner .eyebrow::before{ background:var(--gold-soft); }
 .cta-reveal{ transform:translateY(48px); }
 .cta-reveal.in{ transform:translateY(0); }
 @media (max-width:760px){

@@ -25,8 +25,8 @@ const SERVICE_IMAGES = {
   "lunar-release": ["/images/lunar_release_service.png", "Lunar release healing illustration"],
   "mirror-reclaim": ["/images/mirror_reclaim_service.png", "Mirror reclaim healing illustration"],
   "cord-unbound": ["/images/cord_unbound_service.png", "Cord unbound healing illustration"],
-  "unspoken": ["/images/unspoken_service.png", "Unspoken healing illustration"],
-  "aura-veil": ["/images/aura_veil_service.png", "Aura veil healing illustration"],
+  "unspoken": ["/images/unspoken_service.png?v=2", "Unspoken healing illustration"],
+  "aura-veil": ["/images/aura_veil_service.png?v=2", "Aura veil healing illustration"],
   
   // SoulMirror healings - 5-Day
   "rose-rebirth": ["/images/rose_rebirth_service.png", "Rose rebirth healing illustration"],
@@ -61,8 +61,9 @@ export default function ServiceVisual({ service, className = "service-card-image
       alt={image[1]}
       width={768}
       height={512}
-      sizes="(max-width: 600px) 100vw, 33vw"
-      loading="eager"
+      sizes="(max-width: 600px) 100vw, (max-width: 1080px) 50vw, 25vw"
+      loading="lazy"
+      quality={70}
     />
   );
 }

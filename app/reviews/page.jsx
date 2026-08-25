@@ -122,7 +122,7 @@ export default function ReviewsPage() {
 
       <section className="section-tight">
         <Reveal className="container">
-          <div className="cta-banner">
+          <div className="cta-banner reviews-cta-banner">
             <div>
               <div className="eyebrow">Your story starts here</div>
               <h2 style={{ marginBottom: 6 }}>Ready to become the next reflection?</h2>
