@@ -25,13 +25,15 @@ export default function ServicesPage() {
             {services.map((s) => (
               <Reveal as="div" key={s.slug} className="service-card">
                 <ServiceVisual service={s} />
-                <h3>{s.name}</h3>
-                <p>{s.tagline}</p>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
-                  <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
-                    {s.price ? `From ${s.priceLabel}` : s.priceLabel}
-                  </span>
-                  <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{s.duration}</span>
+                <div className="card-content">
+                  <h3>{s.name}</h3>
+                  <p>{s.tagline}</p>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
+                      {s.price ? `From ${s.priceLabel}` : s.priceLabel}
+                    </span>
+                    <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{s.duration}</span>
+                  </div>
                 </div>
                 <Link
                   href={s.price ? `/services/${s.slug}` : "/contact"}

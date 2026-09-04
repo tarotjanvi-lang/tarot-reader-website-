@@ -30,6 +30,10 @@ export default function ServiceDetailPage({ params }) {
       <div className="container">
         <div className="service-detail-grid">
           <div className="service-detail-content">
+            <Link href="/services" className="btn-link service-back-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+              Back to Services
+            </Link>
             <header className="service-hero-detail">
               <div className="eyebrow">{service.category}</div>
               <h1>{service.name}</h1>

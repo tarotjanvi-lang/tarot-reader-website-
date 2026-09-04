@@ -2,7 +2,6 @@ import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
@@ -48,7 +47,6 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <Footer />
-            <WhatsAppFloat />
           </ThemeProvider>
         </SessionProvider>
       </body>

@@ -80,7 +80,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= STATS ================= */}
-      <section className="section-tight">
+      <section className="section-tight home-section">
         <Reveal className="container">
           <div className="stats-bar">
             <div className="stat-item">
@@ -108,7 +108,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= SERVICES ================= */}
-      <section className="section">
+      <section className="section home-section">
         <div className="container">
           <Reveal className="services-head">
             <div>
@@ -128,8 +128,10 @@ export default function HomePage() {
             {featured.map((s) => (
               <Reveal as="div" key={s.slug} className="service-card">
                 <ServiceVisual service={s} className="service-card-image homepage-service-image" />
-                <h3>{s.name}</h3>
-                <p>{s.tagline}</p>
+                <div className="card-content">
+                  <h3>{s.name}</h3>
+                  <p>{s.tagline}</p>
+                </div>
                 <Link href={`/services/${s.slug}`} className="btn-link">
                   Book Now
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -141,21 +143,12 @@ export default function HomePage() {
       </section>
 
       {/* ================= STORY PANEL ================= */}
-      <section className="section-tight">
+      <section className="section-tight home-section">
         <Reveal className="container">
           <div className="story-panel">
-            <div className="art-side">
-              <Image
-                className="shiva-image"
-                src="/images/home_shiva_transparent.png"
-                alt="A warm spiritual still life with tarot cards, candle, flowers and crystals"
-                width={1536}
-                height={1024}
-                loading="lazy"
-                sizes="(max-width: 860px) 100vw, 50vw"
-              />
+            <div className="story-art-bg" aria-hidden="true">
             </div>
-            <div className="text-side">
+            <div className="story-content">
               <div className="eyebrow">Words from beautiful souls</div>
               <h2>Guided by Shiva. Here for your soul.</h2>
               <p>
@@ -175,7 +168,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= CTA BANNER ================= */}
-      <section className="section-tight">
+      <section className="section-tight home-section">
         <Reveal className="container cta-reveal">
           <div className="cta-banner home-cta-banner">
             <div>
