@@ -22,16 +22,16 @@
 }
 
 [data-theme="dark"]{
-  --bg: #202923;
-  --bg-alt: #29352D;
-  --card: #27312B;
-  --ink: #F2EFE6;
-  --ink-soft: #B9BDB2;
-  --gold: #D2BC83;
-  --gold-soft: #E0D2A8;
-  --teal: #17231D;
-  --teal-soft: #31483B;
-  --border: rgba(255,255,255,0.09);
+  --bg: #050505;
+  --bg-alt: #11110F;
+  --card: #0D0D0C;
+  --ink: #F4F0E6;
+  --ink-soft: #C9C2B3;
+  --gold: #C9A24A;
+  --gold-soft: #E0BD67;
+  --teal: #080808;
+  --teal-soft: #191713;
+  --border: rgba(201,162,74,0.18);
   --shadow: 0 20px 48px -28px rgba(0,0,0,0.65);
 }
 
@@ -217,8 +217,11 @@ ul{ list-style:none; margin:0; padding:0; }
 .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
 
 .hero-art{ position:relative; min-width:0; align-self:stretch; display:flex; align-items:center; }
-.hero-image-wrap{ width:calc(100% + 72px); margin-right:-72px; }
-.hero-image{ width:100%; height:auto; object-fit:contain; mix-blend-mode:normal; }
+.hero-image-wrap{ position:relative; width:100%; aspect-ratio:1536 / 1024; overflow:hidden; }
+.hero-image{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:normal; opacity:0; visibility:hidden; transition:opacity .2s ease; }
+.hero-image-light{ opacity:1; visibility:visible; }
+[data-theme="dark"] .hero-image-light{ opacity:0; visibility:hidden; }
+[data-theme="dark"] .hero-image-dark{ opacity:1; visibility:visible; transform:translateX(-12px); }
 .hero-quote{
   position:absolute; top:22%; right:-18px; width:230px; margin:0; padding:0 0 0 18px; border-left:1px solid var(--gold);
   font-size:17px; line-height:1.35; text-align:left; z-index:2;
@@ -228,9 +231,9 @@ ul{ list-style:none; margin:0; padding:0; }
 @media (max-width:980px){
   .hero{ padding-top:28px; }
   .hero-grid{ grid-template-columns:1fr; gap:12px; }
-  .hero-copy{ order:2; }
-  .hero-art{ order:1; max-width:720px; width:100%; margin:0 auto; }
-  .hero-image-wrap{ width:100%; margin:0; }
+  .hero-copy{ order:1; }
+  .hero-art{ order:2; max-width:720px; width:100%; margin:0 auto; }
+  .hero-image-wrap{ width:100%; }
   .hero-quote{ top:18%; right:0; }
 }
 
@@ -303,6 +306,12 @@ ul{ list-style:none; margin:0; padding:0; }
   -webkit-mask-repeat:no-repeat;
   mask-repeat:no-repeat;
 }
+.service-card-image-dark{ display:none; }
+[data-theme="dark"] .service-card-image-light{ display:none; }
+[data-theme="dark"] .service-card-image-dark{
+  display:block; opacity:1; filter:none; mix-blend-mode:normal;
+}
+[data-theme="dark"] .service-card > .service-card-image-dark{ opacity:1; }
 .homepage-service-image-energy-healing{ width:108%; max-width:none; margin-left:-4%; margin-right:-4%; }
 .service-card h3{ font-size:18px; margin-bottom:10px; }
 .service-card p{ font-size:14px; margin-bottom:18px; }

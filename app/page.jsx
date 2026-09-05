@@ -53,12 +53,21 @@ export default function HomePage() {
           <div className="hero-art">
             <div className="hero-image-wrap">
               <Image
-                className="hero-image"
+                className="hero-image hero-image-light"
                 src="/images/home_page_shiva.png"
                 alt="Lord Shiva meditating among Himalayan mountains"
                 width={1536}
                 height={1024}
-                priority
+                quality={100}
+                sizes="(max-width: 980px) 100vw, 58vw"
+              />
+              <Image
+                className="hero-image hero-image-dark"
+                src="/images/home_page_shiva_dark.png"
+                alt="Lord Shiva meditating among Himalayan mountains"
+                width={1536}
+                height={1024}
+                quality={100}
                 sizes="(max-width: 980px) 100vw, 58vw"
               />
             </div>
