@@ -19,7 +19,7 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="container">
-          <div className="grid-2" style={{ gridTemplateColumns: "1fr 1.2fr", gap: 50, alignItems: "start" }}>
+          <div className="grid-2 contact-layout">
             <div>
               <div className="service-card" style={{ marginBottom: 18 }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
