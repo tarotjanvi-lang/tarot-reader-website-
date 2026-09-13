@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import Reveal from "@/components/Reveal";
-import { services, testimonials } from "@/lib/services-data";
+import { services } from "@/lib/services-data";
 
 export default function ReviewsPage() {
-  const [reviews, setReviews] = useState(testimonials);
+  const [reviews, setReviews] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState("");
@@ -18,8 +18,11 @@ export default function ReviewsPage() {
   useEffect(() => {
     fetch("/api/reviews")
       .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unable to load reviews")))
-      .then((data) => setReviews([...data.reviews, ...testimonials]))
-      .catch(() => setStatus("Unable to load new reviews right now."));
+      .then((data) => setReviews(data.reviews || []))
+      .catch(() => {
+        setReviews([]);
+        setStatus("Unable to load new reviews right now.");
+      });
   }, []);
 
   async function handleReviewSubmit(event) {

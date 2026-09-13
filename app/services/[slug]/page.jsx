@@ -1,24 +1,82 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Faq from "@/components/Faq";
-import { services } from "@/lib/services-data";
+import ServiceVisual from "@/components/ServiceVisual";
+import { serviceCategories, services } from "@/lib/services-data";
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return [
+    ...services.map((s) => ({ slug: s.slug })),
+    ...serviceCategories.map((category) => ({ slug: category.slug })),
+  ];
 }
 
 export function generateMetadata({ params }) {
   const service = services.find((s) => s.slug === params.slug);
-  if (!service) return {};
-  return {
-    title: service.name,
-    description: `${service.tagline} Pricing, FAQs and client testimonials for the ${service.name} session with Janvi.`,
-  };
+  if (service) {
+    return {
+      title: service.name,
+      description: `${service.tagline} Pricing, FAQs and client testimonials for the ${service.name} session with Janvi.`,
+    };
+  }
+
+  const category = serviceCategories.find((item) => item.slug === params.slug);
+  if (category) {
+    return {
+      title: category.name,
+      description: category.description,
+    };
+  }
+
+  return {};
 }
 
 export default function ServiceDetailPage({ params }) {
   const service = services.find((s) => s.slug === params.slug);
-  if (!service) notFound();
+  const category = serviceCategories.find((item) => item.slug === params.slug);
+
+  if (!service && !category) notFound();
+
+  if (category) {
+    return (
+      <>
+        <section className="page-hero">
+          <div className="container">
+            <div className="eyebrow" style={{ justifyContent: "center" }}>{category.name}</div>
+            <h1>{category.name}</h1>
+            <p>{category.description}</p>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="grid-3 services-catalogue-grid">
+              {category.services.map((item) => (
+                <div key={item.slug} className="service-card">
+                  <ServiceVisual service={item} />
+                  <h3>{item.name}</h3>
+                  <p>{item.tagline}</p>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
+                    <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
+                      {item.price ? `From ${item.priceLabel}` : item.priceLabel}
+                    </span>
+                    <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{item.duration}</span>
+                  </div>
+                  <Link
+                    href={item.price ? `/services/${item.slug}` : "/contact"}
+                    className="btn btn-outline btn-sm"
+                    style={{ marginTop: 16, width: "100%", justifyContent: "center" }}
+                  >
+                    {item.price ? "Book This Session" : "Enquire"}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
 
   const isTarot = service.type === "tarot";
   const isCustom = service.type === "custom";

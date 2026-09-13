@@ -2,10 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ServiceVisual from "@/components/ServiceVisual";
-import { services } from "@/lib/services-data";
+import { serviceCategories } from "@/lib/services-data";
 
 export default function HomePage() {
-  const featured = services.slice(0, 4);
 
   return (
     <>
@@ -125,13 +124,13 @@ export default function HomePage() {
           </Reveal>
 
           <div className="services-grid">
-            {featured.map((s) => (
-              <Reveal as="div" key={s.slug} className="service-card">
-                <ServiceVisual service={s} className="service-card-image homepage-service-image" />
-                <h3>{s.name}</h3>
-                <p>{s.tagline}</p>
-                <Link href={`/services/${s.slug}`} className="btn-link">
-                  Book Now
+            {serviceCategories.map((category) => (
+              <Reveal as="div" key={category.slug} className="service-card">
+                <ServiceVisual service={category.services[0]} className="service-card-image homepage-service-image" />
+                <h3>{category.name}</h3>
+                <p>{category.description}</p>
+                <Link href={`/services/${category.slug}`} className="btn-link">
+                  View Services
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </Link>
               </Reveal>
