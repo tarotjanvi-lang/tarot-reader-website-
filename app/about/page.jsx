@@ -89,7 +89,7 @@ export default function AboutPage() {
 
       <section className="section-tight">
         <Reveal className="container">
-          <div className="cta-banner">
+          <div className="cta-banner cta-banner-image">
             <div>
               <div className="eyebrow">Your journey awaits</div>
               <h2 style={{ marginBottom: 6 }}>Ready to walk this path together?</h2>

@@ -107,7 +107,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= SERVICES ================= */}
-      <section className="section">
+      <section className="section home-services-section">
         <div className="container">
           <Reveal className="services-head">
             <div>
@@ -123,9 +123,10 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="services-grid">
-            {serviceCategories.map((category) => (
+          <div className="services-grid home-services-grid">
+            {serviceCategories.map((category, index) => (
               <Reveal as="div" key={category.slug} className="service-card">
+                <span className="home-service-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <ServiceVisual service={category.services[0]} className="service-card-image homepage-service-image" />
                 <h3>{category.name}</h3>
                 <p>{category.description}</p>
@@ -176,7 +177,7 @@ export default function HomePage() {
       {/* ================= CTA BANNER ================= */}
       <section className="section-tight">
         <Reveal className="container cta-reveal">
-          <div className="cta-banner home-cta-banner">
+          <div className="cta-banner home-cta-banner cta-banner-image">
             <div>
               <div className="eyebrow">Your journey awaits</div>
               <h2 style={{ marginBottom: 6 }}>Ready to transform your life?</h2>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useTheme } from "./ThemeProvider";
 
@@ -20,11 +20,25 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
+  const navRef = useRef(null);
 
   const isAdmin = session?.user?.email?.toLowerCase() === "tarotjanvi@gmail.com";
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [open]);
+
   return (
-    <header className="nav">
+    <header ref={navRef} className="nav">
       <div className="nav-inner">
         <Link href="/" className="logo" onClick={() => setOpen(false)}>
           <Image className="logo-mark" src="/images/logo.png" alt="" width={48} height={48} priority />

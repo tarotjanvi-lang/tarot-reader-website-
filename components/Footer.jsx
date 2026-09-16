@@ -53,15 +53,19 @@ export default function Footer() {
           <h4>Let&apos;s Connect</h4>
           <ul>
             <li>Available Worldwide</li>
-            <li><a href="mailto:thesoulmirrorbyjanvi@gmail.com">thesoulmirrorbyjanvi@gmail.com</a></li>
-            <li><a href="/booking?urgent=whatsapp">Emergency consultation (₹299 fee)</a></li>
+            <li><a href="mailto:thesoulmirrorbyjanvi@gmail.com">Email us</a></li>
+            <li><a href="/booking?urgent=whatsapp">Emergency consultation(<small className="footer-emergency-fee">₹299 extra</small>)</a></li>
           </ul>
         </div>
       </div>
 
       <div className="container footer-bottom">
+        <span>
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          &nbsp;&nbsp;
+          <Link href="/terms">Terms &amp; Conditions</Link>
+        </span>
         <span>&copy; {new Date().getFullYear()} The Soul Mirror by Janvi. All rights reserved.</span>
-        <span><a href="#">Privacy Policy</a> &nbsp;&nbsp; <a href="#">Terms &amp; Conditions</a></span>
       </div>
     </footer>
   );
