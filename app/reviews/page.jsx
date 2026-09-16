@@ -12,8 +12,6 @@ export default function ReviewsPage() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState("");
-  const [activeReview, setActiveReview] = useState(0);
-  const [reviewStep, setReviewStep] = useState(342);
   const [form, setForm] = useState({ name: "", service: "", rating: "5", quote: "" });
   const { data: session } = useSession();
 
@@ -25,26 +23,6 @@ export default function ReviewsPage() {
         setReviews([]);
         setStatus("Unable to load new reviews right now.");
       });
-  }, []);
-
-  useEffect(() => {
-    if (reviews.length < 2) return undefined;
-
-    const timer = window.setInterval(() => {
-      setActiveReview((current) => (current + 1) % reviews.length);
-    }, 2200);
-
-    return () => window.clearInterval(timer);
-  }, [reviews.length]);
-
-  useEffect(() => {
-    function updateReviewStep() {
-      setReviewStep(window.innerWidth <= 680 ? window.innerWidth - 14 : 342);
-    }
-
-    updateReviewStep();
-    window.addEventListener("resize", updateReviewStep);
-    return () => window.removeEventListener("resize", updateReviewStep);
   }, []);
 
   async function handleReviewSubmit(event) {
@@ -60,7 +38,6 @@ export default function ReviewsPage() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Unable to publish review");
       setReviews((current) => [data.review, ...current]);
-      setActiveReview(0);
       setForm({ name: "", service: "", rating: "5", quote: "" });
       setShowForm(false);
       setStatus("Thank you. Your review is now live.");
@@ -128,16 +105,20 @@ export default function ReviewsPage() {
       </section>
 
       <section className="section">
-        <div className="reviews-marquee" aria-label="Client reviews">
-          <div className="reviews-marquee-track" style={{ transform: `translateX(-${activeReview * reviewStep}px)` }}>
-            {reviews.map((t) => (
-              <div key={t.id || `${t.name}-${t.quote}`} className="testi-card">
-                <div className="testi-stars">{"★".repeat(t.rating || 5)}{"☆".repeat(5 - (t.rating || 5))}</div>
-                <p className="testi-quote">&ldquo;{t.quote}&rdquo;</p>
-                <div className="testi-person">
-                  <div className="testi-avatar">{t.name[0]}</div>
-                  <div><div className="testi-name">{t.name}</div><div className="testi-tag">{t.tag || t.service}</div></div>
-                </div>
+        <div className={`reviews-marquee${reviews.length > 1 ? " is-moving" : ""}`} aria-label="Client reviews">
+          <div className="reviews-marquee-track">
+            {[0, 1].map((group) => (
+              <div className="reviews-marquee-group" key={group} aria-hidden={group === 1}>
+                {reviews.map((t) => (
+                  <div key={`${group}-${t.id || `${t.name}-${t.quote}`}`} className="testi-card">
+                    <div className="testi-stars">{"★".repeat(t.rating || 5)}{"☆".repeat(5 - (t.rating || 5))}</div>
+                    <p className="testi-quote">&ldquo;{t.quote}&rdquo;</p>
+                    <div className="testi-person">
+                      <div className="testi-avatar">{t.name[0]}</div>
+                      <div><div className="testi-name">{t.name}</div><div className="testi-tag">{t.tag || t.service}</div></div>
+                    </div>
+                  </div>
+                ))}
               </div>
             ))}
           </div>

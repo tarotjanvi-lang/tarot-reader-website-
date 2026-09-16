@@ -52,7 +52,7 @@ export default async function UserDashboard() {
   );
 
   return (
-    <section className="section">
+    <section className="section dashboard-page-section">
       <div className="container">
         <div className="dashboard-header">
           <div>

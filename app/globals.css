@@ -366,7 +366,7 @@ ul{ list-style:none; margin:0; padding:0; }
   display:grid; grid-template-columns:1fr 1fr; align-items:stretch;
   background:
     linear-gradient(rgba(245,239,221,.70), rgba(245,239,221,.70)),
-    url('/images/home_bg_last.png') center/cover no-repeat;
+    url('/images/home_section_last_bg.png') center/cover no-repeat;
 }
 .story-panel .art-side{
   background:transparent;
@@ -699,10 +699,14 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 .review-trigger{ margin-top:24px; }
 .reviews-marquee{ overflow:hidden; width:100%; }
-.reviews-marquee-track{ display:flex; width:max-content; gap:22px; transition:transform .4s cubic-bezier(.22,.7,.25,1); will-change:transform; }
+.reviews-marquee-track{ display:flex; width:max-content; will-change:transform; }
+.reviews-marquee-group{ display:flex; gap:22px; padding-right:22px; }
+.reviews-marquee.is-moving .reviews-marquee-track{ animation:reviews-drift 78s linear infinite; }
+.reviews-marquee:hover .reviews-marquee-track{ animation-play-state:paused; }
 .reviews-marquee .testi-card{ width:320px; flex:0 0 320px; }
-@media (max-width:680px){ .reviews-marquee-track{ transition-duration:.32s; } .reviews-marquee .testi-card{ width:calc(100vw - 36px); flex-basis:calc(100vw - 36px); } }
-@media (prefers-reduced-motion:reduce){ .reviews-marquee-track{ transition:none; transform:none !important; } }
+@keyframes reviews-drift{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+@media (max-width:680px){ .reviews-marquee-group{ gap:22px; padding-right:22px; } .reviews-marquee .testi-card{ width:calc(100vw - 36px); flex-basis:calc(100vw - 36px); } }
+@media (prefers-reduced-motion:reduce){ .reviews-marquee.is-moving .reviews-marquee-track{ animation:none; } }
 .testi-stars{ color:var(--gold); font-size:14px; letter-spacing:2px; }
 .testi-quote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--ink); }
 .testi-person{ display:flex; align-items:center; gap:12px; margin-top:auto; }
@@ -1030,6 +1034,29 @@ ul{ list-style:none; margin:0; padding:0; }
 @media (max-width:600px){ .admin-insight-strip{ grid-template-columns:1fr; } .admin-appointment-actions{ min-width:300px; grid-template-columns:1fr 1fr; } .admin-appointment-actions button{ width:100%; justify-content:center; } }
 
 /* User Dashboard */
+.dashboard-page-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--bg) url('/images/dashboard_bg_laptopview.png') center/cover no-repeat;
+}
+.dashboard-page-section::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg) 72%, transparent) 10%,
+    transparent 24%,
+    transparent 76%,
+    color-mix(in srgb, var(--bg) 72%, transparent) 90%,
+    var(--bg) 100%
+  );
+  pointer-events:none;
+}
+.dashboard-page-section > .container{ position:relative; z-index:1; }
 .dashboard-header{
   display:flex; align-items:center; justify-content:space-between; gap:24px;
   margin-bottom:32px; flex-wrap:wrap;
