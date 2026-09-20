@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Faq from "@/components/Faq";
 import ServiceVisual from "@/components/ServiceVisual";
+import BackButton from "@/components/BackButton";
 import { serviceCategories, services } from "@/lib/services-data";
 
 export function generateStaticParams() {
@@ -16,7 +16,7 @@ export function generateMetadata({ params }) {
   if (service) {
     return {
       title: service.name,
-      description: `${service.tagline} Pricing, FAQs and client testimonials for the ${service.name} session with Janvi.`,
+      description: `${service.tagline} Pricing and client testimonials for the ${service.name} session with Janvi.`,
     };
   }
 
@@ -42,6 +42,7 @@ export default function ServiceDetailPage({ params }) {
       <>
         <section className="page-hero">
           <div className="container">
+            <BackButton />
             <div className="eyebrow" style={{ justifyContent: "center" }}>{category.name}</div>
             <h1>{category.name}</h1>
             <p>{category.description}</p>
@@ -86,6 +87,7 @@ export default function ServiceDetailPage({ params }) {
   return (
     <section className="section-tight service-detail-page">
       <div className="container">
+        <BackButton />
         <div className="service-detail-grid">
           <div className="service-detail-content">
             <header className="service-hero-detail">
@@ -104,7 +106,7 @@ export default function ServiceDetailPage({ params }) {
 
             {isTarot && service.questions.length > 0 && <section className="detail-section"><div className="eyebrow">Your spread</div><h2>Questions / Spread</h2><div className="questions-list">{service.questions.map((question, index) => <div className="question-card" key={question}><span>{String(index + 1).padStart(2, "0")}</span><p>{question}</p></div>)}</div></section>}
 
-            <section className="detail-section"><div className="eyebrow">Clarity before you book</div><h2>Frequently Asked Questions</h2><Faq items={service.faqs} /></section>
+            <section className="detail-section service-terms-section"><div className="eyebrow">Clarity before you book</div><h2>Terms &amp; Conditions</h2><p>Review the complete booking, reading, healing and spellwork terms before you book.</p><Link href="/terms#terms-conditions" className="btn btn-outline btn-sm">Read Terms &amp; Conditions</Link></section>
 
             <section className="detail-section disclaimer-section"><div className="eyebrow">Please note</div><h2>Important Information</h2><p>{service.disclaimer}</p></section>
 

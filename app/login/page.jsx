@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import BackButton from "@/components/BackButton";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -11,6 +12,11 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState("");
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [callbackUrl, setCallbackUrl] = useState("/");
+
+  useEffect(() => {
+    setCallbackUrl(new URLSearchParams(window.location.search).get("callbackUrl") || "/");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +31,7 @@ export default function LoginPage() {
         const checkData = await checkResponse.json();
         if (!checkResponse.ok) throw new Error(checkData.error || "Unable to check account");
         if (!checkData.exists) {
-          router.push(`/register?email=${encodeURIComponent(email)}`);
+          router.push(`/register?email=${encodeURIComponent(email)}&callbackUrl=${encodeURIComponent(callbackUrl)}`);
           return;
         }
       }
@@ -39,7 +45,6 @@ export default function LoginPage() {
       if (result?.error) {
         setFormError("Invalid email or password");
       } else {
-        const callbackUrl = new URLSearchParams(window.location.search).get("callbackUrl") || "/";
         router.push(callbackUrl);
         router.refresh();
       }
@@ -52,8 +57,9 @@ export default function LoginPage() {
 
   return (
     <section className="section">
-      <div className="container" style={{ maxWidth: 480 }}>
-        <div className="service-card" style={{ textAlign: "center" }}>
+      <div className="container auth-page-container" style={{ maxWidth: 480 }}>
+        <BackButton />
+        <div className="service-card auth-card" style={{ textAlign: "center" }}>
           <div className="eyebrow" style={{ justifyContent: "center", marginBottom: 24 }}>
             Welcome Back
           </div>
@@ -137,7 +143,7 @@ export default function LoginPage() {
 
           <p style={{ marginTop: 24, color: "var(--ink-soft)", fontSize: 14 }}>
             Don&apos;t have an account?{" "}
-            <Link href="/register" style={{ color: "var(--gold)", fontWeight: 500 }}>
+            <Link href={`/register?callbackUrl=${encodeURIComponent(callbackUrl)}`} style={{ color: "var(--gold)", fontWeight: 500 }}>
               Create one
             </Link>
           </p>

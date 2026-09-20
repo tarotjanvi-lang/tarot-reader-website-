@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import BackButton from "@/components/BackButton";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -14,9 +15,12 @@ export default function RegisterPage() {
     password: "",
     confirmPassword: "",
   });
+  const [callbackUrl, setCallbackUrl] = useState("/");
 
   useEffect(() => {
-    const email = new URLSearchParams(window.location.search).get("email");
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    setCallbackUrl(params.get("callbackUrl") || "/");
     if (email) setFormData((current) => ({ ...current, email }));
   }, []);
 
@@ -54,7 +58,7 @@ export default function RegisterPage() {
         throw new Error(data.error || "Registration failed");
       }
 
-      router.push("/login?registered=true");
+      router.push(`/login?registered=true&callbackUrl=${encodeURIComponent(callbackUrl)}`);
     } catch (error) {
       setFormError(error.message || "Something went wrong. Please try again.");
     } finally {
@@ -64,8 +68,9 @@ export default function RegisterPage() {
 
   return (
     <section className="section">
-      <div className="container" style={{ maxWidth: 480 }}>
-        <div className="service-card" style={{ textAlign: "center" }}>
+      <div className="container auth-page-container" style={{ maxWidth: 480 }}>
+        <BackButton />
+        <div className="service-card auth-card" style={{ textAlign: "center" }}>
           <div className="eyebrow" style={{ justifyContent: "center", marginBottom: 24 }}>
             Create Account
           </div>
@@ -196,7 +201,7 @@ export default function RegisterPage() {
 
           <p style={{ marginTop: 24, color: "var(--ink-soft)", fontSize: 14 }}>
             Already have an account?{" "}
-            <Link href="/login" style={{ color: "var(--gold)", fontWeight: 500 }}>
+            <Link href={`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`} style={{ color: "var(--gold)", fontWeight: 500 }}>
               Sign in
             </Link>
           </p>

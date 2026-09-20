@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ServiceVisual from "@/components/ServiceVisual";
+import BackButton from "@/components/BackButton";
 import { serviceCategories } from "@/lib/services-data";
 
 export const metadata = {
@@ -13,6 +14,7 @@ export default function ServicesPage() {
     <>
       <section className="page-hero services-page-hero">
         <div className="container">
+          <BackButton />
           <div className="eyebrow" style={{ justifyContent: "center" }}>My Services</div>
           <h1>Sacred services for your<br /> soul&apos;s transformation</h1>
           <p>Every offering is approached with compassion, confidentiality and genuine intuitive intention — choose the path that speaks to where you are right now.</p>

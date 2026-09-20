@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
+import BackButton from "@/components/BackButton";
 
 export const metadata = {
   title: "About Janvi — My Journey",
@@ -13,6 +14,7 @@ export default function AboutPage() {
     <>
       <section className="about-intro">
         <div className="container">
+          <BackButton />
           <div className="about-intro-grid">
             <Reveal className="about-intro-copy">
               <div className="eyebrow">A calling, not just a profession</div>

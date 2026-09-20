@@ -19,35 +19,42 @@ export default function Navbar() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const { data: session, status } = useSession();
-  const [open, setOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const navRef = useRef(null);
 
   const isAdmin = session?.user?.email?.toLowerCase() === "tarotjanvi@gmail.com";
 
   useEffect(() => {
-    if (!open) return;
+    if (!isMobileMenuOpen && !isProfileMenuOpen) return;
 
     const handlePointerDown = (event) => {
       if (navRef.current && !navRef.current.contains(event.target)) {
-        setOpen(false);
+        setIsMobileMenuOpen(false);
+        setIsProfileMenuOpen(false);
       }
     };
 
     document.addEventListener("pointerdown", handlePointerDown);
     return () => document.removeEventListener("pointerdown", handlePointerDown);
-  }, [open]);
+  }, [isMobileMenuOpen, isProfileMenuOpen]);
+
+  const closeMenus = () => {
+    setIsMobileMenuOpen(false);
+    setIsProfileMenuOpen(false);
+  };
 
   return (
     <header ref={navRef} className="nav">
       <div className="nav-inner">
-        <Link href="/" className="logo" onClick={() => setOpen(false)}>
+        <Link href="/" className="logo" onClick={closeMenus}>
           <Image className="logo-mark" src="/images/logo.png" alt="" width={48} height={48} priority />
           <span className="logo-text">
             <b>THE SOUL MIRROR</b>
           </span>
         </Link>
 
-        <nav className={`nav-links${open ? " open" : ""}`}>
+        <nav className={`nav-links${isMobileMenuOpen ? " open" : ""}`}>
           {NAV_LINKS.map((link) => {
             const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
@@ -55,7 +62,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={isActive ? "active" : ""}
-                onClick={() => setOpen(false)}
+                onClick={closeMenus}
               >
                 {link.label}
               </Link>
@@ -65,7 +72,7 @@ export default function Navbar() {
             <Link
               href="/dashboard"
               className={pathname.startsWith("/dashboard") ? "active" : ""}
-              onClick={() => setOpen(false)}
+              onClick={closeMenus}
             >
               My Dashboard
             </Link>
@@ -74,10 +81,27 @@ export default function Navbar() {
             <Link
               href="/admin"
               className={pathname.startsWith("/admin") ? "active" : ""}
-              onClick={() => setOpen(false)}
+              onClick={closeMenus}
             >
               Admin Panel
             </Link>
+          )}
+          {status !== "loading" && !session && (
+            <Link href="/login" className="mobile-auth-link" onClick={closeMenus}>
+              Sign In
+            </Link>
+          )}
+          {session && (
+            <button
+              type="button"
+              className="nav-mobile-signout"
+              onClick={() => {
+                closeMenus();
+                signOut({ callbackUrl: "/" });
+              }}
+            >
+              Sign Out
+            </button>
           )}
         </nav>
 
@@ -94,17 +118,20 @@ export default function Navbar() {
             <div className="nav-user-menu">
               <button
                 className="nav-user-avatar"
-                onClick={() => setOpen((v) => !v)}
+                onClick={() => {
+                  setIsProfileMenuOpen((value) => !value);
+                  setIsMobileMenuOpen(false);
+                }}
                 aria-label="User menu"
               >
                 {(session.user?.name?.[0] || session.user?.email?.[0] || "U").toUpperCase()}
               </button>
-              <div className={`nav-user-dropdown${open ? " open" : ""}`}>
+              <div className={`nav-user-dropdown${isProfileMenuOpen ? " open" : ""}`}>
                 <div className="nav-user-info">
                   <span className="nav-user-name">{session.user?.name || "User"}</span>
                   <span className="nav-user-email">{session.user?.email}</span>
                 </div>
-                {!isAdmin && <Link href="/dashboard" className="nav-dropdown-item" onClick={() => setOpen(false)}>
+                {!isAdmin && <Link href="/dashboard" className="nav-dropdown-item" onClick={closeMenus}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <rect x="3" y="3" width="7" height="7" rx="1" />
                     <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -114,7 +141,7 @@ export default function Navbar() {
                   My Dashboard
                 </Link>}
                 {isAdmin && (
-                  <Link href="/admin" className="nav-dropdown-item" onClick={() => setOpen(false)}>
+                  <Link href="/admin" className="nav-dropdown-item" onClick={closeMenus}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <circle cx="12" cy="12" r="10" />
                       <path d="M12 6v6l4 2" />
@@ -124,7 +151,10 @@ export default function Navbar() {
                 )}
                 <button
                   className="nav-dropdown-item"
-                  onClick={() => signOut({ callbackUrl: "/" })}
+                  onClick={() => {
+                    closeMenus();
+                    signOut({ callbackUrl: "/" });
+                  }}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -146,7 +176,11 @@ export default function Navbar() {
             type="button"
             className="nav-burger"
             aria-label="Menu"
-            onClick={() => setOpen((v) => !v)}
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => {
+              setIsMobileMenuOpen((value) => !value);
+              setIsProfileMenuOpen(false);
+            }}
           >
             <span></span><span></span><span></span>
           </button>

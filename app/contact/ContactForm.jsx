@@ -54,9 +54,9 @@ export default function ContactForm() {
           <select id="topic" name="topic">
             <option>Tarot Reading</option>
             <option>Energy Healing</option>
-            <option>Manifestation Coaching</option>
+            <option>Intentional Spellwork</option>
             <option>Soul Guidance</option>
-            <option>Not sure yet — help me choose</option>
+            <option>Consult Me</option>
           </select>
         </div>
       </div>

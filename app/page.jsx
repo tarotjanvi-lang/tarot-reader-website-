@@ -47,34 +47,12 @@ export default function HomePage() {
                 Divine Guidance
               </div>
             </div>
+              <blockquote className="hero-quote italic-quote">
+                &ldquo;The answers you seek are already within you. I&apos;m here to help you see them.&rdquo;
+                <cite>— Janvi</cite>
+              </blockquote>
           </div>
 
-          <div className="hero-art">
-            <div className="hero-image-wrap">
-              <Image
-                className="hero-image hero-image-light"
-                src="/images/home_page_shiva.png"
-                alt="Lord Shiva meditating among Himalayan mountains"
-                width={1536}
-                height={1024}
-                quality={100}
-                sizes="(max-width: 980px) 100vw, 58vw"
-              />
-              <Image
-                className="hero-image hero-image-dark"
-                src="/images/home_page_shiva_dark.png"
-                alt="Lord Shiva meditating among Himalayan mountains"
-                width={1536}
-                height={1024}
-                quality={100}
-                sizes="(max-width: 980px) 100vw, 58vw"
-              />
-            </div>
-            <blockquote className="hero-quote italic-quote">
-              &ldquo;The answers you seek are already within you. I&apos;m here to help you see them.&rdquo;
-              <cite>— Janvi</cite>
-            </blockquote>
-          </div>
         </div>
       </section>
 
@@ -146,9 +124,18 @@ export default function HomePage() {
           <div className="story-panel">
             <div className="art-side">
               <Image
-                className="shiva-image"
+                className="shiva-image shiva-image-light"
                 src="/images/home_shiva_transparent.png"
-                alt="A warm spiritual still life with tarot cards, candle, flowers and crystals"
+                alt="A spiritual still life with tarot cards, candle, flowers and crystals"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                sizes="(max-width: 860px) 100vw, 50vw"
+              />
+              <Image
+                className="shiva-image shiva-image-dark"
+                src="/images/home_shiva_transparent_dark.png"
+                alt="A spiritual still life with tarot cards, candle, flowers and crystals"
                 width={1536}
                 height={1024}
                 loading="lazy"

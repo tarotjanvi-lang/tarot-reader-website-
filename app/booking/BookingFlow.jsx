@@ -61,7 +61,7 @@ export default function BookingFlow() {
     return (
       <section className="section">
         <div className="container" style={{ maxWidth: 560, textAlign: "center" }}>
-          <div className="service-card">
+          <div className="service-card account-required-card">
             <div className="eyebrow" style={{ justifyContent: "center" }}>Account Required</div>
             <h1>Sign in to book your appointment</h1>
             <p>Create an account or sign in first so your appointment and consultation history stay connected to you.</p>

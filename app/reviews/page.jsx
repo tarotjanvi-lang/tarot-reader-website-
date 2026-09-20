@@ -5,25 +5,42 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import Reveal from "@/components/Reveal";
+import BackButton from "@/components/BackButton";
+import { useTheme } from "@/components/ThemeProvider";
 import { services } from "@/lib/services-data";
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
+  const [reviewsError, setReviewsError] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState("");
   const [form, setForm] = useState({ name: "", service: "", rating: "5", quote: "" });
-  const { data: session } = useSession();
+  const { data: session, status: sessionStatus } = useSession();
+  const { theme } = useTheme();
 
   useEffect(() => {
-    fetch("/api/reviews")
-      .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unable to load reviews")))
-      .then((data) => setReviews(data.reviews || []))
-      .catch(() => {
-        setReviews([]);
-        setStatus("Unable to load new reviews right now.");
-      });
-  }, []);
+    let isCurrent = true;
+
+    async function loadReviews() {
+      setIsLoadingReviews(true);
+      setReviewsError("");
+      try {
+        const response = await fetch("/api/reviews", { cache: "no-store" });
+        if (!response.ok) throw new Error("Unable to load reviews");
+        const data = await response.json();
+        if (isCurrent) setReviews(Array.isArray(data.reviews) ? data.reviews : []);
+      } catch {
+        if (isCurrent) setReviewsError("Unable to load reviews right now. Please try again shortly.");
+      } finally {
+        if (isCurrent) setIsLoadingReviews(false);
+      }
+    }
+
+    loadReviews();
+    return () => { isCurrent = false; };
+  }, [sessionStatus]);
 
   async function handleReviewSubmit(event) {
     event.preventDefault();
@@ -60,14 +77,15 @@ export default function ReviewsPage() {
     <>
       <section className="page-hero">
         <div className="container">
+          <BackButton />
           <div className="reviews-heading-art">
-            <Image className="reviews-leaf reviews-leaf-left" src="/images/left_leaf.png" alt="" width={180} height={240} priority />
+            <Image className="reviews-leaf reviews-leaf-left" src={theme === "dark" ? "/images/left_leaf_dark.png" : "/images/left_leaf.png"} alt="" width={180} height={240} priority />
             <div className="reviews-heading-copy">
               <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
               <h1>500+ souls, 1,000+ stories</h1>
               <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
             </div>
-            <Image className="reviews-leaf reviews-leaf-right" src="/images/right_leaf.png" alt="" width={180} height={240} priority />
+            <Image className="reviews-leaf reviews-leaf-right" src={theme === "dark" ? "/images/right_leaf_dark.png" : "/images/right_leaf.png"} alt="" width={180} height={240} priority />
           </div>
           <button type="button" className="btn btn-primary review-trigger" onClick={toggleReviewForm}>
             {showForm ? "Close Review Form" : "Add Your Review"}
@@ -105,6 +123,13 @@ export default function ReviewsPage() {
       </section>
 
       <section className="section">
+        {isLoadingReviews ? (
+          <p className="reviews-state" role="status">Loading reviews…</p>
+        ) : reviewsError ? (
+          <p className="reviews-state" role="alert">{reviewsError}</p>
+        ) : reviews.length === 0 ? (
+          <p className="reviews-state">No reviews have been shared yet. Be the first to reflect on your session.</p>
+        ) : (
         <div className={`reviews-marquee${reviews.length > 1 ? " is-moving" : ""}`} aria-label="Client reviews">
           <div className="reviews-marquee-track">
             {[0, 1].map((group) => (
@@ -123,6 +148,7 @@ export default function ReviewsPage() {
             ))}
           </div>
         </div>
+        )}
       </section>
 
       {status && <p className="review-status" role="status">{status}</p>}

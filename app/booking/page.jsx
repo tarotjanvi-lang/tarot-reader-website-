@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import BookingFlow from "./BookingFlow";
+import BackButton from "@/components/BackButton";
 
 export const metadata = {
   title: "Book a Session",
@@ -12,6 +13,7 @@ export default function BookingPage() {
     <>
       <section className="page-hero" style={{ paddingBottom: 0 }}>
         <div className="container">
+          <BackButton />
           <div className="eyebrow" style={{ justifyContent: "center" }}>Your Journey Begins Here</div>
           <h1>Book your session</h1>
           <p>Choose your session and share your details. Janvi will personally contact you to confirm the date and time.</p>
