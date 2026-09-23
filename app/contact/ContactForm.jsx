@@ -14,9 +14,17 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
     try {
+      const contactServiceId = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_SERVICE_ID || "service_rpo0lml";
+      const contactTemplateId = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID || "template_43o3y7b";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!publicKey) {
+        throw new Error("EmailJS Public Key is missing");
+      }
+
       await emailjs.send(
-        "service_rpo0iml",
-        "template_43o3y7b",
+        contactServiceId,
+        contactTemplateId,
         {
           to_email: "tarotjanvi@gmail.com",
           name: data.get("name"),
@@ -26,7 +34,7 @@ export default function ContactForm() {
           message: data.get("message") || "No message provided",
           reply_to: data.get("email"),
         },
-        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }
+        { publicKey }
       );
       setSubmitted(true);
       setStatus("");

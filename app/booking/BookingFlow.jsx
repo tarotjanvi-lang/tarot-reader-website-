@@ -136,7 +136,13 @@ export default function BookingFlow() {
               reject(error);
             }
           },
-          modal: { ondismiss: () => reject(new Error("Payment was cancelled")) },
+          modal: {
+            ondismiss: () => {
+              const cancelErr = new Error("Payment was cancelled");
+              cancelErr.cancelled = true;
+              reject(cancelErr);
+            }
+          },
         });
         checkout.on("payment.failed", (failure) => reject(new Error(failure.error?.description || "Payment failed")));
         checkout.open();
@@ -147,10 +153,18 @@ export default function BookingFlow() {
       if (!publicKey) {
         throw new Error("EmailJS Public Key is missing");
       }
+      const bookingServiceId =
+        process.env.NEXT_PUBLIC_EMAILJS_BOOKING_SERVICE_ID ||
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
+        "service_gmddfjf";
+      const bookingTemplateId =
+        process.env.NEXT_PUBLIC_EMAILJS_BOOKING_TEMPLATE_ID ||
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
+        "template_7446857";
 
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_gmddfjf",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_x4aevv4",
+        bookingServiceId,
+        bookingTemplateId,
         {
           to_email: "tarotjanvi@gmail.com",
           email: "tarotjanvi@gmail.com",
@@ -175,9 +189,14 @@ export default function BookingFlow() {
       setEmailStatus("");
       goTo(4);
     } catch (error) {
-      console.error("Booking failed:", error);
-      const errorCode = error?.status || error?.text || error?.message;
-      setEmailStatus(`Booking failed${errorCode ? ` (${errorCode})` : ""}. Please try again.`);
+      if (error?.cancelled) {
+        // User dismissed the Razorpay modal — reset quietly, no error shown
+        setEmailStatus("");
+      } else {
+        console.error("Booking failed:", error);
+        const errorCode = error?.status || error?.text || error?.message;
+        setEmailStatus(`Booking failed${errorCode ? ` (${errorCode})` : ""}. Please try again.`);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -223,8 +242,8 @@ export default function BookingFlow() {
                   <h3>{s.name}</h3>
                   <p>{s.tagline}</p>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--ink-soft)" }}>
-                    <span>{s.duration}</span>
-                    <span style={{ color: "var(--gold)", fontWeight: 500 }}>{s.priceLabel}</span>
+                    {s.duration && !s.duration.toLowerCase().includes("min") && <span>{s.duration}</span>}
+                    <span style={{ color: "var(--gold)", fontWeight: 500, marginLeft: "auto" }}>{s.priceLabel}</span>
                   </div>
                 </div>
               ))}
@@ -270,7 +289,7 @@ export default function BookingFlow() {
                 <span className="urgent-contact-check" aria-hidden="true">{urgentWhatsApp ? "✓" : "+"}</span>
                 <span><strong>{urgentWhatsApp ? "Emergency consultation added" : "Need emergency guidance?"}</strong><small>{urgentWhatsApp ? `₹${URGENT_WHATSAPP_FEE} added to your payment` : `Add ₹${URGENT_WHATSAPP_FEE} for an urgent WhatsApp consultation with Janvi`}</small></span>
               </button>
-              <form onSubmit={handleAdvancePayment}><button type="submit" className="btn btn-gold" disabled={Boolean(emailStatus)} style={{ marginTop: 22, width: "100%", justifyContent: "center" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /></svg>{emailStatus ? "Processing..." : "Pay Full Amount Securely"}</button></form>
+              <form onSubmit={handleAdvancePayment}><button type="submit" className="btn btn-gold" disabled={isSubmitting} style={{ marginTop: 22, width: "100%", justifyContent: "center" }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /></svg>{isSubmitting ? "Processing..." : "Pay Full Amount Securely"}</button></form>
               {emailStatus && <p style={{ color: "var(--gold)", fontSize: 12, marginTop: 10 }}>{emailStatus}</p>}
               <p style={{ fontSize: 12, marginTop: 10 }}>Cards, UPI, netbanking and wallets accepted. Payment is shown here as a demo until a Razorpay order is connected.</p>
             </div>

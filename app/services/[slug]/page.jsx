@@ -31,6 +31,13 @@ export function generateMetadata({ params }) {
   return {};
 }
 
+function getServiceFormat(service) {
+  if (service.type === "healing" || service.type === "spellwork") {
+    return "Distance based healing";
+  }
+  return "Text based / audio note";
+}
+
 export default function ServiceDetailPage({ params }) {
   const service = services.find((s) => s.slug === params.slug);
   const category = serviceCategories.find((item) => item.slug === params.slug);
@@ -57,19 +64,23 @@ export default function ServiceDetailPage({ params }) {
                   <ServiceVisual service={item} />
                   <h3>{item.name}</h3>
                   <p>{item.tagline}</p>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
-                    <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
-                      {item.price ? `From ${item.priceLabel}` : item.priceLabel}
-                    </span>
-                    <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{item.duration}</span>
+                  <div className="service-card-bottom" style={{ marginTop: "auto", paddingTop: 14 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", minHeight: 24 }}>
+                      <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)", fontSize: 17, fontWeight: 600 }}>
+                        {item.price ? `From ${item.priceLabel}` : item.priceLabel}
+                      </span>
+                      {item.duration && !item.duration.toLowerCase().includes("min") && (
+                        <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{item.duration}</span>
+                      )}
+                    </div>
+                    <Link
+                      href={item.price ? `/services/${item.slug}` : "/contact"}
+                      className="btn btn-outline btn-sm"
+                      style={{ marginTop: 12, width: "100%", justifyContent: "center" }}
+                    >
+                      {item.price ? "Book This Session" : "Enquire"}
+                    </Link>
                   </div>
-                  <Link
-                    href={item.price ? `/services/${item.slug}` : "/contact"}
-                    className="btn btn-outline btn-sm"
-                    style={{ marginTop: 16, width: "100%", justifyContent: "center" }}
-                  >
-                    {item.price ? "Book This Session" : "Enquire"}
-                  </Link>
                 </div>
               ))}
             </div>
@@ -83,6 +94,8 @@ export default function ServiceDetailPage({ params }) {
   const isCustom = service.type === "custom";
   const isHealing = service.type === "healing";
   const isSpellwork = service.type === "spellwork";
+  const isGuidance = service.type === "guidance";
+  const isSpreadTarot = isTarot && service.questions && service.questions.length > 0 && service.slug !== "one-question-tarot-reading" && service.slug !== "three-question-tarot-reading";
 
   return (
     <section className="section-tight service-detail-page">
@@ -94,34 +107,201 @@ export default function ServiceDetailPage({ params }) {
               <div className="eyebrow">{service.category}</div>
               <h1>{service.name}</h1>
               <p className="service-lede">{service.description || service.tagline}</p>
-              <div className="service-hero-meta"><span>{service.priceLabel}</span><span>{service.duration}</span>{service.questionCount && <span>{service.questionCount}</span>}</div>
-              <div className="service-hero-actions"><Link href={`/booking?service=${service.slug}`} className="btn btn-primary">Book This {isHealing ? "Healing" : "Session"}</Link></div>
+              <div className="service-hero-meta">
+                <span>{service.priceLabel}</span>
+                {service.duration && !service.duration.toLowerCase().includes("min") && <span>{service.duration}</span>}
+                {service.questionCount && <span>{service.questionCount}</span>}
+              </div>
+              <div className="service-hero-actions">
+                <Link href={`/booking?service=${service.slug}`} className="btn btn-primary">
+                  Book This {isHealing ? "Healing" : "Session"}
+                </Link>
+              </div>
             </header>
 
-            <section className="detail-section"><div className="eyebrow">The offering</div><h2>{isHealing ? "About This Healing" : isCustom ? "Create Your Own SoulMirror Journey" : "About This Service"}</h2><p>{service.tagline} {isCustom ? "Different modalities can be combined around your intention, duration and scope of work." : "The session is held with compassion, confidentiality and genuine intuitive intention."}</p></section>
+            {/* Focus Areas */}
+            {service.focusAreas && service.focusAreas.length > 0 && (
+              <section className="detail-section">
+                <div className="eyebrow">The focus</div>
+                <h2>Focus Areas</h2>
+                <div className="focus-list">
+                  {service.focusAreas.map((area) => (
+                    <span key={area}>{area}</span>
+                  ))}
+                </div>
+              </section>
+            )}
 
-            <section className="detail-section"><div className="eyebrow">The focus</div><h2>Focus Areas</h2><div className="focus-list">{service.focusAreas.map((area) => <span key={area}>{area}</span>)}</div></section>
+            {/* Content matching the Word Catalogue for each service type */}
+            {isHealing && (
+              <section className="detail-section">
+                <div className="eyebrow">The journey</div>
+                <h2>What This Healing Focuses On</h2>
+                <p style={{ fontSize: "15px", lineHeight: "1.75", color: "var(--ink-soft)" }}>{service.focusesOn}</p>
+                <div className="service-facts-grid">
+                  <div className="service-fact-card">
+                    <div className="eyebrow">Suitable for</div>
+                    <h3>Suitable For</h3>
+                    <p>{service.suitableFor}</p>
+                  </div>
+                  <div className="service-fact-card">
+                    <div className="eyebrow">Intended shift</div>
+                    <h3>Intended Shift</h3>
+                    <p>{service.intendedShift}</p>
+                  </div>
+                </div>
+              </section>
+            )}
 
-            {isCustom ? <section className="detail-section"><div className="eyebrow">Possible pathways</div><h2>Ways We Can Shape Your Journey</h2><div className="included-grid">{["Custom Tarot Reading", "Custom Healing Journey", "Custom Spellwork", "Reading + Healing Combination", "Multi-Day Personalised Energy Work", "Love + Emotional Healing + Career", "Career + Abundance + Relocation", "Relationship + Communication + Emotional Healing"].map((item) => <div className="included-card" key={item}><strong>{item}</strong></div>)}</div><p className="custom-note">Pricing: Customised according to intention, duration and scope of work.</p></section> : <section className="detail-section"><div className="eyebrow">Your session</div><h2>{isHealing ? "What This Healing Focuses On" : isSpellwork ? "What the Spellwork Focuses On" : "What's Included"}</h2>{(isHealing || isSpellwork) && <p>{service.focusesOn}</p>}<div className="included-grid">{service.included.map((item) => <div className="included-card" key={item.title}><strong>{item.title}</strong><p>{item.body}</p></div>)}</div>{isHealing && <div className="healing-facts"><div><strong>Suitable for</strong><p>{service.suitableFor}</p></div><div><strong>Intended shift</strong><p>{service.intendedShift}</p></div></div>}{isSpellwork && <div className="healing-facts"><div><strong>Best suited for</strong><p>{service.bestSuitedFor}</p></div><div><strong>Intended movement</strong><p>{service.intendedMovement}</p></div></div>}</section>}
+            {isSpellwork && (
+              <section className="detail-section">
+                <div className="eyebrow">The working</div>
+                <h2>What the Spellwork Focuses On</h2>
+                <p style={{ fontSize: "15px", lineHeight: "1.75", color: "var(--ink-soft)" }}>{service.focusesOn}</p>
+                <div className="service-facts-grid">
+                  <div className="service-fact-card">
+                    <div className="eyebrow">Best suited for</div>
+                    <h3>Best Suited For</h3>
+                    <p>{service.bestSuitedFor}</p>
+                  </div>
+                  <div className="service-fact-card">
+                    <div className="eyebrow">Intended movement</div>
+                    <h3>Intended Movement</h3>
+                    <p>{service.intendedMovement}</p>
+                  </div>
+                </div>
+              </section>
+            )}
 
-            {isTarot && service.questions.length > 0 && <section className="detail-section"><div className="eyebrow">Your spread</div><h2>Questions / Spread</h2><div className="questions-list">{service.questions.map((question, index) => <div className="question-card" key={question}><span>{String(index + 1).padStart(2, "0")}</span><p>{question}</p></div>)}</div></section>}
+            {isTarot && !isSpreadTarot && (
+              <section className="detail-section">
+                <div className="eyebrow">Your session</div>
+                <h2>What&apos;s Included</h2>
+                <p style={{ fontSize: "15px", lineHeight: "1.75", color: "var(--ink-soft)" }}>
+                  {service.includesText || (service.included && service.included.map((item) => `${item.title}: ${item.body}`).join(" • ")) || service.description}
+                </p>
+                {service.bestFor && (
+                  <div className="service-facts-grid" style={{ gridTemplateColumns: "1fr" }}>
+                    <div className="service-fact-card">
+                      <div className="eyebrow">Best for</div>
+                      <h3>Best For</h3>
+                      <p>{service.bestFor}</p>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
 
-            <section className="detail-section service-terms-section"><div className="eyebrow">Clarity before you book</div><h2>Terms &amp; Conditions</h2><p>Review the complete booking, reading, healing and spellwork terms before you book.</p><Link href="/terms#terms-conditions" className="btn btn-outline btn-sm">Read Terms &amp; Conditions</Link></section>
+            {isSpreadTarot && (
+              <section className="detail-section">
+                <div className="eyebrow">Your spread</div>
+                <h2>Questions / Spread Covers</h2>
+                <div className="questions-list">
+                  {service.questions.map((question, index) => (
+                    <div className="question-card" key={question}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <p>{question}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
-            <section className="detail-section disclaimer-section"><div className="eyebrow">Please note</div><h2>Important Information</h2><p>{service.disclaimer}</p></section>
+            {isGuidance && (
+              <section className="detail-section">
+                <div className="eyebrow">Your session</div>
+                <h2>What This Session Focuses On</h2>
+                <p style={{ fontSize: "15px", lineHeight: "1.75", color: "var(--ink-soft)" }}>
+                  {service.focusesOn || service.description}
+                </p>
+                {service.bestSuitedFor && (
+                  <div className="service-facts-grid" style={{ gridTemplateColumns: "1fr" }}>
+                    <div className="service-fact-card">
+                      <div className="eyebrow">Best suited for</div>
+                      <h3>Best Suited For</h3>
+                      <p>{service.bestSuitedFor}</p>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
 
+            {isCustom && (
+              <section className="detail-section">
+                <div className="eyebrow">Possible pathways</div>
+                <h2>Ways We Can Shape Your Journey</h2>
+                <div className="included-grid">
+                  {[
+                    "Custom Tarot Reading",
+                    "Custom Healing Journey",
+                    "Custom Spellwork",
+                    "Reading + Healing Combination",
+                    "Multi-Day Personalised Energy Work",
+                    "Love + Emotional Healing + Career",
+                    "Career + Abundance + Relocation",
+                    "Relationship + Communication + Emotional Healing",
+                  ].map((item) => (
+                    <div className="included-card" key={item}>
+                      <strong>{item}</strong>
+                    </div>
+                  ))}
+                </div>
+                <p className="custom-note">Pricing: Customised according to intention, duration and scope of work.</p>
+              </section>
+            )}
+
+            <section className="detail-section service-terms-section">
+              <div className="eyebrow">Clarity before you book</div>
+              <h2>Terms &amp; Conditions</h2>
+              <p>Review the complete booking, reading, healing and spellwork terms before you book.</p>
+              <Link href="/terms#terms-conditions" className="btn btn-outline btn-sm">
+                Read Terms &amp; Conditions
+              </Link>
+            </section>
+
+            <section className="detail-section disclaimer-section">
+              <div className="eyebrow">Please note</div>
+              <h2>Important Information</h2>
+              <p>{service.disclaimer}</p>
+            </section>
           </div>
 
           <aside className="price-box">
             <div className="eyebrow">Session Details</div>
             <div className="amount">{service.priceLabel}</div>
-            <div className="meta"><span>Duration</span><span>{service.duration}</span></div>
-            {service.questionCount && <div className="meta"><span>Questions</span><span>{service.questionCount}</span></div>}
-            <div className="meta"><span>Category</span><span>{service.category}</span></div>
-            <div className="meta"><span>Format</span><span>Video / Voice call</span></div>
-            <div className="meta"><span>Availability</span><span>Worldwide</span></div>
-            <div className="meta"><span>Confidentiality</span><span>100% Private</span></div>
-            <Link href={`/booking?service=${service.slug}`} className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: 22 }}>
+            {service.duration && !service.duration.toLowerCase().includes("min") && (
+              <div className="meta">
+                <span>Duration</span>
+                <span>{service.duration}</span>
+              </div>
+            )}
+            {service.questionCount && (
+              <div className="meta">
+                <span>Questions</span>
+                <span>{service.questionCount}</span>
+              </div>
+            )}
+            <div className="meta">
+              <span>Category</span>
+              <span>{service.category}</span>
+            </div>
+            <div className="meta">
+              <span>Format</span>
+              <span>{getServiceFormat(service)}</span>
+            </div>
+            <div className="meta">
+              <span>Availability</span>
+              <span>Worldwide</span>
+            </div>
+            <div className="meta">
+              <span>Confidentiality</span>
+              <span>100% Private</span>
+            </div>
+            <Link
+              href={`/booking?service=${service.slug}`}
+              className="btn btn-primary"
+              style={{ width: "100%", justifyContent: "center", marginTop: 22 }}
+            >
               Book This {isHealing ? "Healing" : "Session"}
             </Link>
           </aside>

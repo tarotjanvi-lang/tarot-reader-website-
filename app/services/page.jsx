@@ -34,18 +34,20 @@ export default function ServicesPage() {
                 <ServiceVisual service={category.services[0]} />
                 <h3>{category.name}</h3>
                 <p>{category.description}</p>
-                <div className="service-card-meta">
-                  <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)" }}>
-                    {category.services.length} offerings
-                  </span>
+                <div className="service-card-bottom" style={{ marginTop: "auto", paddingTop: 14, width: "100%" }}>
+                  <div className="service-card-meta" style={{ minHeight: 24, marginBottom: 12 }}>
+                    <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)", fontSize: 17, fontWeight: 600 }}>
+                      {category.services.length} offerings
+                    </span>
+                  </div>
+                  <Link
+                    href={`/services/${category.slug}`}
+                    className="btn btn-outline btn-sm"
+                    style={{ width: "100%", justifyContent: "center" }}
+                  >
+                    View All
+                  </Link>
                 </div>
-                <Link
-                  href={`/services/${category.slug}`}
-                  className="btn btn-outline btn-sm"
-                  style={{ marginTop: 16, width: "100%", justifyContent: "center" }}
-                >
-                  View All
-                </Link>
               </Reveal>
             ))}
           </div>
