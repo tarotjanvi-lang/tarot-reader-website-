@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <>
+    <main className="contact-page">
       <section className="page-hero">
         <div className="container">
           <div className="eyebrow" style={{ justifyContent: "center" }}>Let&apos;s Connect</div>
@@ -67,6 +67,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

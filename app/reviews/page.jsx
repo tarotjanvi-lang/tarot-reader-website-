@@ -80,7 +80,7 @@ export default function ReviewsPage() {
             <Image className="reviews-leaf reviews-leaf-left" src={theme === "dark" ? "/images/left_leaf_dark.png" : "/images/left_leaf.png"} alt="" width={180} height={240} priority />
             <div className="reviews-heading-copy">
               <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
-              <h1>500+ souls, 1,000+ stories</h1>
+              <h1>500+ souls<br />1,000+ stories</h1>
               <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
             </div>
             <Image className="reviews-leaf reviews-leaf-right" src={theme === "dark" ? "/images/right_leaf_dark.png" : "/images/right_leaf.png"} alt="" width={180} height={240} priority />
