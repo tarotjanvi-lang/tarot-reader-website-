@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ServiceVisual from "@/components/ServiceVisual";
-import { serviceCategories } from "@/lib/services-data";
+import { serviceCategories, serviceCategoryLightImages } from "@/lib/services-data";
 
 export default function HomePage() {
 
@@ -105,7 +105,14 @@ export default function HomePage() {
             {serviceCategories.map((category, index) => (
               <Reveal as="div" key={category.slug} className="service-card">
                 <span className="home-service-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <ServiceVisual service={category.services[0]} className="service-card-image homepage-service-image" />
+                <ServiceVisual
+                  service={{
+                    ...category.services[0],
+                    lightImage: serviceCategoryLightImages[category.slug],
+                    imageAlt: `${category.name} service artwork`,
+                  }}
+                  className="service-card-image homepage-service-image"
+                />
                 <h3>{category.name}</h3>
                 <p>{category.description}</p>
                 <Link href={`/services/${category.slug}`} className="btn-link">

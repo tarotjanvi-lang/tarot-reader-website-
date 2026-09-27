@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import Reveal from "@/components/Reveal";
-import BackButton from "@/components/BackButton";
 import { useTheme } from "@/components/ThemeProvider";
 import { services } from "@/lib/services-data";
 
@@ -77,7 +76,6 @@ export default function ReviewsPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <BackButton />
           <div className="reviews-heading-art">
             <Image className="reviews-leaf reviews-leaf-left" src={theme === "dark" ? "/images/left_leaf_dark.png" : "/images/left_leaf.png"} alt="" width={180} height={240} priority />
             <div className="reviews-heading-copy">
@@ -130,7 +128,7 @@ export default function ReviewsPage() {
         ) : reviews.length === 0 ? (
           <p className="reviews-state">No reviews have been shared yet. Be the first to reflect on your session.</p>
         ) : (
-        <div className={`reviews-marquee${reviews.length > 1 ? " is-moving" : ""}`} aria-label="Client reviews">
+        <div className="reviews-marquee" aria-label="Client reviews">
           <div className="reviews-marquee-track">
             {[0, 1].map((group) => (
               <div className="reviews-marquee-group" key={group} aria-hidden={group === 1}>

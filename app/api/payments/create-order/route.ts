@@ -13,7 +13,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Razorpay is not configured on the server." }, { status: 503 });
     }
 
-    const { serviceSlug, emergencyConsultation } = await request.json();
+    const { serviceSlug, emergencyConsultation: emergencyRequested } = await request.json();
+    const emergencyConsultation = emergencyRequested === true;
     const service = services.find((item) => item.slug === serviceSlug && item.price);
     if (!service) return NextResponse.json({ error: "Invalid service selected." }, { status: 400 });
 
@@ -23,7 +24,11 @@ export async function POST(request: Request) {
       amount: totalAmount * 100,
       currency: "INR",
       receipt: `soulmirror_${Date.now()}`,
-      notes: { userId: (session.user as any).id, serviceSlug },
+      notes: {
+        userId: (session.user as any).id,
+        serviceSlug,
+        emergencyConsultation: String(emergencyConsultation),
+      },
     });
 
     return NextResponse.json({ order, keyId: process.env.RAZORPAY_KEY_ID, amount: totalAmount * 100, serviceName: service.name });

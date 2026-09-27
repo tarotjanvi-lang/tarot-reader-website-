@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import BackButton from "@/components/BackButton";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -69,7 +68,6 @@ export default function RegisterPage() {
   return (
     <section className="section">
       <div className="container auth-page-container" style={{ maxWidth: 480 }}>
-        <BackButton />
         <div className="service-card auth-card" style={{ textAlign: "center" }}>
           <div className="eyebrow" style={{ justifyContent: "center", marginBottom: 24 }}>
             Create Account

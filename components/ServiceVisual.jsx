@@ -7,11 +7,11 @@ export default function ServiceVisual({ service, className = "service-card-image
   if (!lightImage) return <ServiceIcon type={service.icon} />;
 
   const imageProps = {
-    width: 768,
-    height: 512,
-    sizes: "(max-width: 600px) 100vw, (max-width: 1080px) 50vw, 25vw",
+    width: 600,
+    height: 400,
+    sizes: "(max-width: 600px) 88vw, (max-width: 1080px) 42vw, 18vw",
     loading: "lazy",
-    quality: 70,
+    quality: 55,
   };
 
   return <>

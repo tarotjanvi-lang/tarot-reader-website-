@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ServiceVisual from "@/components/ServiceVisual";
-import BackButton from "@/components/BackButton";
-import { serviceCategories } from "@/lib/services-data";
+import { serviceCategories, serviceCategoryLightImages } from "@/lib/services-data";
 
 export const metadata = {
   title: "Services",
@@ -14,7 +13,6 @@ export default function ServicesPage() {
     <>
       <section className="page-hero services-page-hero">
         <div className="container">
-          <BackButton />
           <div className="eyebrow" style={{ justifyContent: "center" }}>My Services</div>
           <h1>Sacred services for your<br /> soul&apos;s transformation</h1>
           <p>Every offering is approached with compassion, confidentiality and genuine intuitive intention — choose the path that speaks to where you are right now.</p>
@@ -31,7 +29,13 @@ export default function ServicesPage() {
           <div className="grid-3 services-catalogue-grid">
             {serviceCategories.map((category) => (
               <Reveal as="div" key={category.slug} className="service-card">
-                <ServiceVisual service={category.services[0]} />
+                <ServiceVisual
+                  service={{
+                    ...category.services[0],
+                    lightImage: serviceCategoryLightImages[category.slug],
+                    imageAlt: `${category.name} service artwork`,
+                  }}
+                />
                 <h3>{category.name}</h3>
                 <p>{category.description}</p>
                 <div className="service-card-bottom" style={{ marginTop: "auto", paddingTop: 14, width: "100%" }}>

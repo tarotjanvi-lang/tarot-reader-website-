@@ -1,5 +1,4 @@
 import ContactForm from "./ContactForm";
-import BackButton from "@/components/BackButton";
 
 export const metadata = {
   title: "Contact",
@@ -11,7 +10,6 @@ export default function ContactPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <BackButton />
           <div className="eyebrow" style={{ justifyContent: "center" }}>Let&apos;s Connect</div>
           <h1>Have a question<br /> before you book?</h1>
           <p>Reach out — I&apos;m happy to help you find the right session, wherever in the world you are.</p>

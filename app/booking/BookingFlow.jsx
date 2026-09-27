@@ -28,6 +28,7 @@ export default function BookingFlow() {
     phone: "",
     notes: "",
   });
+  const [emergencyContact, setEmergencyContact] = useState(null);
 
   // Pre-fill user details if logged in
   useEffect(() => {
@@ -77,6 +78,7 @@ export default function BookingFlow() {
     if (isSubmitting) return;
     setIsSubmitting(true);
     setEmailStatus("Opening secure payment...");
+    let verifiedPayment = null;
 
     try {
       const total = (selectedService?.price || 0) + (urgentWhatsApp ? URGENT_WHATSAPP_FEE : 0);
@@ -102,7 +104,7 @@ export default function BookingFlow() {
         });
       }
 
-      await new Promise((resolve, reject) => {
+      verifiedPayment = await new Promise((resolve, reject) => {
         const checkout = new window.Razorpay({
           key: orderData.keyId,
           amount: orderData.amount,
@@ -147,6 +149,7 @@ export default function BookingFlow() {
         checkout.on("payment.failed", (failure) => reject(new Error(failure.error?.description || "Payment failed")));
         checkout.open();
       });
+      setEmergencyContact(verifiedPayment.emergencyContact || null);
 
       // Send email notification
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -192,6 +195,11 @@ export default function BookingFlow() {
       if (error?.cancelled) {
         // User dismissed the Razorpay modal — reset quietly, no error shown
         setEmailStatus("");
+      } else if (verifiedPayment) {
+        console.error("Booking email failed after payment verification:", error);
+        setEmergencyContact(verifiedPayment.emergencyContact || null);
+        setEmailStatus("");
+        goTo(4);
       } else {
         console.error("Booking failed:", error);
         const errorCode = error?.status || error?.text || error?.message;
@@ -241,9 +249,9 @@ export default function BookingFlow() {
                   <ServiceVisual service={s} />
                   <h3>{s.name}</h3>
                   <p>{s.tagline}</p>
-                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--ink-soft)" }}>
+                  <div className="booking-service-meta">
                     {s.duration && !s.duration.toLowerCase().includes("min") && <span>{s.duration}</span>}
-                    <span style={{ color: "var(--gold)", fontWeight: 500, marginLeft: "auto" }}>{s.priceLabel}</span>
+                    <span className="booking-service-price">{s.priceLabel}</span>
                   </div>
                 </div>
               ))}
@@ -304,6 +312,16 @@ export default function BookingFlow() {
               <h2>Payment received, thank you.</h2>
               <p>Your request has been sent to Janvi. She will contact you via WhatsApp or email to confirm the date, time, and session link. Your appointment will be confirmed once the schedule is finalized with Janvi.</p>
               <div className="summary-card" style={{ textAlign: "left" }}><div className="summary-row"><span>Session</span><span>{selectedService?.name}</span></div><div className="summary-row"><span>Payment</span><span>Full session fee paid</span></div>{urgentWhatsApp && <div className="summary-row"><span>Emergency consultation</span><span>₹{URGENT_WHATSAPP_FEE} paid</span></div>}<div className="summary-row total"><span>Timing</span><span>To be confirmed by Janvi</span></div></div>
+              {emergencyContact && (
+                <div className="summary-card emergency-contact-confirmation" style={{ textAlign: "left" }}>
+                  <div className="eyebrow">Emergency WhatsApp contact</div>
+                  <p>Your emergency consultation is paid. Contact Janvi directly on WhatsApp:</p>
+                  <p><strong>{emergencyContact.phone}</strong></p>
+                  <a href={emergencyContact.whatsappUrl} className="btn btn-gold" target="_blank" rel="noreferrer">
+                    Message Janvi on WhatsApp
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         )}

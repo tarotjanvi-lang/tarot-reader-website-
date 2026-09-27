@@ -3,14 +3,12 @@ export const metadata = {
   description: "Privacy policy for The Soul Mirror by Janvi.",
 };
 
-import BackButton from "@/components/BackButton";
 
 export default function PrivacyPolicyPage() {
   return (
     <main className="page-shell legal-page">
       <section className="section-tight section-hero legal-hero">
         <div className="container small-container">
-          <BackButton />
           <div className="eyebrow">Your information matters</div>
           <h1>Privacy Policy</h1>
           <p className="page-intro">

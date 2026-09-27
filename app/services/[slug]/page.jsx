@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ServiceVisual from "@/components/ServiceVisual";
-import BackButton from "@/components/BackButton";
 import { serviceCategories, services } from "@/lib/services-data";
 
 export function generateStaticParams() {
@@ -49,7 +48,6 @@ export default function ServiceDetailPage({ params }) {
       <>
         <section className="page-hero">
           <div className="container">
-            <BackButton />
             <div className="eyebrow" style={{ justifyContent: "center" }}>{category.name}</div>
             <h1>{category.name}</h1>
             <p>{category.description}</p>
@@ -60,17 +58,17 @@ export default function ServiceDetailPage({ params }) {
           <div className="container">
             <div className="grid-3 services-catalogue-grid">
               {category.services.map((item) => (
-                <div key={item.slug} className="service-card">
+                <div key={item.slug} className={`service-card${item.slug === "rebirth-code" ? " service-card--rebirth-code" : ""}`}>
                   <ServiceVisual service={item} />
                   <h3>{item.name}</h3>
                   <p>{item.tagline}</p>
                   <div className="service-card-bottom" style={{ marginTop: "auto", paddingTop: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", minHeight: 24 }}>
-                      <span className="service-price" style={{ fontFamily: "'Playfair Display'", color: "var(--gold)", fontSize: 17, fontWeight: 600 }}>
+                    <div className="service-card-price-row">
+                      <span className="service-price">
                         {item.price ? `From ${item.priceLabel}` : item.priceLabel}
                       </span>
                       {item.duration && !item.duration.toLowerCase().includes("min") && (
-                        <span className="service-duration" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{item.duration}</span>
+                        <span className="service-duration">{item.duration}</span>
                       )}
                     </div>
                     <Link
@@ -100,7 +98,6 @@ export default function ServiceDetailPage({ params }) {
   return (
     <section className="section-tight service-detail-page">
       <div className="container">
-        <BackButton />
         <div className="service-detail-grid">
           <div className="service-detail-content">
             <header className="service-hero-detail">
@@ -129,6 +126,7 @@ export default function ServiceDetailPage({ params }) {
                     <span key={area}>{area}</span>
                   ))}
                 </div>
+                <p className="focus-description">{service.description}</p>
               </section>
             )}
 
@@ -140,12 +138,10 @@ export default function ServiceDetailPage({ params }) {
                 <p style={{ fontSize: "15px", lineHeight: "1.75", color: "var(--ink-soft)" }}>{service.focusesOn}</p>
                 <div className="service-facts-grid">
                   <div className="service-fact-card">
-                    <div className="eyebrow">Suitable for</div>
                     <h3>Suitable For</h3>
                     <p>{service.suitableFor}</p>
                   </div>
                   <div className="service-fact-card">
-                    <div className="eyebrow">Intended shift</div>
                     <h3>Intended Shift</h3>
                     <p>{service.intendedShift}</p>
                   </div>

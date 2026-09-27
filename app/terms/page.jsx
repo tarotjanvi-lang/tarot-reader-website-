@@ -1,5 +1,4 @@
 import TermsAndConditions from "@/components/TermsAndConditions";
-import BackButton from "@/components/BackButton";
 import { fullTerms, healingTermsIntro, privacyNote, spellworkGeneralCondition, websiteDisclaimer, soulMirrorNote, soulMirrorProcessNote } from "@/lib/terms-data";
 
 export const metadata = {
@@ -12,7 +11,6 @@ export default function TermsPage() {
     <main className="page-shell legal-page">
       <section className="section-tight section-hero legal-hero">
         <div className="container small-container">
-          <BackButton />
           <div className="eyebrow">Legal &amp; service policy</div>
           <h1>Terms &amp; Conditions</h1>
           <p className="page-intro">

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
-import BackButton from "@/components/BackButton";
 
 export const metadata = {
   title: "About Janvi — My Journey",
@@ -14,7 +13,6 @@ export default function AboutPage() {
     <>
       <section className="about-intro">
         <div className="container">
-          <BackButton />
           <div className="about-intro-grid">
             <Reveal className="about-intro-copy">
               <div className="eyebrow">A calling, not just a profession</div>
@@ -24,7 +22,8 @@ export default function AboutPage() {
               <div className="about-signature"><span>THE SOUL MIRROR</span><small>A space for honest reflection</small></div>
             </Reveal>
             <Reveal className="about-portrait-wrap">
-              <Image className="about-portrait" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Portrait of a woman in warm natural light" width={1000} height={926} sizes="(max-width: 860px) 100vw, 560px" priority />
+              <Image className="about-portrait about-portrait-light" src="/images/janvi_photo.png" alt="Janvi, tarot reader, healer and guide" width={1000} height={926} sizes="(max-width: 860px) 100vw, 560px" quality={100} priority />
+              <Image className="about-portrait about-portrait-dark" src="/images/janvi_photo_dark_view.png" alt="Janvi, tarot reader, healer and guide" width={1000} height={926} sizes="(max-width: 860px) 100vw, 560px" quality={100} priority />
               <div className="about-portrait-note"><span>Janvi</span><small>Tarot reader · healer · guide</small></div>
               <div className="about-sun" aria-hidden="true">✦</div>
             </Reveal>

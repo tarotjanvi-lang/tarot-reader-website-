@@ -5,13 +5,50 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { services } from "@/lib/services-data";
 
+const EMERGENCY_FEE_PAISE = 29900;
+const OWNER_WHATSAPP_NUMBER = "917621818789";
+
+type AppointmentPayment = {
+  emergencyConsultation: boolean;
+  emergencyFee: number;
+  totalAmount: number;
+  servicePrice: number;
+};
+
+function paymentResponse(appointment: AppointmentPayment, status = 200) {
+  const emergencyFeePaid = appointment.emergencyConsultation
+    && appointment.emergencyFee === EMERGENCY_FEE_PAISE
+    && appointment.totalAmount === appointment.servicePrice * 100 + EMERGENCY_FEE_PAISE;
+
+  return NextResponse.json({
+    appointment,
+    ...(emergencyFeePaid ? {
+      emergencyContact: {
+        phone: "+91 7621 818 789",
+        whatsappUrl: `https://wa.me/${OWNER_WHATSAPP_NUMBER}`,
+      },
+    } : {}),
+  }, { status });
+}
+
 export async function POST(request: Request) {
   try {
     const session = await auth();
     if (!session?.user) return NextResponse.json({ error: "Please sign in before confirming payment." }, { status: 401 });
     if (!process.env.RAZORPAY_KEY_SECRET) return NextResponse.json({ error: "Razorpay is not configured on the server." }, { status: 503 });
 
-    const { razorpayOrderId, razorpayPaymentId, razorpaySignature, serviceSlug, emergencyConsultation, customerName, customerEmail, customerPhone, notes } = await request.json();
+    const {
+      razorpayOrderId,
+      razorpayPaymentId,
+      razorpaySignature,
+      serviceSlug,
+      emergencyConsultation: emergencyRequested,
+      customerName,
+      customerEmail,
+      customerPhone,
+      notes,
+    } = await request.json();
+    const emergencyConsultation = emergencyRequested === true;
     const expectedSignature = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET).update(`${razorpayOrderId}|${razorpayPaymentId}`).digest("hex");
     const receivedSignature = String(razorpaySignature || "");
     if (receivedSignature.length !== expectedSignature.length || !crypto.timingSafeEqual(Buffer.from(expectedSignature), Buffer.from(receivedSignature))) {
@@ -23,17 +60,23 @@ export async function POST(request: Request) {
     const razorpay = new Razorpay({ key_id: process.env.RAZORPAY_KEY_ID || "", key_secret: process.env.RAZORPAY_KEY_SECRET });
     const order = await razorpay.orders.fetch(razorpayOrderId);
     const expectedAmount = ((service.price || 0) + (emergencyConsultation ? 299 : 0)) * 100;
-    if (order.notes?.userId !== (session.user as any).id || order.notes?.serviceSlug !== serviceSlug || order.amount !== expectedAmount) {
+    if (
+      order.notes?.userId !== (session.user as any).id
+      || order.notes?.serviceSlug !== serviceSlug
+      || order.notes?.emergencyConsultation !== String(emergencyConsultation)
+      || order.currency !== "INR"
+      || order.amount !== expectedAmount
+    ) {
       return NextResponse.json({ error: "Payment order details do not match the booking." }, { status: 400 });
     }
     const payment = await razorpay.payments.fetch(razorpayPaymentId);
-    if (payment.order_id !== razorpayOrderId || payment.status !== "captured") {
+    if (payment.order_id !== razorpayOrderId || payment.amount !== expectedAmount || payment.currency !== "INR" || payment.status !== "captured") {
       return NextResponse.json({ error: "Payment has not been captured." }, { status: 400 });
     }
     const existingAppointment = await prisma.appointment.findFirst({ where: { paymentId: razorpayPaymentId } });
-    if (existingAppointment) return NextResponse.json({ appointment: existingAppointment });
+    if (existingAppointment) return paymentResponse(existingAppointment);
 
-    const emergencyFee = emergencyConsultation ? 299 * 100 : 0;
+    const emergencyFee = emergencyConsultation ? EMERGENCY_FEE_PAISE : 0;
     const appointment = await prisma.appointment.create({
       data: {
         userId: (session.user as any).id,
@@ -45,7 +88,7 @@ export async function POST(request: Request) {
         notes, paymentId: razorpayPaymentId, orderId: razorpayOrderId, status: "CONFIRMED",
       },
     });
-    return NextResponse.json({ appointment }, { status: 201 });
+    return paymentResponse(appointment, 201);
   } catch (error) {
     console.error("Verify Razorpay payment error:", error);
     return NextResponse.json({ error: "Unable to confirm payment." }, { status: 500 });
