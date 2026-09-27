@@ -43,7 +43,6 @@
   --border: rgba(201,162,74,0.18);
   --shadow: 0 20px 48px -28px rgba(0,0,0,0.65);
 }
-
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; overflow-x:clip; }
 body{
@@ -286,7 +285,6 @@ ul{ list-style:none; margin:0; padding:0; }
   .hero-grid{ min-height:500px; }
   .hero-quote{ position:static; }
 }
-
 @media (max-width:600px){
   .hero{
     min-height:0;
@@ -294,7 +292,6 @@ ul{ list-style:none; margin:0; padding:0; }
     background-image:
       linear-gradient(180deg, rgba(248,247,242,.97) 0%, rgba(248,247,242,.9) 38%, rgba(248,247,242,.48) 72%, rgba(248,247,242,.18) 100%),
       url('/images/home_page_shiva.png');
-    /* Keep the complete Shiva artwork anchored at the base of the phone hero. */
     background-position:center, center bottom;
     background-size:cover, min(150vw, 560px) auto;
   }
@@ -958,6 +955,19 @@ ul{ list-style:none; margin:0; padding:0; }
 [data-theme="dark"] .service-detail-page::before{
   background-image:url('/images/session_bg_dark_view.png');
 }
+@media (max-width:600px){
+  .service-detail-page::before{
+    background-image:url('/images/book_session_phone_light.png');
+    background-position:center center;
+    background-size:cover;
+    filter:none;
+    transform:none;
+  }
+  [data-theme="dark"] .service-detail-page::before{
+    background-image:url('/images/book_session_phone_dark.png');
+  }
+  .service-detail-page::after{ background:color-mix(in srgb, var(--bg) 10%, transparent); }
+}
 .service-detail-grid{ display:grid; grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr); gap:44px; align-items:start; }
 .service-hero-detail{ padding:30px 0 48px; border-bottom:1px solid var(--border); }
 .service-hero-detail h1{ font-size:clamp(34px,4.4vw,58px); line-height:1.05; max-width:720px; }
@@ -1470,6 +1480,43 @@ ul{ list-style:none; margin:0; padding:0; }
     position:relative;
     overflow:visible;
   }
+  .service-card,
+  .home-services-grid .service-card,
+  .contact-layout > div:first-child .service-card,
+  .contact-layout > .service-card{
+    background-color:#fff;
+    background-image:url('/images/card_bg_light_theme.png');
+    background-position:center;
+    background-size:105% 103%;
+    background-repeat:no-repeat;
+  }
+  [data-theme="dark"] .service-card,
+  [data-theme="dark"] .home-services-grid .service-card,
+  [data-theme="dark"] .contact-layout > div:first-child .service-card,
+  [data-theme="dark"] .contact-layout > .service-card{
+    background-color:var(--dark-service-surface);
+    background-image:url('/images/card_bg_dark_theme.png');
+    background-position:center;
+    background-size:105% 103%;
+    background-repeat:no-repeat;
+  }
+  .service-card:has(> .service-card-image-light),
+  .service-card:has(> .service-card-image-dark){
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .service-card > .service-card-image-light,
+  .service-card > .service-card-image-dark{
+    width:min(100%, 240px);
+    height:136px;
+    align-self:center;
+    margin:0 auto 10px;
+    object-position:center;
+    background:transparent;
+  }
+  .service-card:has(> .service-card-image-light) h3,
+  .service-card:has(> .service-card-image-dark) h3{ text-align:center; }
   .service-card::before{
     content:"";
     position:absolute;
@@ -1489,6 +1536,7 @@ ul{ list-style:none; margin:0; padding:0; }
     color:var(--gold);
   }
   .services-grid .service-card{ display:grid; }
+  .home-services-grid .service-card{ display:flex; flex-direction:column; align-items:stretch; }
   .home-services-section::before{
     background-image:
       linear-gradient(to bottom, var(--bg) 0%, rgba(243,238,229,.6) 4%, transparent 16%, transparent 84%, rgba(243,238,229,.6) 96%, var(--bg) 100%),
@@ -1708,6 +1756,14 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 
 @media (max-width:600px){
+  .booking-page::before{
+    background-image:url('/images/book_session_phone_light.png');
+    background-position:center center;
+    background-size:cover;
+  }
+  [data-theme="dark"] .booking-page::before{
+    background-image:url('/images/book_session_phone_dark.png');
+  }
   .cta-banner-image{
     min-height:0;
     width:100%;
@@ -1724,21 +1780,118 @@ ul{ list-style:none; margin:0; padding:0; }
   .cta-banner-image::before{ content:""; display:block; width:100%; aspect-ratio:3 / 1; flex:0 0 auto; }
   .cta-banner-image > div{ max-width:none; margin:0 22px; transform:none; }
   .cta-banner-image .btn{ width:auto; max-width:calc(100% - 44px); justify-content:flex-start; margin:0 22px; }
+  .home-cta-banner{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-areas:"copy" "action";
+    align-content:center;
+    align-items:start;
+    width:min(100%, 420px);
+    aspect-ratio:940 / 1672;
+    min-height:0;
+    margin-inline:auto;
+    padding:26px 22px;
+    gap:14px;
+    background-color:var(--bg);
+    background-image:linear-gradient(to bottom, transparent 32%, color-mix(in srgb, var(--bg) 12%, transparent) 54%, color-mix(in srgb, var(--bg) 78%, transparent) 100%), url('/images/home_last_card_phone_light.png');
+    background-position:center;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+  }
+  .home-cta-banner::before{ display:none; }
+  .home-cta-banner > div{ grid-area:copy; max-width:none; width:100%; margin:0; transform:none; text-align:right; }
+  .home-cta-banner .btn{
+    grid-area:action;
+    justify-self:start;
+    width:100%;
+    max-width:260px;
+    min-height:44px;
+    margin:12px 0 0;
+    padding:12px 16px;
+    justify-content:center;
+    white-space:nowrap;
+    text-align:center;
+  }
+  .cta-banner-image > div:last-child{ align-items:flex-start; justify-content:flex-start; }
+  .cta-banner-image > div:last-child .btn{ width:100%; max-width:none; margin:0; justify-content:center; }
   [data-theme="dark"] .cta-banner-image{
-    background-color:#192821;
-    background-image:linear-gradient(110deg, rgba(29,48,40,.78), rgba(25,25,22,.64)), url('/images/home_last_card_website.png');
+    background-color:var(--bg);
+    background-image:linear-gradient(to bottom, transparent 32%, color-mix(in srgb, var(--bg) 16%, transparent) 54%, color-mix(in srgb, var(--bg) 84%, transparent) 100%), url('/images/home_last_card_phone_dark.png');
+  }
+  .cta-banner-image{
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-areas:"copy" "action";
+    align-content:center;
+    align-items:start;
+    min-height:0;
+    width:min(100%, 420px);
+    aspect-ratio:940 / 1672;
+    padding:26px 22px;
+    margin-inline:auto;
+    gap:14px;
+    background-color:var(--bg);
+    background-image:linear-gradient(to bottom, transparent 32%, color-mix(in srgb, var(--bg) 12%, transparent) 54%, color-mix(in srgb, var(--bg) 78%, transparent) 100%), url('/images/home_last_card_phone_light.png');
+    background-position:center;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+  }
+  .cta-banner-image::before{ display:none; }
+  .cta-banner-image > div:first-child{ grid-area:copy; max-width:none; width:100%; margin:0; transform:none; text-align:right; }
+  .cta-banner-image > .btn,
+  .cta-banner-image > div:last-child{
+    grid-area:action;
+    justify-self:start;
+    width:100%;
+    max-width:260px;
+    min-height:44px;
+    margin:12px 0 0;
+    padding:12px 16px;
+    justify-content:center;
+    white-space:nowrap;
+    text-align:center;
+  }
+  .cta-banner-image > div:last-child{ align-items:flex-start; justify-content:flex-start; }
+  .cta-banner-image > div:last-child .btn{ width:100%; max-width:none; margin:0; justify-content:center; }
+  [data-theme="dark"] .cta-banner-image{
+    background-color:var(--bg);
+    background-image:linear-gradient(to bottom, transparent 32%, color-mix(in srgb, var(--bg) 16%, transparent) 54%, color-mix(in srgb, var(--bg) 84%, transparent) 100%), url('/images/home_last_card_phone_dark.png');
+  }
+  .services-catalogue-section::before{
+    background-image:
+      linear-gradient(to right, var(--bg) 0%, color-mix(in srgb, var(--bg) 58%, transparent) 12%, transparent 32%, transparent 68%, color-mix(in srgb, var(--bg) 58%, transparent) 88%, var(--bg) 100%),
+      linear-gradient(to bottom, var(--bg) 0%, color-mix(in srgb, var(--bg) 46%, transparent) 10%, transparent 26%, transparent 78%, color-mix(in srgb, var(--bg) 54%, transparent) 92%, var(--bg) 100%),
+      url('/images/services_bg_phone_light.png');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+  [data-theme="dark"] .services-catalogue-section::before{
+    background-image:
+      linear-gradient(to right, var(--bg) 0%, color-mix(in srgb, var(--bg) 58%, transparent) 12%, transparent 32%, transparent 68%, color-mix(in srgb, var(--bg) 58%, transparent) 88%, var(--bg) 100%),
+      linear-gradient(to bottom, var(--bg) 0%, color-mix(in srgb, var(--bg) 46%, transparent) 10%, transparent 26%, transparent 78%, color-mix(in srgb, var(--bg) 54%, transparent) 92%, var(--bg) 100%),
+      url('/images/services_bg_phone_dark.png');
+  }
+  .services-catalogue-section::after{
+    content:"";
+    position:absolute;
+    z-index:0;
+    inset:0;
+    background:linear-gradient(to bottom, transparent 82%, var(--bg) 100%);
+    pointer-events:none;
   }
   .services-page-hero{
-    background-image:
-      linear-gradient(to bottom, rgba(244,239,227,.48), rgba(244,239,227,.52)),
-      url('/images/ph_services_bg.png');
+    background-color:var(--bg-alt);
+    background-image:none;
     background-position:center center;
     background-size:cover;
     border:0;
     box-shadow:none;
   }
   [data-theme="dark"] .services-page-hero{
-    background-image:url('/images/home_bg_last_dark_view.png');
+    background-color:var(--bg);
+    background-image:none;
   }
   .site-footer .footer-bottom{
     width:100%; justify-content:center; align-items:center; text-align:center;
@@ -1815,6 +1968,7 @@ ul{ list-style:none; margin:0; padding:0; }
     padding-top:clamp(220px, 60vw, 290px);
     text-align:center;
   }
+  [data-theme="dark"] .hero-copy{ padding-top:calc(clamp(220px, 60vw, 290px) + 30px); }
   .hero-eyebrow{ margin-bottom:6px; }
   .hero-title{
     width:100%;
