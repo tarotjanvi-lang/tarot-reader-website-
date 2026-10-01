@@ -10,6 +10,7 @@ export default function HomePage() {
     <>
       {/* ================= HERO ================= */}
       <section className="hero">
+        <div className="mobile-shiva-visual" aria-hidden="true" />
         <div className="container hero-grid">
           <div className="hero-copy">
             <div className="eyebrow hero-eyebrow">Tarot Reader &middot; Energy Alchemist &middot; Spiritual Guide</div>

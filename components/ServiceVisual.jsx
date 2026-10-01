@@ -1,6 +1,13 @@
 import Image from "next/image";
 import ServiceIcon from "./ServiceIcon";
 
+const IMAGE_ASSET_VERSION = "20260928";
+
+function versionedImage(src) {
+  const separator = src.includes("?") ? "&" : "?";
+  return `${src}${separator}v=${IMAGE_ASSET_VERSION}`;
+}
+
 export default function ServiceVisual({ service, className = "service-card-image" }) {
   const { lightImage, darkImage, imageAlt } = service;
 
@@ -15,7 +22,7 @@ export default function ServiceVisual({ service, className = "service-card-image
   };
 
   return <>
-    <Image {...imageProps} className={`${className} service-card-image-light service-card-image-${service.slug}`} src={lightImage} alt={imageAlt} />
-    {darkImage && <Image {...imageProps} className={`${className} service-card-image-dark service-card-image-${service.slug}`} src={darkImage} alt={imageAlt} />}
+    <Image {...imageProps} className={`${className} service-card-image-light service-card-image-${service.slug}`} src={versionedImage(lightImage)} alt={imageAlt} />
+    {darkImage && <Image {...imageProps} className={`${className} service-card-image-dark service-card-image-${service.slug}`} src={versionedImage(darkImage)} alt={imageAlt} />}
   </>;
 }
