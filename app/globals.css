@@ -1499,7 +1499,7 @@ ul{ list-style:none; margin:0; padding:0; }
     background-color:#fff;
     background-image:url('/images/card_bg_light_theme.png');
     background-position:center;
-    background-size:105% 103%;
+    background-size:100% 100%;
     background-repeat:no-repeat;
   }
   [data-theme="dark"] .service-card,
@@ -1509,7 +1509,7 @@ ul{ list-style:none; margin:0; padding:0; }
     background-color:var(--dark-service-surface);
     background-image:url('/images/card_bg_dark_theme.png');
     background-position:center;
-    background-size:105% 103%;
+    background-size:100% 100%;
     background-repeat:no-repeat;
   }
   .contact-layout > div:first-child .service-card,

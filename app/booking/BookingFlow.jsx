@@ -6,6 +6,8 @@ import { useSearchParams } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
 import { services } from "@/lib/services-data";
 import ServiceVisual from "@/components/ServiceVisual";
+import CountryCodeSelect from "@/components/CountryCodeSelect";
+import { getCountryCallingCode } from "libphonenumber-js";
 
 const STEP_LABELS = ["Session", "Your Details", "Payment", "Confirmation"];
 const URGENT_WHATSAPP_FEE = 299;
@@ -24,7 +26,7 @@ export default function BookingFlow() {
   const [details, setDetails] = useState({
     name: "",
     email: "",
-    countryCode: "+91",
+    country: "IN",
     phone: "",
     notes: "",
   });
@@ -112,7 +114,7 @@ export default function BookingFlow() {
           name: "The Soul Mirror",
           description: `${orderData.serviceName} with Janvi`,
           order_id: orderData.order.id,
-          prefill: { name: details.name, email: details.email, contact: details.phone },
+          prefill: { name: details.name, email: details.email, contact: `+${getCountryCallingCode(details.country)}${details.phone}` },
           theme: { color: "#b18a27" },
           handler: async (payment) => {
             try {
@@ -127,7 +129,7 @@ export default function BookingFlow() {
                   emergencyConsultation: urgentWhatsApp,
                   customerName: details.name,
                   customerEmail: details.email,
-                  customerPhone: `${details.countryCode} ${details.phone}`,
+                  customerPhone: `+${getCountryCallingCode(details.country)} ${details.phone}`,
                   notes: details.notes,
                 }),
               });
@@ -173,11 +175,11 @@ export default function BookingFlow() {
           email: "tarotjanvi@gmail.com",
           name: details.name,
           title: `New session appointment request - ${selectedService?.name}`,
-          message: `Session: ${selectedService?.name}\nDuration: ${selectedService?.duration}\nSession fee: ${selectedService?.priceLabel}\nEmergency consultation: ${urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No"}\nTotal payment: ₹${total.toLocaleString("en-IN")}\nPayment status: Paid and verified by Razorpay\nCustomer phone: ${details.countryCode} ${details.phone}\nCustomer notes: ${details.notes || "No additional notes provided"}`,
+          message: `Session: ${selectedService?.name}\nDuration: ${selectedService?.duration}\nSession fee: ${selectedService?.priceLabel}\nEmergency consultation: ${urgentWhatsApp ? `Yes - ₹${URGENT_WHATSAPP_FEE}` : "No"}\nTotal payment: ₹${total.toLocaleString("en-IN")}\nPayment status: Paid and verified by Razorpay\nCustomer phone: +${getCountryCallingCode(details.country)} ${details.phone}\nCustomer notes: ${details.notes || "No additional notes provided"}`,
           reply_to: details.email,
           customer_name: details.name,
           customer_email: details.email,
-          customer_phone: `${details.countryCode} ${details.phone}`,
+          customer_phone: `+${getCountryCallingCode(details.country)} ${details.phone}`,
           session_name: selectedService?.name,
           session_duration: selectedService?.duration,
           session_fee: selectedService?.priceLabel,
@@ -278,7 +280,7 @@ export default function BookingFlow() {
             <form onSubmit={handleDetails} style={{ maxWidth: 680, margin: "26px auto 0" }}>
               <div className="grid-2">
                 <div className="form-field"><label>Full Name</label><input type="text" required placeholder="Your name" value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} /></div>
-                <div className="form-field"><label>Phone / WhatsApp</label><div className="phone-input"><select aria-label="Country code" value={details.countryCode} onChange={(e) => setDetails({ ...details, countryCode: e.target.value })}><option value="+91">India (+91)</option><option value="+1">United States / Canada (+1)</option><option value="+44">United Kingdom (+44)</option><option value="+61">Australia (+61)</option><option value="+971">United Arab Emirates (+971)</option><option value="+65">Singapore (+65)</option><option value="+49">Germany (+49)</option><option value="+33">France (+33)</option><option value="+81">Japan (+81)</option><option value="+27">South Africa (+27)</option></select><input type="tel" required inputMode="numeric" maxLength={10} pattern="[0-9]{10}" title="Enter a 10-digit phone number" placeholder="10-digit phone number" value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })} /></div></div>
+                <div className="form-field"><label>Phone / WhatsApp</label><div className="phone-input"><CountryCodeSelect value={details.country} onChange={(country) => setDetails({ ...details, country })} /><input type="tel" required inputMode="numeric" maxLength={15} placeholder="Phone number" value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value.replace(/\D/g, "").slice(0, 15) })} /></div></div>
               </div>
               <div className="form-field"><label>Email</label><input type="email" required placeholder="you@email.com" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} /></div>
               <div className="form-field"><label>What would you like to be guided on?</label><textarea placeholder="Share a little context so Janvi can prepare..." value={details.notes} onChange={(e) => setDetails({ ...details, notes: e.target.value })} /></div>

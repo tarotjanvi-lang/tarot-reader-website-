@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import CountryCodeSelect from "@/components/CountryCodeSelect";
+import { getCountryCallingCode } from "libphonenumber-js";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-
+  const [country, setCountry] = useState("IN");
   const [status, setStatus] = useState("");
 
   async function handleSubmit(e) {
@@ -29,7 +31,7 @@ export default function ContactForm() {
           to_email: "tarotjanvi@gmail.com",
           name: data.get("name"),
           email: data.get("email"),
-          phone: data.get("phone") || "Not provided",
+          phone: data.get("phone") ? `+${getCountryCallingCode(country)} ${data.get("phone")}` : "Not provided",
           title: `Contact enquiry - ${data.get("topic")}`,
           message: data.get("message") || "No message provided",
           reply_to: data.get("email"),
@@ -56,7 +58,7 @@ export default function ContactForm() {
         <div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" required placeholder="you@email.com" /></div>
       </div>
       <div className="grid-2">
-        <div className="form-field"><label htmlFor="phone">Phone / WhatsApp</label><input id="phone" name="phone" type="tel" inputMode="numeric" maxLength={10} pattern="[0-9]{10}" title="Enter a 10-digit phone number" placeholder="10-digit phone number" onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 10); }} /></div>
+        <div className="form-field"><label htmlFor="phone">Phone / WhatsApp</label><div className="phone-input"><CountryCodeSelect value={country} onChange={setCountry} /><input id="phone" name="phone" type="tel" inputMode="numeric" maxLength={15} placeholder="Phone number" onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 15); }} /></div></div>
         <div className="form-field">
           <label htmlFor="topic">I&apos;m interested in</label>
           <select id="topic" name="topic">
