@@ -9,6 +9,10 @@ export const metadata = {
 export default function TermsPage() {
   return (
     <main className="page-shell legal-page">
+      <div className="legal-star-field" aria-hidden="true">
+        <span>✦</span><span>✧</span><span>✦</span><span>⋆</span><span>✧</span><span>✦</span><span>⋆</span>
+        <span>✦</span><span>✧</span><span>✦</span><span>⋆</span><span>✧</span><span>✦</span><span>⋆</span>
+      </div>
       <section className="section-tight section-hero legal-hero">
         <div className="container small-container">
           <div className="eyebrow">Legal &amp; service policy</div>
