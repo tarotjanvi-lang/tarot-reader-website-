@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SoulMirror by Janvi â€” Core Stylesheet
+   SoulMirror by Janvi — Core Stylesheet
    ========================================================================== */
 
 @font-face {
@@ -30,7 +30,7 @@
 }
 
 [data-theme="dark"]{
-  /* Warm espresso palette â€” softer than pure black while preserving the dark luxury look */
+  /* Warm espresso palette — softer than pure black while preserving the dark luxury look */
   --bg: #1B1611;
   --bg-alt: #241D16;
   --card: #272018;
@@ -216,11 +216,11 @@ ul{ list-style:none; margin:0; padding:0; }
   background:var(--bg-alt); position:relative; cursor:pointer; flex-shrink:0;
 }
 .theme-toggle::after{
-  content:"â˜€"; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%;
+  content:"?"; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%;
   background:var(--gold); color:#211703; font-size:11px; display:flex; align-items:center; justify-content:center;
   transition:transform .3s ease; box-shadow:0 2px 6px rgba(0,0,0,.25);
 }
-[data-theme="dark"] .theme-toggle::after{ content:"â˜¾"; transform:translateX(20px); background:var(--teal-soft); color:var(--gold); }
+[data-theme="dark"] .theme-toggle::after{ content:"?"; transform:translateX(20px); background:var(--teal-soft); color:var(--gold); }
 
 .nav-burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
 .nav-burger span{ width:22px; height:2px; background:var(--ink); display:block; }
@@ -731,7 +731,7 @@ ul{ list-style:none; margin:0; padding:0; }
 .page-hero h1{ font-size:clamp(30px,4.4vw,46px); }
 .page-hero p{ max-width:560px; margin:0 auto; }
 
-/* Service category heroes â€” Tarot, Healing, Spellwork & Soul Guidance */
+/* Service category heroes — Tarot, Healing, Spellwork & Soul Guidance */
 .service-category-hero{
   position:relative;
   isolation:isolate;
@@ -800,7 +800,7 @@ ul{ list-style:none; margin:0; padding:0; }
   text-shadow:0 1px 8px rgba(255,255,255,.35);
 }
 .service-category-hero p::after{
-  content:"âœ¦";
+  content:"?";
   display:block;
   margin:18px auto 0;
   color:var(--gold);
@@ -1920,7 +1920,7 @@ ul{ list-style:none; margin:0; padding:0; }
     box-shadow:0 0 0 2px rgba(161,139,88,0.12);
   }
   .service-card::after{
-    content:"âœ¦";
+    content:"?";
     position:absolute;
     right:15px; top:12px;
     font-size:10px;
@@ -2414,7 +2414,7 @@ ul{ list-style:none; margin:0; padding:0; }
 
 
 /* =========================================================
-   Service catalogue cards â€” compact, spacious and gold-framed
+   Service catalogue cards — compact, spacious and gold-framed
    Applies to Tarot, Signature Readings and other service
    category grids.
    ========================================================= */
@@ -2783,7 +2783,7 @@ ul{ list-style:none; margin:0; padding:0; }
 
 /* =========================================================
    Premium motion system
-   Subtle, elegant motion across the site â€” no distracting effects.
+   Subtle, elegant motion across the site — no distracting effects.
    ========================================================= */
 
 @keyframes sm-page-enter{
@@ -2930,7 +2930,7 @@ main{
   }
 }
 
-/* Services page â€” unified warm backdrop and calmer visual hierarchy */
+/* Services page — unified warm backdrop and calmer visual hierarchy */
 [data-theme="dark"] .services-page-hero{
   border-bottom:1px solid rgba(201,162,74,.12);
 }
@@ -2956,7 +2956,7 @@ main{
   box-shadow:0 0 0 4px rgba(27,22,17,.75), 0 18px 36px rgba(0,0,0,.24);
 }
 
-/* About page â€” editorial layout */
+/* About page — editorial layout */
 .about-intro{ padding:74px 0 54px; }
 .about-intro-grid{ grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr); gap:72px; }
 .about-intro-copy{ padding:10px 0 0; max-width:540px; }
@@ -3025,7 +3025,7 @@ main{
 }
 
 /* =========================================================
-   Service category cards â€” premium gold frame
+   Service category cards — premium gold frame
    ========================================================= */
 .service-category-card{
   border:1px solid rgba(194,157,77,.82) !important;
@@ -3081,7 +3081,7 @@ main{
   color:#1d160c !important;
 }
 
-/* Booking page â€” keep the hero clean; no decorative image behind the heading. */
+/* Booking page — keep the hero clean; no decorative image behind the heading. */
 .booking-page > .page-hero,
 .booking-page > .page-hero::before,
 .booking-page > .page-hero::after{
@@ -3095,7 +3095,7 @@ main{
   background:transparent !important;
 }
 
-/* Reviews â€” fixed full-page artwork, content scrolls above it. */
+/* Reviews — fixed full-page artwork, content scrolls above it. */
 .reviews-page{
   position:relative;
   isolation:isolate;
@@ -3148,7 +3148,7 @@ main{
   backdrop-filter:blur(2px);
 }
 
-/* Legal pages â€” editorial, readable, premium layout. */
+/* Legal pages — editorial, readable, premium layout. */
 .legal-page{
   min-height:100vh;
   background:
@@ -3165,7 +3165,7 @@ main{
     var(--bg) !important;
 }
 .legal-hero::after{
-  content:"âœ¦";
+  content:"?";
   position:absolute;
   right:10%;
   bottom:28px;
@@ -3253,7 +3253,7 @@ main{
   background:var(--gold);
 }
 
-/* Privacy page â€” six sections become a clean editorial grid without changing content. */
+/* Privacy page — six sections become a clean editorial grid without changing content. */
 .privacy-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -3277,7 +3277,7 @@ main{
   font-size:20px;
 }
 .privacy-grid .terms-note h3::before{
-  content:"âœ¦";
+  content:"?";
   color:var(--gold);
   font-size:13px;
   flex:0 0 auto;
@@ -3295,7 +3295,7 @@ main{
   .privacy-grid .terms-note{ min-height:0; }
 }
 
-/* Contact form â€” neutral warm placeholders instead of browser-blue text. */
+/* Contact form — neutral warm placeholders instead of browser-blue text. */
 .contact-page .form-field input::placeholder,
 .contact-page .form-field textarea::placeholder{
   color:#9b917f !important;
@@ -3467,7 +3467,7 @@ main{
   .legal-star-field span:nth-child(even){display:none}
 }
 
-/* Contact form â€” theme-aware fields and readable placeholders. */
+/* Contact form — theme-aware fields and readable placeholders. */
 .contact-page .service-card .form-field input,
 .contact-page .service-card .form-field select,
 .contact-page .service-card .form-field textarea{
@@ -3523,7 +3523,7 @@ main{
   -webkit-text-fill-color:#d1c2a5 !important;
 }
 
-/* Global celestial accents â€” subtle scattered stars on every page. */
+/* Global celestial accents — subtle scattered stars on every page. */
 body{
   position:relative;
 }
@@ -3604,7 +3604,7 @@ body > .site-star-field{
 }
 
 
-/* Services catalogue â€” match the clean double-line border used on the Home page.
+/* Services catalogue — match the clean double-line border used on the Home page.
    No brown-filled frame: only the thin gold outline, spacing, and corner accents. */
 .services-catalogue-grid .service-card{
   border:1px solid rgba(177,143,74,.72) !important;
@@ -3663,7 +3663,7 @@ body > .site-star-field{
 }
 
 
-/* Booking account card â€” keep the espresso artwork only in Dark mode.
+/* Booking account card — keep the espresso artwork only in Dark mode.
    Light mode uses the same warm ivory palette as the rest of the site. */
 [data-theme="light"] .booking-page .account-required-card{
   background:
@@ -3702,7 +3702,7 @@ body > .site-star-field{
 }
 
 
-/* Reviews hero â€” clean typography panel. Keep artwork around the page,
+/* Reviews hero — clean typography panel. Keep artwork around the page,
    but never place decorative imagery directly behind the main heading. */
 .reviews-page .reviews-heading-art{
   position:relative;
@@ -3765,7 +3765,7 @@ body > .site-star-field{
 }
 
 /* =========================================================
-   PHONE-ONLY REFINEMENTS â€” 2026-10-05
+   PHONE-ONLY REFINEMENTS — 2026-10-05
    Desktop/laptop styles are intentionally untouched.
    ========================================================= */
 @media (max-width: 600px){
@@ -3960,7 +3960,7 @@ body > .site-star-field{
 }
 
 /* =========================================================
-   PHONE-ONLY FINAL HERO IMAGE FIX â€” 2026-10-05
+   PHONE-ONLY FINAL HERO IMAGE FIX — 2026-10-05
    ========================================================= */
 @media (max-width:600px){
   /* The Shiva artwork must exist in ONE place on mobile: .mobile-shiva-visual.
@@ -4032,7 +4032,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   MOBILE REFINEMENTS â€” 2026-10-05
+   MOBILE REFINEMENTS — 2026-10-05
    Phone-only unless explicitly noted in the About redesign.
    ========================================================= */
 @media (max-width:600px){
@@ -4238,7 +4238,7 @@ body > .site-star-field{
 }
 
 /* =========================================================
-   ABOUT PAGE â€” full redesign for desktop + phone, both themes
+   ABOUT PAGE — full redesign for desktop + phone, both themes
    ========================================================= */
 .about-page{
   position:relative;
@@ -4634,7 +4634,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   SECOND VISUAL PASS â€” 2026-10-05
+   SECOND VISUAL PASS — 2026-10-05
    Service/home refinements remain phone-only.
    About page refinement applies to desktop + phone.
    ========================================================= */
@@ -4757,7 +4757,7 @@ body > .site-star-field{
       linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
   }
   .service-category-hero .container::before{
-    content:"âœ¦  â”€â”€â”€â”€â”€  âœ¦";
+    content:"?  -----  ?";
     display:block;
     margin:0 auto 18px;
     color:var(--gold);
@@ -4972,7 +4972,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   FINAL MOBILE + REVIEWS PASS â€” 2026-10-05
+   FINAL MOBILE + REVIEWS PASS — 2026-10-05
    ========================================================= */
 
 /* ---------- Service category pages: clean hero + consistent cards ---------- */
@@ -5046,7 +5046,7 @@ body > .site-star-field{
     filter:blur(1px);
   }
 
-  /* Keep only â€œis applicable after paymentâ€ together on one line. */
+  /* Keep only “is applicable after payment” together on one line. */
   .emergency-contact-card p{
     font-size:12.5px !important;
     line-height:1.45;
@@ -5060,7 +5060,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   LAYOUT REFINEMENTS â€” 2026-10-05
+   LAYOUT REFINEMENTS — 2026-10-05
    ========================================================= */
 
 /* Home service numbering: right-top instead of left-top. */
@@ -5169,7 +5169,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   ABOUT + REVIEWS â€” VERIFIED VISUAL REFINEMENT PASS
+   ABOUT + REVIEWS — VERIFIED VISUAL REFINEMENT PASS
    Requested 2026-10-05
    ========================================================= */
 
@@ -5221,7 +5221,7 @@ body > .site-star-field{
   text-transform:uppercase;
 }
 .about-page .about-image-caption::before{
-  content:"âœ¦";
+  content:"?";
   font-size:10px;
   color:var(--gold);
 }
@@ -5445,7 +5445,7 @@ body > .site-star-field{
   backdrop-filter:blur(10px);
 }
 .reviews-page .testi-card::before{
-  content:"â€œ";
+  content:"“";
   position:absolute;
   top:-14px;
   right:14px;
@@ -5514,7 +5514,7 @@ body > .site-star-field{
   border-top-color:rgba(205,167,87,.20);
 }
 
-/* ---------- REVIEWS: use the exact CTA artwork used by â€œReady to transform your life?â€ ---------- */
+/* ---------- REVIEWS: use the exact CTA artwork used by “Ready to transform your life?” ---------- */
 .reviews-page .reviews-cta-banner{
   background-color:var(--bg) !important;
   background-image:
@@ -5606,7 +5606,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   LAPTOP-ONLY REFINEMENT PASS â€” 2026-10-05
+   LAPTOP-ONLY REFINEMENT PASS — 2026-10-05
    All rules in this block are intentionally scoped to min-width:861px.
    Phone/mobile styling is not changed.
    ========================================================= */
@@ -5641,7 +5641,7 @@ body > .site-star-field{
     margin-bottom:28px;
   }
 
-  /* ---------- ABOUT: Soul Mirror approach â€” horizontal editorial timeline ---------- */
+  /* ---------- ABOUT: Soul Mirror approach — horizontal editorial timeline ---------- */
   .about-page .about-practice-new .about-practice-intro h2{
     color:#9a7545;
     font-weight:600;
@@ -6052,7 +6052,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   LAPTOP-ONLY VISUAL CORRECTIONS â€” 2026-10-06
+   LAPTOP-ONLY VISUAL CORRECTIONS — 2026-10-06
    Strictly scoped to min-width:861px. Mobile/tablet styling is unchanged.
    ========================================================= */
 
@@ -6060,7 +6060,7 @@ body > .site-star-field{
 
 @media (min-width:861px){
 
-  /* ABOUT â€” move the two actions under the Soul Mirror signature on the left. */
+  /* ABOUT — move the two actions under the Soul Mirror signature on the left. */
   .about-page .about-desktop-copy-actions{
     display:flex;
     align-items:center;
@@ -6077,11 +6077,11 @@ body > .site-star-field{
   }
   .about-page .about-photo-actions{display:none !important;}
 
-  /* NAVBAR â€” larger brand mark and wordmark on laptop. */
+  /* NAVBAR — larger brand mark and wordmark on laptop. */
   .nav .logo-mark{width:48px;height:48px;}
   .nav .logo-text b{font-size:18px;}
 
-  /* BOOKING â€” keep all four steps on one single line. */
+  /* BOOKING — keep all four steps on one single line. */
   .booking-page .steps-track{
     width:100%;
     max-width:760px;
@@ -6099,13 +6099,13 @@ body > .site-star-field{
     width:40px;
   }
 
-  /* BOOKING â€” keep service-card artwork inside each card.
+  /* BOOKING — keep service-card artwork inside each card.
      Without a positioned card, its decorative ::before can paint
      over the parent and behind "Choose your session". */
   .booking-page .select-service{position:relative;}
   .booking-page .booking-step:first-child{background-image:none !important;}
 
-  /* REVIEWS â€” replace the purple-looking controls with warm site surfaces. */
+  /* REVIEWS — replace the purple-looking controls with warm site surfaces. */
   .reviews-page .review-form input,
   .reviews-page .review-form select,
   .reviews-page .review-form textarea{
@@ -6146,7 +6146,7 @@ body > .site-star-field{
 }
 
 
-/* Home service numbers â€” laptop only: remove the colored box behind 01â€“04. */
+/* Home service numbers — laptop only: remove the colored box behind 01–04. */
 @media (min-width:861px){
   .home-services-grid .home-service-number{
     background:transparent !important;
@@ -6156,7 +6156,7 @@ body > .site-star-field{
 }
 
 
-/* Booking refinements â€” laptop session/details only. */
+/* Booking refinements — laptop session/details only. */
 @media (min-width:861px){
   /* Details form: warm, muted placeholders that match the Soul Mirror palette. */
   .booking-page .form-field input::placeholder,
@@ -6217,7 +6217,7 @@ body > .site-star-field{
 }
 
 
-/* Booking details â€” dark laptop palette correction. */
+/* Booking details — dark laptop palette correction. */
 @media (min-width:861px){
   [data-theme="dark"] .booking-page .form-field input,
   [data-theme="dark"] .booking-page .form-field select,
@@ -6252,7 +6252,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY service refinements â€” October 2026
+   PHONE-ONLY service refinements — October 2026
    These rules intentionally apply only at <=600px.
    ========================================================= */
 @media (max-width:600px){
@@ -6394,7 +6394,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY FINAL SERVICE + ABOUT FIXES â€” 2026-10-06
+   PHONE-ONLY FINAL SERVICE + ABOUT FIXES — 2026-10-06
    ========================================================= */
 @media (max-width:600px){
   /* Home service numbers: keep the real label top-right and hide the
@@ -6459,7 +6459,7 @@ body > .site-star-field{
     animation:sm-service-card-glitter 4.6s ease-in-out infinite;
   }
   .service-card-glitter::after{
-    content:"âœ¦";
+    content:"?";
     position:absolute;
     top:18%;
     left:68%;
@@ -6563,7 +6563,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY REVIEWS CTA ARTWORK FIX â€” 2026-10-06
+   PHONE-ONLY REVIEWS CTA ARTWORK FIX — 2026-10-06
    Preserve the CTA artwork proportions on the phone instead of
    stretching the desktop banner image to the tall mobile card.
    ========================================================= */
@@ -6583,7 +6583,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY ABOUT BUTTON REFINEMENT â€” 2026-10-06
+   PHONE-ONLY ABOUT BUTTON REFINEMENT — 2026-10-06
    ========================================================= */
 @media (max-width:600px){
   /* Give the first CTA a little more breathing room below the portrait. */
@@ -6609,7 +6609,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY REVIEWS BACKGROUND ARTWORK â€” 2026-10-06
+   PHONE-ONLY REVIEWS BACKGROUND ARTWORK — 2026-10-06
    Use dedicated light/dark artwork on phones only. The artwork
    keeps the centre quiet so the review form and CTA stay clean.
    ========================================================= */
@@ -6661,7 +6661,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY HOME VISIBILITY + STORY DETAIL REFINEMENT â€” 2026-10-06
+   PHONE-ONLY HOME VISIBILITY + STORY DETAIL REFINEMENT — 2026-10-06
    ========================================================= */
 @media (max-width:600px){
   /* 1) Keep every hero badge legible over the Shiva artwork. */
@@ -6774,7 +6774,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   HOME DESKTOP VISIBILITY + STORY DETAIL REFINEMENT â€” 2026-10-06
+   HOME DESKTOP VISIBILITY + STORY DETAIL REFINEMENT — 2026-10-06
    Explicit desktop refinement for the Home page.
    ========================================================= */
 @media (min-width:601px){
@@ -6877,7 +6877,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   HOME HERO + CTA / STORY BORDER CORRECTION â€” 2026-10-06
+   HOME HERO + CTA / STORY BORDER CORRECTION — 2026-10-06
    ========================================================= */
 
 /* Replace the rounded hero pills with clean typography so the
@@ -6963,7 +6963,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   JANVI PHOTO REPLACEMENT â€” LAPTOP + PHONE â€” 2026-10-06
+   JANVI PHOTO REPLACEMENT — LAPTOP + PHONE — 2026-10-06
    Use the supplied 3:2 light/dark portraits and preserve their
    composition on both responsive layouts.
    ========================================================= */
@@ -7029,7 +7029,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   REVIEWS CTA â€” LAPTOP TEXT POSITION â€” 2026-10-06
+   REVIEWS CTA — LAPTOP TEXT POSITION — 2026-10-06
    ========================================================= */
 @media (min-width:601px){
   .reviews-page .reviews-cta-banner.cta-banner-image > div:first-child{
@@ -7039,7 +7039,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   REVIEWS STATS â€” LAPTOP FOUR-COLUMN FIT â€” 2026-10-06
+   REVIEWS STATS — LAPTOP FOUR-COLUMN FIT — 2026-10-06
    ========================================================= */
 @media (min-width:821px){
   .reviews-page .stats-bar{
@@ -7049,7 +7049,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   ABOUT PAGE â€” COMPLETE VISUAL REFINEMENT â€” 2026-10-06
+   ABOUT PAGE — COMPLETE VISUAL REFINEMENT — 2026-10-06
    A more editorial, calm and premium Soul Mirror composition.
    ========================================================= */
 
@@ -7499,7 +7499,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   ABOUT â€” RESTRUCTURE VALUES + PRACTICE SECTIONS â€” 2026-10-06
+   ABOUT — RESTRUCTURE VALUES + PRACTICE SECTIONS — 2026-10-06
    Laptop + phone editorial redesign based on the supplied screenshots.
    ========================================================= */
 
@@ -7843,7 +7843,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   ABOUT â€” HERO + APPROACH FINAL REFINEMENT â€” 2026-10-06
+   ABOUT — HERO + APPROACH FINAL REFINEMENT — 2026-10-06
    ========================================================= */
 
 /* The hero introduction is now treated as a deliberate editorial statement. */
@@ -7919,7 +7919,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   ABOUT APPROACH â€” MAKE ALL THREE LAPTOP CARDS CONSISTENT
+   ABOUT APPROACH — MAKE ALL THREE LAPTOP CARDS CONSISTENT
    ========================================================= */
 @media (min-width:861px){
   .about-page .about-practice-list{
@@ -7982,7 +7982,7 @@ body > .site-star-field{
 
 
 /* =========================================================
-   ABOUT JOURNEY ARTWORK â€” LIGHT/DARK + RESPONSIVE FIT
+   ABOUT JOURNEY ARTWORK — LIGHT/DARK + RESPONSIVE FIT
    ========================================================= */
 .about-page .about-story-new .about-story-image{
   overflow:hidden;
@@ -8038,7 +8038,7 @@ body > .site-star-field{
 }
 
 
-/* Journey artwork â€” keep the important left-side composition visible on laptop */
+/* Journey artwork — keep the important left-side composition visible on laptop */
 @media (min-width:861px){
   .about-page .about-story-new .about-journey-image{
     object-position:left center !important;
@@ -8046,7 +8046,7 @@ body > .site-star-field{
 }
 
 
-/* Booking â€” clean session selection cards without the decorative service-card artwork. */
+/* Booking — clean session selection cards without the decorative service-card artwork. */
 .booking-page .booking-step:first-child .select-service{
   background-image:none !important;
   background-color:var(--card) !important;
@@ -8057,4 +8057,351 @@ body > .site-star-field{
 [data-theme="dark"] .booking-page .booking-step:first-child .select-service{
   background-image:none !important;
   background-color:var(--dark-service-surface) !important;
+}
+
+
+/* =========================================================
+   Premium Tarot Reading Catalogue
+   Light + dark theme
+   ========================================================= */
+.tarot-reading-hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:390px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  padding:76px 0 64px;
+  background:
+    radial-gradient(circle at 18% 48%, rgba(190,151,72,.14), transparent 27%),
+    radial-gradient(circle at 82% 48%, rgba(190,151,72,.12), transparent 28%),
+    linear-gradient(180deg, var(--bg-alt), var(--bg));
+  border-bottom:1px solid var(--border);
+}
+.tarot-reading-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.22), transparent 28%, transparent 72%, rgba(255,255,255,.22)),
+    url('/images/tarot_reading_service_home.png') left center / 32% auto no-repeat;
+  opacity:.62;
+}
+.tarot-reading-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(90deg, var(--bg) 0%, transparent 22%, transparent 78%, var(--bg) 100%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+  pointer-events:none;
+}
+.tarot-reading-hero .container{ position:relative; }
+.tarot-reading-hero-art{
+  position:absolute;
+  width:260px;
+  height:260px;
+  top:50%;
+  transform:translateY(-50%);
+  background:center/contain no-repeat;
+  opacity:.72;
+  pointer-events:none;
+}
+.tarot-reading-hero-art-left{
+  left:-70px;
+  background-image:url('/images/tarot_reading_service_home.png');
+}
+.tarot-reading-hero-art-right{
+  right:-70px;
+  background-image:url('/images/tarot_reading_service_home.png');
+  transform:translateY(-50%) scaleX(-1);
+}
+.tarot-reading-eyebrow{
+  justify-content:center;
+  color:var(--gold);
+  letter-spacing:.18em;
+  margin-bottom:20px;
+}
+.tarot-reading-hero h1{
+  position:relative;
+  margin:0 auto;
+  max-width:760px;
+  font-size:clamp(40px,5vw,68px);
+  line-height:1.05;
+  letter-spacing:-.025em;
+}
+.tarot-reading-hero p{
+  max-width:590px;
+  margin:22px auto 0;
+  font-size:16px;
+  line-height:1.8;
+  color:var(--ink-soft);
+}
+.tarot-reading-divider{
+  display:block;
+  width:max-content;
+  margin:22px auto 0;
+  color:var(--gold);
+  font-size:20px;
+  letter-spacing:.7em;
+  padding-left:.7em;
+}
+.tarot-reading-catalogue-section{
+  padding-top:38px;
+}
+.tarot-reading-filters{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 auto 38px;
+}
+.tarot-filter{
+  appearance:none;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--ink-soft);
+  border-radius:999px;
+  padding:11px 19px;
+  font-family:'Jost',sans-serif;
+  font-size:13px;
+  letter-spacing:.02em;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.tarot-filter:hover{
+  color:var(--ink);
+  border-color:var(--gold);
+  transform:translateY(-1px);
+}
+.tarot-filter.is-active{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#fff;
+  box-shadow:0 8px 22px rgba(161,139,88,.18);
+}
+.tarot-reading-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;
+}
+.tarot-reading-card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:22px 20px 18px;
+  border-color:rgba(161,139,88,.28);
+  box-shadow:0 10px 30px rgba(65,52,30,.055);
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.tarot-reading-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(161,139,88,.62);
+  box-shadow:0 18px 40px rgba(65,52,30,.13);
+}
+.tarot-card-number{
+  position:absolute;
+  top:14px;
+  right:16px;
+  z-index:4;
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  color:var(--gold);
+  opacity:.82;
+}
+.tarot-reading-card .service-card-image-light,
+.tarot-reading-card .service-card-image-dark{
+  width:100%;
+  height:190px;
+  object-fit:contain;
+  object-position:center;
+  margin:4px 0 8px;
+  transition:transform .35s ease;
+}
+.tarot-reading-card:hover .service-card-image-light,
+.tarot-reading-card:hover .service-card-image-dark{
+  transform:scale(1.035);
+}
+.tarot-card-content{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.tarot-card-content h3{
+  margin:8px 0 9px;
+  font-family:'Playfair Display',serif;
+  font-size:21px;
+  line-height:1.15;
+  color:var(--ink);
+}
+.tarot-card-content p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:14px;
+  line-height:1.65;
+}
+.tarot-card-price{
+  display:flex;
+  flex-direction:column;
+  margin-top:auto;
+  padding:22px 0 14px;
+}
+.tarot-price-label{
+  color:var(--ink-soft);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+}
+.tarot-card-price strong{
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:27px;
+  line-height:1.1;
+}
+.tarot-card-button{
+  width:100%;
+  justify-content:center;
+  gap:9px;
+  padding:13px 14px;
+}
+.tarot-reading-help-section{
+  padding-top:10px;
+}
+.tarot-reading-help-card{
+  position:relative;
+  overflow:hidden;
+  min-height:240px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  background:
+    radial-gradient(circle at 15% 50%, rgba(190,151,72,.12), transparent 26%),
+    radial-gradient(circle at 85% 50%, rgba(190,151,72,.12), transparent 26%),
+    var(--card);
+  box-shadow:var(--shadow);
+}
+.tarot-help-art{
+  position:absolute;
+  inset:0;
+  background:
+    url('/images/soul_guidance_light_service.png') left center / 24% auto no-repeat,
+    url('/images/soul_guidance_light_service.png') right center / 24% auto no-repeat;
+  opacity:.22;
+  pointer-events:none;
+}
+.tarot-help-copy{
+  position:relative;
+  z-index:1;
+  max-width:660px;
+  padding:42px 24px;
+}
+.tarot-help-copy .eyebrow{ justify-content:center; }
+.tarot-help-copy h2{
+  margin:8px 0 12px;
+  font-size:clamp(25px,3vw,34px);
+}
+.tarot-help-copy p{
+  max-width:560px;
+  margin:0 auto 22px;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+[data-theme="dark"] .tarot-reading-hero{
+  background:
+    radial-gradient(circle at 18% 48%, rgba(205,167,87,.12), transparent 27%),
+    radial-gradient(circle at 82% 48%, rgba(205,167,87,.1), transparent 28%),
+    linear-gradient(180deg, var(--bg-alt), var(--bg));
+}
+[data-theme="dark"] .tarot-reading-hero::before{
+  background-image:
+    linear-gradient(90deg, rgba(8,7,6,.35), transparent 28%, transparent 72%, rgba(8,7,6,.35)),
+    url('/images/tarot_reading_service_home.png');
+  opacity:.3;
+}
+[data-theme="dark"] .tarot-reading-hero::after{
+  background:
+    linear-gradient(90deg, var(--bg) 0%, transparent 22%, transparent 78%, var(--bg) 100%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+}
+[data-theme="dark"] .tarot-reading-hero-art-left,
+[data-theme="dark"] .tarot-reading-hero-art-right{
+  background-image:url('/images/tarot_reading_service_dark_service.png');
+  opacity:.34;
+}
+[data-theme="dark"] .tarot-filter{
+  background:rgba(25,21,18,.72);
+  color:#d8d0c1;
+}
+[data-theme="dark"] .tarot-filter.is-active{
+  color:#fff;
+  background:var(--gold);
+}
+[data-theme="dark"] .tarot-reading-card{
+  box-shadow:0 16px 38px rgba(0,0,0,.24);
+  border-color:rgba(205,167,87,.22);
+}
+[data-theme="dark"] .tarot-reading-card:hover{
+  border-color:rgba(205,167,87,.58);
+  box-shadow:0 20px 45px rgba(0,0,0,.34);
+}
+[data-theme="dark"] .tarot-help-art{
+  background:
+    url('/images/soul_guidance_dark_service.png') left center / 24% auto no-repeat,
+    url('/images/soul_guidance_dark_service.png') right center / 24% auto no-repeat;
+  opacity:.16;
+}
+[data-theme="dark"] .tarot-reading-help-card{
+  background:
+    radial-gradient(circle at 15% 50%, rgba(205,167,87,.1), transparent 26%),
+    radial-gradient(circle at 85% 50%, rgba(205,167,87,.1), transparent 26%),
+    var(--card);
+}
+@media (max-width:1050px){
+  .tarot-reading-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .tarot-reading-hero-art{ opacity:.42; }
+}
+@media (max-width:650px){
+  .tarot-reading-hero{
+    min-height:330px;
+    padding:56px 0 48px;
+  }
+  .tarot-reading-hero h1{ font-size:39px; }
+  .tarot-reading-hero p{ font-size:14px; padding:0 12px; }
+  .tarot-reading-hero-art{
+    width:150px;
+    height:150px;
+    opacity:.18;
+  }
+  .tarot-reading-hero-art-left{ left:-62px; }
+  .tarot-reading-hero-art-right{ right:-62px; }
+  .tarot-reading-catalogue-section{ padding-top:26px; }
+  .tarot-reading-filters{
+    justify-content:flex-start;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding:3px 2px 10px;
+    margin-bottom:24px;
+    scrollbar-width:none;
+  }
+  .tarot-reading-filters::-webkit-scrollbar{ display:none; }
+  .tarot-filter{ flex:0 0 auto; padding:10px 15px; }
+  .tarot-reading-grid{ grid-template-columns:1fr; gap:18px; }
+  .tarot-reading-card{ padding:18px 16px 16px; }
+  .tarot-reading-card .service-card-image-light,
+  .tarot-reading-card .service-card-image-dark{ height:170px; }
+  .tarot-card-content h3{ font-size:20px; }
+  .tarot-reading-help-card{ min-height:280px; }
+  .tarot-help-art{
+    background-size:38% auto;
+    opacity:.13;
+  }
 }
