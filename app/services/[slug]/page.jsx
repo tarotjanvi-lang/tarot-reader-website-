@@ -47,7 +47,7 @@ export default function ServiceDetailPage({ params }) {
   if (category) {
     return (
       <>
-        <section className="page-hero">
+        <section className={`page-hero service-category-hero service-category-${category.slug}`}>
           <div className="container">
             <div className="eyebrow" style={{ justifyContent: "center" }}>{category.name}</div>
             <h1>{category.name}</h1>
