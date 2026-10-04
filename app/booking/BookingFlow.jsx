@@ -340,7 +340,22 @@ export default function BookingFlow() {
               </div>
               <div className="form-field"><label>Email</label><input type="email" required placeholder="you@email.com" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} /></div>
               <div className="form-field"><label>What would you like to be guided on?</label><textarea placeholder="Share a little context so Janvi can prepare..." value={details.notes} onChange={(e) => setDetails({ ...details, notes: e.target.value })} /></div>
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12 }}><button type="button" className="btn btn-outline" onClick={() => goTo(1)}>Back</button><button type="submit" className="btn btn-primary">Next <span aria-hidden="true">&rarr;</span></button></div>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12 }}>
+                <button
+                  type="button"
+                  className="btn btn-outline"
+                  onClick={() => {
+                    if (selectedService?.slug && typeof window !== "undefined") {
+                      window.location.href = `/services/${selectedService.slug}`;
+                    } else {
+                      goTo(1);
+                    }
+                  }}
+                >
+                  Back
+                </button>
+                <button type="submit" className="btn btn-primary">Next <span aria-hidden="true">&rarr;</span></button>
+              </div>
             </form>
           </div>
         )}
