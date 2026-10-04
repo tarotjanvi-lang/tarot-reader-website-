@@ -54,8 +54,8 @@ export default function BookingFlow() {
   function handleDetails(e) {
     e.preventDefault();
 
-    // Indian mobile numbers must contain exactly 10 digits and begin with 6–9.
-    // Do not allow the booking flow to advance until the number is valid.
+    // Validate the number using the selected country's numbering rules.
+    // India gets an additional mobile-specific 10-digit check.
     if (details.country === "IN") {
       if (!/^\d{10}$/.test(details.phone)) {
         setPhoneError("Please enter a valid 10-digit Indian mobile number.");
@@ -63,6 +63,12 @@ export default function BookingFlow() {
       }
       if (!/^[6-9]\d{9}$/.test(details.phone)) {
         setPhoneError("Indian mobile numbers must start with 6, 7, 8, or 9.");
+        return;
+      }
+    } else {
+      const phoneNumber = parsePhoneNumberFromString(details.phone, details.country);
+      if (!phoneNumber || !phoneNumber.isValid()) {
+        setPhoneError("Please enter a valid phone number for the selected country.");
         return;
       }
     }
@@ -311,15 +317,15 @@ export default function BookingFlow() {
                       type="tel"
                       required
                       inputMode="numeric"
-                      maxLength={details.country === "IN" ? 10 : 15}
-                      pattern={details.country === "IN" ? "[6-9][0-9]{9}" : "[0-9]{7,15}"}
-                      title={details.country === "IN" ? "Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9." : "Enter a valid phone number."}
+                      maxLength={15}
+                      pattern={details.country === "IN" ? "[6-9][0-9]{9}" : "[0-9]{1,15}"}
+                      title={details.country === "IN" ? "Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9." : "Enter a valid phone number for the selected country."}
                       placeholder="Phone number"
                       value={details.phone}
                       aria-invalid={Boolean(phoneError)}
                       aria-describedby={phoneError ? "booking-phone-error" : undefined}
                       onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, "").slice(0, details.country === "IN" ? 10 : 15);
+                        const value = e.target.value.replace(/\D/g, "").slice(0, 15);
                         setDetails({ ...details, phone: value });
                         if (phoneError) setPhoneError("");
                       }}
