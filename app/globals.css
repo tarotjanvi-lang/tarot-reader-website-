@@ -2377,3 +2377,46 @@ ul{ list-style:none; margin:0; padding:0; }
   .service-category-price strong{ font-size:16px; }
   .service-category-card-number{ font-size:10px; }
 }
+
+
+/* Restore the existing parchment/celestial card artwork inside the new catalogue cards.
+   The gold frame sits on the outside; the original image remains visible underneath. */
+.service-category-card{
+  background-color:rgba(255,255,255,.66);
+  background-image:url('/images/card_bg_light_theme.png');
+  background-position:center;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  border:1px solid rgba(164,136,70,.62);
+  box-shadow:
+    0 0 0 2px rgba(164,136,70,.14),
+    0 8px 22px rgba(68,53,28,.06);
+}
+.service-category-card::before{
+  top:7px;
+  left:7px;
+  width:26px;
+  height:26px;
+  border-top:1px solid rgba(193,157,76,.78);
+  border-left:1px solid rgba(193,157,76,.78);
+}
+.service-category-card::after{
+  right:7px;
+  bottom:7px;
+  width:26px;
+  height:26px;
+  border-right:1px solid rgba(193,157,76,.78);
+  border-bottom:1px solid rgba(193,157,76,.78);
+  background:none;
+}
+[data-theme="dark"] .service-category-card{
+  background-color:rgba(20,15,30,.68);
+  background-image:url('/images/card_bg_dark_theme.png');
+  background-position:center;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  border-color:rgba(205,167,87,.62);
+  box-shadow:
+    0 0 0 2px rgba(205,167,87,.14),
+    0 10px 26px rgba(0,0,0,.22);
+}
