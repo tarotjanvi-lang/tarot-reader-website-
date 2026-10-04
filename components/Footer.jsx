@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,10 +7,7 @@ export default function Footer() {
       <div className="container">
         <div>
           <div className="footer-logo">
-            <svg width="34" height="34" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="22" stroke="var(--gold-soft)" strokeWidth="1" />
-              <path d="M30 24a8 8 0 1 1-6-7.75A6 6 0 0 0 30 24Z" fill="var(--gold-soft)" />
-            </svg>
+            <Image className="footer-logo-mark" src="/images/logo.png" alt="The Soul Mirror" width={34} height={34} />
             <div>
               <b>THE SOUL MIRROR</b>
             </div>
