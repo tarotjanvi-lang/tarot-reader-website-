@@ -273,6 +273,7 @@ ul{ list-style:none; margin:0; padding:0; }
 .hero-title .accent{ color:var(--gold); }
 .hero-lede{ max-width:460px; font-size:15px; line-height:1.65; }
 .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
+.hero-ctas .btn-primary{ min-width:240px; }
 
 .hero-quote{
   position:static; width:100%; max-width:520px; margin:26px 0 0; padding:14px 0 0 18px; border-left:1px solid var(--gold);
