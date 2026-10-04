@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ServiceVisual from "@/components/ServiceVisual";
+import ServiceCategoryCatalogue from "@/components/ServiceCategoryCatalogue";
 import { serviceCategories, services } from "@/lib/services-data";
 
 export function generateStaticParams() {
@@ -56,32 +57,7 @@ export default function ServiceDetailPage({ params }) {
 
         <section className="section">
           <div className="container">
-            <div className="grid-3 services-catalogue-grid">
-              {category.services.map((item) => (
-                <div key={item.slug} className={`service-card${item.slug === "rebirth-code" ? " service-card--rebirth-code" : ""}`}>
-                  <ServiceVisual service={item} />
-                  <h3>{item.name}</h3>
-                  <p>{item.tagline}</p>
-                  <div className="service-card-bottom" style={{ marginTop: "auto", paddingTop: 14 }}>
-                    <div className="service-card-price-row">
-                      <span className="service-price">
-                        {item.price ? `From ${item.priceLabel}` : item.priceLabel}
-                      </span>
-                      {item.duration && !item.duration.toLowerCase().includes("min") && (
-                        <span className="service-duration">{item.duration}</span>
-                      )}
-                    </div>
-                    <Link
-                      href={item.price ? `/services/${item.slug}` : "/contact"}
-                      className="btn btn-outline btn-sm"
-                      style={{ marginTop: 12, width: "100%", justifyContent: "center" }}
-                    >
-                      {item.price ? "Book This Session" : "Enquire"}
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ServiceCategoryCatalogue services={category.services} />
           </div>
         </section>
       </>
