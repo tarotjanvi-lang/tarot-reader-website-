@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section className="section terms-section">
-        <div className="container small-container">
+        <div className="container small-container privacy-grid">
           <div className="terms-note">
             <h3>Information we may collect</h3>
             <p>
