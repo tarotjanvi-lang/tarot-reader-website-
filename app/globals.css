@@ -3674,3 +3674,80 @@ body > .site-star-field{
   border-color:rgba(177,143,74,.50);
   box-shadow:0 10px 24px rgba(173,138,46,.20);
 }
+
+
+/* Reviews final polish: let the artwork breathe while keeping the hero copy crisp. */
+.reviews-page::before{
+  background-size:cover !important;
+  background-position:center center !important;
+}
+.reviews-page::after{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(243,238,229,.16) 0%,
+      rgba(243,238,229,.08) 28%,
+      rgba(243,238,229,.12) 68%,
+      rgba(243,238,229,.22) 100%
+    ) !important;
+}
+.reviews-page .page-hero .container{
+  position:relative;
+}
+.reviews-page .reviews-heading-art{
+  position:relative;
+  width:min(820px,calc(100% - 32px));
+  margin:0 auto;
+  min-height:290px;
+  padding:42px 32px 30px;
+  border:1px solid rgba(161,139,88,.24);
+  background:rgba(251,250,245,.62) !important;
+  box-shadow:0 18px 45px rgba(74,58,32,.08);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.reviews-page .reviews-heading-copy h1{
+  color:#30372f !important;
+  text-shadow:0 2px 10px rgba(255,255,255,.55);
+}
+.reviews-page .reviews-heading-copy p{
+  color:#5f655e !important;
+  text-shadow:0 1px 8px rgba(255,255,255,.48);
+}
+.reviews-page .review-trigger{
+  position:relative;
+  z-index:2;
+}
+[data-theme="dark"] .reviews-page{
+  background:#17130f !important;
+}
+[data-theme="dark"] .reviews-page::after{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(23,19,15,.20) 0%,
+      rgba(23,19,15,.12) 28%,
+      rgba(23,19,15,.18) 68%,
+      rgba(23,19,15,.30) 100%
+    ) !important;
+}
+[data-theme="dark"] .reviews-page .reviews-heading-art{
+  background:rgba(29,23,17,.62) !important;
+  border-color:rgba(210,171,79,.28);
+  box-shadow:0 20px 55px rgba(0,0,0,.24);
+}
+[data-theme="dark"] .reviews-page .reviews-heading-copy h1{
+  color:#f4eee3 !important;
+  text-shadow:0 2px 5px rgba(0,0,0,.88),0 0 18px rgba(0,0,0,.62);
+}
+[data-theme="dark"] .reviews-page .reviews-heading-copy p{
+  color:#ddd3c3 !important;
+  text-shadow:0 2px 8px rgba(0,0,0,.75);
+}
+@media (max-width:680px){
+  .reviews-page .reviews-heading-art{
+    width:calc(100% - 24px);
+    min-height:0;
+    padding:34px 20px 26px;
+  }
+}
