@@ -936,6 +936,44 @@ ul{ list-style:none; margin:0; padding:0; }
 .auth-card,
 .account-required-card{ min-width:0; }
 
+/* Auth pages: keep the decorative artwork inside the form only.
+   The artwork is intentionally blurred here so labels/text remain readable.
+   Service-card artwork elsewhere is not affected. */
+.auth-card{
+  position:relative;
+  overflow:hidden;
+  background-image:none !important;
+}
+.auth-card::before{
+  display:none !important;
+}
+.auth-card form{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border-radius:2px;
+  padding:18px;
+}
+.auth-card form::before{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  z-index:-1;
+  background:url('/images/card_bg_light_theme.png') center/100% 100% no-repeat;
+  filter:blur(5px);
+  transform:scale(1.04);
+  opacity:.82;
+  pointer-events:none;
+}
+[data-theme="dark"] .auth-card form::before{
+  background-image:url('/images/card_bg_dark_theme.png');
+  opacity:.78;
+}
+.auth-card form > *{
+  position:relative;
+  z-index:1;
+}
+
 /* Pricing box */
 .price-box{
   background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg);
