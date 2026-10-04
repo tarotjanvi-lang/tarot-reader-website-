@@ -39,7 +39,7 @@ export default function Footer() {
           <ul>
             <li><Link href="/services/tarot-reading">Tarot Readings</Link></li>
             <li><Link href="/services/energy-healing">Energy Healing</Link></li>
-            <li><Link href="/services/spell-work">Spell Work</Link></li>
+            <li><Link href="/services/spell-work">Intentional Spellwork</Link></li>
             <li><Link href="/services/soul-guidance">Soul Guidance</Link></li>
           </ul>
         </div>
