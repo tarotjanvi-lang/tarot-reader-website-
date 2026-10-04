@@ -74,16 +74,16 @@ export default function ReviewsPage() {
 
   return (
     <>
+      <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: "url('/images/review_laptop_light_theme.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+      <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: "url('/images/review_laptop_dark_view.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', opacity: 0 }} id="dark-bg" />
       <section className="page-hero">
         <div className="container">
           <div className="reviews-heading-art">
-            <Image className="reviews-leaf reviews-leaf-left" src={theme === "dark" ? "/images/left_leaf_dark.png" : "/images/left_leaf.png"} alt="" width={180} height={240} priority />
             <div className="reviews-heading-copy">
               <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
               <h1>500+ souls<br />1,000+ stories</h1>
               <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
             </div>
-            <Image className="reviews-leaf reviews-leaf-right" src={theme === "dark" ? "/images/right_leaf_dark.png" : "/images/right_leaf.png"} alt="" width={180} height={240} priority />
           </div>
           <button type="button" className="btn btn-primary review-trigger" onClick={toggleReviewForm}>
             {showForm ? "Close Review Form" : "Add Your Review"}
