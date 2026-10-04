@@ -617,6 +617,103 @@ ul{ list-style:none; margin:0; padding:0; }
 .page-hero{ padding:56px 0 30px; text-align:center; }
 .page-hero h1{ font-size:clamp(30px,4.4vw,46px); }
 .page-hero p{ max-width:560px; margin:0 auto; }
+
+/* Service category heroes — Tarot, Healing, Spellwork & Soul Guidance */
+.service-category-hero{
+  position:relative;
+  isolation:isolate;
+  min-height:350px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  padding:72px 0 64px;
+  background-color:var(--bg);
+  background-image:url('/images/service_bg_light_theme.png');
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  border-bottom:1px solid var(--border);
+}
+.service-category-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 22%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 8%, transparent) 35%,
+      color-mix(in srgb, var(--bg) 8%, transparent) 65%,
+      color-mix(in srgb, var(--bg) 22%, transparent) 100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 18%, transparent) 0%,
+      transparent 32%,
+      transparent 72%,
+      color-mix(in srgb, var(--bg) 24%, transparent) 100%
+    );
+  pointer-events:none;
+}
+.service-category-hero .container{
+  position:relative;
+  z-index:1;
+}
+.service-category-hero h1{
+  margin-bottom:14px;
+  text-shadow:0 2px 16px color-mix(in srgb, var(--bg) 45%, transparent);
+}
+.service-category-hero p{
+  font-size:16px;
+  line-height:1.7;
+  color:var(--ink-soft);
+  text-shadow:0 1px 10px color-mix(in srgb, var(--bg) 60%, transparent);
+}
+[data-theme="dark"] .service-category-hero{
+  background-color:var(--bg);
+  background-image:url('/images/service_bg_dark_theme.png');
+  background-position:center center;
+  background-size:cover;
+}
+[data-theme="dark"] .service-category-hero::before{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,5,.62) 0%,
+      rgba(5,5,5,.28) 32%,
+      rgba(5,5,5,.28) 68%,
+      rgba(5,5,5,.62) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5,5,5,.32) 0%,
+      rgba(5,5,5,.08) 45%,
+      rgba(5,5,5,.42) 100%
+    );
+}
+[data-theme="dark"] .service-category-hero p{
+  color:var(--ink-soft);
+  text-shadow:0 2px 12px rgba(0,0,0,.75);
+}
+@media (max-width:720px){
+  .service-category-hero{
+    min-height:290px;
+    padding:56px 0 48px;
+    background-position:center center;
+    background-size:auto 100%;
+  }
+  .service-category-hero h1{ font-size:clamp(30px,9vw,42px); }
+  .service-category-hero p{ max-width:460px; font-size:14px; }
+}
+@media (max-width:480px){
+  .service-category-hero{
+    min-height:260px;
+    padding:48px 0 40px;
+    background-size:auto 100%;
+  }
+  .service-category-hero p{ font-size:13.5px; }
+}
 .contact-page{
   position:relative;
   isolation:isolate;
