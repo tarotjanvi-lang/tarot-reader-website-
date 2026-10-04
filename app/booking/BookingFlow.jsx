@@ -30,6 +30,7 @@ export default function BookingFlow() {
     phone: "",
     notes: "",
   });
+  const [phoneError, setPhoneError] = useState("");
   const [emergencyContact, setEmergencyContact] = useState(null);
 
   // Pre-fill user details if logged in
@@ -52,6 +53,21 @@ export default function BookingFlow() {
 
   function handleDetails(e) {
     e.preventDefault();
+
+    // Indian mobile numbers must contain exactly 10 digits and begin with 6–9.
+    // Do not allow the booking flow to advance until the number is valid.
+    if (details.country === "IN") {
+      if (!/^\d{10}$/.test(details.phone)) {
+        setPhoneError("Please enter a valid 10-digit Indian mobile number.");
+        return;
+      }
+      if (!/^[6-9]\d{9}$/.test(details.phone)) {
+        setPhoneError("Indian mobile numbers must start with 6, 7, 8, or 9.");
+        return;
+      }
+    }
+
+    setPhoneError("");
     goTo(3);
   }
 
@@ -280,7 +296,41 @@ export default function BookingFlow() {
             <form onSubmit={handleDetails} style={{ maxWidth: 680, margin: "26px auto 0" }}>
               <div className="grid-2">
                 <div className="form-field"><label>Full Name</label><input type="text" required placeholder="Your name" value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} /></div>
-                <div className="form-field"><label>Phone / WhatsApp</label><div className="phone-input"><CountryCodeSelect value={details.country} onChange={(country) => setDetails({ ...details, country })} /><input type="tel" required inputMode="numeric" maxLength={15} placeholder="Phone number" value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value.replace(/\D/g, "").slice(0, 15) })} /></div></div>
+                <div className="form-field">
+                  <label htmlFor="booking-phone">Phone / WhatsApp</label>
+                  <div className="phone-input">
+                    <CountryCodeSelect
+                      value={details.country}
+                      onChange={(country) => {
+                        setDetails({ ...details, country });
+                        setPhoneError("");
+                      }}
+                    />
+                    <input
+                      id="booking-phone"
+                      type="tel"
+                      required
+                      inputMode="numeric"
+                      maxLength={details.country === "IN" ? 10 : 15}
+                      pattern={details.country === "IN" ? "[6-9][0-9]{9}" : "[0-9]{7,15}"}
+                      title={details.country === "IN" ? "Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9." : "Enter a valid phone number."}
+                      placeholder="Phone number"
+                      value={details.phone}
+                      aria-invalid={Boolean(phoneError)}
+                      aria-describedby={phoneError ? "booking-phone-error" : undefined}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, "").slice(0, details.country === "IN" ? 10 : 15);
+                        setDetails({ ...details, phone: value });
+                        if (phoneError) setPhoneError("");
+                      }}
+                    />
+                  </div>
+                  {phoneError && (
+                    <p id="booking-phone-error" role="alert" style={{ color: "#b24a3b", fontSize: 12, marginTop: 7 }}>
+                      {phoneError}
+                    </p>
+                  )}
+                </div>
               </div>
               <div className="form-field"><label>Email</label><input type="email" required placeholder="you@email.com" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} /></div>
               <div className="form-field"><label>What would you like to be guided on?</label><textarea placeholder="Share a little context so Janvi can prepare..." value={details.notes} onChange={(e) => setDetails({ ...details, notes: e.target.value })} /></div>
