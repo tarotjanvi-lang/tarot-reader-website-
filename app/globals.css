@@ -2420,3 +2420,51 @@ ul{ list-style:none; margin:0; padding:0; }
     0 0 0 2px rgba(205,167,87,.14),
     0 10px 26px rgba(0,0,0,.22);
 }
+
+
+/* Improve readability over the decorative parchment card background.
+   The artwork remains unchanged; only the text area gets a soft,
+   non-blurred reading surface. */
+.service-category-card-content{
+  position:relative;
+  z-index:4;
+  margin:0 -1px -1px;
+  padding:10px 8px 8px;
+  border-top:1px solid rgba(164,136,70,.22);
+  border-radius:2px;
+  background:rgba(255,251,241,.90);
+  box-shadow:0 -5px 14px rgba(91,69,30,.035);
+}
+.service-category-card-content h3{
+  text-shadow:none;
+}
+.service-category-card-content p{
+  color:#4c514b;
+}
+.service-category-card-footer{
+  position:relative;
+  z-index:1;
+  margin-top:auto;
+}
+.service-category-price span{
+  color:#66685f;
+}
+.service-category-book{
+  box-shadow:0 2px 7px rgba(38,58,50,.10);
+}
+[data-theme="dark"] .service-category-card-content{
+  background:rgba(28,26,23,.90);
+  border-top-color:rgba(205,167,87,.24);
+  box-shadow:0 -5px 16px rgba(0,0,0,.12);
+}
+[data-theme="dark"] .service-category-card-content p{
+  color:#d5d0c5;
+}
+[data-theme="dark"] .service-category-price span{
+  color:#bcb5a8;
+}
+@media (max-width:760px){
+  .service-category-card-content{
+    padding:8px 6px 7px;
+  }
+}
