@@ -205,3 +205,4 @@ and interactive flows. It is **not yet wired to a backend**, so a few things are
 4. Swap the static arrays in `lib/services-data.js` for data fetched from the database.
 
 Happy to build any of these next — the frontend is already structured so the data layer can be swapped in without touching the pages themselves.
+Deployment configuration updated.
