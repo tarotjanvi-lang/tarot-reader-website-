@@ -256,9 +256,40 @@ ul{ list-style:none; margin:0; padding:0; }
 [data-theme="dark"] .hero{
   background-color:var(--bg);
   background-image:
-    linear-gradient(90deg, rgba(5,5,5,.75) 0%, rgba(5,5,5,.55) 40%, rgba(5,5,5,.35) 64%, rgba(5,5,5,.15) 86%, rgba(5,5,5,0) 100%),
+    linear-gradient(90deg,
+      rgba(23,19,14,.98) 0%,
+      rgba(23,19,14,.94) 18%,
+      rgba(23,19,14,.76) 34%,
+      rgba(23,19,14,.38) 52%,
+      rgba(23,19,14,.12) 70%,
+      rgba(23,19,14,0) 88%),
     url('/images/home_page_shiva_dark.png');
   background-size:cover, auto 100%;
+  background-position:center, center right;
+  background-repeat:no-repeat;
+}
+
+/* Softly feather the Shiva artwork into the espresso page background.
+   This removes the visible rectangular edge around the image without
+   washing out the artwork itself. */
+@media (min-width:601px){
+  [data-theme="dark"] .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      linear-gradient(90deg,
+        rgba(23,19,14,.72) 0%,
+        rgba(23,19,14,.34) 28%,
+        rgba(23,19,14,0) 52%),
+      linear-gradient(180deg,
+        rgba(23,19,14,.16) 0%,
+        rgba(23,19,14,0) 18%,
+        rgba(23,19,14,0) 82%,
+        rgba(23,19,14,.20) 100%);
+  }
 }
 .hero-grid{
   position:relative; z-index:1; display:flex; align-items:center; min-height:544px;
@@ -300,7 +331,7 @@ ul{ list-style:none; margin:0; padding:0; }
   }
   [data-theme="dark"] .hero{
     background-image:
-      linear-gradient(180deg, rgba(5,5,5,.75) 0%, rgba(5,5,5,.55) 38%, rgba(5,5,5,.35) 72%, rgba(5,5,5,.15) 100%),
+      linear-gradient(180deg, rgba(23,19,14,.72) 0%, rgba(23,19,14,.54) 38%, rgba(23,19,14,.32) 72%, rgba(23,19,14,.12) 100%),
       url('/images/home_page_shiva_dark.png');
     background-position:center, center bottom;
     background-size:cover, min(150vw, 560px) auto;
@@ -2290,7 +2321,7 @@ ul{ list-style:none; margin:0; padding:0; }
   [data-theme="dark"] .hero::before{
     background-color:var(--bg);
     background-image:
-      linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 42%, rgba(5,5,5,.75) 60%, rgba(5,5,5,.98) 78%, var(--bg) 100%),
+      linear-gradient(180deg, rgba(23,19,14,0) 0%, rgba(23,19,14,0) 42%, rgba(23,19,14,.75) 60%, rgba(23,19,14,.98) 78%, var(--bg) 100%),
       url('/images/home_page_shiva_dark.png');
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
     mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
