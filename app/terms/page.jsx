@@ -21,7 +21,7 @@ export default function TermsPage() {
 
       <section className="section terms-section">
         <div className="container small-container">
-          <div className="terms-note" id="privacy-policy">
+          <div className="terms-note legal-intro-note" id="privacy-policy">
             <h3>{privacyNote.title}</h3>
             {privacyNote.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
