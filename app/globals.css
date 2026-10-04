@@ -3018,3 +3018,295 @@ main{
   .about-practice{ padding:64px 0; }
   .about-practice-intro{ display:block; }
 }
+
+/* =========================================================
+   Service category cards — premium gold frame
+   ========================================================= */
+.service-category-card{
+  border:1px solid rgba(194,157,77,.82) !important;
+  box-shadow:
+    0 0 0 2px rgba(194,157,77,.14),
+    0 0 0 5px rgba(194,157,77,.055),
+    0 10px 24px rgba(35,25,10,.16) !important;
+}
+.service-category-card::before{
+  top:6px !important;
+  left:6px !important;
+  width:34px !important;
+  height:34px !important;
+  border-top:1px solid rgba(218,180,92,.92) !important;
+  border-left:1px solid rgba(218,180,92,.92) !important;
+  box-shadow:inset 4px 4px 0 -3px rgba(218,180,92,.22);
+}
+.service-category-card::after{
+  right:6px !important;
+  bottom:6px !important;
+  width:34px !important;
+  height:34px !important;
+  border-right:1px solid rgba(218,180,92,.92) !important;
+  border-bottom:1px solid rgba(218,180,92,.92) !important;
+  background:linear-gradient(135deg,transparent 45%,rgba(218,180,92,.14) 46%,transparent 52%) !important;
+}
+.service-category-card-number{
+  top:13px !important;
+  right:14px !important;
+  text-shadow:0 1px 8px rgba(0,0,0,.35);
+}
+.service-category-book{
+  background:linear-gradient(135deg,#b9913f,#d1aa58) !important;
+  border:1px solid rgba(222,188,107,.9) !important;
+  color:#21180c !important;
+  box-shadow:0 5px 14px rgba(132,98,35,.20) !important;
+}
+.service-category-book:hover{
+  background:linear-gradient(135deg,#d1aa58,#e0bd73) !important;
+  border-color:#e0bd73 !important;
+  color:#21180c !important;
+  box-shadow:0 7px 18px rgba(132,98,35,.28) !important;
+}
+[data-theme="dark"] .service-category-card{
+  border-color:rgba(216,176,83,.78) !important;
+  box-shadow:
+    0 0 0 2px rgba(216,176,83,.14),
+    0 0 0 5px rgba(216,176,83,.045),
+    0 12px 28px rgba(0,0,0,.28) !important;
+}
+[data-theme="dark"] .service-category-book{
+  background:linear-gradient(135deg,#b9913f,#d0a950) !important;
+  color:#1d160c !important;
+}
+
+/* Booking page — keep the hero clean; no decorative image behind the heading. */
+.booking-page > .page-hero,
+.booking-page > .page-hero::before,
+.booking-page > .page-hero::after{
+  background-image:none !important;
+}
+.booking-page > .page-hero{
+  background:var(--bg) !important;
+  box-shadow:none !important;
+}
+.booking-page > .page-hero .container{
+  background:transparent !important;
+}
+
+/* Reviews — fixed full-page artwork, content scrolls above it. */
+.reviews-page{
+  position:relative;
+  isolation:isolate;
+  min-height:100vh;
+  background:var(--bg);
+}
+.reviews-page::before,
+.reviews-page::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+.reviews-page::before{
+  z-index:-2;
+  background:url('/images/review_laptop_light_theme.png') center/cover no-repeat;
+  background-attachment:fixed;
+}
+.reviews-page::after{
+  z-index:-1;
+  background:linear-gradient(
+    to bottom,
+    color-mix(in srgb,var(--bg) 48%,transparent) 0%,
+    color-mix(in srgb,var(--bg) 28%,transparent) 22%,
+    color-mix(in srgb,var(--bg) 34%,transparent) 72%,
+    color-mix(in srgb,var(--bg) 58%,transparent) 100%
+  );
+}
+[data-theme="dark"] .reviews-page{
+  background:#17130f;
+}
+[data-theme="dark"] .reviews-page::before{
+  background-image:url('/images/review_laptop_dark_view.png');
+}
+[data-theme="dark"] .reviews-page::after{
+  background:linear-gradient(
+    to bottom,
+    rgba(23,19,15,.36) 0%,
+    rgba(23,19,15,.28) 22%,
+    rgba(23,19,15,.34) 72%,
+    rgba(23,19,15,.62) 100%
+  );
+}
+.reviews-page > *{
+  position:relative;
+  z-index:1;
+}
+.reviews-page .testi-card{
+  background:color-mix(in srgb,var(--card) 88%,transparent);
+  backdrop-filter:blur(2px);
+}
+
+/* Legal pages — editorial, readable, premium layout. */
+.legal-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in srgb,var(--gold) 7%,transparent), transparent 25%),
+    radial-gradient(circle at 88% 34%, color-mix(in srgb,var(--gold) 5%,transparent), transparent 28%),
+    var(--bg);
+}
+.legal-hero{
+  position:relative;
+  overflow:hidden;
+  padding:86px 0 64px !important;
+  background:
+    linear-gradient(180deg,color-mix(in srgb,var(--bg-alt) 72%,transparent),transparent),
+    var(--bg) !important;
+}
+.legal-hero::after{
+  content:"✦";
+  position:absolute;
+  right:10%;
+  bottom:28px;
+  color:var(--gold);
+  opacity:.25;
+  font-size:34px;
+}
+.legal-hero .small-container{ max-width:900px !important; text-align:center; }
+.legal-hero .eyebrow{ justify-content:center; }
+.legal-hero h1{ margin-inline:auto; max-width:760px; }
+.legal-hero .page-intro{ max-width:700px; margin:0 auto; line-height:1.75; }
+.legal-page .terms-section{ padding-top:54px; padding-bottom:80px; }
+.legal-page .small-container{ max-width:960px; }
+
+/* Terms blocks */
+.legal-terms-block{
+  position:relative;
+  margin-top:56px;
+  padding:34px 0 0;
+  border-top:1px solid var(--border);
+}
+.legal-terms-block::before{
+  content:counter(legalblock,decimal-leading-zero);
+  counter-increment:legalblock;
+  position:absolute;
+  left:0;
+  top:-13px;
+  padding:0 10px;
+  background:var(--bg);
+  color:var(--gold);
+  font:600 11px/1 'Jost',sans-serif;
+  letter-spacing:.16em;
+}
+.legal-page .terms-section > .container{ counter-reset:legalblock; }
+.legal-terms-block h2{
+  max-width:760px;
+  margin:7px 0 18px;
+  font-size:clamp(26px,3.2vw,38px);
+  line-height:1.1;
+}
+.legal-terms-block .eyebrow{ margin-bottom:8px; }
+.terms-component{
+  max-width:900px;
+}
+.terms-component .terms-intro{
+  max-width:760px;
+  margin-bottom:20px;
+}
+.terms-accordion{
+  gap:10px;
+  margin-top:18px;
+}
+.terms-item{
+  border-radius:4px;
+  border-color:color-mix(in srgb,var(--gold) 28%,var(--border));
+  background:color-mix(in srgb,var(--card) 92%,transparent);
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+.terms-trigger{
+  padding:20px 22px;
+}
+.terms-item.open .terms-trigger{
+  background:color-mix(in srgb,var(--gold) 7%,transparent);
+}
+.terms-content-inner{
+  padding-left:24px;
+  padding-right:24px;
+}
+.terms-note{
+  border-radius:4px;
+  border-color:color-mix(in srgb,var(--gold) 34%,var(--border));
+  background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 6%,var(--card)),var(--card));
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+.terms-note-highlight{
+  position:relative;
+}
+.terms-note-highlight::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:16px;
+  bottom:16px;
+  width:2px;
+  background:var(--gold);
+}
+
+/* Privacy page — six sections become a clean editorial grid without changing content. */
+.privacy-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.privacy-grid .terms-note{
+  margin-top:0;
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:26px 26px 24px;
+}
+.privacy-grid .terms-note h3{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-transform:none;
+  letter-spacing:.03em;
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+}
+.privacy-grid .terms-note h3::before{
+  content:"✦";
+  color:var(--gold);
+  font-size:13px;
+  flex:0 0 auto;
+}
+.privacy-grid .terms-note p{
+  color:var(--ink-soft);
+  line-height:1.75;
+}
+@media (max-width:760px){
+  .privacy-grid{ grid-template-columns:1fr; }
+  .legal-hero{ padding:62px 0 48px !important; }
+  .legal-page .terms-section{ padding-top:38px; padding-bottom:54px; }
+  .legal-terms-block{ margin-top:42px; padding-top:28px; }
+  .legal-terms-block h2{ font-size:28px; }
+  .privacy-grid .terms-note{ min-height:0; }
+}
+
+/* Contact form — neutral warm placeholders instead of browser-blue text. */
+.contact-page .form-field input::placeholder,
+.contact-page .form-field textarea::placeholder{
+  color:#9b917f !important;
+  opacity:1 !important;
+  -webkit-text-fill-color:#9b917f !important;
+}
+.contact-page .form-field select{
+  color:#d2c9ba !important;
+}
+.contact-page .form-field input,
+.contact-page .form-field textarea{
+  color:#eee6d7 !important;
+  caret-color:var(--gold);
+}
+[data-theme="light"] .contact-page .form-field input::placeholder,
+[data-theme="light"] .contact-page .form-field textarea::placeholder{
+  color:#786f62 !important;
+  -webkit-text-fill-color:#786f62 !important;
+}
