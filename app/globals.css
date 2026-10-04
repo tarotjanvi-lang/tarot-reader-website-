@@ -884,7 +884,7 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 .contact-page::after{
   z-index:-1;
-  background:color-mix(in srgb, var(--bg) 55%, transparent);
+  background:color-mix(in srgb, var(--bg) 34%, transparent);
 }
 [data-theme="dark"] .contact-page::after{
   background:color-mix(in srgb, var(--bg) 55%, transparent);
@@ -3467,35 +3467,61 @@ main{
   .legal-star-field span:nth-child(even){display:none}
 }
 
-/* Contact: explicitly override the purple service-card form surface and placeholder styling. */
+/* Contact form — theme-aware fields and readable placeholders. */
 .contact-page .service-card .form-field input,
 .contact-page .service-card .form-field select,
 .contact-page .service-card .form-field textarea{
-  background:#211a15 !important;
-  border-color:rgba(210,171,79,.24) !important;
-  color:#eee6d7 !important;
-  -webkit-text-fill-color:#eee6d7 !important;
+  background:rgba(255,255,255,.68) !important;
+  border-color:rgba(48,55,47,.16) !important;
+  color:#30372f !important;
+  -webkit-text-fill-color:#30372f !important;
 }
 .contact-page .service-card .form-field input::placeholder,
 .contact-page .service-card .form-field textarea::placeholder,
 .contact-page .service-card .form-field input::-webkit-input-placeholder,
 .contact-page .service-card .form-field textarea::-webkit-input-placeholder{
+  color:#72776f !important;
+  opacity:1 !important;
+  -webkit-text-fill-color:#72776f !important;
+  text-shadow:none !important;
+}
+.contact-page .service-card .form-field input:focus::placeholder,
+.contact-page .service-card .form-field textarea:focus::placeholder{
+  color:#858a82 !important;
+  -webkit-text-fill-color:#858a82 !important;
+}
+.contact-page .service-card .phone-input select{
+  background:rgba(255,255,255,.68) !important;
+  color:#72776f !important;
+  -webkit-text-fill-color:#72776f !important;
+}
+[data-theme="dark"] .contact-page .service-card .form-field input,
+[data-theme="dark"] .contact-page .service-card .form-field select,
+[data-theme="dark"] .contact-page .service-card .form-field textarea{
+  background:#211a15 !important;
+  border-color:rgba(210,171,79,.24) !important;
+  color:#eee6d7 !important;
+  -webkit-text-fill-color:#eee6d7 !important;
+}
+[data-theme="dark"] .contact-page .service-card .form-field input::placeholder,
+[data-theme="dark"] .contact-page .service-card .form-field textarea::placeholder,
+[data-theme="dark"] .contact-page .service-card .form-field input::-webkit-input-placeholder,
+[data-theme="dark"] .contact-page .service-card .form-field textarea::-webkit-input-placeholder{
   color:#d1c2a5 !important;
   opacity:1 !important;
   -webkit-text-fill-color:#d1c2a5 !important;
   text-shadow:none !important;
 }
-.contact-page .service-card .form-field input:focus::placeholder,
-.contact-page .service-card .form-field textarea:focus::placeholder{
+[data-theme="dark"] .contact-page .service-card .form-field input:focus::placeholder,
+[data-theme="dark"] .contact-page .service-card .form-field textarea:focus::placeholder{
   color:#b9a98c !important;
   -webkit-text-fill-color:#b9a98c !important;
 }
-.contact-page .service-card .phone-input select{
+[data-theme="dark"] .contact-page .service-card .phone-input select{
   background:#211a15 !important;
   color:#d1c2a5 !important;
   -webkit-text-fill-color:#d1c2a5 !important;
 }
-
 
 /* Global celestial accents — subtle scattered stars on every page. */
 body{
