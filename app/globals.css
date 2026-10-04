@@ -1142,9 +1142,39 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 .form-field textarea{ resize:vertical; min-height:120px; }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus{ outline:2px solid var(--gold); outline-offset:1px; }
-.phone-input{ display:flex; gap:8px; }
-.phone-input select{ width:42%; flex:0 0 42%; }
-.phone-input input{ min-width:0; }
+.phone-input{
+  display:flex;
+  gap:8px;
+  width:100%;
+  min-width:0;
+}
+.phone-input select{
+  width:42%;
+  flex:0 1 42%;
+  min-width:0;
+  max-width:100%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.phone-input input{
+  min-width:0;
+  flex:1 1 58%;
+}
+@media (max-width:600px){
+  .phone-input{
+    flex-direction:column;
+    gap:8px;
+  }
+  .phone-input select,
+  .phone-input input{
+    width:100%;
+    flex:1 1 auto;
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+}
 @media (max-width:520px){ .phone-input select{ width:46%; flex-basis:46%; padding-left:8px; padding-right:8px; } }
 
 /* Booking steps */
