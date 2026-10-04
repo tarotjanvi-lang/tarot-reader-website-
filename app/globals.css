@@ -2133,3 +2133,247 @@ ul{ list-style:none; margin:0; padding:0; }
   }
   .hero-quote cite{ display:block; margin:7px 0 0; font-size:13px; }
 }
+
+
+/* =========================================================
+   Service catalogue cards — compact, spacious and gold-framed
+   Applies to Tarot, Signature Readings and other service
+   category grids.
+   ========================================================= */
+.service-category-filters{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:0 auto 34px;
+}
+.service-category-filter{
+  appearance:none;
+  border:1px solid rgba(164,136,70,.32);
+  background:transparent;
+  color:var(--ink-soft);
+  border-radius:999px;
+  padding:10px 17px;
+  font:500 12px/1.1 'Jost',sans-serif;
+  letter-spacing:.02em;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.service-category-filter:hover{
+  border-color:rgba(164,136,70,.65);
+  color:var(--ink);
+  background:rgba(164,136,70,.055);
+}
+.service-category-filter.is-active{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#fff;
+  box-shadow:0 6px 16px rgba(145,116,53,.14);
+}
+.service-category-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:28px 26px;
+  align-items:stretch;
+}
+.service-category-card{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-width:0;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  padding:13px 13px 12px;
+  border:1px solid rgba(161,133,66,.28);
+  border-radius:3px;
+  background:
+    linear-gradient(var(--card),var(--card)) padding-box,
+    linear-gradient(135deg,rgba(189,153,75,.68),rgba(189,153,75,.18) 30%,rgba(189,153,75,.46) 70%,rgba(189,153,75,.12)) border-box;
+  box-shadow:0 7px 20px rgba(68,53,28,.055);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.service-category-card::before,
+.service-category-card::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  width:26px;
+  height:26px;
+  pointer-events:none;
+}
+.service-category-card::before{
+  top:7px;
+  left:7px;
+  border-top:1px solid rgba(193,157,76,.72);
+  border-left:1px solid rgba(193,157,76,.72);
+}
+.service-category-card::after{
+  right:7px;
+  bottom:7px;
+  border-right:1px solid rgba(193,157,76,.72);
+  border-bottom:1px solid rgba(193,157,76,.72);
+}
+.service-category-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(161,133,66,.62);
+  box-shadow:0 14px 28px rgba(68,53,28,.10);
+}
+.service-category-card-number{
+  position:absolute;
+  top:12px;
+  right:13px;
+  z-index:5;
+  color:var(--gold);
+  font:500 12px/1 'Playfair Display',serif;
+  letter-spacing:.05em;
+}
+.service-category-card-art{
+  height:142px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex:0 0 142px;
+}
+.service-category-card-art .service-card-image-light,
+.service-category-card-art .service-card-image-dark{
+  width:100%;
+  height:142px;
+  object-fit:contain;
+  object-position:center;
+  margin:0;
+  transition:transform .3s ease;
+}
+.service-category-card:hover .service-category-card-art .service-card-image-light,
+.service-category-card:hover .service-category-card-art .service-card-image-dark{
+  transform:scale(1.025);
+}
+.service-category-card-content{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:2px 5px 0;
+}
+.service-category-card-content h3{
+  margin:5px 0 7px;
+  color:var(--ink);
+  font:600 18px/1.13 'Playfair Display',serif;
+}
+.service-category-card-content p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:12px;
+  line-height:1.5;
+}
+.service-category-card-footer{
+  margin-top:auto;
+  padding-top:13px;
+}
+.service-category-price{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.service-category-price span{
+  color:var(--ink-soft);
+  font-size:9px;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.service-category-price strong{
+  color:var(--gold);
+  font:600 21px/1.05 'Playfair Display',serif;
+}
+.service-category-book{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  width:100%;
+  min-height:37px;
+  margin-top:10px;
+  padding:8px 10px;
+  border:1px solid rgba(50,72,62,.9);
+  border-radius:2px;
+  background:rgba(50,72,62,.95);
+  color:#fff;
+  font:600 10px/1 'Jost',sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:all .25s ease;
+}
+.service-category-book:hover{
+  border-color:var(--gold);
+  background:var(--gold);
+  color:#fff;
+}
+[data-theme="dark"] .service-category-filter{
+  border-color:rgba(205,167,87,.30);
+}
+[data-theme="dark"] .service-category-filter:hover{
+  background:rgba(205,167,87,.07);
+  border-color:rgba(205,167,87,.55);
+}
+[data-theme="dark"] .service-category-card{
+  background:
+    linear-gradient(var(--card),var(--card)) padding-box,
+    linear-gradient(135deg,rgba(205,167,87,.62),rgba(205,167,87,.12) 30%,rgba(205,167,87,.42) 70%,rgba(205,167,87,.10)) border-box;
+  border-color:rgba(205,167,87,.22);
+  box-shadow:0 9px 25px rgba(0,0,0,.20);
+}
+[data-theme="dark"] .service-category-card::before,
+[data-theme="dark"] .service-category-card::after{
+  border-color:rgba(205,167,87,.62);
+}
+[data-theme="dark"] .service-category-card:hover{
+  border-color:rgba(205,167,87,.55);
+  box-shadow:0 14px 30px rgba(0,0,0,.30);
+}
+[data-theme="dark"] .service-category-book{
+  background:rgba(43,62,54,.96);
+  border-color:rgba(205,167,87,.18);
+}
+@media (max-width:1100px){
+  .service-category-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px 20px; }
+}
+@media (max-width:760px){
+  .service-category-filters{
+    justify-content:flex-start;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding:2px 2px 8px;
+    margin-bottom:24px;
+  }
+  .service-category-filters::-webkit-scrollbar{ display:none; }
+  .service-category-filter{ flex:0 0 auto; padding:9px 14px; font-size:11px; }
+  .service-category-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 14px; }
+  .service-category-card{ padding:9px 9px 10px; }
+  .service-category-card-art,
+  .service-category-card-art .service-card-image-light,
+  .service-category-card-art .service-card-image-dark{
+    height:125px;
+    flex-basis:125px;
+  }
+  .service-category-card-content h3{ font-size:15px; }
+  .service-category-card-content p{ font-size:10.5px; line-height:1.42; }
+  .service-category-price strong{ font-size:18px; }
+  .service-category-book{ min-height:33px; font-size:8.5px; }
+}
+@media (max-width:460px){
+  .service-category-grid{ gap:15px 10px; }
+  .service-category-card-art,
+  .service-category-card-art .service-card-image-light,
+  .service-category-card-art .service-card-image-dark{
+    height:112px;
+    flex-basis:112px;
+  }
+  .service-category-card-content h3{ font-size:13px; }
+  .service-category-card-content p{ font-size:9.5px; }
+  .service-category-price strong{ font-size:16px; }
+  .service-category-card-number{ font-size:10px; }
+}
