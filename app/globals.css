@@ -3495,3 +3495,84 @@ main{
   color:#d1c2a5 !important;
   -webkit-text-fill-color:#d1c2a5 !important;
 }
+
+
+/* Global celestial accents — subtle scattered stars on every page. */
+body{
+  position:relative;
+}
+.site-star-field{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.site-star-field span{
+  position:absolute;
+  color:var(--gold);
+  font-family:Georgia,'Times New Roman',serif;
+  line-height:1;
+  opacity:.16;
+  text-shadow:0 0 12px rgba(201,162,74,.22);
+}
+.site-star-field span:nth-child(1){left:4%;top:18%;font-size:13px}
+.site-star-field span:nth-child(2){left:12%;top:42%;font-size:8px;opacity:.11}
+.site-star-field span:nth-child(3){left:21%;top:76%;font-size:10px;opacity:.10}
+.site-star-field span:nth-child(4){left:29%;top:28%;font-size:16px;opacity:.13}
+.site-star-field span:nth-child(5){left:38%;top:88%;font-size:9px;opacity:.10}
+.site-star-field span:nth-child(6){left:47%;top:17%;font-size:11px;opacity:.12}
+.site-star-field span:nth-child(7){left:56%;top:66%;font-size:15px;opacity:.13}
+.site-star-field span:nth-child(8){left:64%;top:34%;font-size:8px;opacity:.10}
+.site-star-field span:nth-child(9){left:72%;top:82%;font-size:13px;opacity:.12}
+.site-star-field span:nth-child(10){left:80%;top:22%;font-size:9px;opacity:.10}
+.site-star-field span:nth-child(11){left:88%;top:52%;font-size:16px;opacity:.13}
+.site-star-field span:nth-child(12){left:95%;top:76%;font-size:9px;opacity:.10}
+.site-star-field span:nth-child(13){left:7%;top:91%;font-size:10px;opacity:.10}
+.site-star-field span:nth-child(14){left:17%;top:12%;font-size:8px;opacity:.09}
+.site-star-field span:nth-child(15){left:33%;top:56%;font-size:12px;opacity:.11}
+.site-star-field span:nth-child(16){left:43%;top:39%;font-size:8px;opacity:.09}
+.site-star-field span:nth-child(17){left:61%;top:9%;font-size:10px;opacity:.10}
+.site-star-field span:nth-child(18){left:69%;top:48%;font-size:8px;opacity:.09}
+.site-star-field span:nth-child(19){left:84%;top:91%;font-size:12px;opacity:.11}
+.site-star-field span:nth-child(20){left:92%;top:14%;font-size:8px;opacity:.09}
+[data-theme="dark"] .site-star-field span{
+  opacity:.20;
+  text-shadow:0 0 14px rgba(224,189,103,.28);
+}
+body > *:not(script){
+  position:relative;
+  z-index:1;
+}
+body > .site-star-field{
+  position:fixed;
+  z-index:0;
+}
+.site-star-field + .nav{
+  position:sticky;
+}
+
+/* Keep primary booking/action buttons in the established gold palette in both themes. */
+.btn-primary{
+  background:var(--gold);
+  color:#241A05;
+  border-color:color-mix(in srgb,var(--gold) 82%,#8d6a20);
+  box-shadow:0 14px 30px -12px rgba(173,138,46,.50);
+}
+.btn-primary:hover{
+  background:var(--gold-soft);
+  color:#241A05;
+  box-shadow:0 18px 36px -12px rgba(173,138,46,.58);
+}
+[data-theme="dark"] .btn-primary{
+  background:var(--gold);
+  color:#1A1409;
+  box-shadow:0 14px 30px -12px rgba(217,179,78,.45);
+}
+[data-theme="dark"] .btn-primary:hover{
+  background:var(--gold-soft);
+  color:#1A1409;
+}
+@media (max-width:760px){
+  .site-star-field span:nth-child(even){display:none}
+}
