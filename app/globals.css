@@ -1249,7 +1249,7 @@ ul{ list-style:none; margin:0; padding:0; }
   background:color-mix(in srgb, var(--bg) 36%, transparent);
 }
 [data-theme="dark"] .service-detail-page{
-  background:#090806;
+  background:#17130e;
 }
 [data-theme="dark"] .service-detail-page::before{
   background-image:url('/images/session_bg_dark_view.png');
@@ -1259,18 +1259,18 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 [data-theme="dark"] .service-detail-page::after{
   background:
-    linear-gradient(90deg, rgba(7,6,4,.82) 0%, rgba(7,6,4,.62) 32%, rgba(7,6,4,.68) 68%, rgba(7,6,4,.84) 100%),
-    linear-gradient(180deg, rgba(7,6,4,.48) 0%, rgba(7,6,4,.66) 58%, rgba(7,6,4,.9) 100%);
+    linear-gradient(90deg, rgba(20,16,11,.62) 0%, rgba(20,16,11,.46) 32%, rgba(20,16,11,.50) 68%, rgba(20,16,11,.66) 100%),
+    linear-gradient(180deg, rgba(20,16,11,.28) 0%, rgba(20,16,11,.44) 58%, rgba(20,16,11,.68) 100%);
 }
 [data-theme="dark"] .service-detail-page .price-box{
-  background:rgba(15,13,10,.9);
+  background:rgba(28,23,17,.88);
   border-color:rgba(191,151,55,.28);
   box-shadow:0 18px 45px rgba(0,0,0,.32);
 }
 [data-theme="dark"] .service-detail-page .question-card,
 [data-theme="dark"] .service-detail-page .included-card,
 [data-theme="dark"] .service-detail-page .service-fact-card{
-  background:rgba(13,11,9,.76);
+  background:rgba(25,21,16,.78);
   border-color:rgba(191,151,55,.18);
 }
 [data-theme="dark"] .service-detail-page .question-card:hover,
