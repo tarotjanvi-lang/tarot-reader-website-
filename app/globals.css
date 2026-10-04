@@ -2709,3 +2709,153 @@ ul{ list-style:none; margin:0; padding:0; }
   border-top:0;
   box-shadow:none;
 }
+
+
+/* =========================================================
+   Premium motion system
+   Subtle, elegant motion across the site — no distracting effects.
+   ========================================================= */
+
+@keyframes sm-page-enter{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes sm-hero-enter{
+  from{opacity:0; transform:translateY(16px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes sm-soft-float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-4px);}
+}
+@keyframes sm-shine{
+  0%{transform:translateX(-130%);}
+  55%,100%{transform:translateX(130%);}
+}
+
+/* Page-load entrance */
+main{
+  animation:sm-page-enter .55s ease-out both;
+}
+
+/* Hero content enters gently after the page */
+.page-hero .container,
+.services-page-hero .container,
+.service-category-hero .container{
+  animation:sm-hero-enter .7s .08s ease-out both;
+}
+
+/* Navigation */
+.nav-links a{
+  transition:color .25s ease, transform .25s ease;
+}
+.nav-links a:hover{
+  transform:translateY(-1px);
+}
+.nav-links a::after{
+  transition:width .3s cubic-bezier(.2,.8,.2,1), opacity .25s ease;
+}
+
+/* Buttons */
+.btn{
+  transition:
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    box-shadow .3s ease,
+    background .3s ease,
+    border-color .3s ease,
+    color .3s ease;
+}
+.btn:hover{
+  transform:translateY(-3px);
+}
+.btn:active{
+  transform:translateY(-1px) scale(.985);
+}
+
+/* Home + catalogue cards */
+.home-services-grid .service-card,
+.services-catalogue-grid .service-card{
+  will-change:transform;
+}
+.home-services-grid .service-card:hover,
+.services-catalogue-grid .service-card:hover{
+  transform:translateY(-7px);
+}
+
+/* Preserve the alternating home-card tilt */
+.home-services-grid .service-card:nth-child(even):hover{
+  transform:translateY(-7px) rotate(.25deg);
+}
+.home-services-grid .service-card:nth-child(odd):hover{
+  transform:translateY(-7px) rotate(-.25deg);
+}
+
+/* Card artwork gently responds to hover */
+.home-services-grid .service-card:hover .service-card-image,
+.services-catalogue-grid .service-card:hover .service-card-image{
+  transform:scale(1.035);
+}
+
+/* Soft light sweep on catalogue cards */
+.services-catalogue-grid .service-card::after{
+  animation:none;
+}
+.services-catalogue-grid .service-card:hover::after{
+  animation:sm-shine 1.05s ease-out both;
+}
+
+/* Existing Reveal system gets a refined stagger */
+.services-catalogue-grid .reveal:nth-child(2),
+.services-grid .reveal:nth-child(2){
+  transition-delay:.08s;
+}
+.services-catalogue-grid .reveal:nth-child(3),
+.services-grid .reveal:nth-child(3){
+  transition-delay:.16s;
+}
+.services-catalogue-grid .reveal:nth-child(4),
+.services-grid .reveal:nth-child(4){
+  transition-delay:.24s;
+}
+
+/* Stats / information cards */
+.stats-bar > *,
+.service-facts-grid > *,
+.included-grid > *,
+.questions-list > *{
+  transition:
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+.stats-bar > *:hover,
+.service-facts-grid > *:hover,
+.included-grid > *:hover,
+.questions-list > *:hover{
+  transform:translateY(-3px);
+}
+
+/* CTA banners */
+.cta-banner{
+  transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;
+}
+.cta-banner:hover{
+  transform:translateY(-3px);
+}
+
+/* Service-category hero ornament */
+.service-category-hero p::after{
+  animation:sm-soft-float 3.8s ease-in-out infinite;
+}
+
+/* Respect accessibility and users who prefer reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
