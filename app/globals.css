@@ -2468,3 +2468,36 @@ ul{ list-style:none; margin:0; padding:0; }
     padding:8px 6px 7px;
   }
 }
+
+
+/* Blend the readability layer into the original card artwork so it reads
+   as one continuous parchment surface rather than a separate white box. */
+.service-category-card-content{
+  margin:0;
+  padding:10px 8px 8px;
+  border-top:0;
+  border-radius:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,251,241,.18) 0%,
+      rgba(255,251,241,.36) 14%,
+      rgba(255,251,241,.50) 45%,
+      rgba(255,251,241,.42) 78%,
+      rgba(255,251,241,.18) 100%
+    );
+  box-shadow:none;
+}
+[data-theme="dark"] .service-category-card-content{
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(28,26,23,.12) 0%,
+      rgba(28,26,23,.34) 16%,
+      rgba(28,26,23,.48) 48%,
+      rgba(28,26,23,.40) 80%,
+      rgba(28,26,23,.12) 100%
+    );
+  border-top:0;
+  box-shadow:none;
+}
