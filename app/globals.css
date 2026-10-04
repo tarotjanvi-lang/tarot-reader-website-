@@ -3095,7 +3095,7 @@ main{
   position:relative;
   isolation:isolate;
   min-height:100vh;
-  background:var(--bg);
+  background:transparent;
 }
 .reviews-page::before,
 .reviews-page::after{
