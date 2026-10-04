@@ -535,20 +535,18 @@ ul{ list-style:none; margin:0; padding:0; }
 .reviews-cta-banner .eyebrow::before{ background:var(--gold-soft); }
 .cta-banner-image{
   min-height:0;
-  width:100%;
+  width:90%;
   aspect-ratio:3 / 1;
   flex-direction:row-reverse;
   padding:clamp(26px, 4vw, 48px);
   margin-inline:auto;
   isolation:isolate;
   background-color:var(--bg);
-  background-image:linear-gradient(110deg, rgba(243,238,229,.78), rgba(243,238,229,.56)), url('/images/home_last_card_website_lighttheme.png');
+  background-image:linear-gradient(110deg, rgba(181,166,123,.18), rgba(181,166,123,.12)), url('/images/home_last_card_website_lighttheme.png');
   background-position:center;
   background-size:100% 100%;
   background-repeat:no-repeat;
-  background-blend-mode:normal;
-  border:1px solid rgba(161,139,88,.18);
-  box-shadow:0 14px 36px -28px rgba(48,55,47,.28);
+  border:1px solid var(--border);
   color:var(--ink);
 }
 .cta-banner-image > *{ position:relative; z-index:1; }
@@ -558,11 +556,8 @@ ul{ list-style:none; margin:0; padding:0; }
 .cta-banner-image .eyebrow{ color:var(--gold); }
 .cta-banner-image .eyebrow::before{ background:var(--gold); }
 [data-theme="dark"] .cta-banner-image{
-  background-color:var(--bg-alt);
-  background-image:linear-gradient(110deg, rgba(17,17,15,.84), rgba(17,17,15,.66)), url('/images/home_last_card_website.png');
-  background-blend-mode:normal;
-  border-color:rgba(201,162,74,.18);
-  box-shadow:0 20px 48px -30px rgba(0,0,0,.7);
+  background-color:#192821;
+  background-image:linear-gradient(110deg, rgba(29,48,40,.78), rgba(25,25,22,.64)), url('/images/home_last_card_website.png');
   color:#F5EFDD;
 }
 [data-theme="dark"] .cta-banner-image h2,
