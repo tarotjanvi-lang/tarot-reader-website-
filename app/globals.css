@@ -631,7 +631,7 @@ ul{ list-style:none; margin:0; padding:0; }
   background-color:var(--bg);
   background-image:url('/images/service_bg_light_theme.png');
   background-position:center center;
-  background-size:cover;
+  background-size:100% 100%;
   background-repeat:no-repeat;
   border-bottom:1px solid var(--border);
 }
@@ -676,7 +676,7 @@ ul{ list-style:none; margin:0; padding:0; }
   background-color:var(--bg);
   background-image:url('/images/service_bg_dark_theme.png');
   background-position:center center;
-  background-size:cover;
+  background-size:100% 100%;
 }
 [data-theme="dark"] .service-category-hero::before{
   background:
@@ -707,7 +707,7 @@ ul{ list-style:none; margin:0; padding:0; }
     min-height:285px;
     padding:52px 0 46px;
     background-position:center center;
-    background-size:cover;
+    background-size:100% 100%;
   }
   .service-category-hero h1{ font-size:clamp(30px,9vw,42px); }
   .service-category-hero p{ max-width:460px; font-size:14px; }
@@ -716,7 +716,7 @@ ul{ list-style:none; margin:0; padding:0; }
   .service-category-hero{
     min-height:260px;
     padding:46px 0 40px;
-    background-size:cover;
+    background-size:100% 100%;
   }
   .service-category-hero p{ font-size:13.5px; }
 }
