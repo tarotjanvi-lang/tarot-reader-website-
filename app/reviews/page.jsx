@@ -73,9 +73,7 @@ export default function ReviewsPage() {
   }
 
   return (
-    <>
-      <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: "url('/images/review_laptop_light_theme.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
-      <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: "url('/images/review_laptop_dark_view.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', opacity: 0 }} id="dark-bg" />
+    <main className="reviews-page">
       <section className="page-hero">
         <div className="container">
           <div className="reviews-heading-art">
@@ -163,6 +161,6 @@ export default function ReviewsPage() {
           </div>
         </Reveal>
       </section>
-    </>
+    </main>
   );
 }
