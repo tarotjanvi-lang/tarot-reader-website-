@@ -30,18 +30,19 @@
 }
 
 [data-theme="dark"]{
-  --bg: #050505;
-  --bg-alt: #11110F;
-  --card: #0D0D0C;
-  --dark-service-surface: #010101;
+  /* Warm espresso palette — softer than pure black while preserving the dark luxury look */
+  --bg: #17130E;
+  --bg-alt: #211A13;
+  --card: #201A14;
+  --dark-service-surface: #15110D;
   --ink: #F4F0E6;
   --ink-soft: #C9C2B3;
   --gold: #C9A24A;
   --gold-soft: #E0BD67;
-  --teal: #080808;
-  --teal-soft: #191713;
-  --border: rgba(201,162,74,0.18);
-  --shadow: 0 20px 48px -28px rgba(0,0,0,0.65);
+  --teal: #2A2119;
+  --teal-soft: #3A3025;
+  --border: rgba(201,162,74,0.20);
+  --shadow: 0 20px 48px -28px rgba(0,0,0,0.48);
 }
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; overflow-x:clip; }
