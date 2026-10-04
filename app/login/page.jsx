@@ -11,6 +11,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState("");
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const [callbackUrl, setCallbackUrl] = useState("/");
 
   useEffect(() => {
@@ -110,23 +111,46 @@ export default function LoginPage() {
               <label htmlFor="password" style={{ display: "block", marginBottom: 8, fontSize: 14, fontWeight: 500 }}>
                 Password
               </label>
-              <input
-                id="password"
-                type="password"
-                required
-                placeholder="••••••••"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                style={{
-                  width: "100%",
-                  padding: "14px 16px",
-                  border: "1px solid var(--border)",
-                  borderRadius: 10,
-                  fontSize: 16,
-                  background: "var(--card)",
-                  color: "var(--ink)",
-                }}
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  style={{
+                    width: "100%",
+                    padding: "14px 16px",
+                    paddingRight: 40,
+                    boxSizing: "border-box",
+                    border: "1px solid var(--border)",
+                    borderRadius: 10,
+                    fontSize: 16,
+                    background: "var(--card)",
+                    color: "var(--ink)",
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: 13,
+                    color: "var(--gold)",
+                    fontWeight: 500,
+                  }}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
 
             <button

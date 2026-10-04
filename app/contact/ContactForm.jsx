@@ -3,18 +3,28 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import CountryCodeSelect from "@/components/CountryCodeSelect";
-import { getCountryCallingCode } from "libphonenumber-js";
+import { getCountryCallingCode, parsePhoneNumberFromString } from "libphonenumber-js";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [country, setCountry] = useState("IN");
+  const [phoneError, setPhoneError] = useState("");
   const [status, setStatus] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setStatus("Sending...");
+    setPhoneError("");
     const form = e.currentTarget;
     const data = new FormData(form);
+    const phoneRaw = data.get("phone") ? String(data.get("phone")).trim() : "";
+    if (phoneRaw) {
+      const parsed = parsePhoneNumberFromString(phoneRaw, country);
+      if (!parsed || !parsed.isValid()) {
+        setPhoneError("Invalid phone number for selected country.");
+        setStatus("");
+        return;
+      }
+    }
     try {
       const contactServiceId = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_SERVICE_ID || "service_rpo0lml";
       const contactTemplateId = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID || "template_43o3y7b";
@@ -58,7 +68,7 @@ export default function ContactForm() {
         <div className="form-field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" required placeholder="you@email.com" /></div>
       </div>
       <div className="grid-2">
-        <div className="form-field"><label htmlFor="phone">Phone / WhatsApp</label><div className="phone-input"><CountryCodeSelect value={country} onChange={setCountry} /><input id="phone" name="phone" type="tel" inputMode="numeric" maxLength={15} placeholder="Phone number" onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 15); }} /></div></div>
+        <div className="form-field"><label htmlFor="phone">Phone / WhatsApp</label><div className="phone-input"><CountryCodeSelect value={country} onChange={(c) => { setCountry(c); setPhoneError(""); }} /><input id="phone" name="phone" type="tel" inputMode="numeric" maxLength={15} placeholder="Phone number" onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 15); setPhoneError(""); }} /></div>{phoneError && <p style={{ color: "#c0392b", fontSize: 12, marginTop: 4 }}>{phoneError}</p>}</div>
         <div className="form-field">
           <label htmlFor="topic">I&apos;m interested in</label>
           <select id="topic" name="topic">
