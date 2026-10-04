@@ -379,6 +379,22 @@ ul{ list-style:none; margin:0; padding:0; }
 .service-card > *{ position:relative; z-index:1; }
 .service-card input, .service-card select, .service-card textarea{ background:rgba(255,255,255,0.85) !important; color:#1a1a1a !important; }
 .services-grid .service-card{ display:flex; flex-direction:column; border-color:var(--gold); border-width:1.5px; }
+
+/* Contact page: do not use the decorative service-card artwork on contact cards. */
+.contact-layout > div:first-child .service-card,
+.contact-layout > .service-card{
+  background-image:none !important;
+  background-color:var(--card);
+}
+.contact-layout > div:first-child .service-card::before,
+.contact-layout > .service-card::before{
+  display:none !important;
+}
+[data-theme="dark"] .contact-layout > div:first-child .service-card,
+[data-theme="dark"] .contact-layout > .service-card{
+  background-image:none !important;
+  background-color:var(--dark-service-surface);
+}
 .services-grid .service-card .btn-link{ margin-top:auto; padding-top:8px; }
 .home-services-section{
   position:relative;
