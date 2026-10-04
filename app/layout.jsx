@@ -44,6 +44,12 @@ export default function RootLayout({ children }) {
       <body>
         <SessionProvider>
           <ThemeProvider>
+            <div className="site-star-field" aria-hidden="true">
+              <span>✦</span><span>✧</span><span>⋆</span><span>✦</span><span>✧</span>
+              <span>⋆</span><span>✦</span><span>✧</span><span>✦</span><span>⋆</span>
+              <span>✧</span><span>✦</span><span>⋆</span><span>✧</span><span>✦</span>
+              <span>⋆</span><span>✧</span><span>✦</span><span>⋆</span><span>✧</span>
+            </div>
             <Navbar />
             {children}
             <Footer />
