@@ -31,10 +31,10 @@
 
 [data-theme="dark"]{
   /* Warm espresso palette — softer than pure black while preserving the dark luxury look */
-  --bg: #17130E;
-  --bg-alt: #211A13;
-  --card: #201A14;
-  --dark-service-surface: #15110D;
+  --bg: #1B1611;
+  --bg-alt: #241D16;
+  --card: #272018;
+  --dark-service-surface: #211A14;
   --ink: #F4F0E6;
   --ink-soft: #C9C2B3;
   --gold: #C9A24A;
@@ -46,6 +46,13 @@
 }
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; overflow-x:clip; }
+/* Unified warm background for non-artwork dark sections. */
+[data-theme="dark"] main,
+[data-theme="dark"] .section,
+[data-theme="dark"] .section-tight{
+  background-color:var(--bg);
+}
+
 body{
   margin:0;
   background:var(--bg);
@@ -502,11 +509,19 @@ ul{ list-style:none; margin:0; padding:0; }
 .home-services-section > *{ position:relative; z-index:1; }
 [data-theme="dark"] .home-services-section::before{
   background-image:
-    linear-gradient(to bottom, var(--bg) 0%, rgba(5,5,5,.42) 4%, transparent 14%, transparent 86%, rgba(5,5,5,.42) 96%, var(--bg) 100%),
+    linear-gradient(
+      to bottom,
+      var(--bg) 0%,
+      rgba(27,22,17,.90) 8%,
+      rgba(27,22,17,.58) 24%,
+      rgba(27,22,17,.52) 50%,
+      rgba(27,22,17,.64) 76%,
+      var(--bg) 100%
+    ),
     url('/images/home_services_bg_desktop_dark.png');
-  /* Soften the busy dark artwork without changing the light theme. */
-  filter:blur(2.2px);
-  opacity:.82;
+  /* Warm the artwork so it belongs to the same espresso palette as the rest of the site. */
+  filter:blur(2px);
+  opacity:.76;
   transform:scale(1.025);
 }
 .home-services-grid .service-card{
@@ -558,7 +573,7 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 [data-theme="dark"] .story-panel{
   background-image:
-    linear-gradient(rgba(5,5,5,.70), rgba(5,5,5,.70)),
+    linear-gradient(rgba(27,22,17,.70), rgba(27,22,17,.70)),
     url('/images/home_last%20section_bg_dark.png');
 }
 .story-panel .art-side{
@@ -803,17 +818,17 @@ ul{ list-style:none; margin:0; padding:0; }
   background:
     linear-gradient(
       90deg,
-      rgba(5,5,5,.18) 0%,
-      rgba(5,5,5,.03) 28%,
-      rgba(5,5,5,.03) 72%,
-      rgba(5,5,5,.18) 100%
+      rgba(27,22,17,.18) 0%,
+      rgba(27,22,17,.03) 28%,
+      rgba(27,22,17,.03) 72%,
+      rgba(27,22,17,.18) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(5,5,5,.08) 0%,
+      rgba(27,22,17,.08) 0%,
       transparent 35%,
       transparent 72%,
-      rgba(5,5,5,.20) 100%
+      rgba(27,22,17,.20) 100%
     );
 }
 [data-theme="dark"] .service-category-hero h1{
@@ -1263,7 +1278,7 @@ ul{ list-style:none; margin:0; padding:0; }
   background:var(--bg);
 }
 [data-theme="dark"] .service-detail-page{
-  background:#17130e;
+  background:var(--bg);
 }
 [data-theme="dark"] .service-detail-page::before{
   background-image:url('/images/session_bg_dark_view.png');
@@ -1912,7 +1927,7 @@ ul{ list-style:none; margin:0; padding:0; }
   }
   [data-theme="dark"] .home-services-section::before{
     background-image:
-      linear-gradient(to bottom, var(--bg) 0%, rgba(5,5,5,.6) 4%, transparent 16%, transparent 84%, rgba(5,5,5,.6) 96%, var(--bg) 100%),
+      linear-gradient(to bottom, var(--bg) 0%, rgba(27,22,17,.6) 4%, transparent 16%, transparent 84%, rgba(27,22,17,.6) 96%, var(--bg) 100%),
       url('/images/home_services_bg_ph_dark.png');
   }
   .home-services-grid .service-card::before,
