@@ -381,7 +381,38 @@ ul{ list-style:none; margin:0; padding:0; }
 .service-card::before{ content:""; position:absolute; inset:0; z-index:-1; background-image:url('/images/card_bg_light_theme.png'); background-position:center center; background-size:100% 100%; background-repeat:no-repeat; opacity:0.7; }
 .service-card > *{ position:relative; z-index:1; }
 .service-card input, .service-card select, .service-card textarea{ background:rgba(255,255,255,0.85) !important; color:#1a1a1a !important; }
-.services-grid .service-card{ display:flex; flex-direction:column; border-color:var(--gold); border-width:1.5px; }
+.services-grid .service-card{
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  border:1px solid rgba(177,143,74,.72);
+  box-shadow:
+    0 0 0 5px var(--bg),
+    0 0 0 6px rgba(177,143,74,.38),
+    0 12px 28px rgba(74,58,32,.07);
+}
+.services-grid .service-card::after{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:1px solid rgba(177,143,74,.22);
+  border-radius:calc(var(--radius-md) + 3px);
+  pointer-events:none;
+  z-index:0;
+}
+.services-grid .service-card::before{
+  border-radius:var(--radius-md);
+}
+[data-theme="dark"] .services-grid .service-card{
+  border-color:rgba(210,171,79,.78);
+  box-shadow:
+    0 0 0 5px var(--bg),
+    0 0 0 6px rgba(210,171,79,.38),
+    0 14px 32px rgba(0,0,0,.28);
+}
+[data-theme="dark"] .services-grid .service-card::after{
+  border-color:rgba(210,171,79,.28);
+}
 
 /* Contact page: do not use the decorative service-card artwork on contact cards. */
 .contact-layout > div:first-child .service-card,
