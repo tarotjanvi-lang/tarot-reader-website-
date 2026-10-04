@@ -50,8 +50,8 @@ export default function ContactPage() {
               <div className="service-card" style={{ marginBottom: 18 }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-                    <path d="M23.7 8.3A10.8 10.8 0 0 0 6.8 21.1L5.7 25l4-1.1A10.8 10.8 0 1 0 23.7 8.3Z" stroke="var(--gold)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12.1 11.5c.3-.3.6-.4.9-.4h.6c.3 0 .5.2.6.5l.9 2.1c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.6.5.9 1.3 1.7 2.2 2.2.2.1.4.1.6-.1l.8-.8c.2-.2.4-.2.7-.1l2 .9c.3.1.4.3.4.6v.6c0 .3-.1.6-.4.9-.4.4-1 .7-1.6.7-1.1 0-2.8-.8-4.3-2.1-1.3-1.1-2.4-2.4-3.1-3.7-.5-.9-.8-1.8-.8-2.5 0-.8.4-1.5 1.2-2.2Z" fill="var(--gold)"/>
+                    <path d="M23.7 8.3A9.8 9.8 0 0 0 7.2 20.9L6.2 24.4l3.7-1A9.8 9.8 0 1 0 23.7 8.3Z" fill="var(--gold)"/>
+                    <path d="M12.2 11.8c.3-.3.6-.4.9-.4h.5c.3 0 .5.2.6.5l.8 1.9c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.6.5.8 1.2 1.5 2 2 .2.1.4.1.6-.1l.8-.7c.2-.2.4-.2.7-.1l1.9.8c.3.1.4.3.4.6v.5c0 .3-.1.6-.4.8-.4.4-.9.6-1.5.6-1 0-2.5-.7-3.9-1.9-1.2-1-2.2-2.2-2.8-3.4-.5-.8-.7-1.6-.7-2.3 0-.7.3-1.3 1-1.9Z" fill="var(--card)"/>
                   </svg>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <strong style={{ fontFamily: "'Playfair Display'" }}>Emergency consultation</strong>
