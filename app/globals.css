@@ -6154,3 +6154,64 @@ body > .site-star-field{
     border-radius:0 !important;
   }
 }
+
+
+/* Booking refinements — laptop session/details only. */
+@media (min-width:861px){
+  /* Details form: warm, muted placeholders that match the Soul Mirror palette. */
+  .booking-page .form-field input::placeholder,
+  .booking-page .form-field textarea::placeholder{
+    color:#9a8058 !important;
+    opacity:1 !important;
+  }
+  .booking-page .phone-input input::placeholder{
+    color:#9a8058 !important;
+    opacity:1 !important;
+  }
+  [data-theme="dark"] .booking-page .form-field input::placeholder,
+  [data-theme="dark"] .booking-page .form-field textarea::placeholder,
+  [data-theme="dark"] .booking-page .phone-input input::placeholder{
+    color:#b9a47b !important;
+    opacity:1 !important;
+  }
+
+  /* Stepper: give the confirmation number enough room so "4" stays a
+     proper centered circle instead of being squeezed by the label. */
+  .booking-page .step-pill{
+    flex:0 0 165px;
+    min-width:165px;
+    box-sizing:border-box;
+  }
+  .booking-page .step-pill .num{
+    flex:0 0 28px;
+    width:28px;
+    min-width:28px;
+    height:28px;
+    min-height:28px;
+    box-sizing:border-box;
+    margin-right:7px;
+  }
+  .booking-page .step-connector{
+    flex:0 0 25px;
+    width:25px;
+  }
+
+  /* SESSION step only: remove the decorative image artwork from the
+     selectable service cards. Other booking steps and service pages
+     keep their existing artwork. */
+  .booking-page .booking-step:first-child .select-service .service-card-image-light,
+  .booking-page .booking-step:first-child .select-service .service-card-image-dark{
+    display:none !important;
+  }
+  .booking-page .booking-step:first-child .select-service::before{
+    display:none !important;
+    background-image:none !important;
+    opacity:0 !important;
+  }
+  .booking-page .booking-step:first-child .select-service{
+    background:var(--card) !important;
+    background-image:none !important;
+    min-height:180px;
+    padding-top:26px;
+  }
+}
