@@ -59,6 +59,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-section-heading">
             <div className="eyebrow">The story behind SoulMirror</div>
+            <span className="about-desktop-section-label">01 / MY JOURNEY</span>
           </div>
 
           <Reveal className="about-story-feature">
@@ -81,6 +82,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-section-heading">
             <div className="eyebrow">The way we work</div>
+            <span className="about-desktop-section-label">02 / THE JOURNEY</span>
           </div>
           <div className="about-journey-new">
             <Reveal className="about-journey-card"><span className="journey-number">01</span><ServiceIcon type="lotus" /><h3>Listen</h3><p>We slow down enough to hear what your intuition has been saying.</p></Reveal>
