@@ -5618,7 +5618,7 @@ body > .site-star-field{
     align-self:flex-start;
     justify-content:flex-start;
     width:min(590px,92%);
-    margin:28px auto 18px;
+    margin:28px 0 18px;
     padding-top:4px;
     padding-bottom:8px;
   }
