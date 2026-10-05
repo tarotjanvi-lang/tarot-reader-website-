@@ -5057,3 +5057,61 @@ body > .site-star-field{
     white-space:nowrap;
   }
 }
+
+
+/* =========================================================
+   LAYOUT REFINEMENTS — 2026-10-05
+   ========================================================= */
+
+/* Home service numbering: right-top instead of left-top. */
+.home-service-number{
+  right:16px;
+  left:auto;
+}
+
+/* About hero actions now live directly beneath Janvi's portrait. */
+.about-photo-actions{
+  position:relative;
+  z-index:5;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  width:min(520px,88%);
+  margin:18px auto 0;
+}
+.about-photo-actions .btn{
+  flex:1 1 0;
+  justify-content:center;
+}
+
+/* Stronger depth for the Intuitive / Grounded / Confidential cards. */
+.about-page .about-values-new .about-value{
+  box-shadow:
+    0 14px 32px rgba(72,52,22,.12),
+    0 3px 12px rgba(201,162,74,.10),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+[data-theme="dark"] .about-page .about-values-new .about-value{
+  box-shadow:
+    0 18px 38px rgba(0,0,0,.28),
+    0 4px 16px rgba(201,162,74,.10),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* Sub-service booking buttons: narrower on phones. */
+@media (max-width:600px){
+  .service-category-book{
+    width:82%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .about-photo-actions{
+    width:91%;
+    flex-direction:column;
+    gap:9px;
+    margin-top:14px;
+  }
+  .about-photo-actions .btn{
+    width:100%;
+  }
+}
