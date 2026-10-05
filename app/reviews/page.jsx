@@ -74,18 +74,14 @@ export default function ReviewsPage() {
 
   return (
     <main className="reviews-page">
-      <section className="page-hero reviews-hero">
+      <section className="page-hero">
         <div className="container">
-          <div className="reviews-hero-mark" aria-hidden="true">✦</div>
-          <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
-          <div className="reviews-heading-copy">
-            <h1>Stories that stayed<br /><span>with the mirror.</span></h1>
-            <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
-          </div>
-          <div className="reviews-proof-rail" aria-label="SoulMirror milestones">
-            <div><strong>500+</strong><span>Souls guided</span></div>
-            <div><strong>1,000+</strong><span>Stories shared</span></div>
-            <div><strong>4.9/5</strong><span>Average rating</span></div>
+          <div className="reviews-heading-art">
+            <div className="reviews-heading-copy">
+              <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
+              <h1>500+ souls<br />1,000+ stories</h1>
+              <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
+            </div>
           </div>
           <button type="button" className="btn btn-primary review-trigger" onClick={toggleReviewForm}>
             {showForm ? "Close Review Form" : "Add Your Review"}
