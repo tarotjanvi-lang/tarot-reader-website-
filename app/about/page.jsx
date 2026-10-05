@@ -18,12 +18,8 @@ export default function AboutPage() {
             <Reveal className="about-hero-copy">
               <div className="eyebrow">A calling, not just a profession</div>
               <p className="about-kicker">THE SOUL MIRROR · JANVI</p>
-              <h1>Meet the woman<br /><span>behind the mirror.</span></h1>
+              <h1>Meet the<br />woman<br /><span>behind the<br />mirror.</span></h1>
               <p className="about-lede">A grounded guide for the moments when life asks you to look a little deeper.</p>
-              <div className="about-hero-actions">
-                <Link href="/booking" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">→</span></Link>
-                <Link href="/services" className="btn btn-outline">Explore the work</Link>
-              </div>
               <div className="about-hero-signature">
                 <span>THE SOUL MIRROR</span>
                 <small>A space for honest reflection</small>
@@ -42,6 +38,10 @@ export default function AboutPage() {
                 <small>Tarot reader · healer · guide</small>
               </div>
               <div className="about-sun" aria-hidden="true">✦</div>
+              <div className="about-photo-actions">
+                <Link href="/booking" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">→</span></Link>
+                <Link href="/services" className="btn btn-outline">Explore the work</Link>
+              </div>
             </Reveal>
           </div>
 
