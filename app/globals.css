@@ -6215,3 +6215,37 @@ body > .site-star-field{
     padding-top:26px;
   }
 }
+
+
+/* Booking details — dark laptop palette correction. */
+@media (min-width:861px){
+  [data-theme="dark"] .booking-page .form-field input,
+  [data-theme="dark"] .booking-page .form-field select,
+  [data-theme="dark"] .booking-page .form-field textarea,
+  [data-theme="dark"] .booking-page .phone-input input,
+  [data-theme="dark"] .booking-page .phone-input select{
+    background:rgba(38,30,23,.94) !important;
+    color:#eee5d5 !important;
+    border-color:rgba(205,167,87,.24) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+
+  [data-theme="dark"] .booking-page .form-field input::placeholder,
+  [data-theme="dark"] .booking-page .form-field select::placeholder,
+  [data-theme="dark"] .booking-page .form-field textarea::placeholder,
+  [data-theme="dark"] .booking-page .phone-input input::placeholder{
+    color:#a99572 !important;
+    opacity:1 !important;
+  }
+
+  [data-theme="dark"] .booking-page .form-field input:focus,
+  [data-theme="dark"] .booking-page .form-field select:focus,
+  [data-theme="dark"] .booking-page .form-field textarea:focus,
+  [data-theme="dark"] .booking-page .phone-input input:focus,
+  [data-theme="dark"] .booking-page .phone-input select:focus{
+    background:#2d241b !important;
+    border-color:rgba(205,167,87,.52) !important;
+  }
+}
