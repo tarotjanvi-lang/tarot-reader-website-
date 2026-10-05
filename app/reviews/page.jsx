@@ -74,14 +74,18 @@ export default function ReviewsPage() {
 
   return (
     <main className="reviews-page">
-      <section className="page-hero">
+      <section className="page-hero reviews-hero">
         <div className="container">
-          <div className="reviews-heading-art">
-            <div className="reviews-heading-copy">
-              <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
-              <h1>500+ souls<br />1,000+ stories</h1>
-              <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
-            </div>
+          <div className="reviews-hero-mark" aria-hidden="true">✦</div>
+          <div className="eyebrow" style={{ justifyContent: "center" }}>Words from Beautiful Souls</div>
+          <div className="reviews-heading-copy">
+            <h1>Stories that stayed<br /><span>with the mirror.</span></h1>
+            <p>A glimpse into the journeys of the people who&apos;ve sat across the mirror.</p>
+          </div>
+          <div className="reviews-proof-rail" aria-label="SoulMirror milestones">
+            <div><strong>500+</strong><span>Souls guided</span></div>
+            <div><strong>1,000+</strong><span>Stories shared</span></div>
+            <div><strong>4.9/5</strong><span>Average rating</span></div>
           </div>
           <button type="button" className="btn btn-primary review-trigger" onClick={toggleReviewForm}>
             {showForm ? "Close Review Form" : "Add Your Review"}
@@ -109,11 +113,14 @@ export default function ReviewsPage() {
 
       <section className="section-tight">
         <Reveal className="container">
-          <div className="stats-bar">
-            <div className="stat-item"><div className="stat-icon">★</div><div><div className="stat-num">4.9 / 5</div><div className="stat-label">Average Rating</div></div></div>
-            <div className="stat-item"><div className="stat-icon">✦</div><div><div className="stat-num">500+</div><div className="stat-label">Souls Guided</div></div></div>
-            <div className="stat-item"><div className="stat-icon">✦</div><div><div className="stat-num">1000+</div><div className="stat-label">Sessions Completed</div></div></div>
-            <div className="stat-item"><div className="stat-icon">✦</div><div><div className="stat-num">100%</div><div className="stat-label">Confidential</div></div></div>
+          <div className="reviews-stat-strip">
+            <span>4.9 / 5 average rating</span>
+            <i aria-hidden="true">✦</i>
+            <span>500+ souls guided</span>
+            <i aria-hidden="true">✦</i>
+            <span>1,000+ sessions completed</span>
+            <i aria-hidden="true">✦</i>
+            <span>100% confidential</span>
           </div>
         </Reveal>
       </section>
