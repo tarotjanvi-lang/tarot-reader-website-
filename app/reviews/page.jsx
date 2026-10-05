@@ -107,6 +107,17 @@ export default function ReviewsPage() {
         </section>
       )}
 
+      <section className="section-tight">
+        <Reveal className="container">
+          <div className="stats-bar">
+            <div className="stat-item"><div className="stat-icon">★</div><div><div className="stat-num">4.9 / 5</div><div className="stat-label">Average Rating</div></div></div>
+            <div className="stat-item"><div className="stat-icon">✦</div><div><div className="stat-num">500+</div><div className="stat-label">Souls Guided</div></div></div>
+            <div className="stat-item"><div className="stat-icon">✦</div><div><div className="stat-num">1000+</div><div className="stat-label">Sessions Completed</div></div></div>
+            <div className="stat-item"><div className="stat-icon">✦</div><div><div className="stat-num">100%</div><div className="stat-label">Confidential</div></div></div>
+          </div>
+        </Reveal>
+      </section>
+
       <section className="section">
         {isLoadingReviews ? (
           <p className="reviews-state" role="status">Loading reviews…</p>
