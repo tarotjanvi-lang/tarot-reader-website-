@@ -4029,3 +4029,599 @@ body > .site-star-field{
     z-index:2;
   }
 }
+
+
+/* =========================================================
+   MOBILE REFINEMENTS — 2026-10-05
+   Phone-only unless explicitly noted in the About redesign.
+   ========================================================= */
+@media (max-width:600px){
+
+  /* ---------- Home Shiva: one image, softer lower edge ---------- */
+  .mobile-shiva-visual{
+    height:270px;
+    flex-basis:270px;
+    position:relative;
+    overflow:hidden;
+  }
+  .mobile-shiva-visual::after{
+    height:30%;
+    background:linear-gradient(
+      to bottom,
+      rgba(27,22,17,0) 0%,
+      rgba(27,22,17,.18) 26%,
+      rgba(27,22,17,.58) 62%,
+      rgba(27,22,17,1) 100%
+    );
+    -webkit-backdrop-filter:blur(4px);
+    backdrop-filter:blur(4px);
+  }
+  [data-theme="light"] .mobile-shiva-visual::after{
+    background:linear-gradient(
+      to bottom,
+      rgba(243,238,229,0) 0%,
+      rgba(243,238,229,.18) 26%,
+      rgba(243,238,229,.56) 62%,
+      rgba(243,238,229,1) 100%
+    );
+  }
+  .hero-eyebrow{
+    margin-top:-8px;
+    transform:none;
+    font-size:13px;
+    line-height:1.3;
+    letter-spacing:.12em;
+    font-weight:800;
+    color:#f1d27b !important;
+    text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 9px rgba(0,0,0,.8);
+  }
+  [data-theme="light"] .hero-eyebrow{
+    color:#5b4318 !important;
+    text-shadow:0 1px 3px rgba(255,255,255,.95),0 0 8px rgba(255,255,255,.8);
+  }
+
+  /* ---------- Service catalogue cards: narrower on phone ---------- */
+  .service-category-grid,
+  .tarot-reading-grid{
+    width:92%;
+    max-width:700px;
+    margin-inline:auto;
+  }
+
+  /* ---------- Service-card glitter: broken segments + 3 vertical glints ---------- */
+  .services-catalogue-grid .service-card::after{
+    inset:0 !important;
+    z-index:2;
+    opacity:.82;
+    background:
+      linear-gradient(
+        112deg,
+        transparent 0 14%,
+        rgba(255,239,178,.82) 14.5% 15.2%,
+        transparent 15.8% 28%,
+        rgba(255,239,178,.62) 28.5% 29.1%,
+        transparent 29.8% 43%,
+        rgba(255,239,178,.78) 43.5% 44.2%,
+        transparent 45% 100%
+      ),
+      linear-gradient(
+        90deg,
+        transparent 0 24%,
+        rgba(255,232,158,.40) 24.3% 24.8%,
+        transparent 25.2% 51%,
+        rgba(255,232,158,.34) 51.3% 51.8%,
+        transparent 52.2% 76%,
+        rgba(255,232,158,.40) 76.3% 76.8%,
+        transparent 77.2% 100%
+      );
+    background-size:190% 100%,100% 100%;
+    background-position:-120% 0,0 0;
+    transform:none;
+    transition:none;
+    animation:sm-mobile-segment-glitter 3.1s ease-in-out infinite;
+  }
+  .services-catalogue-grid .service-card:nth-child(2)::after{ animation-delay:.55s; }
+  .services-catalogue-grid .service-card:nth-child(3)::after{ animation-delay:1.1s; }
+  .services-catalogue-grid .service-card:nth-child(4)::after{ animation-delay:1.65s; }
+
+  /* Keep the glow decorative only; never let it cover the card content. */
+  .services-catalogue-grid .service-card > *{
+    position:relative;
+    z-index:3;
+  }
+
+  /* ---------- Ready to transform / CTA image: soften artwork behind copy ---------- */
+  .cta-banner-image{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+  }
+  .cta-banner-image::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    z-index:0;
+    background:inherit;
+    background-image:inherit;
+    background-position:center;
+    background-size:cover;
+    filter:blur(8px);
+    transform:scale(1.04);
+    opacity:.62;
+  }
+  .cta-banner-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:rgba(243,238,229,.48);
+    pointer-events:none;
+  }
+  [data-theme="dark"] .cta-banner-image::after{
+    background:rgba(27,22,17,.62);
+  }
+  .cta-banner-image > *{
+    position:relative;
+    z-index:2;
+  }
+  .cta-banner-image > div{
+    max-width:80%;
+    margin-right:0;
+    transform:none;
+  }
+  .cta-banner-image h2,
+  .cta-banner-image p{
+    text-shadow:0 1px 8px rgba(255,255,255,.35);
+  }
+  [data-theme="dark"] .cta-banner-image h2,
+  [data-theme="dark"] .cta-banner-image p{
+    text-shadow:0 2px 10px rgba(0,0,0,.65);
+  }
+
+  /* ---------- Contact page: blur the decorative background behind text ---------- */
+  .contact-page::before{
+    filter:blur(8px);
+    transform:scale(1.035);
+    opacity:.72;
+  }
+  .contact-page::after{
+    background:rgba(243,238,229,.72);
+  }
+  [data-theme="dark"] .contact-page::after{
+    background:rgba(27,22,17,.70);
+  }
+  .contact-page > .page-hero{
+    padding-top:42px;
+    padding-bottom:38px;
+  }
+  .contact-page > .page-hero h1{
+    text-shadow:0 2px 12px rgba(255,255,255,.55);
+  }
+  [data-theme="dark"] .contact-page > .page-hero h1{
+    text-shadow:0 2px 14px rgba(0,0,0,.8);
+  }
+  .contact-page > .page-hero p{
+    color:var(--ink-soft);
+    text-shadow:0 1px 7px rgba(255,255,255,.5);
+  }
+  [data-theme="dark"] .contact-page > .page-hero p{
+    color:#d8d0c1;
+    text-shadow:0 1px 8px rgba(0,0,0,.75);
+  }
+
+  /* Give the emergency copy a protected text column so "is" never touches the arrow. */
+  .emergency-contact-card > div > div{
+    padding-right:12px;
+  }
+  .emergency-contact-card p{
+    max-width:215px;
+    line-height:1.45;
+  }
+}
+
+/* A slightly wider phone/tablet breakpoint for sub-service card width only. */
+@media (max-width:700px){
+  .service-category-grid,
+  .tarot-reading-grid{
+    width:min(92%,700px);
+    max-width:700px;
+    margin-inline:auto;
+  }
+}
+
+/* Broken, segmented sparkle pass for service cards. */
+@keyframes sm-mobile-segment-glitter{
+  0%,62%{ opacity:.22; background-position:-120% 0,0 0; }
+  70%{ opacity:.9; background-position:18% 0,0 0; }
+  78%{ opacity:.35; background-position:55% 0,0 0; }
+  86%,100%{ opacity:.22; background-position:125% 0,0 0; }
+}
+
+/* =========================================================
+   ABOUT PAGE — full redesign for desktop + phone, both themes
+   ========================================================= */
+.about-page{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--bg);
+}
+.about-hero{
+  position:relative;
+  padding:72px 0 58px;
+  background:
+    radial-gradient(circle at 74% 38%, rgba(201,162,74,.13), transparent 24%),
+    linear-gradient(135deg,var(--bg-alt) 0%,var(--bg) 58%,var(--bg-alt) 100%);
+}
+.about-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 22%, rgba(201,162,74,.10) 0 1px, transparent 2px),
+    radial-gradient(circle at 86% 18%, rgba(201,162,74,.12) 0 1px, transparent 2px),
+    radial-gradient(circle at 92% 76%, rgba(201,162,74,.10) 0 1px, transparent 2px);
+  background-size:170px 150px,210px 180px,190px 160px;
+  opacity:.65;
+}
+.about-hero-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:.92fr 1.08fr;
+  gap:76px;
+  align-items:center;
+  min-height:590px;
+}
+.about-hero-copy{ max-width:590px; }
+.about-kicker{
+  margin:0 0 12px;
+  color:var(--gold);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.28em;
+}
+.about-hero-copy h1{
+  font-size:clamp(46px,5.8vw,76px);
+  line-height:.94;
+  letter-spacing:-.025em;
+  margin-bottom:22px;
+}
+.about-hero-copy h1 span{ color:var(--gold); }
+.about-hero-copy .about-lede{
+  max-width:470px;
+  margin-bottom:30px;
+  font-size:23px;
+}
+.about-hero-actions{ display:flex; flex-wrap:wrap; gap:12px; }
+.about-hero-signature{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  margin-top:38px;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+  max-width:310px;
+}
+.about-hero-signature span{ color:var(--gold); font-size:11px; letter-spacing:.18em; }
+.about-hero-signature small{ color:var(--ink-soft); font-size:12px; }
+.about-hero-visual{
+  position:relative;
+  min-height:540px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.about-portrait-frame{
+  position:relative;
+  z-index:2;
+  width:min(520px,88%);
+  aspect-ratio:1 / 1.08;
+  padding:12px;
+  border:1px solid color-mix(in srgb,var(--gold) 65%,var(--border));
+  background:color-mix(in srgb,var(--card) 70%,transparent);
+  box-shadow:0 26px 70px rgba(0,0,0,.16),inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.about-portrait{
+  position:relative;
+  inset:auto;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 24%;
+  border-radius:1px;
+  filter:saturate(.78);
+}
+.about-portrait-note{
+  left:7%;
+  bottom:7%;
+  z-index:4;
+  padding:14px 18px;
+  background:color-mix(in srgb,var(--card) 94%,transparent);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.about-portrait-note span{ font-size:20px; }
+.about-portrait-note small{ font-size:10px; }
+.about-sun{
+  top:8%;
+  right:5%;
+  width:56px;
+  height:56px;
+  background:var(--gold);
+  box-shadow:0 10px 30px -12px var(--gold);
+}
+.about-orbit{
+  position:absolute;
+  border:1px solid rgba(201,162,74,.28);
+  border-radius:50%;
+  pointer-events:none;
+}
+.orbit-one{ width:470px; height:470px; }
+.orbit-two{ width:570px; height:570px; border-style:dashed; opacity:.55; }
+.about-trust-rail{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.about-trust-rail > div{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:18px 22px;
+  border-right:1px solid var(--border);
+}
+.about-trust-rail > div:last-child{ border-right:0; }
+.about-trust-rail strong{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+  font-size:25px;
+  line-height:1;
+}
+.about-trust-rail span{
+  color:var(--ink-soft);
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.about-section-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:38px;
+}
+.about-section-heading > span,
+.about-practice-mark{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.18em;
+}
+.about-story-new{
+  background:
+    linear-gradient(180deg,var(--bg-alt),var(--bg));
+}
+.about-story-feature{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:82px;
+  align-items:center;
+}
+.about-story-new .about-story-image{
+  padding:0 0 24px 24px;
+  position:relative;
+}
+.about-story-new .about-story-image::after{
+  width:72%;
+  height:76%;
+}
+.about-story-new .about-story-image img{
+  aspect-ratio:1 / 1.05;
+}
+.about-image-caption{
+  position:absolute;
+  left:10px;
+  bottom:4px;
+  z-index:2;
+  padding:8px 12px;
+  background:var(--card);
+  color:var(--gold);
+  border:1px solid var(--border);
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.about-story-copy h2{
+  font-size:clamp(36px,4.4vw,58px);
+  line-height:1.02;
+}
+.about-story-copy h2 span{ color:var(--gold); }
+.about-story-copy p{ max-width:570px; font-size:15px; line-height:1.8; }
+.about-pullquote{
+  max-width:520px !important;
+  font-size:24px !important;
+  line-height:1.25 !important;
+}
+.about-journey-section{ background:var(--bg); }
+.about-journey-new{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.about-journey-new .about-journey-card{
+  min-height:270px;
+  padding:30px;
+  border:1px solid var(--border);
+  background:
+    radial-gradient(circle at 100% 0,rgba(201,162,74,.10),transparent 34%),
+    var(--card);
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.about-journey-new .about-journey-card:hover{
+  transform:translateY(-6px);
+  border-color:color-mix(in srgb,var(--gold) 55%,var(--border));
+  box-shadow:var(--shadow);
+}
+.about-journey-new .service-icon{ margin:32px 0 18px; }
+.about-journey-new h3{ font-size:25px; }
+.about-journey-new p{ max-width:300px; font-size:14px; }
+.about-values-new{
+  background:var(--bg-alt);
+}
+.about-values-new .about-values-head{
+  align-items:end;
+}
+.about-values-new .about-values-head > p{
+  max-width:320px;
+  margin:0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+}
+.about-values-new .about-values-grid{
+  border-top:1px solid var(--border);
+}
+.about-values-new .about-value{
+  position:relative;
+  min-height:230px;
+  padding:34px 38px 18px 0;
+}
+.about-value-index{
+  position:absolute;
+  top:38px;
+  right:38px;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.14em;
+}
+.about-values-new .about-value h3{ font-size:24px; }
+.about-values-new .about-value p{ font-size:14px; max-width:290px; line-height:1.7; }
+.about-practice-new{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(224,189,103,.12),transparent 24%),
+    linear-gradient(135deg,#26352e,#17221e 70%,#211b15);
+}
+.about-practice-new .about-practice-intro{
+  grid-template-columns:.65fr 1.35fr;
+}
+.about-practice-new .about-practice-intro h2{
+  font-size:clamp(38px,4.5vw,58px);
+}
+.about-final-cta{ background:var(--bg); }
+
+[data-theme="dark"] .about-hero{
+  background:
+    radial-gradient(circle at 74% 38%,rgba(224,189,103,.14),transparent 25%),
+    linear-gradient(135deg,#241d16 0%,#1b1611 58%,#211a14 100%);
+}
+[data-theme="dark"] .about-hero::before{ opacity:.85; }
+[data-theme="dark"] .about-portrait-frame{
+  background:rgba(39,32,24,.72);
+  box-shadow:0 28px 75px rgba(0,0,0,.38),inset 0 0 0 1px rgba(255,255,255,.06);
+}
+[data-theme="dark"] .about-story-new{ background:linear-gradient(180deg,#241d16,#1b1611); }
+[data-theme="dark"] .about-journey-new .about-journey-card{
+  background:
+    radial-gradient(circle at 100% 0,rgba(224,189,103,.10),transparent 34%),
+    #211a14;
+}
+[data-theme="dark"] .about-values-new{ background:#241d16; }
+[data-theme="dark"] .about-practice-new{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(224,189,103,.13),transparent 24%),
+    linear-gradient(135deg,#2b2118,#1a1713 70%,#241b13);
+}
+
+/* ---------- Mobile-only continuation ---------- */
+@media (max-width:680px){
+  .about-hero{ padding:42px 0 34px; }
+  .about-hero-grid{
+    grid-template-columns:1fr;
+    gap:36px;
+    min-height:0;
+  }
+  .about-hero-copy{ text-align:center; }
+  .about-hero-copy .eyebrow{ justify-content:center; }
+  .about-kicker{ font-size:9px; }
+  .about-hero-copy h1{
+    font-size:clamp(40px,12vw,54px);
+    line-height:.98;
+  }
+  .about-hero-copy .about-lede{
+    font-size:20px;
+    margin-inline:auto;
+    max-width:330px;
+  }
+  .about-hero-actions{
+    justify-content:center;
+    flex-direction:column;
+    align-items:stretch;
+    max-width:310px;
+    margin-inline:auto;
+  }
+  .about-hero-actions .btn{ width:100%; justify-content:center; }
+  .about-hero-signature{
+    margin:26px auto 0;
+    text-align:left;
+  }
+  .about-hero-visual{ min-height:390px; }
+  .about-portrait-frame{ width:88%; }
+  .orbit-one{ width:290px; height:290px; }
+  .orbit-two{ width:340px; height:340px; }
+  .about-portrait-note{ left:4%; bottom:4%; }
+  .about-sun{ right:2%; top:5%; width:48px; height:48px; font-size:20px; }
+  .about-trust-rail{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .about-trust-rail > div{
+    padding:14px 12px;
+    border-bottom:1px solid var(--border);
+  }
+  .about-trust-rail > div:nth-child(2){ border-right:0; }
+  .about-trust-rail > div:nth-child(3),
+  .about-trust-rail > div:nth-child(4){ border-bottom:0; }
+  .about-section-heading{
+    display:block;
+    margin-bottom:26px;
+  }
+  .about-section-heading > span{
+    display:block;
+    margin-top:8px;
+  }
+  .about-story-feature{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  .about-story-new .about-story-image{ padding:0 0 18px 14px; }
+  .about-story-copy h2{ font-size:clamp(34px,10vw,46px); }
+  .about-story-copy p{ font-size:14px; line-height:1.75; }
+  .about-pullquote{ font-size:21px !important; }
+  .about-journey-new{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .about-journey-new .about-journey-card{
+    min-height:0;
+    padding:24px;
+  }
+  .about-journey-new .service-icon{ margin:20px 0 14px; }
+  .about-values-new .about-values-head > p{
+    margin-top:12px;
+    font-size:19px;
+  }
+  .about-values-new .about-value{
+    min-height:0;
+    padding:26px 0;
+  }
+  .about-value-index{ top:28px; right:4px; }
+  .about-practice-new{ padding:62px 0; }
+  .about-practice-new .about-practice-intro{ display:block; }
+  .about-practice-new .about-practice-intro h2{
+    margin-top:14px;
+    font-size:clamp(34px,10vw,46px);
+  }
+  .about-final-cta .cta-banner-image{ width:100%; }
+}
