@@ -6049,3 +6049,98 @@ body > .site-star-field{
     background-image:none !important;
   }
 }
+
+
+/* =========================================================
+   LAPTOP-ONLY VISUAL CORRECTIONS — 2026-10-06
+   Strictly scoped to min-width:861px. Mobile/tablet styling is unchanged.
+   ========================================================= */
+
+.about-desktop-copy-actions{display:none;}
+
+@media (min-width:861px){
+
+  /* ABOUT — move the two actions under the Soul Mirror signature on the left. */
+  .about-page .about-desktop-copy-actions{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:12px;
+    width:min(590px,92%);
+    margin:24px 0 4px;
+    padding-top:6px;
+    padding-bottom:8px;
+  }
+  .about-page .about-desktop-copy-actions .btn{
+    min-width:190px;
+    justify-content:center;
+  }
+  .about-page .about-photo-actions{display:none !important;}
+
+  /* NAVBAR — larger brand mark and wordmark on laptop. */
+  .nav .logo-mark{width:48px;height:48px;}
+  .nav .logo-text b{font-size:18px;}
+
+  /* BOOKING — keep all four steps on one single line. */
+  .booking-page .steps-track{
+    width:100%;
+    max-width:760px;
+    flex-wrap:nowrap !important;
+    gap:0;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .booking-page .step-pill{
+    flex:0 0 150px;
+    min-width:150px;
+  }
+  .booking-page .step-connector{
+    flex:0 0 40px;
+    width:40px;
+  }
+
+  /* BOOKING — keep service-card artwork inside each card.
+     Without a positioned card, its decorative ::before can paint
+     over the parent and behind "Choose your session". */
+  .booking-page .select-service{position:relative;}
+  .booking-page .booking-step:first-child{background-image:none !important;}
+
+  /* REVIEWS — replace the purple-looking controls with warm site surfaces. */
+  .reviews-page .review-form input,
+  .reviews-page .review-form select,
+  .reviews-page .review-form textarea{
+    background:rgba(246,240,226,.76) !important;
+    color:#2f3029 !important;
+    border-color:rgba(177,143,74,.30) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.42);
+  }
+  .reviews-page .review-form input::placeholder,
+  .reviews-page .review-form textarea::placeholder{
+    color:#8a795e !important;
+    opacity:1 !important;
+  }
+  .reviews-page .review-form select{color:#5f513f !important;}
+  .reviews-page .review-form select option{
+    color:#302a21 !important;
+    background:#f6f0e2 !important;
+  }
+
+  [data-theme="dark"] .reviews-page .review-form input,
+  [data-theme="dark"] .reviews-page .review-form select,
+  [data-theme="dark"] .reviews-page .review-form textarea{
+    background:rgba(45,37,28,.94) !important;
+    color:#eee5d5 !important;
+    border-color:rgba(205,167,87,.30) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+  }
+  [data-theme="dark"] .reviews-page .review-form input::placeholder,
+  [data-theme="dark"] .reviews-page .review-form textarea::placeholder{
+    color:#c8bca7 !important;
+    opacity:1 !important;
+  }
+  [data-theme="dark"] .reviews-page .review-form select{color:#e4dac9 !important;}
+  [data-theme="dark"] .reviews-page .review-form select option{
+    color:#eee5d5 !important;
+    background:#2d251c !important;
+  }
+}
