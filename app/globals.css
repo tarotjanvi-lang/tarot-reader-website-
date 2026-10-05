@@ -3768,7 +3768,7 @@ body > .site-star-field{
    PHONE-ONLY REFINEMENTS — 2026-10-05
    Desktop/laptop styles are intentionally untouched.
    ========================================================= */
-@media (max-width: 767px){
+@media (max-width: 600px){
 
   /* ---------------- Home hero: blend Shiva into the section below ---------------- */
   .hero{
