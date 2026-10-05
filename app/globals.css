@@ -5632,7 +5632,10 @@ body > .site-star-field{
     font-weight:500;
   }
 
-  /* The section labels were removed from JSX; keep the heading area clean. */
+  /* Hide the small section labels on laptop only; mobile markup remains unchanged. */
+  .about-page .about-desktop-section-label{
+    display:none;
+  }
   .about-page .about-story-section .about-section-heading,
   .about-page .about-journey-section .about-section-heading{
     margin-bottom:28px;
@@ -5852,7 +5855,10 @@ body > .site-star-field{
     animation:sm-booking-step-in .5s cubic-bezier(.2,.8,.2,1) both;
   }
 
-  /* ---------- SERVICE DETAIL: the left CTA is removed from JSX; preserve spacing cleanly ---------- */
+  /* ---------- SERVICE DETAIL: hide the duplicate left CTA on laptop only ---------- */
+  .service-detail-page .service-hero-actions{
+    display:none;
+  }
   .service-detail-page .service-hero-detail{
     padding-bottom:42px;
   }
