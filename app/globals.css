@@ -3958,3 +3958,74 @@ body > .site-star-field{
     animation-delay:2.1s;
   }
 }
+
+/* =========================================================
+   PHONE-ONLY FINAL HERO IMAGE FIX — 2026-10-05
+   ========================================================= */
+@media (max-width:600px){
+  /* The Shiva artwork must exist in ONE place on mobile: .mobile-shiva-visual.
+     Remove the same artwork from .hero itself to prevent the duplicate image. */
+  .hero{
+    background-image:none !important;
+    background-color:#F3EEE5;
+  }
+
+  [data-theme="dark"] .hero{
+    background-image:none !important;
+    background-color:#1B1611;
+  }
+
+  /* Dedicated mobile-only Shiva artwork area. */
+  .mobile-shiva-visual{
+    display:block !important;
+    position:relative;
+    width:100%;
+    height:270px;
+    flex:0 0 270px;
+    overflow:hidden;
+    background-image:url('/images/home_page_shiva.png');
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+
+  [data-theme="dark"] .mobile-shiva-visual{
+    background-image:url('/images/home_page_shiva_dark.png');
+  }
+
+  /* Softly blend only the bottom of the single Shiva image into the hero surface. */
+  .mobile-shiva-visual::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:24%;
+    pointer-events:none;
+    background:linear-gradient(
+      to bottom,
+      rgba(243,238,229,0) 0%,
+      rgba(243,238,229,.35) 45%,
+      rgba(243,238,229,1) 100%
+    );
+  }
+
+  [data-theme="dark"] .mobile-shiva-visual::after{
+    background:linear-gradient(
+      to bottom,
+      rgba(27,22,17,0) 0%,
+      rgba(27,22,17,.38) 45%,
+      rgba(27,22,17,1) 100%
+    );
+  }
+
+  /* The old hero overlay is no longer needed because the artwork has its own fade. */
+  .hero::after{
+    display:none !important;
+  }
+
+  .hero-grid{
+    position:relative;
+    z-index:2;
+  }
+}
