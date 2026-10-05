@@ -84,6 +84,11 @@ export default function ServiceDetailPage({ params }) {
                 {service.duration && !service.duration.toLowerCase().includes("min") && <span>{service.duration}</span>}
                 {service.questionCount && <span>{service.questionCount}</span>}
               </div>
+              <div className="service-hero-actions">
+                <Link href={`/booking?service=${service.slug}`} className="btn btn-primary">
+                  Book This {isHealing ? "Healing" : "Session"}
+                </Link>
+              </div>
             </header>
 
             {/* Focus Areas */}
