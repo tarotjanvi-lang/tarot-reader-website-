@@ -4631,3 +4631,333 @@ body > .site-star-field{
 @media (max-width:600px){
   .emergency-is-break{display:block;}
 }
+
+
+/* =========================================================
+   SECOND VISUAL PASS — 2026-10-05
+   Service/home refinements remain phone-only.
+   About page refinement applies to desktop + phone.
+   ========================================================= */
+
+/* ---------------- PHONE: Shiva hero ---------------- */
+@media (max-width:600px){
+  .mobile-shiva-visual{
+    height:276px;
+    flex-basis:276px;
+    background-position:center 22%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    isolation:isolate;
+  }
+  .mobile-shiva-visual::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 50% 72%, rgba(224,189,103,.18), transparent 24%),
+      linear-gradient(to bottom, transparent 60%, rgba(27,22,17,.08) 72%, rgba(27,22,17,.38) 88%, rgba(27,22,17,.82) 100%);
+  }
+  .mobile-shiva-visual::after{
+    z-index:2;
+    top:auto;
+    bottom:-2px;
+    height:24%;
+    background:linear-gradient(
+      to bottom,
+      rgba(27,22,17,0) 0%,
+      rgba(27,22,17,.10) 20%,
+      rgba(27,22,17,.38) 52%,
+      rgba(27,22,17,.92) 88%,
+      rgba(27,22,17,1) 100%
+    );
+    filter:blur(2px);
+    -webkit-filter:blur(2px);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  [data-theme="light"] .mobile-shiva-visual::before{
+    background:
+      radial-gradient(circle at 50% 72%, rgba(177,143,74,.14), transparent 24%),
+      linear-gradient(to bottom, transparent 60%, rgba(243,238,229,.06) 72%, rgba(243,238,229,.32) 88%, rgba(243,238,229,.84) 100%);
+  }
+  [data-theme="light"] .mobile-shiva-visual::after{
+    background:linear-gradient(
+      to bottom,
+      rgba(243,238,229,0) 0%,
+      rgba(243,238,229,.08) 20%,
+      rgba(243,238,229,.34) 52%,
+      rgba(243,238,229,.90) 88%,
+      rgba(243,238,229,1) 100%
+    );
+  }
+
+  /* Make the role line sit cleanly between the artwork and headline. */
+  .hero-eyebrow{
+    position:relative;
+    z-index:5;
+    margin-top:-2px;
+    margin-bottom:8px;
+    max-width:330px;
+    font-size:12.5px;
+    line-height:1.25;
+    letter-spacing:.115em;
+  }
+
+  /* More frequent segmented sparkle on the service catalogue cards. */
+  .services-catalogue-grid .service-card::after{
+    animation-duration:1.8s !important;
+  }
+  .services-catalogue-grid .service-card:nth-child(2)::after{ animation-delay:.35s !important; }
+  .services-catalogue-grid .service-card:nth-child(3)::after{ animation-delay:.70s !important; }
+  .services-catalogue-grid .service-card:nth-child(4)::after{ animation-delay:1.05s !important; }
+
+  /* Wider sub-service cards across Tarot, Energy Healing, Spellwork and Soul Guidance. */
+  .service-category-grid,
+  .tarot-reading-grid{
+    width:96%;
+    max-width:700px;
+  }
+
+  /* Add a small amount of vertical breathing room around the wider cards. */
+  .service-category-card{
+    padding-left:11px;
+    padding-right:11px;
+  }
+
+  /* Minimal celestial ornamentation for all four category pages. */
+  .service-category-hero{
+    min-height:326px;
+    padding:52px 0 48px;
+    background-position:center 18%;
+  }
+  .service-category-hero::before{
+    z-index:0;
+    background:
+      radial-gradient(circle at 18% 25%, rgba(210,171,79,.32) 0 1px, transparent 2px),
+      radial-gradient(circle at 82% 31%, rgba(210,171,79,.28) 0 1px, transparent 2px),
+      radial-gradient(circle at 28% 76%, rgba(210,171,79,.22) 0 1px, transparent 2px),
+      radial-gradient(circle at 74% 72%, rgba(210,171,79,.24) 0 1px, transparent 2px),
+      linear-gradient(90deg, rgba(27,22,17,.18), transparent 28%, transparent 72%, rgba(27,22,17,.18));
+    background-size:auto,auto,auto,auto,100% 100%;
+  }
+  .service-category-hero::after{
+    height:92px;
+    background:
+      radial-gradient(circle at 50% 0, rgba(210,171,79,.18) 0 1px, transparent 2px),
+      linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+  }
+  .service-category-hero .container::before{
+    content:"✦  ─────  ✦";
+    display:block;
+    margin:0 auto 18px;
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:.20em;
+    opacity:.72;
+  }
+  .service-category-hero h1{
+    margin-bottom:10px;
+  }
+  .service-category-hero p{
+    max-width:320px;
+    margin-inline:auto;
+  }
+  .service-category-hero .container::after{
+    content:"";
+    display:block;
+    width:1px;
+    height:24px;
+    margin:16px auto 0;
+    background:linear-gradient(to bottom,var(--gold),transparent);
+    opacity:.7;
+  }
+}
+
+/* ---------------- ABOUT: more polished editorial treatment ---------------- */
+.about-page .about-hero{
+  overflow:hidden;
+}
+.about-page .about-hero::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:12%;
+  width:1px;
+  height:100%;
+  background:linear-gradient(to bottom,transparent 8%,rgba(201,162,74,.20) 35%,rgba(201,162,74,.06) 72%,transparent 94%);
+  pointer-events:none;
+}
+.about-page .about-hero-visual::before{
+  content:"";
+  position:absolute;
+  width:620px;
+  height:620px;
+  border:1px solid rgba(201,162,74,.10);
+  border-radius:50%;
+  box-shadow:0 0 0 34px rgba(201,162,74,.025),0 0 0 68px rgba(201,162,74,.018);
+  pointer-events:none;
+}
+.about-page .about-portrait-frame{
+  box-shadow:0 28px 75px rgba(0,0,0,.18),inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.about-page .about-trust-rail{
+  background:color-mix(in srgb,var(--card) 46%,transparent);
+  backdrop-filter:blur(8px);
+}
+.about-page .about-trust-rail > div{
+  position:relative;
+}
+.about-page .about-trust-rail > div::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:22px;
+  width:26px;
+  height:1px;
+  background:var(--gold);
+  opacity:.6;
+}
+.about-page .about-story-new{
+  position:relative;
+  overflow:hidden;
+}
+.about-page .about-story-new::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  left:-230px;
+  top:80px;
+  border:1px solid rgba(201,162,74,.08);
+  border-radius:50%;
+  box-shadow:0 0 0 30px rgba(201,162,74,.025);
+}
+.about-page .about-journey-section{
+  position:relative;
+}
+.about-page .about-journey-new .about-journey-card{
+  overflow:hidden;
+}
+.about-page .about-journey-new .about-journey-card::after{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-52px;
+  bottom:-52px;
+  border:1px solid rgba(201,162,74,.16);
+  border-radius:50%;
+}
+.about-page .about-values-new .about-value{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--card) 72%,transparent),transparent);
+  padding-left:22px;
+  border:1px solid var(--border);
+  border-top:2px solid color-mix(in srgb,var(--gold) 45%,var(--border));
+  margin-right:10px;
+  min-height:250px;
+}
+.about-page .about-values-new .about-value:last-child{ margin-right:0; }
+.about-page .about-values-new .about-value .service-icon{ margin-top:4px; }
+.about-page .about-practice-new{
+  position:relative;
+  overflow:hidden;
+}
+.about-page .about-practice-new::before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:-260px;
+  top:-220px;
+  border:1px solid rgba(224,189,103,.12);
+  border-radius:50%;
+  box-shadow:0 0 0 28px rgba(224,189,103,.025),0 0 0 56px rgba(224,189,103,.018);
+}
+[data-theme="dark"] .about-page .about-values-new .about-value{
+  background:linear-gradient(180deg,rgba(39,32,24,.86),rgba(33,26,20,.62));
+}
+
+/* About mobile: reduce oversized hero and make the portrait arrive sooner. */
+@media (max-width:680px){
+  .about-page .about-hero{
+    padding:32px 0 28px;
+  }
+  .about-page .about-hero-grid{
+    gap:22px;
+  }
+  .about-page .about-hero-copy h1{
+    font-size:clamp(38px,11vw,50px);
+    line-height:.96;
+    margin-bottom:16px;
+  }
+  .about-page .about-hero-copy .about-lede{
+    font-size:18px;
+    line-height:1.35;
+    margin-bottom:20px;
+  }
+  .about-page .about-hero-actions{
+    gap:9px;
+  }
+  .about-page .about-hero-signature{
+    margin-top:20px;
+    padding-top:12px;
+  }
+  .about-page .about-hero-visual{
+    min-height:330px;
+  }
+  .about-page .about-portrait-frame{
+    width:91%;
+    padding:8px;
+  }
+  .about-page .about-portrait-note{
+    left:2%;
+    bottom:2%;
+    padding:10px 13px;
+  }
+  .about-page .about-portrait-note span{ font-size:17px; }
+  .about-page .about-portrait-note small{ font-size:8px; }
+  .about-page .about-sun{
+    width:44px;
+    height:44px;
+    font-size:17px;
+  }
+  .about-page .about-hero-visual::before{
+    width:340px;
+    height:340px;
+  }
+  .about-page .about-trust-rail{
+    margin-top:12px;
+  }
+  .about-page .about-trust-rail > div{
+    padding:13px 12px;
+  }
+  .about-page .about-trust-rail > div::before{
+    left:12px;
+  }
+  .about-page .about-section-heading{
+    margin-bottom:22px;
+  }
+  .about-page .about-story-new .about-story-feature{
+    gap:28px;
+  }
+  .about-page .about-values-new .about-value{
+    margin:0;
+    padding:24px 18px 22px;
+    min-height:0;
+  }
+  .about-page .about-values-new .about-value-index{
+    top:24px;
+    right:18px;
+  }
+  .about-page .about-practice-new{
+    padding:58px 0;
+  }
+  .about-page .about-practice-new::before{
+    width:300px;
+    height:300px;
+    right:-190px;
+    top:-130px;
+  }
+}
