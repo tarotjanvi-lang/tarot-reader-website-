@@ -3770,7 +3770,7 @@ body > .site-star-field{
    ========================================================= */
 @media (max-width: 600px){
 
-  /* ---------------- Home hero: blend Shiva into the section below ---------------- */
+  /* ---------------- Home hero: blend Shiva into the page ---------------- */
   .hero{
     position:relative;
     isolation:isolate;
@@ -3778,75 +3778,104 @@ body > .site-star-field{
     background-position:center, center bottom;
   }
 
-  /* A soft bottom fade makes the Shiva artwork disappear naturally into
-     the page background instead of ending as a visible image rectangle. */
+  /* Fade the lower edge of the Shiva artwork into the same page surface.
+     This is intentionally placed above the artwork but below all text. */
   .hero::after{
     content:"";
     position:absolute;
     left:0;
     right:0;
-    bottom:0;
-    height:30%;
+    top:20%;
+    height:25%;
     z-index:0;
     pointer-events:none;
     background:linear-gradient(
       to bottom,
       rgba(243,238,229,0) 0%,
-      rgba(243,238,229,.24) 32%,
-      rgba(243,238,229,.68) 70%,
+      rgba(243,238,229,.16) 28%,
+      rgba(243,238,229,.70) 65%,
       rgba(243,238,229,1) 100%
     );
   }
 
   [data-theme="dark"] .hero::after{
+    top:20%;
+    height:25%;
     background:linear-gradient(
       to bottom,
       rgba(27,22,17,0) 0%,
-      rgba(27,22,17,.22) 30%,
-      rgba(27,22,17,.62) 70%,
+      rgba(27,22,17,.16) 28%,
+      rgba(27,22,17,.72) 65%,
       rgba(27,22,17,1) 100%
     );
   }
 
-  /* Keep the hero content above the fade. */
   .hero-grid,
   .hero-copy{
     position:relative;
     z-index:2;
   }
 
-  /* Move the role line slightly upward onto Shiva's artwork and keep it
-     readable without adding a visible pill/background. */
+  /* Put the role line clearly over the Shiva artwork. */
   .hero-eyebrow{
     position:relative;
-    z-index:3;
-    transform:translateY(-22px);
-    margin-bottom:-6px;
-    color:#6f5420;
-    text-shadow:0 1px 10px rgba(255,255,255,.82);
+    z-index:4;
+    transform:translateY(-24px);
+    margin-bottom:-8px;
+    font-size:13.5px;
+    line-height:1.25;
+    letter-spacing:.13em;
+    font-weight:700;
+    color:#f2d47f;
+    text-shadow:
+      0 1px 2px rgba(0,0,0,.95),
+      0 0 7px rgba(0,0,0,.72),
+      0 0 10px rgba(255,236,168,.28);
   }
 
-  [data-theme="dark"] .hero-eyebrow{
-    color:#f0d58a;
-    text-shadow:0 1px 12px rgba(0,0,0,.86);
+  [data-theme="light"] .hero-eyebrow{
+    color:#5a4318;
+    text-shadow:
+      0 1px 2px rgba(255,255,255,.95),
+      0 0 7px rgba(255,255,255,.80),
+      0 1px 8px rgba(0,0,0,.22);
   }
 
-  /* More breathing room between the three hero statements. */
+  /* More breathing room between:
+     SEE YOUR TRUTH / HEAL DEEPLY / TRANSFORM FOREVER. */
   .hero-title{
     line-height:1.20;
   }
 
-  /* Make the dark brown mobile surface feel deeper and more premium. */
+  /* ---------------- Richer dark-brown mobile hero ---------------- */
   [data-theme="dark"] .hero{
     background-color:#1b1611;
+    background-image:
+      radial-gradient(
+        circle at 50% 37%,
+        rgba(214,169,70,.14) 0%,
+        rgba(214,169,70,.05) 28%,
+        transparent 58%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.035) 0%,
+        rgba(255,255,255,0) 28%,
+        rgba(0,0,0,.18) 74%,
+        rgba(0,0,0,.34) 100%
+      ),
+      url('/images/home_page_shiva_dark.png');
+    background-position:center, center, center bottom;
+    background-size:cover, cover, min(150vw,560px) auto;
+    background-repeat:no-repeat;
     box-shadow:
-      inset 0 18px 34px rgba(0,0,0,.18),
-      inset 0 -34px 70px rgba(0,0,0,.30),
-      0 18px 45px rgba(0,0,0,.16);
+      inset 0 1px 0 rgba(229,190,101,.10),
+      inset 0 20px 42px rgba(0,0,0,.20),
+      inset 0 -45px 85px rgba(0,0,0,.34),
+      0 18px 45px rgba(0,0,0,.22);
   }
 
   /* ---------------- Home stats ---------------- */
-  /* Remove the bottom divider under "Worldwide / Online Guidance". */
   .stats-bar .stat-item:last-child{
     border-bottom:none;
   }
@@ -3870,9 +3899,6 @@ body > .site-star-field{
     outline-color:rgba(210,171,79,.44);
   }
 
-  /* Keep the decorative corner frame inside the card bounds on phones.
-     This avoids any card losing part of its border when the browser paints
-     the surrounding section. */
   .home-services-grid .service-card::after{
     inset:0;
     z-index:2;
@@ -3885,15 +3911,17 @@ body > .site-star-field{
     z-index:3;
   }
 
-  /* ---------------- Category catalogue after "View All" ---------------- */
-  /* One service card per row on phones. */
+  /* ---------------- Service catalogue cards ---------------- */
+  /* Keep one card per row, but make the inner cards visibly narrower. */
   .service-category-grid{
     grid-template-columns:1fr !important;
+    width:92%;
+    max-width:360px;
+    margin-inline:auto;
     gap:22px;
   }
 
-  /* Show every category filter without horizontal scrolling. The buttons
-     wrap into additional rows when the phone is narrow. */
+  /* ---------------- Category filters ---------------- */
   .service-category-filters{
     justify-content:center;
     align-items:center;
@@ -3912,5 +3940,21 @@ body > .site-star-field{
     font-size:10.5px;
     line-height:1.15;
   }
-}
 
+  /* ---------------- Catalogue glitter: more frequent on phones ---------------- */
+  .services-catalogue-grid .service-card::after{
+    animation:sm-shine 2.8s ease-in-out infinite;
+  }
+
+  .services-catalogue-grid .service-card:nth-child(2)::after{
+    animation-delay:.7s;
+  }
+
+  .services-catalogue-grid .service-card:nth-child(3)::after{
+    animation-delay:1.4s;
+  }
+
+  .services-catalogue-grid .service-card:nth-child(4)::after{
+    animation-delay:2.1s;
+  }
+}
