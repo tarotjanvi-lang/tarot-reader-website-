@@ -55,7 +55,7 @@ export default function ContactPage() {
                   </svg>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <strong style={{ fontFamily: "'Playfair Display'" }}>Emergency consultation</strong>
-                    <p style={{ fontSize: 14, marginTop: 4 }}>₹299 emergency consultation fee is applicable after payment.</p>
+                    <p style={{ fontSize: 14, marginTop: 4 }}>₹299 emergency consultation fee <span className="emergency-is-break">is</span> applicable after payment.</p>
                   </div>
                   <a href="/booking?urgent=whatsapp" className="contact-card-arrow" aria-label="Book an emergency consultation">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
