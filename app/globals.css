@@ -5166,3 +5166,440 @@ body > .site-star-field{
     height:31px;
   }
 }
+
+
+/* =========================================================
+   ABOUT + REVIEWS — VERIFIED VISUAL REFINEMENT PASS
+   Requested 2026-10-05
+   ========================================================= */
+
+/* ---------- ABOUT: larger portrait + actions directly below it ---------- */
+.about-page .about-hero-visual{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:650px;
+}
+.about-page .about-portrait-frame{
+  width:min(590px,92%);
+  flex:0 0 auto;
+  aspect-ratio:1 / 1.08;
+}
+.about-page .about-photo-actions{
+  width:min(590px,92%);
+  flex:0 0 auto;
+  margin:22px auto 0;
+  gap:12px;
+}
+.about-page .about-photo-actions .btn{
+  flex:1 1 0;
+  min-height:48px;
+}
+
+/* ---------- ABOUT: shorter story image + always-visible caption ---------- */
+.about-page .about-story-new .about-story-image img{
+  aspect-ratio:1 / .84;
+  max-height:440px;
+  object-fit:cover;
+}
+.about-page .about-image-caption{
+  position:relative;
+  left:auto;
+  bottom:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:12px 0 0 10px;
+  padding:8px 13px;
+  background:color-mix(in srgb,var(--card) 94%,transparent);
+  border:1px solid color-mix(in srgb,var(--gold) 42%,var(--border));
+  box-shadow:0 8px 20px rgba(55,42,21,.08);
+  color:var(--gold);
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.about-page .about-image-caption::before{
+  content:"✦";
+  font-size:10px;
+  color:var(--gold);
+}
+[data-theme="dark"] .about-page .about-image-caption{
+  background:rgba(39,32,24,.90);
+  border-color:rgba(205,167,87,.28);
+  box-shadow:0 10px 24px rgba(0,0,0,.22);
+}
+
+/* ---------- ABOUT: Listen / Reflect / Realign cards ---------- */
+.about-page .about-journey-new{
+  gap:16px;
+}
+.about-page .about-journey-new .about-journey-card{
+  position:relative;
+  min-height:292px;
+  padding:28px 28px 26px;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--gold) 32%,var(--border));
+  background:
+    radial-gradient(circle at 100% 0,rgba(201,162,74,.14),transparent 30%),
+    linear-gradient(145deg,color-mix(in srgb,var(--card) 96%,transparent),color-mix(in srgb,var(--bg-alt) 72%,transparent));
+  box-shadow:
+    0 12px 30px rgba(60,45,23,.07),
+    inset 0 1px 0 rgba(255,255,255,.22);
+}
+.about-page .about-journey-new .about-journey-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:64px;
+  height:3px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.about-page .about-journey-new .about-journey-card::after{
+  width:150px;
+  height:150px;
+  right:-76px;
+  bottom:-76px;
+  border-color:rgba(201,162,74,.22);
+  box-shadow:0 0 0 18px rgba(201,162,74,.035);
+}
+.about-page .about-journey-new .journey-number{
+  position:absolute;
+  top:20px;
+  right:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border:1px solid color-mix(in srgb,var(--gold) 58%,var(--border));
+  border-radius:50%;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.08em;
+}
+.about-page .about-journey-new .service-icon{
+  width:52px;
+  height:52px;
+  margin:38px 0 20px;
+  padding:11px;
+  border:1px solid color-mix(in srgb,var(--gold) 48%,var(--border));
+  border-radius:50%;
+  background:color-mix(in srgb,var(--bg) 76%,transparent);
+  color:var(--gold);
+  box-shadow:0 8px 18px rgba(110,82,29,.08);
+}
+.about-page .about-journey-new h3{
+  position:relative;
+  z-index:1;
+  font-size:25px;
+  margin-bottom:9px;
+}
+.about-page .about-journey-new p{
+  position:relative;
+  z-index:1;
+  max-width:310px;
+  margin:0;
+  font-size:14px;
+  line-height:1.65;
+}
+[data-theme="dark"] .about-page .about-journey-new .about-journey-card{
+  background:
+    radial-gradient(circle at 100% 0,rgba(224,189,103,.13),transparent 30%),
+    linear-gradient(145deg,rgba(39,32,24,.96),rgba(33,26,20,.90));
+  border-color:rgba(205,167,87,.30);
+  box-shadow:
+    0 16px 34px rgba(0,0,0,.26),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+[data-theme="dark"] .about-page .about-journey-new .journey-number{
+  background:rgba(27,22,17,.78);
+}
+[data-theme="dark"] .about-page .about-journey-new .service-icon{
+  background:rgba(27,22,17,.70);
+  border-color:rgba(205,167,87,.34);
+}
+
+/* ---------- ABOUT: replace the 3-column practice strip with an editorial step rail ---------- */
+.about-page .about-practice-list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:2px;
+}
+.about-page .about-practice-list > div{
+  display:grid;
+  grid-template-columns:78px minmax(0,1fr);
+  grid-template-rows:auto auto;
+  column-gap:26px;
+  row-gap:5px;
+  align-items:center;
+  margin:0;
+  padding:24px 28px;
+  border:1px solid rgba(248,243,232,.20);
+  border-right:1px solid rgba(248,243,232,.20);
+  border-bottom:1px solid rgba(248,243,232,.20);
+  border-radius:2px;
+  background:linear-gradient(100deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.about-page .about-practice-list > div:nth-child(2){
+  margin-left:7%;
+}
+.about-page .about-practice-list > div:nth-child(3){
+  margin-left:14%;
+}
+.about-page .about-practice-list > div:hover{
+  transform:translateX(5px);
+  border-color:rgba(224,189,103,.40);
+  background:linear-gradient(100deg,rgba(224,189,103,.08),rgba(255,255,255,.018));
+}
+.about-page .about-practice-list span{
+  grid-column:1;
+  grid-row:1 / span 2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:56px;
+  height:56px;
+  margin:0;
+  border:1px solid rgba(224,189,103,.48);
+  border-radius:50%;
+  background:rgba(224,189,103,.06);
+  color:var(--gold-soft);
+  font-size:12px;
+  letter-spacing:.16em;
+}
+.about-page .about-practice-list strong{
+  grid-column:2;
+  grid-row:1;
+  margin:0;
+  font-size:22px;
+}
+.about-page .about-practice-list p{
+  grid-column:2;
+  grid-row:2;
+  max-width:720px;
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+  color:rgba(248,243,232,.76);
+}
+
+/* ---------- REVIEWS: frosted form, no card artwork inside the form ---------- */
+.reviews-page .review-form{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:rgba(251,250,245,.78) !important;
+  background-image:none !important;
+  border:1px solid color-mix(in srgb,var(--gold) 34%,var(--border));
+  box-shadow:
+    0 24px 55px rgba(44,35,21,.16),
+    inset 0 1px 0 rgba(255,255,255,.45);
+  -webkit-backdrop-filter:blur(16px) saturate(.88);
+  backdrop-filter:blur(16px) saturate(.88);
+}
+.reviews-page .review-form::before{
+  display:none !important;
+}
+.reviews-page .review-form::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 12% 12%,rgba(201,162,74,.10),transparent 28%),
+    radial-gradient(circle at 88% 88%,rgba(201,162,74,.08),transparent 28%);
+  pointer-events:none;
+}
+.reviews-page .review-form > *{
+  position:relative;
+  z-index:1;
+}
+[data-theme="dark"] .reviews-page .review-form{
+  background:rgba(39,32,24,.78) !important;
+  border-color:rgba(205,167,87,.28);
+  box-shadow:
+    0 24px 55px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* ---------- REVIEWS: designed testimonial cards with stronger text contrast ---------- */
+.reviews-page .testi-card{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:rgba(251,250,245,.94);
+  border:1px solid color-mix(in srgb,var(--gold) 38%,var(--border));
+  border-radius:3px;
+  padding:28px 28px 24px;
+  gap:16px;
+  box-shadow:
+    0 14px 34px rgba(54,42,21,.10),
+    inset 0 1px 0 rgba(255,255,255,.55);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+.reviews-page .testi-card::before{
+  content:"“";
+  position:absolute;
+  top:-14px;
+  right:14px;
+  z-index:-1;
+  color:rgba(201,162,74,.13);
+  font-family:'Cormorant Garamond',serif;
+  font-size:110px;
+  line-height:1;
+}
+.reviews-page .testi-stars{
+  display:inline-flex;
+  align-self:flex-start;
+  padding:5px 9px;
+  border:1px solid color-mix(in srgb,var(--gold) 32%,transparent);
+  border-radius:999px;
+  background:rgba(201,162,74,.07);
+  font-size:12px;
+  letter-spacing:1.5px;
+}
+.reviews-page .testi-quote{
+  position:relative;
+  z-index:1;
+  margin:0;
+  color:var(--ink);
+  font-size:18px;
+  line-height:1.5;
+  text-shadow:none;
+}
+.reviews-page .testi-person{
+  position:relative;
+  z-index:1;
+  padding-top:14px;
+  border-top:1px solid color-mix(in srgb,var(--gold) 24%,var(--border));
+}
+.reviews-page .testi-avatar{
+  width:44px;
+  height:44px;
+  border:1px solid color-mix(in srgb,var(--gold) 44%,var(--border));
+  background:color-mix(in srgb,var(--bg-alt) 88%,transparent);
+  box-shadow:0 5px 14px rgba(68,52,22,.08);
+}
+.reviews-page .testi-name{
+  color:var(--ink);
+  font-weight:600;
+}
+.reviews-page .testi-tag{
+  color:var(--ink-soft);
+}
+[data-theme="dark"] .reviews-page .testi-card{
+  background:rgba(39,32,24,.94);
+  border-color:rgba(205,167,87,.30);
+  box-shadow:
+    0 16px 38px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+[data-theme="dark"] .reviews-page .testi-card::before{
+  color:rgba(224,189,103,.10);
+}
+[data-theme="dark"] .reviews-page .testi-quote{
+  color:#F4F0E6;
+}
+[data-theme="dark"] .reviews-page .testi-stars{
+  background:rgba(224,189,103,.08);
+}
+[data-theme="dark"] .reviews-page .testi-person{
+  border-top-color:rgba(205,167,87,.20);
+}
+
+/* ---------- REVIEWS: use the exact CTA artwork used by “Ready to transform your life?” ---------- */
+.reviews-page .reviews-cta-banner{
+  background-color:var(--bg) !important;
+  background-image:
+    linear-gradient(110deg,rgba(181,166,123,.18),rgba(181,166,123,.12)),
+    url('/images/home_last_card_website_lighttheme.png') !important;
+  background-position:center !important;
+  background-size:100% 100% !important;
+  background-repeat:no-repeat !important;
+  border:1px solid var(--border) !important;
+  color:var(--ink);
+}
+.reviews-page .reviews-cta-banner h2,
+.reviews-page .reviews-cta-banner p{
+  color:var(--ink) !important;
+  opacity:1;
+}
+.reviews-page .reviews-cta-banner .eyebrow{
+  color:var(--gold);
+}
+.reviews-page .reviews-cta-banner .eyebrow::before{
+  background:var(--gold);
+}
+[data-theme="dark"] .reviews-page .reviews-cta-banner{
+  background-color:#192821 !important;
+  background-image:
+    linear-gradient(110deg,rgba(29,48,40,.78),rgba(25,25,22,.64)),
+    url('/images/home_last_card_website.png') !important;
+  color:#F5EFDD;
+}
+[data-theme="dark"] .reviews-page .reviews-cta-banner h2,
+[data-theme="dark"] .reviews-page .reviews-cta-banner p{
+  color:#F5EFDD !important;
+}
+[data-theme="dark"] .reviews-page .reviews-cta-banner .eyebrow{
+  color:var(--gold-soft);
+}
+[data-theme="dark"] .reviews-page .reviews-cta-banner .eyebrow::before{
+  background:var(--gold-soft);
+}
+
+/* Keep the new About layout usable on phones without reverting the requested desktop changes. */
+@media (max-width:680px){
+  .about-page .about-hero-visual{
+    min-height:0;
+  }
+  .about-page .about-portrait-frame{
+    width:91%;
+  }
+  .about-page .about-photo-actions{
+    width:91%;
+    flex-direction:column;
+    gap:9px;
+    margin-top:14px;
+  }
+  .about-page .about-photo-actions .btn{
+    width:100%;
+  }
+  .about-page .about-story-new .about-story-image img{
+    aspect-ratio:1 / .84;
+    max-height:340px;
+  }
+  .about-page .about-image-caption{
+    margin-left:8px;
+    font-size:8.5px;
+  }
+  .about-page .about-journey-new .about-journey-card{
+    min-height:0;
+    padding:24px;
+  }
+  .about-page .about-practice-list > div,
+  .about-page .about-practice-list > div:nth-child(2),
+  .about-page .about-practice-list > div:nth-child(3){
+    grid-template-columns:58px minmax(0,1fr);
+    margin-left:0;
+    padding:20px;
+  }
+  .about-page .about-practice-list span{
+    width:46px;
+    height:46px;
+  }
+  .about-page .about-practice-list strong{
+    font-size:20px;
+  }
+  .about-page .about-practice-list p{
+    font-size:13px;
+  }
+}
+
