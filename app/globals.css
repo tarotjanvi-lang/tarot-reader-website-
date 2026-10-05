@@ -6144,3 +6144,13 @@ body > .site-star-field{
     background:#2d251c !important;
   }
 }
+
+
+/* Home service numbers — laptop only: remove the colored box behind 01–04. */
+@media (min-width:861px){
+  .home-services-grid .home-service-number{
+    background:transparent !important;
+    padding:0 !important;
+    border-radius:0 !important;
+  }
+}
