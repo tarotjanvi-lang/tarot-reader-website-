@@ -111,20 +111,6 @@ export default function ReviewsPage() {
         </section>
       )}
 
-      <section className="section-tight">
-        <Reveal className="container">
-          <div className="reviews-stat-strip">
-            <span>4.9 / 5 average rating</span>
-            <i aria-hidden="true">✦</i>
-            <span>500+ souls guided</span>
-            <i aria-hidden="true">✦</i>
-            <span>1,000+ sessions completed</span>
-            <i aria-hidden="true">✦</i>
-            <span>100% confidential</span>
-          </div>
-        </Reveal>
-      </section>
-
       <section className="section">
         {isLoadingReviews ? (
           <p className="reviews-state" role="status">Loading reviews…</p>
