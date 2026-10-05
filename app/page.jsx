@@ -104,6 +104,7 @@ export default function HomePage() {
           <div className="services-grid home-services-grid">
             {serviceCategories.map((category, index) => (
               <Reveal as="div" key={category.slug} className="service-card">
+                <span className="home-service-number-mask" aria-hidden="true" />
                 <span className="home-service-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <ServiceVisual
                   service={{
