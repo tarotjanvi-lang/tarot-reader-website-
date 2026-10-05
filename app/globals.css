@@ -4625,3 +4625,9 @@ body > .site-star-field{
   }
   .about-final-cta .cta-banner-image{ width:100%; }
 }
+
+
+.emergency-is-break{display:inline;}
+@media (max-width:600px){
+  .emergency-is-break{display:block;}
+}
