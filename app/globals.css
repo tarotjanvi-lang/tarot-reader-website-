@@ -5607,11 +5607,11 @@ body > .site-star-field{
 
 /* =========================================================
    LAPTOP-ONLY REFINEMENT PASS — 2026-10-05
-   All rules in this block are intentionally scoped to min-width:601px.
+   All rules in this block are intentionally scoped to min-width:861px.
    Phone/mobile styling is not changed.
    ========================================================= */
 
-@media (min-width:601px){
+@media (min-width:861px){
 
   /* ---------- ABOUT HERO ---------- */
   .about-page .about-photo-actions{
@@ -6007,7 +6007,7 @@ body > .site-star-field{
   to{opacity:1;transform:translateY(0);}
 }
 
-@media (min-width:601px) and (prefers-reduced-motion:reduce){
+@media (min-width:861px) and (prefers-reduced-motion:reduce){
   main,
   .nav,
   .page-hero h1,
@@ -6036,7 +6036,7 @@ body > .site-star-field{
 }
 
 /* Desktop safety net: booking has no page-level artwork at any step. */
-@media (min-width:601px){
+@media (min-width:861px){
   .booking-page,
   .booking-page .section,
   .booking-page .container{
