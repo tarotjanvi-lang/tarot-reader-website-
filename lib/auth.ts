@@ -7,6 +7,9 @@ import { prisma } from "@/lib/prisma";
 const ADMIN_EMAIL = "tarotjanvi@gmail.com";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  // Let the deployed host determine the public origin instead of trusting a
+  // development localhost URL when the app is opened from a phone.
+  trustHost: true,
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
