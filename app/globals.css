@@ -6874,3 +6874,89 @@ body > .site-star-field{
     border-color:rgba(214,180,95,.64);
   }
 }
+
+
+/* =========================================================
+   HOME HERO + CTA / STORY BORDER CORRECTION — 2026-10-06
+   ========================================================= */
+
+/* Replace the rounded hero pills with clean typography so the
+   descriptors sit naturally above the CTA. */
+@media (min-width:601px){
+  .hero .hero-badge{
+    background:transparent !important;
+    border:0 !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    box-shadow:none !important;
+    color:#4b4841 !important;
+    text-shadow:0 1px 8px rgba(255,255,255,.82);
+  }
+  .hero .hero-badge svg{
+    color:#a18145 !important;
+  }
+  [data-theme="dark"] .hero .hero-badge{
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    color:#eee5d5 !important;
+    text-shadow:0 1px 8px rgba(0,0,0,.72);
+  }
+  [data-theme="dark"] .hero .hero-badge svg{
+    color:#e0bd67 !important;
+  }
+
+  /* Remove the decorative double border/corner treatment from Story. */
+  .story-panel{
+    border:1px solid var(--border) !important;
+    box-shadow:none !important;
+  }
+  .story-panel::before,
+  .story-panel::after{
+    display:none !important;
+  }
+
+  /* Add the same understated gold framing to the
+     "Ready to transform your life?" CTA. */
+  .home-cta-banner{
+    position:relative;
+    border:1px solid rgba(177,143,74,.52) !important;
+    box-shadow:
+      0 16px 36px rgba(66,51,27,.10),
+      inset 0 0 0 1px rgba(255,255,255,.32);
+  }
+  .home-cta-banner::after{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border:1px solid rgba(177,143,74,.25);
+    pointer-events:none;
+    z-index:2;
+  }
+  .home-cta-banner > *{
+    position:relative;
+    z-index:3;
+  }
+  [data-theme="dark"] .home-cta-banner{
+    border-color:rgba(214,180,95,.46) !important;
+    box-shadow:
+      0 18px 42px rgba(0,0,0,.28),
+      inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  [data-theme="dark"] .home-cta-banner::after{
+    border-color:rgba(214,180,95,.20);
+  }
+}
+
+@media (max-width:600px){
+  /* Remove only the added Story corner/double-border treatment;
+     keep the original simple card border. */
+  .story-panel{
+    border:1px solid var(--border) !important;
+    box-shadow:var(--shadow) !important;
+  }
+  .story-panel::before,
+  .story-panel::after{
+    display:none !important;
+  }
+}
