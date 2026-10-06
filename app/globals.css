@@ -7036,3 +7036,13 @@ body > .site-star-field{
     transform:translate(-34px,-8px) !important;
   }
 }
+
+
+/* =========================================================
+   REVIEWS STATS — LAPTOP FOUR-COLUMN FIT — 2026-10-06
+   ========================================================= */
+@media (min-width:821px){
+  .reviews-page .stats-bar{
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  }
+}
