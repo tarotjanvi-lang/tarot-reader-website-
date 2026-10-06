@@ -6580,3 +6580,29 @@ body > .site-star-field{
     background-repeat:no-repeat !important;
   }
 }
+
+
+/* =========================================================
+   PHONE-ONLY ABOUT BUTTON REFINEMENT — 2026-10-06
+   ========================================================= */
+@media (max-width:600px){
+  /* Give the first CTA a little more breathing room below the portrait. */
+  .about-page .about-photo-actions{
+    margin-top:26px !important;
+  }
+
+  /* Gold outline for the secondary "Explore the work" CTA. */
+  .about-page .about-photo-actions .btn.btn-outline{
+    border:1px solid var(--gold) !important;
+    color:var(--gold) !important;
+    background:transparent !important;
+    box-shadow:0 0 0 1px rgba(201,162,74,.08);
+  }
+
+  [data-theme="dark"] .about-page .about-photo-actions .btn.btn-outline{
+    border-color:#d6b45f !important;
+    color:#e0bd67 !important;
+    background:transparent !important;
+    box-shadow:0 0 0 1px rgba(214,180,95,.10);
+  }
+}
