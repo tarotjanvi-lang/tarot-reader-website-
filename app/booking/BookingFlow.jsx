@@ -266,7 +266,7 @@ export default function BookingFlow() {
                   role="button"
                   tabIndex={0}
                   className={`service-card select-service${selectedService?.slug === s.slug ? " selected" : ""}`}
-                  onClick={() => setSelectedService(s)}
+                  onClick={() => { setSelectedService(s); goTo(2); }}
                   onKeyDown={(e) => { if (e.key === "Enter") setSelectedService(s); }}
                   style={{ cursor: "pointer", borderColor: selectedService?.slug === s.slug ? "var(--gold)" : undefined }}
                 >
@@ -279,12 +279,6 @@ export default function BookingFlow() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div style={{ textAlign: "center", marginTop: 36 }}>
-              <button className="btn btn-primary" onClick={() => goTo(2)}>
-                Continue to Your Details
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </button>
             </div>
           </div>
         )}
