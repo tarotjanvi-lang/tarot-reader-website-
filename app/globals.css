@@ -9170,3 +9170,227 @@ body > .site-star-field{
     font-size:23px;
   }
 }
+
+/* =========================================================
+   ABOUT — WAY WE WORK / VERTICAL SOUL PATH
+   Deliberately avoids the repeated three-column card layout.
+   ========================================================= */
+.about-page .about-journey-new{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-top:42px;
+  padding:18px 0 12px;
+  border-top:1px solid color-mix(in srgb,var(--gold) 42%,var(--border));
+  border-bottom:1px solid var(--border);
+}
+.about-page .about-journey-new::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  bottom:18px;
+  left:50%;
+  width:1px;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb,var(--gold) 72%,transparent) 12%,
+    color-mix(in srgb,var(--gold) 38%,transparent) 88%,
+    transparent 100%
+  );
+  transform:translateX(-50%);
+}
+.about-page .about-journey-new::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  background:var(--bg);
+  border:1px solid color-mix(in srgb,var(--gold) 48%,var(--border));
+  border-radius:50%;
+  font-size:11px;
+  box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 6%,transparent);
+}
+.about-page .about-journey-new .about-journey-card,
+.about-page .about-journey-new .about-journey-card:nth-child(2),
+.about-page .about-journey-new .about-journey-card:nth-child(3){
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 92px 1fr;
+  align-items:center;
+  min-height:190px;
+  padding:28px 0;
+  border:0;
+  background:transparent !important;
+  box-shadow:none !important;
+  border-radius:0;
+  overflow:visible;
+  transform:none !important;
+}
+.about-page .about-journey-new .about-journey-card::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:13px;
+  height:13px;
+  transform:translate(-50%,-50%);
+  border:1px solid var(--gold);
+  border-radius:50%;
+  background:var(--bg);
+  box-shadow:0 0 0 6px color-mix(in srgb,var(--gold) 7%,transparent);
+  z-index:3;
+}
+.about-page .about-journey-new .about-journey-card::after{
+  display:none;
+}
+.about-page .about-journey-new .about-journey-card:nth-child(odd){
+  border-bottom:1px solid var(--border);
+}
+.about-page .about-journey-new .about-journey-card:nth-child(even){
+  border-bottom:1px solid var(--border);
+}
+.about-page .about-journey-new .about-journey-card:last-child{
+  border-bottom:0;
+}
+.about-page .about-journey-new .service-icon{
+  grid-column:2;
+  grid-row:1;
+  justify-self:center;
+  width:54px;
+  height:54px;
+  margin:0;
+  background:var(--bg);
+  border:1px solid color-mix(in srgb,var(--gold) 40%,var(--border));
+  border-radius:50%;
+  box-shadow:0 8px 24px rgba(55,42,22,.07);
+  z-index:2;
+}
+.about-page .about-journey-new h3{
+  font-size:30px;
+  line-height:1.05;
+  margin:0 0 10px;
+}
+.about-page .about-journey-new p{
+  max-width:390px;
+  margin:0;
+  font-size:14px;
+  line-height:1.8;
+  color:var(--ink-soft);
+}
+.about-page .about-journey-new .journey-number{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:4;
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:.08em;
+  pointer-events:none;
+}
+.about-page .about-journey-new .about-journey-card:nth-child(odd) h3,
+.about-page .about-journey-new .about-journey-card:nth-child(odd) p{
+  grid-column:1;
+  grid-row:1;
+  padding-right:90px;
+  text-align:right;
+  justify-self:end;
+}
+.about-page .about-journey-new .about-journey-card:nth-child(even) h3,
+.about-page .about-journey-new .about-journey-card:nth-child(even) p{
+  grid-column:3;
+  grid-row:1;
+  padding-left:90px;
+  text-align:left;
+  justify-self:start;
+}
+.about-page .about-journey-new .about-journey-card:nth-child(odd) .service-icon{
+  opacity:.82;
+}
+.about-page .about-journey-new .about-journey-card:nth-child(even) .service-icon{
+  opacity:.96;
+}
+[data-theme="dark"] .about-page .about-journey-new::after,
+[data-theme="dark"] .about-page .about-journey-new .service-icon,
+[data-theme="dark"] .about-page .about-journey-new .about-journey-card::before{
+  background:#1c1712;
+}
+[data-theme="dark"] .about-page .about-journey-new .service-icon{
+  box-shadow:0 10px 26px rgba(0,0,0,.24);
+}
+
+/* Phone: same vertical path, compressed into a clean single reading flow. */
+@media (max-width:680px){
+  .about-page .about-journey-new{
+    margin-top:28px;
+    padding:8px 0;
+  }
+  .about-page .about-journey-new::before{
+    left:27px;
+    top:8px;
+    bottom:8px;
+    transform:none;
+  }
+  .about-page .about-journey-new::after{
+    left:27px;
+    top:50%;
+    width:28px;
+    height:28px;
+    transform:translate(-50%,-50%);
+  }
+  .about-page .about-journey-new .about-journey-card,
+  .about-page .about-journey-new .about-journey-card:nth-child(2),
+  .about-page .about-journey-new .about-journey-card:nth-child(3){
+    display:grid;
+    grid-template-columns:54px 1fr;
+    min-height:155px;
+    padding:28px 12px 28px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .about-page .about-journey-new .about-journey-card::before{
+    left:27px;
+    top:50%;
+    width:12px;
+    height:12px;
+  }
+  .about-page .about-journey-new .service-icon{
+    grid-column:1;
+    grid-row:1;
+    align-self:start;
+    width:42px;
+    height:42px;
+    margin:0;
+  }
+  .about-page .about-journey-new .journey-number{
+    left:27px;
+    top:50%;
+    font-size:7px;
+  }
+  .about-page .about-journey-new .about-journey-card:nth-child(odd) h3,
+  .about-page .about-journey-new .about-journey-card:nth-child(odd) p,
+  .about-page .about-journey-new .about-journey-card:nth-child(even) h3,
+  .about-page .about-journey-new .about-journey-card:nth-child(even) p{
+    grid-column:2;
+    grid-row:auto;
+    padding:0;
+    text-align:left;
+    justify-self:start;
+  }
+  .about-page .about-journey-new h3{
+    font-size:24px;
+    margin:0 0 8px;
+  }
+  .about-page .about-journey-new p{
+    max-width:100%;
+    font-size:13px;
+    line-height:1.65;
+  }
+}
