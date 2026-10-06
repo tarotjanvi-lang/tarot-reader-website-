@@ -106,6 +106,7 @@ export default function HomePage() {
               <Reveal as="div" key={category.slug} className="service-card">
                 <span className="home-service-number-mask" aria-hidden="true" />
                 <span className="home-service-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span className="service-card-glitter" aria-hidden="true" />
                 <ServiceVisual
                   service={{
                     ...category.services[0],
