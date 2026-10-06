@@ -8044,3 +8044,17 @@ body > .site-star-field{
     object-position:left center !important;
   }
 }
+
+
+/* Booking — clean session selection cards without the decorative service-card artwork. */
+.booking-page .booking-step:first-child .select-service{
+  background-image:none !important;
+  background-color:var(--card) !important;
+}
+.booking-page .booking-step:first-child .select-service::before{
+  display:none !important;
+}
+[data-theme="dark"] .booking-page .booking-step:first-child .select-service{
+  background-image:none !important;
+  background-color:var(--dark-service-surface) !important;
+}
