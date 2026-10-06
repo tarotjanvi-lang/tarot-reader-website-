@@ -7026,3 +7026,13 @@ body > .site-star-field{
     letter-spacing:.07em;
   }
 }
+
+
+/* =========================================================
+   REVIEWS CTA — LAPTOP TEXT POSITION — 2026-10-06
+   ========================================================= */
+@media (min-width:601px){
+  .reviews-page .reviews-cta-banner.cta-banner-image > div:first-child{
+    transform:translate(-34px,-8px) !important;
+  }
+}
