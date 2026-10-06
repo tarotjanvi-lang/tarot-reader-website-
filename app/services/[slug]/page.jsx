@@ -22,11 +22,36 @@ export function generateMetadata({ params }) {
 
   const category = serviceCategories.find((item) => item.slug === params.slug);
   if (category) {
+    return {
+      title: category.name,
+      description: category.description,
+    };
+  }
+
+  return {};
+}
+
+function getServiceFormat(service) {
+  if (service.type === "healing" || service.type === "spellwork") {
+    return "Distance based healing";
+  }
+  return "Text based / audio note";
+}
+
+export default function ServiceDetailPage({ params }) {
+  const service = services.find((s) => s.slug === params.slug);
+  const category = serviceCategories.find((item) => item.slug === params.slug);
+
+  if (!service && !category) notFound();
+
+  if (category) {
     return (
       <>
         <section className={`page-hero service-category-hero service-category-${category.slug}`}>
-          <h1>{category.name}</h1>
-          <p>{category.description}</p>
+          <div className="container">
+            <h1>{category.name}</h1>
+            <p>{category.description}</p>
+          </div>
         </section>
 
         <section className="section">
