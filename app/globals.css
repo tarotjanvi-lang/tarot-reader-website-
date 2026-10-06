@@ -6771,3 +6771,106 @@ body > .site-star-field{
     border-color:rgba(214,180,95,.62);
   }
 }
+
+
+/* =========================================================
+   HOME DESKTOP VISIBILITY + STORY DETAIL REFINEMENT — 2026-10-06
+   Explicit desktop refinement for the Home page.
+   ========================================================= */
+@media (min-width:601px){
+  /* Keep all four hero descriptors readable when the Shiva artwork
+     sits behind the right side of the hero. */
+  .hero .hero-badges{
+    gap:12px 18px;
+    max-width:610px;
+  }
+  .hero .hero-badge{
+    color:#454139 !important;
+    background:rgba(250,247,239,.88);
+    border:1px solid rgba(181,148,78,.26);
+    border-radius:999px;
+    padding:7px 11px;
+    box-shadow:0 5px 16px rgba(58,45,26,.08);
+    text-shadow:none;
+    line-height:1.25;
+  }
+  .hero .hero-badge svg{
+    color:#9f7d3f !important;
+    flex:0 0 auto;
+  }
+  [data-theme="dark"] .hero .hero-badge{
+    color:#eee5d5 !important;
+    background:rgba(39,31,23,.88);
+    border-color:rgba(214,180,95,.30);
+    box-shadow:0 6px 18px rgba(0,0,0,.24);
+  }
+  [data-theme="dark"] .hero .hero-badge svg{
+    color:#e0bd67 !important;
+  }
+
+  /* Make the Home statistics container visibly lifted from the page. */
+  .stats-bar{
+    box-shadow:
+      0 16px 36px rgba(66,51,27,.14),
+      0 3px 10px rgba(66,51,27,.07) !important;
+  }
+  [data-theme="dark"] .stats-bar{
+    box-shadow:
+      0 16px 38px rgba(0,0,0,.30),
+      0 3px 10px rgba(0,0,0,.20) !important;
+  }
+
+  /* Improve contrast of the Soul Mirror story paragraph. */
+  .story-panel .text-side p{
+    color:#4a4742 !important;
+    opacity:1 !important;
+    text-shadow:0 1px 0 rgba(255,255,255,.24);
+  }
+  [data-theme="dark"] .story-panel .text-side p{
+    color:#e5ddd0 !important;
+    text-shadow:0 1px 0 rgba(0,0,0,.28);
+  }
+
+  /* Elegant double-border treatment for the Story panel. */
+  .story-panel{
+    position:relative;
+    border:1px solid rgba(177,143,74,.52) !important;
+    box-shadow:
+      0 16px 36px rgba(66,51,27,.10),
+      inset 0 0 0 1px rgba(255,255,255,.36);
+  }
+  .story-panel::before{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border:1px solid rgba(177,143,74,.25);
+    border-radius:calc(var(--radius-lg) - 7px);
+    pointer-events:none;
+    z-index:5;
+  }
+  .story-panel::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:58px;
+    height:58px;
+    border-top:1.5px solid rgba(177,143,74,.80);
+    border-left:1.5px solid rgba(177,143,74,.80);
+    pointer-events:none;
+    z-index:6;
+    border-top-left-radius:var(--radius-lg);
+  }
+  [data-theme="dark"] .story-panel{
+    border-color:rgba(214,180,95,.46) !important;
+    box-shadow:
+      0 18px 42px rgba(0,0,0,.28),
+      inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  [data-theme="dark"] .story-panel::before{
+    border-color:rgba(214,180,95,.20);
+  }
+  [data-theme="dark"] .story-panel::after{
+    border-color:rgba(214,180,95,.64);
+  }
+}
