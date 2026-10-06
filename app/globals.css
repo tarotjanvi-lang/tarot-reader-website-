@@ -7840,3 +7840,79 @@ body > .site-star-field{
     padding:20px;
   }
 }
+
+
+/* =========================================================
+   ABOUT — HERO + APPROACH FINAL REFINEMENT — 2026-10-06
+   ========================================================= */
+
+/* The hero introduction is now treated as a deliberate editorial statement. */
+.about-page .about-lede-feature{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  max-width:470px;
+  margin:24px 0 28px;
+  padding:16px 0 16px 18px;
+  border-left:2px solid var(--gold);
+}
+.about-page .about-lede-feature p{
+  margin:0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  line-height:1.35;
+  letter-spacing:.005em;
+  color:#6f6049;
+}
+.about-page .about-lede-rule{ display:none; }
+[data-theme="dark"] .about-page .about-lede-feature p{
+  color:#d7c9b4;
+}
+
+@media (min-width:861px){
+  .about-page .about-lede-feature{
+    margin-top:22px;
+    margin-bottom:30px;
+    max-width:480px;
+  }
+  .about-page .about-lede-feature p{
+    font-size:24px;
+    line-height:1.28;
+  }
+
+  /* Every approach card gets the same visual treatment. */
+  .about-page .about-practice-list > div{
+    background:rgba(28,42,36,.72) !important;
+    border:1px solid rgba(224,189,103,.24) !important;
+    border-top:2px solid rgba(224,189,103,.68) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.025),
+      0 14px 32px rgba(0,0,0,.08);
+  }
+  .about-page .about-practice-list > div:nth-child(2),
+  .about-page .about-practice-list > div:nth-child(3){
+    background:rgba(28,42,36,.72) !important;
+  }
+  [data-theme="dark"] .about-page .about-practice-list > div{
+    background:rgba(28,42,36,.72) !important;
+  }
+}
+
+@media (max-width:860px){
+  .about-page .about-lede-feature{
+    margin-top:18px;
+    margin-bottom:24px;
+    max-width:600px;
+    padding:13px 0 13px 15px;
+  }
+  .about-page .about-lede-feature p{
+    font-size:20px;
+    line-height:1.32;
+  }
+
+  .about-page .about-practice-list > div{
+    background:rgba(28,42,36,.72) !important;
+    border:1px solid rgba(224,189,103,.24) !important;
+    border-top:2px solid rgba(224,189,103,.68) !important;
+  }
+}
