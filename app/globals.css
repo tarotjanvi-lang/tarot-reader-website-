@@ -6658,3 +6658,116 @@ body > .site-star-field{
       ) !important;
   }
 }
+
+
+/* =========================================================
+   PHONE-ONLY HOME VISIBILITY + STORY DETAIL REFINEMENT — 2026-10-06
+   ========================================================= */
+@media (max-width:600px){
+  /* 1) Keep every hero badge legible over the Shiva artwork. */
+  .home-page .hero-badges,
+  .hero .hero-badges{
+    gap:8px 10px;
+  }
+  .home-page .hero-badge,
+  .hero .hero-badge{
+    color:#454139 !important;
+    background:rgba(250,247,239,.82);
+    border:1px solid rgba(181,148,78,.24);
+    border-radius:999px;
+    padding:6px 9px;
+    box-shadow:0 3px 12px rgba(58,45,26,.08);
+    text-shadow:none;
+    font-size:12px;
+    line-height:1.25;
+  }
+  .home-page .hero-badge svg,
+  .hero .hero-badge svg{
+    color:#9f7d3f !important;
+    flex:0 0 auto;
+  }
+  [data-theme="dark"] .home-page .hero-badge,
+  [data-theme="dark"] .hero .hero-badge{
+    color:#eee5d5 !important;
+    background:rgba(39,31,23,.82);
+    border-color:rgba(214,180,95,.28);
+    box-shadow:0 4px 14px rgba(0,0,0,.22);
+  }
+
+  /* 2) Give the home statistics box a more defined, elegant lift. */
+  .home-page .stats-bar,
+  .stats-bar{
+    box-shadow:
+      0 12px 30px rgba(66,51,27,.12),
+      0 2px 8px rgba(66,51,27,.06) !important;
+  }
+  [data-theme="dark"] .home-page .stats-bar,
+  [data-theme="dark"] .stats-bar{
+    box-shadow:
+      0 12px 30px rgba(0,0,0,.26),
+      0 2px 8px rgba(0,0,0,.18) !important;
+  }
+
+  /* 3) Make the Soul Mirror story copy read as dark grey instead of
+     fading into the warm artwork. */
+  .home-page .story-panel .text-side p,
+  .story-panel .text-side p{
+    color:#4a4742 !important;
+    opacity:1 !important;
+    text-shadow:0 1px 0 rgba(255,255,255,.24);
+  }
+  [data-theme="dark"] .home-page .story-panel .text-side p,
+  [data-theme="dark"] .story-panel .text-side p{
+    color:#e5ddd0 !important;
+    text-shadow:0 1px 0 rgba(0,0,0,.28);
+  }
+
+  /* 4) Refine the story box with a subtle double-gold corner treatment. */
+  .home-page .story-panel,
+  .story-panel{
+    position:relative;
+    border:1px solid rgba(177,143,74,.48) !important;
+    box-shadow:
+      0 12px 30px rgba(66,51,27,.09),
+      inset 0 0 0 1px rgba(255,255,255,.36);
+  }
+  .home-page .story-panel::before,
+  .story-panel::before{
+    content:"";
+    position:absolute;
+    inset:7px;
+    border:1px solid rgba(177,143,74,.26);
+    border-radius:calc(var(--radius-lg) - 7px);
+    pointer-events:none;
+    z-index:5;
+  }
+  .home-page .story-panel::after,
+  .story-panel::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:46px;
+    height:46px;
+    border-top:1.5px solid rgba(177,143,74,.78);
+    border-left:1.5px solid rgba(177,143,74,.78);
+    pointer-events:none;
+    z-index:6;
+    border-top-left-radius:var(--radius-lg);
+  }
+  [data-theme="dark"] .home-page .story-panel,
+  [data-theme="dark"] .story-panel{
+    border-color:rgba(214,180,95,.44) !important;
+    box-shadow:
+      0 14px 34px rgba(0,0,0,.24),
+      inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  [data-theme="dark"] .home-page .story-panel::before,
+  [data-theme="dark"] .story-panel::before{
+    border-color:rgba(214,180,95,.20);
+  }
+  [data-theme="dark"] .home-page .story-panel::after,
+  [data-theme="dark"] .story-panel::after{
+    border-color:rgba(214,180,95,.62);
+  }
+}
