@@ -8036,3 +8036,11 @@ body > .site-star-field{
     bottom:0;
   }
 }
+
+
+/* Journey artwork — keep the important left-side composition visible on laptop */
+@media (min-width:861px){
+  .about-page .about-story-new .about-journey-image{
+    object-position:left center !important;
+  }
+}
