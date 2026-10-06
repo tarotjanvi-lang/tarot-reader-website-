@@ -6980,8 +6980,29 @@ body > .site-star-field{
   height:100%;
 }
 .about-page .about-portrait-note{
-  bottom:6%;
-  left:6%;
+  position:absolute;
+  left:16px;
+  bottom:16px;
+  z-index:8;
+  padding:12px 16px;
+  background:color-mix(in srgb,var(--card) 94%,transparent);
+  border:1px solid color-mix(in srgb,var(--gold) 32%,var(--border));
+  box-shadow:0 8px 22px rgba(45,35,20,.14);
+  backdrop-filter:blur(6px);
+}
+.about-page .about-portrait-note span{
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  line-height:1.05;
+}
+.about-page .about-portrait-note small{
+  display:block;
+  margin-top:3px;
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
 }
 @media (max-width:600px){
   .about-page .about-portrait-frame{
@@ -6993,7 +7014,15 @@ body > .site-star-field{
     object-position:center center;
   }
   .about-page .about-portrait-note{
-    left:5%;
-    bottom:5%;
+    left:10px;
+    bottom:10px;
+    padding:8px 11px;
+  }
+  .about-page .about-portrait-note span{
+    font-size:17px;
+  }
+  .about-page .about-portrait-note small{
+    font-size:7px;
+    letter-spacing:.07em;
   }
 }
