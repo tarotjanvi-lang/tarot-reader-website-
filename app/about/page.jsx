@@ -66,7 +66,8 @@ export default function AboutPage() {
 
           <Reveal className="about-story-feature">
             <div className="about-story-image">
-              <Image src="/images/journey_light_theme.png" alt="The Soul Mirror journey — intuition, lineage and reflection" width={1374} height={1145} loading="lazy" sizes="(max-width: 860px) 100vw, 560px" className="about-journey-image" />
+              <Image className="about-journey-image about-journey-image-light" src="/images/journey_light_theme.png" alt="The Soul Mirror journey — intuition, lineage and reflection" width={1374} height={1145} loading="lazy" sizes="(max-width: 860px) 100vw, 560px" />
+              <Image className="about-journey-image about-journey-image-dark" src="/images/journey_dark_theme.png" alt="The Soul Mirror journey — intuition, lineage and reflection" width={1374} height={1145} loading="lazy" sizes="(max-width: 860px) 100vw, 560px" />
               <div className="about-image-caption">Intuition · lineage · reflection</div>
             </div>
             <div className="about-story-copy">
