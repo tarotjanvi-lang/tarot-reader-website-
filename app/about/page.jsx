@@ -17,7 +17,6 @@ export default function AboutPage() {
           <div className="about-hero-grid">
             <Reveal className="about-hero-copy">
               <div className="eyebrow">A calling, not just a profession</div>
-              <p className="about-kicker">THE SOUL MIRROR · JANVI</p>
               <h1>Meet the<br />woman<br /><span>behind the<br />mirror.</span></h1>
               <p className="about-lede">A grounded guide for the moments when life asks you to look a little deeper.</p>
               <div className="about-hero-signature">
