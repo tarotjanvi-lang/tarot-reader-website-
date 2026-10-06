@@ -6609,10 +6609,9 @@ body > .site-star-field{
 
 
 /* =========================================================
-   PHONE-ONLY REVIEWS BACKGROUND REFINEMENT — 2026-10-06
-   Replace the laptop artwork on mobile with a quieter,
-   form-friendly celestial background so the decorative focal
-   element never sits behind the Review CTA/form controls.
+   PHONE-ONLY REVIEWS BACKGROUND ARTWORK — 2026-10-06
+   Use dedicated light/dark artwork on phones only. The artwork
+   keeps the centre quiet so the review form and CTA stay clean.
    ========================================================= */
 @media (max-width:600px){
   .reviews-page{
@@ -6620,17 +6619,9 @@ body > .site-star-field{
   }
 
   .reviews-page::before{
-    background-image:
-      radial-gradient(circle at 12% 16%, rgba(190,154,76,.22) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 86% 12%, rgba(190,154,76,.18) 0 1px, transparent 2px),
-      radial-gradient(circle at 72% 34%, rgba(190,154,76,.16) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 18% 58%, rgba(190,154,76,.14) 0 1px, transparent 2px),
-      radial-gradient(circle at 90% 72%, rgba(190,154,76,.18) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 42% 88%, rgba(190,154,76,.14) 0 1px, transparent 2px),
-      radial-gradient(ellipse at 50% 18%, rgba(220,197,145,.22), transparent 38%),
-      linear-gradient(180deg,#f7f1e7 0%,#eee5d6 52%,#f4eee3 100%) !important;
-    background-size:auto,auto,auto,auto,auto,auto,100% 42%,100% 100% !important;
-    background-position:center !important;
+    background-image:url('/images/reviews_mobile_bg_light.svg') !important;
+    background-position:center top !important;
+    background-size:cover !important;
     background-repeat:no-repeat !important;
     background-attachment:scroll !important;
   }
@@ -6639,9 +6630,9 @@ body > .site-star-field{
     background:
       linear-gradient(
         180deg,
-        rgba(250,246,238,.42) 0%,
-        rgba(250,246,238,.18) 42%,
-        rgba(250,246,238,.36) 100%
+        rgba(250,246,238,.16) 0%,
+        rgba(250,246,238,.08) 48%,
+        rgba(250,246,238,.20) 100%
       ) !important;
   }
 
@@ -6650,17 +6641,9 @@ body > .site-star-field{
   }
 
   [data-theme="dark"] .reviews-page::before{
-    background-image:
-      radial-gradient(circle at 12% 16%, rgba(224,189,103,.34) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 86% 12%, rgba(224,189,103,.25) 0 1px, transparent 2px),
-      radial-gradient(circle at 72% 34%, rgba(224,189,103,.22) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 18% 58%, rgba(224,189,103,.20) 0 1px, transparent 2px),
-      radial-gradient(circle at 90% 72%, rgba(224,189,103,.24) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 42% 88%, rgba(224,189,103,.18) 0 1px, transparent 2px),
-      radial-gradient(ellipse at 50% 18%, rgba(125,100,54,.22), transparent 38%),
-      linear-gradient(180deg,#211b15 0%,#191510 52%,#1d1813 100%) !important;
-    background-size:auto,auto,auto,auto,auto,auto,100% 42%,100% 100% !important;
-    background-position:center !important;
+    background-image:url('/images/reviews_mobile_bg_dark.svg') !important;
+    background-position:center top !important;
+    background-size:cover !important;
     background-repeat:no-repeat !important;
     background-attachment:scroll !important;
   }
@@ -6669,9 +6652,9 @@ body > .site-star-field{
     background:
       linear-gradient(
         180deg,
-        rgba(24,19,15,.30) 0%,
-        rgba(24,19,15,.12) 42%,
-        rgba(24,19,15,.34) 100%
+        rgba(24,19,15,.10) 0%,
+        rgba(24,19,15,.05) 48%,
+        rgba(24,19,15,.18) 100%
       ) !important;
   }
 }
