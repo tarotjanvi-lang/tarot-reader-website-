@@ -23,7 +23,7 @@ export default function AboutPage() {
                 <small>A space for honest reflection</small>
               </div>
               <div className="about-desktop-copy-actions">
-                <Link href="/booking" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">→</span></Link>
+                <Link href="/services" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">→</span></Link>
                 <Link href="/services" className="btn btn-outline">Explore the work</Link>
               </div>
             </Reveal>
