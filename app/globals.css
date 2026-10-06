@@ -8832,3 +8832,254 @@ body > .site-star-field{
     display:none !important;
   }
 }
+
+
+/* =========================================================
+   ABOUT — WAY WE WORK / FINAL CLEAN EDITORIAL OVERRIDE
+   Scoped ONLY to the About page's way-we-work section.
+   ========================================================= */
+.about-page .about-journey-section .about-journey-new{
+  display:flex !important;
+  flex-direction:column !important;
+  position:relative !important;
+  gap:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border-top:1px solid color-mix(in srgb,var(--gold) 48%,var(--border)) !important;
+  border-bottom:1px solid var(--border) !important;
+  background:transparent !important;
+}
+
+.about-page .about-journey-section .about-journey-new::before{
+  content:"" !important;
+  position:absolute !important;
+  top:0 !important;
+  bottom:0 !important;
+  left:50% !important;
+  width:1px !important;
+  height:auto !important;
+  transform:translateX(-50%) !important;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb,var(--gold) 62%,transparent) 12%,
+    color-mix(in srgb,var(--gold) 34%,transparent) 88%,
+    transparent 100%
+  ) !important;
+  opacity:1 !important;
+}
+
+.about-page .about-journey-section .about-journey-new::after{
+  content:"✦" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:32px !important;
+  height:32px !important;
+  transform:translate(-50%,-50%) !important;
+  display:grid !important;
+  place-items:center !important;
+  color:var(--gold) !important;
+  background:var(--bg) !important;
+  border:1px solid color-mix(in srgb,var(--gold) 50%,var(--border)) !important;
+  border-radius:50% !important;
+  font-size:10px !important;
+  z-index:8 !important;
+  box-shadow:0 0 0 7px color-mix(in srgb,var(--gold) 5%,transparent) !important;
+}
+
+.about-page .about-journey-section .about-journey-card,
+.about-page .about-journey-section .about-journey-card:nth-child(2),
+.about-page .about-journey-section .about-journey-card:nth-child(3){
+  position:relative !important;
+  display:block !important;
+  width:100% !important;
+  min-height:190px !important;
+  height:190px !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-bottom:1px solid var(--border) !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  transform:none !important;
+  overflow:visible !important;
+}
+
+.about-page .about-journey-section .about-journey-card:last-child{
+  border-bottom:0 !important;
+}
+
+/* Central milestone ring. */
+.about-page .about-journey-section .about-journey-card::before{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:44px !important;
+  height:44px !important;
+  transform:translate(-50%,-50%) !important;
+  border:1px solid color-mix(in srgb,var(--gold) 62%,var(--border)) !important;
+  border-radius:50% !important;
+  background:var(--bg) !important;
+  box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 6%,transparent) !important;
+  z-index:4 !important;
+}
+
+.about-page .about-journey-section .about-journey-card .journey-number{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  z-index:7 !important;
+  color:var(--gold) !important;
+  font-size:8px !important;
+  line-height:1 !important;
+  letter-spacing:.12em !important;
+  pointer-events:none !important;
+}
+
+/* Icons sit slightly outside the milestone ring, making each step distinct. */
+.about-page .about-journey-section .about-journey-card .service-icon{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:64px !important;
+  height:64px !important;
+  transform:translate(-50%,-50%) translateY(-46px) !important;
+  margin:0 !important;
+  border:0 !important;
+  border-radius:50% !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  opacity:.78 !important;
+  z-index:3 !important;
+}
+
+/* Text is deliberately positioned as one editorial block per side. */
+.about-page .about-journey-section .about-journey-card h3,
+.about-page .about-journey-section .about-journey-card p{
+  position:absolute !important;
+  width:36% !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:left !important;
+  justify-self:auto !important;
+}
+
+.about-page .about-journey-section .about-journey-card h3{
+  top:50% !important;
+  transform:translateY(-42px) !important;
+  font-size:29px !important;
+  line-height:1.05 !important;
+  z-index:5 !important;
+}
+
+.about-page .about-journey-section .about-journey-card p{
+  top:50% !important;
+  transform:translateY(4px) !important;
+  font-size:13.5px !important;
+  line-height:1.65 !important;
+  color:var(--ink-soft) !important;
+  z-index:5 !important;
+}
+
+/* Listen + Realign read from the left; Reflect reads from the right. */
+.about-page .about-journey-section .about-journey-card:nth-child(odd) h3,
+.about-page .about-journey-section .about-journey-card:nth-child(odd) p{
+  left:7% !important;
+  text-align:right !important;
+}
+
+.about-page .about-journey-section .about-journey-card:nth-child(even) h3,
+.about-page .about-journey-section .about-journey-card:nth-child(even) p{
+  right:7% !important;
+  text-align:left !important;
+}
+
+.about-page .about-journey-section .about-journey-card h3::before,
+.about-page .about-journey-section .about-journey-card h3::after{
+  display:none !important;
+}
+
+[data-theme="dark"] .about-page .about-journey-section .about-journey-card::before,
+[data-theme="dark"] .about-page .about-journey-section .about-journey-new::after{
+  background:#1b1611 !important;
+}
+
+[data-theme="dark"] .about-page .about-journey-section .about-journey-card .service-icon{
+  opacity:.88 !important;
+}
+
+/* Phone: retain the same editorial timeline, but move all copy to the right. */
+@media (max-width:680px){
+  .about-page .about-journey-section .about-journey-new::before{
+    left:28px !important;
+    right:auto !important;
+    top:0 !important;
+    bottom:0 !important;
+    width:1px !important;
+    transform:none !important;
+  }
+
+  .about-page .about-journey-section .about-journey-new::after{
+    left:28px !important;
+    top:50% !important;
+    width:28px !important;
+    height:28px !important;
+    transform:translate(-50%,-50%) !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card,
+  .about-page .about-journey-section .about-journey-card:nth-child(2),
+  .about-page .about-journey-section .about-journey-card:nth-child(3){
+    min-height:160px !important;
+    height:160px !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card::before{
+    left:28px !important;
+    top:50% !important;
+    width:38px !important;
+    height:38px !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card .journey-number{
+    left:28px !important;
+    top:50% !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card .service-icon{
+    left:28px !important;
+    top:50% !important;
+    width:54px !important;
+    height:54px !important;
+    transform:translate(-50%,-50%) translateY(-39px) !important;
+    opacity:.65 !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card h3,
+  .about-page .about-journey-section .about-journey-card p,
+  .about-page .about-journey-section .about-journey-card:nth-child(odd) h3,
+  .about-page .about-journey-section .about-journey-card:nth-child(odd) p,
+  .about-page .about-journey-section .about-journey-card:nth-child(even) h3,
+  .about-page .about-journey-section .about-journey-card:nth-child(even) p{
+    left:72px !important;
+    right:auto !important;
+    width:calc(100% - 88px) !important;
+    text-align:left !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card h3{
+    top:50% !important;
+    transform:translateY(-37px) !important;
+    font-size:24px !important;
+  }
+
+  .about-page .about-journey-section .about-journey-card p{
+    top:50% !important;
+    transform:translateY(2px) !important;
+    font-size:13px !important;
+  }
+}
