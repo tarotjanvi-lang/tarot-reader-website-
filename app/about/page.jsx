@@ -16,9 +16,8 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-hero-grid">
             <Reveal className="about-hero-copy">
-              <div className="eyebrow">A calling, not just a profession</div>
               <h1>Meet the<br />woman<br /><span>behind the<br />mirror.</span></h1>
-              <p className="about-lede">A grounded guide for the moments when life asks you to look a little deeper.</p>
+              <div className="about-lede about-lede-feature"><span className="about-lede-rule" aria-hidden="true"></span><p>A grounded guide for the moments when life asks you to look a little deeper.</p></div>
               <div className="about-hero-signature">
                 <span>THE SOUL MIRROR</span>
                 <small>A space for honest reflection</small>
