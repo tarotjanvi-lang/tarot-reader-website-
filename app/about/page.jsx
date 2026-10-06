@@ -66,7 +66,7 @@ export default function AboutPage() {
 
           <Reveal className="about-story-feature">
             <div className="about-story-image">
-              <Image src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=85" alt="Hands holding a small crystal in sunlight" width={1000} height={1120} loading="lazy" sizes="(max-width: 860px) 100vw, 560px" />
+              <Image src="/images/journey_light_theme.png" alt="The Soul Mirror journey — intuition, lineage and reflection" width={1374} height={1145} loading="lazy" sizes="(max-width: 860px) 100vw, 560px" className="about-journey-image" />
               <div className="about-image-caption">Intuition · lineage · reflection</div>
             </div>
             <div className="about-story-copy">
