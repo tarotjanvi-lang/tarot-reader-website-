@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ServiceVisual from "@/components/ServiceVisual";
-import { serviceCategories, serviceCategoryLightImages } from "@/lib/services-data";
+import { serviceCategories, serviceCategoryDarkImages, serviceCategoryLightImages } from "@/lib/services-data";
 
 export default function HomePage() {
 
@@ -111,6 +111,7 @@ export default function HomePage() {
                   service={{
                     ...category.services[0],
                     lightImage: serviceCategoryLightImages[category.slug],
+                    darkImage: serviceCategoryDarkImages[category.slug],
                     imageAlt: `${category.name} service artwork`,
                   }}
                   className="service-card-image homepage-service-image"

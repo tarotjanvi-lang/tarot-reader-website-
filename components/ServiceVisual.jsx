@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ServiceIcon from "./ServiceIcon";
 
-const IMAGE_ASSET_VERSION = "20260928";
+const IMAGE_ASSET_VERSION = "20261006-3";
 
 function versionedImage(src) {
   const separator = src.includes("?") ? "&" : "?";

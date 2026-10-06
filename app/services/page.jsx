@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ServiceVisual from "@/components/ServiceVisual";
-import { serviceCategories, serviceCategoryLightImages } from "@/lib/services-data";
+import { serviceCategories, serviceCategoryDarkImages, serviceCategoryLightImages } from "@/lib/services-data";
 
 export const metadata = {
   title: "Services",
@@ -33,6 +33,7 @@ export default function ServicesPage() {
                   service={{
                     ...category.services[0],
                     lightImage: serviceCategoryLightImages[category.slug],
+                    darkImage: serviceCategoryDarkImages[category.slug],
                     imageAlt: `${category.name} service artwork`,
                   }}
                 />
