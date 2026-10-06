@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ServiceVisual from "@/components/ServiceVisual";
-import TarotReadingCatalogue from "@/components/TarotReadingCatalogue";
+import ServiceCategoryCatalogue from "@/components/ServiceCategoryCatalogue";
 import { serviceCategories, services } from "@/lib/services-data";
 
 export function generateStaticParams() {
@@ -22,61 +22,16 @@ export function generateMetadata({ params }) {
 
   const category = serviceCategories.find((item) => item.slug === params.slug);
   if (category) {
-    return {
-      title: category.name,
-      description: category.description,
-    };
-  }
-
-  return {};
-}
-
-function getServiceFormat(service) {
-  if (service.type === "healing" || service.type === "spellwork") {
-    return "Distance based healing";
-  }
-  return "Text based / audio note";
-}
-
-export default function ServiceDetailPage({ params }) {
-  const service = services.find((s) => s.slug === params.slug);
-  const category = serviceCategories.find((item) => item.slug === params.slug);
-
-  if (!service && !category) notFound();
-
-  if (category) {
     return (
       <>
-        <section className="tarot-reading-hero">
-          <div className="container">
-            <div className="tarot-reading-hero-art tarot-reading-hero-art-left" aria-hidden="true" />
-            <div className="tarot-reading-hero-art tarot-reading-hero-art-right" aria-hidden="true" />
-            <div className="eyebrow tarot-reading-eyebrow">Tarot Readings</div>
-            <h1>Guidance for the questions<br />within you.</h1>
-            <p>Each reading is a sacred space to gain clarity, perspective and alignment with your highest path.</p>
-            <span className="tarot-reading-divider" aria-hidden="true">✦</span>
-          </div>
+        <section className={`page-hero service-category-hero service-category-${category.slug}`}>
+          <h1>{category.name}</h1>
+          <p>{category.description}</p>
         </section>
 
-        <section className="section tarot-reading-catalogue-section">
+        <section className="section">
           <div className="container">
-            <TarotReadingCatalogue items={category.services} />
-          </div>
-        </section>
-
-        <section className="section-tight tarot-reading-help-section">
-          <div className="container">
-            <div className="tarot-reading-help-card">
-              <div className="tarot-help-art" aria-hidden="true" />
-              <div className="tarot-help-copy">
-                <div className="eyebrow">Not sure where to begin?</div>
-                <h2>Not sure which reading is right for you?</h2>
-                <p>If you&apos;re seeking clarity but aren&apos;t sure what question to ask, start with a General Guidance Reading.</p>
-                <Link href="/services/general-guidance-reading" className="btn btn-gold">
-                  Explore General Guidance <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-            </div>
+            <ServiceCategoryCatalogue services={category.services} />
           </div>
         </section>
       </>
