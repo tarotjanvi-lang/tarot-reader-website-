@@ -74,6 +74,7 @@ export default function ServiceCategoryCatalogue({ services }) {
             <span className="service-category-card-number">
               {String(index + 1).padStart(2, "0")}
             </span>
+            <span className="service-card-glitter" aria-hidden="true" />
             <div className="service-category-card-art">
               <ServiceVisual service={item} />
             </div>
