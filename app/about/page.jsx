@@ -41,7 +41,7 @@ export default function AboutPage() {
               </div>
               <div className="about-sun" aria-hidden="true">✦</div>
               <div className="about-photo-actions">
-                <Link href="/booking" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">→</span></Link>
+                <Link href="/contact" className="btn btn-primary">Sit with Janvi <span aria-hidden="true">→</span></Link>
                 <Link href="/services" className="btn btn-outline">Explore the work</Link>
               </div>
             </Reveal>
