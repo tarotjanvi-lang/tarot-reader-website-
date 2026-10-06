@@ -8556,3 +8556,279 @@ body > .site-star-field{
     line-height:1.65;
   }
 }
+
+
+/* =========================================================
+   ABOUT — THE WAY WE WORK / RESTRUCTURED TIMELINE
+   Scoped only to .about-journey-section.
+   ========================================================= */
+.about-page .about-journey-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 50%, rgba(161,139,88,.07), transparent 28%),
+    radial-gradient(circle at 92% 50%, rgba(161,139,88,.055), transparent 28%),
+    var(--bg);
+}
+
+.about-page .about-journey-section .about-section-heading{
+  position:relative;
+  margin-bottom:34px;
+}
+
+.about-page .about-journey-section .about-journey-new{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  margin:0;
+  padding:18px 0;
+  border-top:1px solid color-mix(in srgb,var(--gold) 48%,var(--border));
+  border-bottom:1px solid var(--border);
+  background:transparent;
+}
+
+/* One continuous soul-path line instead of three cards. */
+.about-page .about-journey-section .about-journey-new::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  bottom:18px;
+  left:50%;
+  width:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb,var(--gold) 68%,transparent) 14%,
+    color-mix(in srgb,var(--gold) 42%,transparent) 86%,
+    transparent
+  );
+}
+
+.about-page .about-journey-section .about-journey-card,
+.about-page .about-journey-section .about-journey-card:nth-child(2),
+.about-page .about-journey-section .about-journey-card:nth-child(3){
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr);
+  grid-template-rows:auto auto;
+  align-items:center;
+  min-height:190px;
+  margin:0;
+  padding:34px 0;
+  border:0;
+  border-bottom:1px solid var(--border);
+  border-radius:0;
+  background:transparent !important;
+  box-shadow:none !important;
+  transform:none !important;
+  overflow:visible;
+}
+
+.about-page .about-journey-section .about-journey-card:last-child{
+  border-bottom:0;
+}
+
+/* Small numbered marker at the centre of each step. */
+.about-page .about-journey-section .about-journey-card::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:46px;
+  height:46px;
+  transform:translate(-50%,-50%);
+  border:1px solid color-mix(in srgb,var(--gold) 68%,var(--border));
+  border-radius:50%;
+  background:var(--bg);
+  box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 6%,transparent);
+  z-index:2;
+}
+
+.about-page .about-journey-section .about-journey-card .journey-number{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:4;
+  color:var(--gold);
+  font-family:'Jost',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.14em;
+  line-height:1;
+  pointer-events:none;
+}
+
+/* Icon becomes the quiet visual accent beside the centre marker. */
+.about-page .about-journey-section .about-journey-card .service-icon{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:70px;
+  height:70px;
+  transform:translate(-50%,-50%);
+  margin:0;
+  border:0;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--bg-alt) 78%,transparent);
+  box-shadow:0 10px 28px rgba(55,42,22,.06);
+  opacity:.42;
+  z-index:1;
+}
+
+/* Odd steps read from the left; even steps read from the right. */
+.about-page .about-journey-section .about-journey-card:nth-child(odd) h3,
+.about-page .about-journey-section .about-journey-card:nth-child(odd) p{
+  grid-column:1;
+  text-align:right;
+  justify-self:end;
+  padding-right:76px;
+}
+
+.about-page .about-journey-section .about-journey-card:nth-child(even) h3,
+.about-page .about-journey-section .about-journey-card:nth-child(even) p{
+  grid-column:3;
+  text-align:left;
+  justify-self:start;
+  padding-left:76px;
+}
+
+.about-page .about-journey-section .about-journey-card h3{
+  grid-row:1;
+  margin:0 0 7px;
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  line-height:1.08;
+  letter-spacing:.01em;
+}
+
+.about-page .about-journey-section .about-journey-card p{
+  grid-row:2;
+  max-width:390px;
+  margin:0;
+  color:var(--ink-soft);
+  font-size:14px;
+  line-height:1.75;
+}
+
+/* Gold micro-rule gives each step its own identity without another card. */
+.about-page .about-journey-section .about-journey-card h3::before{
+  content:"";
+  display:inline-block;
+  width:28px;
+  height:1px;
+  margin:0 10px 8px 0;
+  vertical-align:middle;
+  background:var(--gold);
+  opacity:.65;
+}
+
+.about-page .about-journey-section .about-journey-card:nth-child(even) h3::before{
+  display:none;
+}
+
+.about-page .about-journey-section .about-journey-card:nth-child(even) h3::after{
+  content:"";
+  display:inline-block;
+  width:28px;
+  height:1px;
+  margin:0 0 8px 10px;
+  vertical-align:middle;
+  background:var(--gold);
+  opacity:.65;
+}
+
+[data-theme="dark"] .about-page .about-journey-section{
+  background:
+    radial-gradient(circle at 8% 50%, rgba(201,162,74,.09), transparent 28%),
+    radial-gradient(circle at 92% 50%, rgba(201,162,74,.065), transparent 28%),
+    var(--bg);
+}
+
+[data-theme="dark"] .about-page .about-journey-section .about-journey-card::before{
+  background:#1b1611;
+  box-shadow:0 0 0 8px rgba(201,162,74,.06);
+}
+
+[data-theme="dark"] .about-page .about-journey-section .about-journey-card .service-icon{
+  background:rgba(39,32,24,.76);
+  box-shadow:0 10px 28px rgba(0,0,0,.22);
+}
+
+@media (max-width:680px){
+  .about-page .about-journey-section{
+    padding-top:54px;
+    padding-bottom:54px;
+  }
+
+  .about-page .about-journey-section .about-journey-new{
+    padding:8px 0;
+  }
+
+  .about-page .about-journey-section .about-journey-new::before{
+    left:28px;
+    top:8px;
+    bottom:8px;
+    transform:none;
+  }
+
+  .about-page .about-journey-section .about-journey-card,
+  .about-page .about-journey-section .about-journey-card:nth-child(2),
+  .about-page .about-journey-section .about-journey-card:nth-child(3){
+    grid-template-columns:56px minmax(0,1fr);
+    grid-template-rows:auto auto;
+    min-height:0;
+    padding:34px 8px 34px 0;
+  }
+
+  .about-page .about-journey-section .about-journey-card::before{
+    left:28px;
+    top:50%;
+    width:38px;
+    height:38px;
+  }
+
+  .about-page .about-journey-section .about-journey-card .journey-number{
+    left:28px;
+    top:50%;
+    font-size:8px;
+  }
+
+  .about-page .about-journey-section .about-journey-card .service-icon{
+    left:28px;
+    top:50%;
+    width:58px;
+    height:58px;
+    opacity:.28;
+  }
+
+  .about-page .about-journey-section .about-journey-card:nth-child(odd) h3,
+  .about-page .about-journey-section .about-journey-card:nth-child(odd) p,
+  .about-page .about-journey-section .about-journey-card:nth-child(even) h3,
+  .about-page .about-journey-section .about-journey-card:nth-child(even) p{
+    grid-column:2;
+    text-align:left;
+    justify-self:start;
+    padding:0;
+  }
+
+  .about-page .about-journey-section .about-journey-card h3{
+    font-size:24px;
+    margin-bottom:7px;
+  }
+
+  .about-page .about-journey-section .about-journey-card p{
+    max-width:none;
+    font-size:13px;
+    line-height:1.65;
+  }
+
+  .about-page .about-journey-section .about-journey-card h3::before{
+    display:none;
+  }
+
+  .about-page .about-journey-section .about-journey-card h3::after{
+    display:none !important;
+  }
+}
