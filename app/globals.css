@@ -6249,3 +6249,145 @@ body > .site-star-field{
     border-color:rgba(205,167,87,.52) !important;
   }
 }
+
+
+/* =========================================================
+   PHONE-ONLY service refinements — October 2026
+   These rules intentionally apply only at <=600px.
+   ========================================================= */
+@media (max-width:600px){
+  /* Home service index labels: no filled badge/background; place cleanly at right. */
+  .home-services-grid .home-service-number-mask{ display:none !important; }
+  .home-services-grid .home-service-number{
+    top:16px;
+    right:18px;
+    z-index:6;
+    padding:0;
+    background:transparent !important;
+    box-shadow:none !important;
+    border:0 !important;
+    color:var(--gold);
+    font-family:'Playfair Display',serif;
+    font-size:12px;
+    line-height:1;
+    letter-spacing:.08em;
+    opacity:.8;
+  }
+
+  /* Category/service catalogue: one generous card per row for phone view. */
+  .service-category-grid{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .service-category-card{
+    min-height:0;
+    width:100%;
+    padding:12px 12px 13px;
+    border:1px solid rgba(184,149,73,.68);
+    border-radius:4px;
+    background-size:100% 100%;
+    box-shadow:
+      0 0 0 2px rgba(184,149,73,.11),
+      0 12px 28px rgba(68,53,28,.08);
+  }
+  .service-category-card::before{
+    top:7px;
+    left:7px;
+    width:34px;
+    height:34px;
+    border-top:1px solid rgba(193,157,76,.8);
+    border-left:1px solid rgba(193,157,76,.8);
+  }
+  .service-category-card::after{
+    right:7px;
+    bottom:7px;
+    width:34px;
+    height:34px;
+    border-right:1px solid rgba(193,157,76,.8);
+    border-bottom:1px solid rgba(193,157,76,.8);
+  }
+  .service-category-card-number{
+    top:13px;
+    right:15px;
+    font-size:11px;
+    letter-spacing:.08em;
+    background:transparent !important;
+    padding:0 !important;
+  }
+  .service-category-card-art{
+    height:190px;
+    flex:0 0 190px;
+    overflow:hidden;
+  }
+  .service-category-card-art .service-card-image-light,
+  .service-category-card-art .service-card-image-dark{
+    height:190px;
+    width:100%;
+    object-fit:contain;
+    object-position:center;
+  }
+  .service-category-card-content{
+    margin:0;
+    padding:13px 10px 9px;
+    background:linear-gradient(
+      to bottom,
+      rgba(255,251,241,.10) 0%,
+      rgba(255,251,241,.28) 18%,
+      rgba(255,251,241,.44) 50%,
+      rgba(255,251,241,.24) 82%,
+      rgba(255,251,241,.08) 100%
+    );
+  }
+  .service-category-card-content h3{
+    margin:4px 0 7px;
+    font-size:21px;
+    line-height:1.15;
+  }
+  .service-category-card-content p{
+    font-size:12.5px;
+    line-height:1.55;
+    max-width:96%;
+  }
+  .service-category-card-footer{
+    padding-top:15px;
+  }
+  .service-category-price span{
+    font-size:9px;
+  }
+  .service-category-price strong{
+    font-size:22px;
+  }
+  .service-category-book{
+    min-height:42px;
+    margin-top:12px;
+    font-size:10px;
+    letter-spacing:.10em;
+  }
+
+  /* More breathing room above catalogue on all four service category pages,
+     while preventing the hero from creating a large empty mobile gap. */
+  .service-category-hero{
+    min-height:248px;
+    padding:38px 0 30px;
+  }
+  .service-category-hero .container{
+    transform:none;
+  }
+  .service-category-hero h1{
+    font-size:clamp(34px,10vw,44px);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .service-category-hero p{
+    max-width:330px;
+    font-size:13px;
+    line-height:1.55;
+  }
+  .service-category-hero p::after{
+    margin-top:12px;
+    font-size:12px;
+  }
+
+  /* Service catalogue section itself should start tighter after the hero. */
+  .service-category-grid + *{ margin-top:0; }
+}
