@@ -6560,3 +6560,23 @@ body > .site-star-field{
   0%,100%{ opacity:.16; transform:scale(.75); }
   50%{ opacity:.95; transform:scale(1.18); }
 }
+
+
+/* =========================================================
+   PHONE-ONLY REVIEWS CTA ARTWORK FIX — 2026-10-06
+   Preserve the CTA artwork proportions on the phone instead of
+   stretching the desktop banner image to the tall mobile card.
+   ========================================================= */
+@media (max-width:600px){
+  .reviews-page .reviews-cta-banner.cta-banner-image{
+    background-position:center center !important;
+    background-size:cover !important;
+    background-repeat:no-repeat !important;
+  }
+
+  .reviews-page .reviews-cta-banner.cta-banner-image::before{
+    background-position:center center !important;
+    background-size:cover !important;
+    background-repeat:no-repeat !important;
+  }
+}
