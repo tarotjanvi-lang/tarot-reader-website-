@@ -267,7 +267,7 @@ export default function BookingFlow() {
                   tabIndex={0}
                   className={`service-card select-service${selectedService?.slug === s.slug ? " selected" : ""}`}
                   onClick={() => { setSelectedService(s); goTo(2); }}
-                  onKeyDown={(e) => { if (e.key === "Enter") setSelectedService(s); }}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedService(s); goTo(2); } }}
                   style={{ cursor: "pointer", borderColor: selectedService?.slug === s.slug ? "var(--gold)" : undefined }}
                 >
                   <ServiceVisual service={s} />
