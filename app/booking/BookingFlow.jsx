@@ -7,7 +7,7 @@ import { useSession, signIn } from "next-auth/react";
 import { services } from "@/lib/services-data";
 import ServiceVisual from "@/components/ServiceVisual";
 import CountryCodeSelect from "@/components/CountryCodeSelect";
-import { getCountryCallingCode } from "libphonenumber-js";
+import { getCountryCallingCode, parsePhoneNumberFromString } from "libphonenumber-js";
 
 const STEP_LABELS = ["Session", "Your Details", "Payment", "Confirmation"];
 const URGENT_WHATSAPP_FEE = 299;
