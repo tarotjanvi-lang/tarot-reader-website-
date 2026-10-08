@@ -56,7 +56,7 @@ export default function ServiceDetailPage({ params }) {
 
         <section className="section">
           <div className="container">
-            <ServiceCategoryCatalogue services={category.services} />
+            <ServiceCategoryCatalogue services={category.services} categorySlug={category.slug} />
           </div>
         </section>
       </>

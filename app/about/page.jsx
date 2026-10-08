@@ -32,8 +32,8 @@ export default function AboutPage() {
               <div className="about-orbit orbit-one" aria-hidden="true" />
               <div className="about-orbit orbit-two" aria-hidden="true" />
               <div className="about-portrait-frame">
-                <Image className="about-portrait about-portrait-light" src="/images/janvi_photo_light_laptop.png" alt="Janvi, tarot reader, healer and guide" width={1536} height={1024} sizes="(max-width: 860px) 100vw, 600px" quality={100} priority />
-                <Image className="about-portrait about-portrait-dark" src="/images/janvi_photo_dark_laptop.png" alt="Janvi, tarot reader, healer and guide" width={1536} height={1024} sizes="(max-width: 860px) 100vw, 600px" quality={100} priority />
+                <Image className="about-portrait about-portrait-light" src="/images/janvi_photo.png" alt="Janvi, tarot reader, healer and guide" width={1000} height={926} sizes="(max-width: 860px) 100vw, 600px" quality={100} priority />
+                <Image className="about-portrait about-portrait-dark" src="/images/janvi_photo_dark_view.png" alt="Janvi, tarot reader, healer and guide" width={1000} height={926} sizes="(max-width: 860px) 100vw, 600px" quality={100} priority />
                 <div className="about-portrait-note">
                   <span>Janvi</span>
                   <small>Tarot reader · healer · guide</small>
@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="about-trust-rail">
             <div><strong>6+</strong><span>Years on this path</span></div>
             <div><strong>500+</strong><span>Souls guided</span></div>
-            <div><strong>1000+</strong><span>Sessions held</span></div>
+            <div><strong>2000+</strong><span>Sessions held</span></div>
             <div><strong>100%</strong><span>Confidential space</span></div>
           </div>
         </div>

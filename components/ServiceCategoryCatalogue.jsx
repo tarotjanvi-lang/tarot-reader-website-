@@ -36,13 +36,17 @@ function getServiceGroup(service) {
   return "special";
 }
 
-export default function ServiceCategoryCatalogue({ services }) {
+export default function ServiceCategoryCatalogue({ services, categorySlug }) {
   const [activeFilter, setActiveFilter] = useState("all");
 
   const availableFilters = useMemo(() => {
     const groups = new Set(services.map(getServiceGroup));
-    return FILTERS.filter(([key]) => key === "all" || groups.has(key));
-  }, [services]);
+    return FILTERS.filter(
+      ([key]) =>
+        (categorySlug === "energy-healing" ? key !== "special" : true) &&
+        (key === "all" || groups.has(key))
+    );
+  }, [services, categorySlug]);
 
   const visibleServices = useMemo(
     () => activeFilter === "all"

@@ -66,7 +66,7 @@ export default function HomePage() {
             </div>
             <div className="stat-item">
               <div className="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 10h18" /></svg></div>
-              <div><div className="stat-num">1000+</div><div className="stat-label">Sessions Completed</div></div>
+              <div><div className="stat-num">2000+</div><div className="stat-label">Sessions Completed</div></div>
             </div>
             <div className="stat-item">
               <div className="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg></div>
