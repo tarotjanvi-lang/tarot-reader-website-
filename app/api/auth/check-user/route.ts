@@ -8,10 +8,18 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Email is required" }, { status: 400 });
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email },
-    select: { id: true },
-  });
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: { id: true },
+    });
 
-  return NextResponse.json({ exists: Boolean(user) });
+    return NextResponse.json({ exists: Boolean(user) });
+  } catch (error) {
+    console.error("Failed to check user against the database:", error);
+    return NextResponse.json(
+      { error: "Database unavailable" },
+      { status: 503 }
+    );
+  }
 }

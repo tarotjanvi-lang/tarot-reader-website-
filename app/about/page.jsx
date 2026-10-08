@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="about-trust-rail">
             <div><strong>6+</strong><span>Years on this path</span></div>
             <div><strong>500+</strong><span>Souls guided</span></div>
-            <div><strong>2000+</strong><span>Sessions held</span></div>
+            <div><strong>1000+</strong><span>Sessions held</span></div>
             <div><strong>100%</strong><span>Confidential space</span></div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function AboutPage() {
       <section className="section about-story-section about-story-new">
         <div className="container">
           <div className="about-section-heading">
-            <div className="eyebrow">The story behind SoulMirror</div>
+            <div className="eyebrow">About Me</div>
             <span className="about-desktop-section-label">01 / MY JOURNEY</span>
           </div>
 
@@ -71,62 +71,57 @@ export default function AboutPage() {
               <div className="about-image-caption">Intuition · lineage · reflection</div>
             </div>
             <div className="about-story-copy">
-              <h2>I never went looking for this path. <span>It found me.</span></h2>
-              <p>I&apos;m Janvi, an intuitive tarot reader, generational healer and spiritual guide. My grandmother was an astrologer, my mother practised face reading, and I grew up surrounded by a quiet respect for the unseen.</p>
-              <p>That lineage became my own language of intuition. Today, I bring it together with a practical, grounded life in the medical and business world.</p>
-              <p className="italic-quote about-pullquote">By day, I work in the practical world. By night, I hold space for the soul.</p>
+              <div className="about-story-intro">
+                <h2>A Calling, Not Just a Profession</h2>
+                <p className="about-story-lead">I&apos;m Janvi, the founder of The Soul Mirror, an intuitive tarot reader, generational healer and spiritual guide.</p>
+                <p>My journey into this world was never something I consciously planned or formally pursued. I didn&apos;t learn spirituality as a profession it came to me as a calling.</p>
+                <p>Spirituality was part of my family long before it became part of my work. My grandmother was an astrologer, and my mother practised face reading. I grew up around intuition, energy and a quiet respect for the unseen.</p>
+                <p>That early exposure gave me a language for the feelings I could not always explain. But my own path unfolded in its own time, in its own way.</p>
+              </div>
             </div>
           </Reveal>
-        </div>
-      </section>
 
-      {/* ================= THE WAY WE WORK ================= */}
-      <section className="section about-journey-section">
-        <div className="container">
-          <div className="about-section-heading">
-            <div className="eyebrow">The way we work</div>
-            <span className="about-desktop-section-label">02 / THE JOURNEY</span>
-          </div>
-          <div className="about-journey-new">
-            <Reveal className="about-journey-card"><span className="journey-number">01</span><ServiceIcon type="lotus" /><h3>Listen</h3><p>We slow down enough to hear what your intuition has been saying.</p></Reveal>
-            <Reveal className="about-journey-card"><span className="journey-number">02</span><ServiceIcon type="tarot" /><h3>Reflect</h3><p>We look at patterns, feelings and choices without judgement or fear.</p></Reveal>
-            <Reveal className="about-journey-card"><span className="journey-number">03</span><ServiceIcon type="crystal" /><h3>Realign</h3><p>You leave with clarity you can carry into your next chapter.</p></Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= VALUES ================= */}
-      <section className="section about-values-section about-values-new">
-        <div className="container">
-          <div className="about-values-head">
-            <div>
-              <div className="eyebrow">What you can expect</div>
-              <h2>A softer way to find your way forward.</h2>
+          <div className="about-story-followup">
+            <div className="about-story-block">
+              <p className="italic-quote about-pullquote">I never went looking for these abilities. They found me.</p>
+              <p>With time, my intuition, clair abilities and connection with energy became clearer and more natural. What began as a private inner calling slowly became a way to support other people through their own questions, changes and turning points.</p>
+              <p>For more than six years, I have had the privilege of guiding 500+ souls through 2,000+ sessions — across relationships, emotional healing, career decisions, personal growth and life transitions.</p>
             </div>
-            <p>Insight that feels like a conversation, not a performance.</p>
-          </div>
-          <div className="about-values-grid">
-            <Reveal className="about-value"><ServiceIcon type="moon" /><span className="about-value-index">01</span><h3>Intuitive</h3><p>Every session unfolds around your energy, not a rigid formula.</p></Reveal>
-            <Reveal className="about-value"><ServiceIcon type="lotus" /><span className="about-value-index">02</span><h3>Grounded</h3><p>Spiritual insight meets practical reflection and honest conversation.</p></Reveal>
-            <Reveal className="about-value"><ServiceIcon type="crystal" /><span className="about-value-index">03</span><h3>Confidential</h3><p>A private, compassionate space to say what you really mean.</p></Reveal>
-          </div>
-        </div>
-      </section>
 
-      {/* ================= APPROACH ================= */}
-      <section className="about-practice about-practice-new">
-        <div className="container">
-          <div className="about-practice-intro">
-            <div>
-              <div className="eyebrow">The Soul Mirror approach</div>
-              <span className="about-practice-mark">03 / THE PRACTICE</span>
+            <div className="about-story-block">
+              <h3>Two Worlds. One Purpose.</h3>
+              <p>By profession, I work in the medical field, in the world of business and international professional life.</p>
+              <p>And when the day ends, I step into a completely different world the world of intuition, healing and spiritual guidance.</p>
+              <p className="italic-quote about-pullquote">By day, I work in the practical world. By night, I am a healer.</p>
+              <p>These two sides of my life may seem completely different, but to me, they beautifully coexist. One keeps me grounded in the practical world, while the other keeps me connected to intuition, energy and the human soul.</p>
             </div>
-            <h2>Insight that feels like a conversation, not a performance.</h2>
-          </div>
-          <div className="about-practice-list">
-            <div><span>01</span><strong>Arrive as you are</strong><p>No polished story required. We begin with what is real for you today.</p></div>
-            <div><span>02</span><strong>Find the thread</strong><p>We make space for patterns, feelings and the quiet truth beneath the question.</p></div>
-            <div><span>03</span><strong>Leave with clarity</strong><p>Every session closes with something grounded you can carry into ordinary life.</p></div>
+
+            <div className="about-story-block">
+              <h3>My Intuitive Connection</h3>
+              <p>My work comes through intuition, clair abilities, energetic perception and ancestral wisdom. I don&apos;t follow a rigid formula because I believe every person, every situation and every energy is different.</p>
+              <p>I allow the guidance to unfold intuitively through tarot, energy work and healing practices.</p>
+              <p>My role is not to tell you exactly what you must do or create fear around what may happen. My role is to help you see what may be hidden, understand what you are feeling, recognise the patterns around you and reconnect with your own inner knowing.</p>
+            </div>
+
+            <div className="about-story-block">
+              <h3>The SoulMirror Philosophy</h3>
+              <p>I created SoulMirror because I believe that sometimes, we don&apos;t need someone to give us all the answers.</p>
+              <p className="about-story-emphasis">We need someone to hold up a mirror.</p>
+              <p>A mirror to our emotions.<br />A mirror to our patterns.<br />A mirror to our choices.<br />A mirror to the energy we carry.</p>
+              <p>That is what SoulMirror represents.</p>
+              <p>A space where you can pause, reflect, receive guidance and reconnect with yourself.</p>
+              <p>Every session is approached with compassion, confidentiality, intuition and genuine intention.</p>
+              <p>Whether you&apos;re seeking clarity in love, navigating an emotional chapter, standing at a career crossroads, experiencing a major life transition or simply feeling called towards deeper self-understanding—SoulMirror is here to walk alongside you.</p>
+            </div>
+
+            <div className="about-story-block about-story-closing">
+              <h3>My Belief</h3>
+              <p>I don&apos;t believe spirituality is about predicting every detail of your future.<br />I believe it is about understanding your present so consciously that you can move towards your future with greater clarity.</p>
+              <p>I didn&apos;t choose this path.</p>
+              <p>This path found me.</p>
+              <p>And today, after 6+ years, 500+ souls and 1,000+ sessions, I continue to honour that calling one soul, one story and one session at a time.</p>
+              <p className="about-story-emphasis">Welcome to SoulMirror by Janvi.<br />Where intuition becomes insight, and insight becomes alignment.</p>
+            </div>
           </div>
         </div>
       </section>

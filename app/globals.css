@@ -800,13 +800,7 @@ ul{ list-style:none; margin:0; padding:0; }
   text-shadow:0 1px 8px rgba(255,255,255,.35);
 }
 .service-category-hero p::after{
-  content:"?";
-  display:block;
-  margin:18px auto 0;
-  color:var(--gold);
-  font-size:13px;
-  line-height:1;
-  opacity:.78;
+  display:none;
 }
 [data-theme="dark"] .service-category-hero{
   background-color:var(--bg);
@@ -4757,13 +4751,7 @@ body > .site-star-field{
       linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
   }
   .service-category-hero .container::before{
-    content:"?  -----  ?";
-    display:block;
-    margin:0 auto 18px;
-    color:var(--gold);
-    font-size:10px;
-    letter-spacing:.20em;
-    opacity:.72;
+    display:none;
   }
   .service-category-hero h1{
     margin-bottom:10px;
@@ -5234,6 +5222,54 @@ body > .site-star-field{
   content:"?";
   font-size:10px;
   color:var(--gold);
+}
+.about-page .about-story-intro{
+  margin-bottom:34px;
+}
+.about-page .about-story-followup{
+  max-width:820px;
+  margin:44px auto 0;
+}
+.about-page .about-story-followup .about-story-block:first-child{
+  margin-top:0;
+}
+.about-page .about-story-lead{
+  font-family:'Playfair Display',serif;
+  font-size:20px !important;
+  line-height:1.55 !important;
+  color:var(--ink) !important;
+}
+.about-page .about-story-block{
+  margin-top:38px;
+  padding-top:30px;
+  border-top:1px solid color-mix(in srgb,var(--gold) 24%,var(--border));
+}
+.about-page .about-story-block h3{
+  margin:0 0 14px;
+  color:var(--ink);
+  font-family:'Playfair Display',serif;
+  font-size:clamp(23px,2.2vw,31px);
+  line-height:1.15;
+}
+.about-page .about-story-emphasis{
+  color:var(--gold) !important;
+  font-family:'Playfair Display',serif;
+  font-size:20px !important;
+  line-height:1.45 !important;
+}
+.about-page .about-story-highlight{
+  padding:18px 20px;
+  border:1px solid color-mix(in srgb,var(--gold) 28%,var(--border));
+  border-radius:var(--radius-sm);
+  background:color-mix(in srgb,var(--gold) 7%,transparent);
+  color:var(--ink) !important;
+}
+.about-page .about-story-closing{
+  margin-bottom:8px;
+}
+[data-theme="dark"] .about-page .about-story-lead,
+[data-theme="dark"] .about-page .about-story-block h3{
+  color:var(--ink) !important;
 }
 [data-theme="dark"] .about-page .about-image-caption{
   background:rgba(39,32,24,.90);
