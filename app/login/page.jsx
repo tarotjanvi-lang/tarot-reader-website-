@@ -39,17 +39,34 @@ export default function LoginPage() {
       const result = await signIn("credentials", {
         email,
         password: formData.password,
+        callbackUrl,
         redirect: false,
       });
 
-      if (result?.error) {
-        setFormError("Invalid email or password");
-      } else {
-        router.push(callbackUrl);
-        router.refresh();
+      if (!result) {
+        setFormError("Unable to contact the authentication server. Please try again.");
+        return;
       }
-    } catch {
-      setFormError("Something went wrong. Please try again.");
+
+      if (result.error) {
+        const authError = String(result.error);
+
+        if (authError === "CredentialsSignin") {
+          setFormError("Invalid email or password. If you just created your account, make sure you are using the same email and password.");
+        } else if (authError === "Configuration") {
+          setFormError("The authentication service is not configured correctly. Please contact the site administrator.");
+        } else {
+          console.error("Authentication failed:", authError);
+          setFormError("Unable to sign in right now. Please try again.");
+        }
+        return;
+      }
+
+      router.push(result.url || callbackUrl);
+      router.refresh();
+    } catch (error) {
+      console.error("Login request failed:", error);
+      setFormError("Unable to connect to the authentication service. Please try again.");
     } finally {
       setIsLoading(false);
     }
