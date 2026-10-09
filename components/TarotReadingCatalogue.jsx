@@ -10,7 +10,6 @@ const filters = [
   { key: "career", label: "Career & Finance" },
   { key: "general", label: "General Guidance" },
   { key: "life", label: "Life Path" },
-  { key: "special", label: "Special Readings" },
 ];
 
 function getFilter(item) {
