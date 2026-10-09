@@ -14,10 +14,31 @@ type AppointmentActionsProps = {
   };
 };
 
+const BUSINESS_TIME_ZONE = "Asia/Kolkata";
+
+function toDateTimeLocal(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: BUSINESS_TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date(date));
+
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}T${values.hour}:${values.minute}`;
+}
+
+function indiaLocalInputToDate(value: string) {
+  return new Date(`${value}:00+05:30`);
+}
+
 export default function AppointmentActions({ appointment }: AppointmentActionsProps) {
   const [status, setStatus] = useState(appointment.status);
   const [scheduledAt, setScheduledAt] = useState(
-    appointment.scheduledAt ? new Date(appointment.scheduledAt).toISOString().slice(0, 16) : ""
+    appointment.scheduledAt ? toDateTimeLocal(appointment.scheduledAt) : ""
   );
   const [message, setMessage] = useState("");
   const clientName = appointment.customerName || appointment.user?.name || "there";
@@ -28,7 +49,11 @@ export default function AppointmentActions({ appointment }: AppointmentActionsPr
     const response = await fetch("/api/appointments", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: appointment.id, status, scheduledAt: scheduledAt || null }),
+      body: JSON.stringify({
+        id: appointment.id,
+        status,
+        scheduledAt: scheduledAt ? indiaLocalInputToDate(scheduledAt).toISOString() : null,
+      }),
     });
     const data = await response.json();
     setMessage(response.ok ? "Saved" : data.error || "Unable to save");
@@ -40,7 +65,11 @@ export default function AppointmentActions({ appointment }: AppointmentActionsPr
       return;
     }
     const timing = scheduledAt
-      ? new Date(scheduledAt).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
+      ? indiaLocalInputToDate(scheduledAt).toLocaleString("en-IN", {
+          dateStyle: "medium",
+          timeStyle: "short",
+          timeZone: BUSINESS_TIME_ZONE,
+        })
       : "to be confirmed";
     const text = `Hello ${clientName}, your ${appointment.serviceName} appointment with Janvi is ${status.toLowerCase()} for ${timing}. Please reply here if you have any questions.`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
