@@ -10,7 +10,6 @@ const FILTERS = [
   ["career", "Career & Finance"],
   ["general", "General Guidance"],
   ["life", "Life Path"],
-  ["special", "Special Readings"],
 ];
 
 function getServiceGroup(service) {
