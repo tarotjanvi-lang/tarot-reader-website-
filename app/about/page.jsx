@@ -5,7 +5,7 @@ import ServiceIcon from "@/components/ServiceIcon";
 
 export const metadata = {
   title: "About Janvi — My Journey",
-  description: "Meet Janvi, founder of The Soul Mirror — intuitive tarot reader, generational healer and spiritual guide. 6+ years, 500+ souls, 1,000+ sessions.",
+  description: "Meet Janvi, founder of The Soul Mirror — intuitive tarot reader, generational healer and spiritual guide. 6+ years, 500+ souls, 2,000+ sessions.",
 };
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="about-trust-rail">
             <div><strong>6+</strong><span>Years on this path</span></div>
             <div><strong>500+</strong><span>Souls guided</span></div>
-            <div><strong>1000+</strong><span>Sessions held</span></div>
+            <div><strong>2000+</strong><span>Sessions held</span></div>
             <div><strong>100%</strong><span>Confidential space</span></div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
               <p>I don&apos;t believe spirituality is about predicting every detail of your future.<br />I believe it is about understanding your present so consciously that you can move towards your future with greater clarity.</p>
               <p>I didn&apos;t choose this path.</p>
               <p>This path found me.</p>
-              <p>And today, after 6+ years, 500+ souls and 1,000+ sessions, I continue to honour that calling one soul, one story and one session at a time.</p>
+              <p>And today, after 6+ years, 500+ souls and 2,000+ sessions, I continue to honour that calling one soul, one story and one session at a time.</p>
               <p className="about-story-emphasis">Welcome to SoulMirror by Janvi.<br />Where intuition becomes insight, and insight becomes alignment.</p>
             </div>
           </div>
