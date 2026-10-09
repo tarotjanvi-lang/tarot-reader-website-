@@ -157,7 +157,7 @@ export default function ReviewsPage() {
               <h2 style={{ marginBottom: 6 }}>Ready to become the next reflection?</h2>
               <p>Book your session and see what the mirror shows you.</p>
             </div>
-            <Link href="/booking" className="btn btn-gold">Schedule Your Session</Link>
+            <Link href="/services" className="btn btn-gold">Schedule Your Session</Link>
           </div>
         </Reveal>
       </section>
