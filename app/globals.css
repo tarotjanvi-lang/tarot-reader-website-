@@ -5218,11 +5218,6 @@ body > .site-star-field{
   letter-spacing:.16em;
   text-transform:uppercase;
 }
-.about-page .about-image-caption::before{
-  content:"?";
-  font-size:10px;
-  color:var(--gold);
-}
 .about-page .about-story-intro{
   margin-bottom:34px;
 }
