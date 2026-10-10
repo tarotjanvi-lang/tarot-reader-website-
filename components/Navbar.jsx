@@ -23,7 +23,8 @@ export default function Navbar() {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const navRef = useRef(null);
 
-  const isAdmin = session?.user?.email?.toLowerCase() === "tarotjanvi@gmail.com";
+  const ADMIN_EMAILS = ["soulmirrorbyjanvi@gmail.com", "tarotjanvi@gmail.com"];
+  const isAdmin = ADMIN_EMAILS.includes(session?.user?.email?.toLowerCase() ?? "");
 
   useEffect(() => {
     if (!isMobileMenuOpen && !isProfileMenuOpen) return;
