@@ -9,7 +9,9 @@ export default async function AdminLayout({
 }) {
   const session = await auth();
 
-  if (session?.user?.email?.toLowerCase() !== "tarotjanvi@gmail.com") {
+  const adminEmails = ["soulmirrorbyjanvi@gmail.com", "tarotjanvi@gmail.com"];
+
+  if (!adminEmails.includes(session?.user?.email?.toLowerCase() ?? "")) {
     redirect("/login?callbackUrl=/admin");
   }
 
