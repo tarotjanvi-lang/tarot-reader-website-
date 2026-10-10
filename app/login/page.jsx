@@ -180,12 +180,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div style={{ textAlign: "right", marginTop: -12, marginBottom: 24 }}>
-            <Link href="/forgot-password" style={{ color: "var(--gold)", fontWeight: 500, fontSize: 14 }}>
-              Forgot password?
-            </Link>
-          </div>
-
           <p style={{ marginTop: 24, color: "var(--ink-soft)", fontSize: 14 }}>
             Don&apos;t have an account?{" "}
             <Link href={`/register?callbackUrl=${encodeURIComponent(callbackUrl)}`} style={{ color: "var(--gold)", fontWeight: 500 }}>
