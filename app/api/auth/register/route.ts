@@ -7,13 +7,6 @@ export async function POST(request: Request) {
     const { name, email: rawEmail, password } = await request.json();
     const email = String(rawEmail || "").trim().toLowerCase();
 
-    if (email === "tarotjanvi@gmail.com") {
-      return NextResponse.json(
-        { error: "This email is reserved for the administrator." },
-        { status: 403 }
-      );
-    }
-
     if (!email || !password) {
       return NextResponse.json(
         { error: "Email and password are required" },
@@ -49,7 +42,7 @@ export async function POST(request: Request) {
         name,
         email,
         password: hashedPassword,
-        role: "USER",
+        role: ["soulmirrorbyjanvi@gmail.com", "tarotjanvi@gmail.com"].includes(email) ? "ADMIN" : "USER",
       },
     });
 
