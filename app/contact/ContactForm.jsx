@@ -10,10 +10,13 @@ export default function ContactForm() {
   const [country, setCountry] = useState("IN");
   const [phoneError, setPhoneError] = useState("");
   const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setPhoneError("");
+    setStatus("");
+    setIsSending(true);
     const form = e.currentTarget;
     const data = new FormData(form);
     const phoneRaw = data.get("phone") ? String(data.get("phone")).trim() : "";
@@ -22,6 +25,7 @@ export default function ContactForm() {
       if (!parsed || !parsed.isValid()) {
         setPhoneError("Invalid phone number for selected country.");
         setStatus("");
+        setIsSending(false);
         return;
       }
     }
@@ -52,8 +56,11 @@ export default function ContactForm() {
       setStatus("");
       form.reset();
     } catch (error) {
-      console.error("Contact email failed", error);
-      setStatus("We could not send your message. Please try again.");
+      console.error("Contact email failed:", error?.text || error?.message || error);
+      const errorText = String(error?.text || error?.message || "Unknown EmailJS error");
+      setStatus(`Message not sent: ${errorText}. Please try again or email thesoulmirrorbyjanvi@gmail.com directly.`);
+    } finally {
+      setIsSending(false);
     }
   }
 
@@ -84,10 +91,10 @@ export default function ContactForm() {
         <label htmlFor="message">Message</label>
         <textarea id="message" name="message" placeholder="Tell me a little about what you're navigating right now..." />
       </div>
-      <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-        Send Message
+      <button type="submit" disabled={isSending} className="btn btn-primary" style={{ width: "100%", justifyContent: "center", opacity: isSending ? 0.7 : 1 }}>
+        {isSending ? "Sending..." : "Send Message"}
       </button>
-      {status && <p style={{ color: "var(--gold)", textAlign: "center", marginTop: 14 }}>{status}</p>}
+      {status && <p role="alert" style={{ color: status.startsWith("Message not sent:") ? "#b42318" : "var(--gold)", textAlign: "center", marginTop: 14, overflowWrap: "anywhere" }}>{status}</p>}
       {submitted && (
         <p style={{ color: "var(--gold)", textAlign: "center", marginTop: 14 }}>
           Thank you — your message has been noted. I&apos;ll get back to you soon. ✦
