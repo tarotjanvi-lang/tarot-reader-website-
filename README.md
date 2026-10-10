@@ -114,7 +114,7 @@ proof of a completed payment.
 
 ## Contact Us EmailJS template
 
-The Contact Us form uses Service ID `service_rpo0iml` and Template ID
+The Contact Us form uses Service ID `service_rpo0lml` and Template ID
 `template_43o3y7b`, sending messages to `tarotjanvi@gmail.com`. Configure the
 EmailJS template recipient as `tarotjanvi@gmail.com`, the Reply To field as
 `{{reply_to}}`, and the From Name field as `{{name}}`.
