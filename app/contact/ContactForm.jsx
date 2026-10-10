@@ -58,7 +58,7 @@ export default function ContactForm() {
     } catch (error) {
       console.error("Contact email failed:", error?.text || error?.message || error);
       const errorText = String(error?.text || error?.message || "Unknown EmailJS error");
-      setStatus(`Message not sent: ${errorText}. Please try again or email thesoulmirrorbyjanvi@gmail.com directly.`);
+      setStatus(`Message not sent: ${errorText}. Please try again or email soulmirrorbyjanvi@gmail.com directly.`);
     } finally {
       setIsSending(false);
     }
