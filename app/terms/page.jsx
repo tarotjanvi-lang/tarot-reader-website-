@@ -1,5 +1,5 @@
 import TermsAndConditions from "@/components/TermsAndConditions";
-import { fullTerms, healingTermsIntro, privacyNote, spellworkGeneralCondition, websiteDisclaimer, soulMirrorNote, soulMirrorProcessNote } from "@/lib/terms-data";
+import { fullTerms, healingTermsIntro, privacyNote, spellworkGeneralCondition, soulMirrorNote, soulMirrorProcessNote } from "@/lib/terms-data";
 
 export const metadata = {
   title: "Terms & Conditions",
@@ -33,13 +33,13 @@ export default function TermsPage() {
           <div className="legal-terms-block" id="terms-conditions">
             <div className="eyebrow">Tarot services</div>
             <h2>Terms &amp; Conditions — Tarot Readings</h2>
-            <TermsAndConditions sections={fullTerms.tarot} notes={[websiteDisclaimer, soulMirrorNote]} />
+            <TermsAndConditions sections={fullTerms.tarot} notes={[soulMirrorNote]} />
           </div>
 
           <div className="legal-terms-block">
             <div className="eyebrow">Healing and spellwork services</div>
             <h2>Terms &amp; Conditions — Healings &amp; Intentional Spellwork</h2>
-            <TermsAndConditions intro={healingTermsIntro} sections={fullTerms.healing} notes={[spellworkGeneralCondition, websiteDisclaimer, soulMirrorProcessNote]} />
+            <TermsAndConditions intro={healingTermsIntro} sections={fullTerms.healing} notes={[spellworkGeneralCondition, soulMirrorProcessNote]} />
           </div>
         </div>
       </section>
