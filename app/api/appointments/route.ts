@@ -112,7 +112,7 @@ export async function GET(request: Request) {
 export async function PATCH(request: Request) {
   try {
     const session = await auth();
-    if (session?.user?.email?.toLowerCase() !== "soulmirrorbyjanvi@gmail.com") {
+    if (!["soulmirrorbyjanvi@gmail.com", "tarotjanvi@gmail.com"].includes(session?.user?.email?.toLowerCase() ?? "")) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
