@@ -47,7 +47,7 @@ export default function ContactForm() {
           email: data.get("email"),
           phone: data.get("phone") ? `+${getCountryCallingCode(country)} ${data.get("phone")}` : "Not provided",
           title: `Contact enquiry - ${data.get("topic")}`,
-          message: data.get("message") || "No message provided",
+          message: `CONTACT DETAILS\n\nName: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone / WhatsApp: ${data.get("phone") ? `+${getCountryCallingCode(country)} ${data.get("phone")}` : "Not provided"}\nInterested in: ${data.get("topic")}\n\nMESSAGE\n\n${data.get("message") || "No message provided"}`,
           reply_to: data.get("email"),
         },
         { publicKey }
