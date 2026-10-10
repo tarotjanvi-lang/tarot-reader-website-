@@ -229,12 +229,6 @@ export default function ServiceDetailPage({ params }) {
                 Read Terms &amp; Conditions
               </Link>
             </section>
-
-            <section className="detail-section disclaimer-section">
-              <div className="eyebrow">Please note</div>
-              <h2>Important Information</h2>
-              <p>{service.disclaimer}</p>
-            </section>
           </div>
 
           <aside className="price-box">
