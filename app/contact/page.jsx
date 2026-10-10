@@ -39,10 +39,10 @@ export default function ContactPage() {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <strong style={{ fontFamily: "'Playfair Display'" }}>Email</strong>
                     <p style={{ fontSize: 14, marginTop: 4 }}>
-                      <a href="mailto:thesoulmirrorbyjanvi@gmail.com" style={{ color: "var(--gold)" }}>thesoulmirrorbyjanvi@gmail.com</a>
+                      <a href="mailto:soulmirrorbyjanvi@gmail.com" style={{ color: "var(--gold)" }}>soulmirrorbyjanvi@gmail.com</a>
                     </p>
                   </div>
-                  <a href="mailto:thesoulmirrorbyjanvi@gmail.com" className="contact-card-arrow" aria-label="Email Janvi">
+                  <a href="mailto:soulmirrorbyjanvi@gmail.com" className="contact-card-arrow" aria-label="Email Janvi">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                   </a>
                 </div>
