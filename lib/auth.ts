@@ -4,7 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
-const ADMIN_EMAIL = "soulmirrorbyjanvi@gmail.com";
+const ADMIN_EMAILS = ["soulmirrorbyjanvi@gmail.com", "tarotjanvi@gmail.com"];
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   // Let the deployed host determine the public origin instead of trusting a
@@ -51,7 +51,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.email.toLowerCase() === ADMIN_EMAIL ? "ADMIN" : "USER",
+          role: ADMIN_EMAILS.includes(user.email.toLowerCase()) ? "ADMIN" : "USER",
         };
       },
     }),
@@ -60,7 +60,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = user.email?.toLowerCase() === ADMIN_EMAIL ? "ADMIN" : "USER";
+        token.role = ADMIN_EMAILS.includes(user.email?.toLowerCase() ?? "") ? "ADMIN" : "USER";
       }
       return token;
     },
