@@ -3159,7 +3159,7 @@ main{
     var(--bg) !important;
 }
 .legal-hero::after{
-  content:"?";
+  content:"✦";
   position:absolute;
   right:10%;
   bottom:28px;
@@ -3271,7 +3271,7 @@ main{
   font-size:20px;
 }
 .privacy-grid .terms-note h3::before{
-  content:"?";
+  content:"✦";
   color:var(--gold);
   font-size:13px;
   flex:0 0 auto;
@@ -9112,5 +9112,110 @@ body > .site-star-field{
     top:50% !important;
     transform:translateY(2px) !important;
     font-size:13px !important;
+  }
+}
+
+
+/* =========================================================
+   PHONE-ONLY FINAL REFINEMENTS — Reviews, Legal stars, Booking
+   These rules intentionally apply only at <=600px and do not
+   change laptop/desktop presentation.
+   ========================================================= */
+@media (max-width:600px){
+  /* Reviews: slow the marquee and make the cards more compact. */
+  .reviews-marquee-track{
+    animation-duration:34s !important;
+  }
+  .reviews-marquee-group{
+    gap:14px !important;
+    padding-right:14px !important;
+  }
+  .reviews-marquee .testi-card{
+    width:calc(100vw - 48px) !important;
+    flex-basis:calc(100vw - 48px) !important;
+    min-height:0 !important;
+    height:210px !important;
+    padding:18px !important;
+    gap:9px !important;
+  }
+  .reviews-marquee .testi-stars{
+    font-size:12px !important;
+    letter-spacing:1.5px !important;
+  }
+  .reviews-marquee .testi-quote{
+    font-size:15px !important;
+    line-height:1.45 !important;
+    display:-webkit-box !important;
+    -webkit-box-orient:vertical !important;
+    -webkit-line-clamp:4 !important;
+    overflow:hidden !important;
+  }
+  .reviews-marquee .testi-person{
+    gap:9px !important;
+  }
+  .reviews-marquee .testi-avatar{
+    width:34px !important;
+    height:34px !important;
+    font-size:12px !important;
+  }
+  .reviews-marquee .testi-name{
+    font-size:13px !important;
+  }
+  .reviews-marquee .testi-tag{
+    font-size:11px !important;
+  }
+
+  /* Legal pages: use stars instead of the accidental question marks. */
+  .legal-hero::after{
+    content:"✦" !important;
+  }
+  .privacy-grid .terms-note h3::before{
+    content:"✦" !important;
+  }
+
+  /* Dark booking details: replace browser/autofill grey/blue fields
+     with the same warm dark surface used by the website. */
+  [data-theme="dark"] .booking-page .form-field input,
+  [data-theme="dark"] .booking-page .form-field select,
+  [data-theme="dark"] .booking-page .form-field textarea,
+  [data-theme="dark"] .booking-page .phone-input input,
+  [data-theme="dark"] .booking-page .phone-input select{
+    background:#2a2118 !important;
+    background-color:#2a2118 !important;
+    color:#eee5d5 !important;
+    border-color:rgba(205,167,87,.28) !important;
+    -webkit-text-fill-color:#eee5d5 !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.025) !important;
+  }
+
+  [data-theme="dark"] .booking-page .form-field input::placeholder,
+  [data-theme="dark"] .booking-page .form-field select::placeholder,
+  [data-theme="dark"] .booking-page .form-field textarea::placeholder,
+  [data-theme="dark"] .booking-page .phone-input input::placeholder{
+    color:#a99572 !important;
+    opacity:1 !important;
+  }
+
+  [data-theme="dark"] .booking-page .form-field input:-webkit-autofill,
+  [data-theme="dark"] .booking-page .form-field input:-webkit-autofill:hover,
+  [data-theme="dark"] .booking-page .form-field input:-webkit-autofill:focus,
+  [data-theme="dark"] .booking-page .phone-input input:-webkit-autofill,
+  [data-theme="dark"] .booking-page .phone-input input:-webkit-autofill:hover,
+  [data-theme="dark"] .booking-page .phone-input input:-webkit-autofill:focus{
+    -webkit-text-fill-color:#eee5d5 !important;
+    -webkit-box-shadow:0 0 0 1000px #2a2118 inset !important;
+    box-shadow:0 0 0 1000px #2a2118 inset !important;
+    background-color:#2a2118 !important;
+    border-color:rgba(205,167,87,.28) !important;
+  }
+
+  [data-theme="dark"] .booking-page .form-field input:focus,
+  [data-theme="dark"] .booking-page .form-field select:focus,
+  [data-theme="dark"] .booking-page .form-field textarea:focus,
+  [data-theme="dark"] .booking-page .phone-input input:focus,
+  [data-theme="dark"] .booking-page .phone-input select:focus{
+    background:#30251b !important;
+    background-color:#30251b !important;
+    border-color:rgba(205,167,87,.55) !important;
   }
 }
