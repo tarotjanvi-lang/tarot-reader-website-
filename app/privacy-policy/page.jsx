@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
           <div className="terms-note">
             <h3>Contact</h3>
             <p>
-              If you have questions about this privacy policy or your information, please contact us at thesoulmirrorbyjanvi@gmail.com.
+              If you have questions about this privacy policy or your information, please contact us at soulmirrorbyjanvi@gmail.com.
             </p>
           </div>
         </div>
