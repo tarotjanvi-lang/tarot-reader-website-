@@ -9122,49 +9122,6 @@ body > .site-star-field{
    change laptop/desktop presentation.
    ========================================================= */
 @media (max-width:600px){
-  /* Reviews: slow the marquee and make the cards more compact. */
-  .reviews-marquee-track{
-    animation-duration:55s !important;
-  }
-  .reviews-marquee-group{
-    gap:14px !important;
-    padding-right:14px !important;
-  }
-  .reviews-marquee .testi-card{
-    width:calc(100vw - 48px) !important;
-    flex-basis:calc(100vw - 48px) !important;
-    min-height:0 !important;
-    height:180px !important;
-    padding:16px !important;
-    gap:7px !important;
-  }
-  .reviews-marquee .testi-stars{
-    font-size:12px !important;
-    letter-spacing:1.5px !important;
-  }
-  .reviews-marquee .testi-quote{
-    font-size:14px !important;
-    line-height:1.35 !important;
-    display:-webkit-box !important;
-    -webkit-box-orient:vertical !important;
-    -webkit-line-clamp:4 !important;
-    overflow:hidden !important;
-  }
-  .reviews-marquee .testi-person{
-    gap:9px !important;
-  }
-  .reviews-marquee .testi-avatar{
-    width:34px !important;
-    height:34px !important;
-    font-size:12px !important;
-  }
-  .reviews-marquee .testi-name{
-    font-size:13px !important;
-  }
-  .reviews-marquee .testi-tag{
-    font-size:11px !important;
-  }
-
   /* Legal pages: use stars instead of the accidental question marks. */
   .legal-hero::after{
     content:"✦" !important;
