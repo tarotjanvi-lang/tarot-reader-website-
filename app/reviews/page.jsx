@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import Reveal from "@/components/Reveal";
 import { useTheme } from "@/components/ThemeProvider";
@@ -18,6 +18,51 @@ export default function ReviewsPage() {
   const [form, setForm] = useState({ name: "", service: "", rating: "5", quote: "" });
   const { data: session, status: sessionStatus } = useSession();
   const { theme } = useTheme();
+  const reviewTrackRef = useRef(null);
+  const reviewSwipeRef = useRef({ startX: 0, startOffset: 0, dragging: false });
+
+  function getReviewOffset(track) {
+    const transform = window.getComputedStyle(track).transform;
+    if (!transform || transform === "none") return 0;
+    const match = transform.match(/matrix\(([^)]+)\)/);
+    if (!match) return 0;
+    const values = match[1].split(",").map(Number);
+    return values.length >= 6 ? values[4] : 0;
+  }
+
+  function handleReviewTouchStart(event) {
+    if (window.innerWidth > 600 || !reviewTrackRef.current || !event.touches?.length) return;
+    const track = reviewTrackRef.current;
+    const offset = getReviewOffset(track);
+    reviewSwipeRef.current = { startX: event.touches[0].clientX, startOffset: offset, dragging: true };
+    track.style.animationPlayState = "paused";
+    track.style.animationName = "none";
+    track.style.transform = `translateX(${offset}px)`;
+  }
+
+  function handleReviewTouchMove(event) {
+    const swipe = reviewSwipeRef.current;
+    const track = reviewTrackRef.current;
+    if (!swipe.dragging || !track || !event.touches?.length) return;
+    const nextOffset = swipe.startOffset + (event.touches[0].clientX - swipe.startX);
+    track.style.transform = `translateX(${nextOffset}px)`;
+  }
+
+  function handleReviewTouchEnd() {
+    const swipe = reviewSwipeRef.current;
+    const track = reviewTrackRef.current;
+    if (!swipe.dragging || !track) return;
+    const offset = getReviewOffset(track);
+    const loopDistance = Math.max(track.scrollWidth / 2, 1);
+    const duration = 36;
+    const progress = ((-offset % loopDistance) + loopDistance) % loopDistance / loopDistance;
+    track.style.animationName = "reviews-drift-left";
+    track.style.animationDuration = `${duration}s`;
+    track.style.animationDelay = `${-progress * duration}s`;
+    track.style.animationPlayState = "running";
+    track.style.transform = "";
+    swipe.dragging = false;
+  }
 
   useEffect(() => {
     let isCurrent = true;
@@ -126,8 +171,15 @@ export default function ReviewsPage() {
         ) : reviews.length === 0 ? (
           <p className="reviews-state">No reviews have been shared yet. Be the first to reflect on your session.</p>
         ) : (
-        <div className="reviews-marquee" aria-label="Client reviews">
-          <div className="reviews-marquee-track">
+        <div
+          className="reviews-marquee"
+          aria-label="Client reviews"
+          onTouchStart={handleReviewTouchStart}
+          onTouchMove={handleReviewTouchMove}
+          onTouchEnd={handleReviewTouchEnd}
+          onTouchCancel={handleReviewTouchEnd}
+        >
+          <div className="reviews-marquee-track" ref={reviewTrackRef}>
             {[0, 1].map((group) => (
               <div className="reviews-marquee-group" key={group} aria-hidden={group === 1}>
                 {reviews.map((t) => (
