@@ -1164,7 +1164,7 @@ ul{ list-style:none; margin:0; padding:0; }
 .reviews-marquee .testi-card{ width:320px; flex:0 0 320px; }
 .reviews-marquee:hover .reviews-marquee-track{ animation-play-state:paused; }
 @keyframes reviews-drift-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-@media (max-width:680px){ .reviews-marquee-group{ gap:22px; padding-right:22px; } .reviews-marquee .testi-card{ width:calc(100vw - 36px); flex-basis:calc(100vw - 36px); } }
+@media (max-width:680px){ .reviews-marquee{ touch-action:pan-y; } .reviews-marquee-track{ animation-duration:36s; } .reviews-marquee-group{ gap:22px; padding-right:22px; } .reviews-marquee .testi-card{ width:calc(100vw - 36px); flex-basis:calc(100vw - 36px); } }
 @media (prefers-reduced-motion:reduce){ .reviews-marquee-track{ animation:none; transform:none; } .reviews-marquee-group[aria-hidden="true"]{ display:none; } .reviews-marquee-group{ width:100%; min-width:0; } }
 .booking-service-meta{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; min-width:0; font-size:13px; color:var(--ink-soft); }
 .booking-service-price{ min-width:0; max-width:68%; color:var(--gold); font-weight:500; line-height:1.35; text-align:right; overflow-wrap:anywhere; }
